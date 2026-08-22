@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 900" role="img" aria-label="Komposisi geometris lengkung dan bintang delapan">
+  <defs>
+    <pattern id="dots" width="36" height="36" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="2.5" fill="#e2e8f0"/>
+    </pattern>
+  </defs>
+
+  <rect width="900" height="900" fill="#ffffff"/>
+  <rect width="900" height="900" fill="url(#dots)"/>
+
+  <!-- Emerald disc -->
+  <circle cx="588" cy="360" r="264" fill="#065f46"/>
+
+  <!-- Mint arch in front -->
+  <path d="M450 250 C544 350 584 436 584 596 L584 760 L316 760 L316 596 C316 436 356 350 450 250 Z"
+        fill="#ecfdf5" stroke="#065f46" stroke-width="6"/>
+
+  <!-- Khatam star inside the arch -->
+  <g transform="translate(450 430)" stroke="#d97706" stroke-width="7" fill="none">
+    <rect x="-46" y="-46" width="92" height="92"/>
+    <rect x="-46" y="-46" width="92" height="92" transform="rotate(45)"/>
+  </g>
+  <line x1="372" y1="600" x2="528" y2="600" stroke="#065f46" stroke-width="7" stroke-linecap="round"/>
+  <line x1="398" y1="650" x2="502" y2="650" stroke="#94a3b8" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Fine arcs -->
+  <path d="M120 700 A340 340 0 0 1 460 360" fill="none" stroke="#d97706" stroke-width="4" stroke-dasharray="2 14" stroke-linecap="round"/>
+  <path d="M820 130 A210 210 0 0 0 610 340" fill="none" stroke="#065f46" stroke-width="4" stroke-linecap="round" opacity="0.35"/>
+
+  <!-- Corner star -->
+  <g transform="translate(140 168)" stroke="#065f46" stroke-width="5" fill="none">
+    <rect x="-30" y="-30" width="60" height="60"/>
+    <rect x="-30" y="-30" width="60" height="60" transform="rotate(45)"/>
+  </g>
+</svg>

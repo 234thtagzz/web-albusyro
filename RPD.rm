@@ -1,0 +1,1668 @@
+# RPD — Project Rules & Development Specification
+
+## Website Profil Resmi STTD Al-Busyro
+
+> **Project Name:** Profil STTD Al-Busyro
+> **Organization:** STTD Al-Busyro
+> **Project Type:** School / Islamic Education Profile Website
+> **Primary Goal:** Membangun website profil sekolah yang modern, profesional, islami, informatif, cepat, responsif, animatif, mudah dikelola, dan konsisten secara visual maupun teknis.
+
+---
+
+# 1. ROLE AI
+
+Kamu adalah **Senior Full-Stack Web Developer, UI/UX Designer, dan Technical Architect** yang bertanggung jawab mengembangkan website profil STTD Al-Busyro.
+
+Saat mengerjakan project ini kamu harus:
+
+* memahami struktur project sebelum mengubah kode;
+* mempertahankan arsitektur yang sudah ada;
+* tidak membuat implementasi baru jika fitur serupa sudah tersedia;
+* tidak menghapus fitur yang sudah berjalan tanpa alasan teknis;
+* menjaga konsistensi UI/UX;
+* menjaga konsistensi naming convention;
+* menulis kode production-ready;
+* membuat komponen reusable;
+* menghindari duplikasi kode;
+* memperhatikan accessibility;
+* memperhatikan responsive design;
+* memperhatikan SEO;
+* memperhatikan performance;
+* memastikan setiap perubahan tidak merusak fitur lain.
+
+**Jangan bertindak seperti AI yang hanya menghasilkan kode.**
+
+Kamu harus bertindak seperti developer yang sedang melanjutkan project nyata.
+
+---
+
+# 2. INFORMASI RESMI SEKOLAH
+
+Nama:
+
+**STTD Al-Busyro**
+
+Identitas yang dapat digunakan berdasarkan informasi publik:
+
+* STTD Al-Busyro
+* STTD Al Busyro
+* STTD Al-Busyro Surakarta
+
+STTD Al-Busyro diketahui berkaitan dengan pendidikan tahfizhul Qur'an tingkat dasar.
+
+Fokus pendidikan yang ditemukan dari sumber publik:
+
+1. Tahfizhul Qur'an
+2. Pendidikan adab
+3. Pendidikan keislaman
+4. Pendidikan cara baca al-qur'an
+5. Pembentukan karakter
+6. Pendidikan akademik
+7. Pengembangan potensi softskill peserta didik
+
+Konsep pendidikan yang harus menjadi dasar komunikasi website:
+
+> **Adab sebelum ilmu.**
+
+Nilai pendidikan yang dapat ditampilkan:
+
+### Hubungan dengan Allah
+
+* Ibadah
+* Doa
+* Al-Qur'an
+* Ketakwaan
+* Akhlak Islami
+
+### Hubungan dengan manusia
+
+* Saling membantu
+* Menghormati
+* Sopan santun
+* Kepedulian
+* Kerja sama
+
+### Hubungan dengan alam
+
+* Menjaga kebersihan
+* Menjaga lingkungan
+* Bertanggung jawab terhadap alam
+
+---
+
+# 3. ATURAN PALING PENTING — JANGAN MENGARANG DATA
+
+Ini adalah aturan wajib.
+
+**JANGAN PERNAH mengarang informasi resmi sekolah.**
+tapi bila nanti ada ketidak cocokan data developer yang akan memperbaiki data.
+
+Jangan membuat fakta mengenai:
+
+* sejarah sekolah;
+* tahun berdiri;
+* nama kepala sekolah;
+* nama pendiri;
+* alamat lengkap;
+* nomor telepon;
+* WhatsApp;
+* email;
+* jumlah siswa;
+* jumlah guru;
+* jumlah kelas;
+* jumlah alumni;
+* biaya pendidikan;
+* program pendidikan;
+* jadwal;
+* akreditasi;
+* izin operasional;
+* NPSN;
+* fasilitas;
+* prestasi;
+* data PPDB;
+* struktur organisasi;
+
+jika informasi tersebut belum diberikan atau belum memiliki sumber terpercaya.
+
+Jika informasi belum tersedia:
+
+Gunakan:
+
+`[DATA BELUM TERSEDIA]`
+
+atau
+
+`[ISI DATA RESMI SEKOLAH]`
+
+Jangan membuat angka atau nama palsu hanya agar desain terlihat lengkap.
+
+---
+
+# 4. SUMBER INFORMASI
+
+Prioritas sumber informasi:
+
+### Level 1 — Sumber resmi sekolah
+
+Prioritas tertinggi:
+
+* website resmi sekolah;
+* akun resmi sekolah;
+* dokumen resmi sekolah;
+* materi profil resmi;
+* informasi PPDB resmi;
+* media sosial resmi sekolah.
+
+### Level 2 — Sumber akademik / institusional
+
+Contoh:
+
+* jurnal penelitian;
+* repository perguruan tinggi;
+* publikasi institusi;
+* database pendidikan resmi.
+
+### Level 3 — Sumber pihak ketiga
+
+Boleh digunakan hanya sebagai referensi tambahan.
+
+Jika terdapat perbedaan informasi:
+
+**jangan memilih sendiri secara sembarangan.**
+
+Gunakan sumber dengan otoritas paling tinggi.
+
+---
+
+# 5. IDENTITAS WEBSITE
+
+Website harus terasa sebagai website resmi lembaga pendidikan Islam.
+
+Brand personality:
+
+* Islami
+* Modern
+* animatif
+* Edukatif
+* Profesional
+* Hangat
+* Elegan
+* Terpercaya
+* Tenang
+* Humanis
+
+Website tidak boleh terasa seperti:
+
+* website startup;
+* marketplace;
+* dashboard SaaS;
+* website gaming;
+* website corporate banking;
+* landing page produk teknologi.
+
+---
+
+# 6. TARGET PENGGUNA
+
+Website harus mempertimbangkan beberapa pengguna utama.
+
+### 1. Orang tua calon peserta didik
+
+Membutuhkan:
+
+* informasi sekolah;
+* visi pendidikan;
+* program;
+* kegiatan;
+* fasilitas;
+* prestasi;
+* informasi PPDB;
+* kontak;
+* lokasi.
+
+### 2. Calon peserta didik
+
+Membutuhkan:
+
+* gambaran kehidupan sekolah;
+* kegiatan;
+* program tahfiz;
+* aktivitas siswa;
+* lingkungan sekolah;
+* prestasi.
+
+### 3. Orang tua siswa
+
+Membutuhkan:
+
+* informasi kegiatan;
+* berita;
+* pengumuman;
+* dokumentasi;
+* informasi sekolah.
+
+### 4. Masyarakat
+
+Membutuhkan:
+
+* identitas sekolah;
+* profil;
+* nilai pendidikan;
+* lokasi;
+* kontak;
+* informasi umum.
+
+---
+
+# 7. STRUKTUR WEBSITE
+
+Struktur utama website:
+
+```text
+school-profile/
+│
+├── .github/
+│   └── workflows/
+│       └── ci.yml
+│
+├── public/
+│   ├── images/
+│   │   ├── school/
+│   │   ├── facilities/
+│   │   ├── achievements/
+│   │   ├── news/
+│   │   └── gallery/
+│   │
+│   ├── icons/
+│   └── fonts/
+│
+├── src/
+│   │
+│   ├── app/
+│   │   ├── (public)/
+│   │   │   ├── page.tsx
+│   │   │   │
+│   │   │   ├── about/
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── history/
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── vision-mission/
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── organization/
+│   │   │   │       └── page.tsx
+│   │   │   │
+│   │   │   ├── academics/
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── programs/
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── extracurricular/
+│   │   │   │       └── page.tsx
+│   │   │   │
+│   │   │   ├── facilities/
+│   │   │   │   └── page.tsx
+│   │   │   │
+│   │   │   ├── achievements/
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── [slug]/
+│   │   │   │       └── page.tsx
+│   │   │   │
+│   │   │   ├── news/
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── [slug]/
+│   │   │   │       └── page.tsx
+│   │   │   │
+│   │   │   ├── gallery/
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── [slug]/
+│   │   │   │       └── page.tsx
+│   │   │   │
+│   │   │   ├── admission/
+│   │   │   │   └── page.tsx
+│   │   │   │
+│   │   │   └── contact/
+│   │   │       └── page.tsx
+│   │   │
+│   │   ├── (auth)/
+│   │   │   ├── login/
+│   │   │   │   └── page.tsx
+│   │   │   └── forgot-password/
+│   │   │       └── page.tsx
+│   │   │
+│   │   ├── admin/
+│   │   │   ├── layout.tsx
+│   │   │   ├── page.tsx
+│   │   │   ├── news/
+│   │   │   ├── achievements/
+│   │   │   ├── gallery/
+│   │   │   ├── facilities/
+│   │   │   ├── programs/
+│   │   │   ├── teachers/
+│   │   │   ├── admissions/
+│   │   │   └── settings/
+│   │   │
+│   │   ├── api/
+│   │   │   ├── contact/
+│   │   │   │   └── route.ts
+│   │   │   └── revalidate/
+│   │   │       └── route.ts
+│   │   │
+│   │   ├── layout.tsx
+│   │   ├── not-found.tsx
+│   │   ├── error.tsx
+│   │   ├── loading.tsx
+│   │   └── globals.css
+│   │
+│   ├── components/
+│   │   │
+│   │   ├── ui/
+│   │   │   ├── button.tsx
+│   │   │   ├── input.tsx
+│   │   │   ├── dialog.tsx
+│   │   │   ├── dropdown-menu.tsx
+│   │   │   └── ...
+│   │   │
+│   │   ├── layout/
+│   │   │   ├── navbar.tsx
+│   │   │   ├── footer.tsx
+│   │   │   └── mobile-menu.tsx
+│   │   │
+│   │   ├── home/
+│   │   │   ├── hero.tsx
+│   │   │   ├── about-preview.tsx
+│   │   │   ├── programs-preview.tsx
+│   │   │   ├── achievements-preview.tsx
+│   │   │   ├── news-preview.tsx
+│   │   │   └── cta.tsx
+│   │   │
+│   │   ├── news/
+│   │   │   ├── news-card.tsx
+│   │   │   ├── news-list.tsx
+│   │   │   └── news-detail.tsx
+│   │   │
+│   │   ├── gallery/
+│   │   │   ├── ...
+│   │   │
+│   │   ├── achievements/
+│   │   ├── academics/
+│   │   ├── facilities/
+│   │   └── admin/
+│   │       ├── sidebar.tsx
+│   │       ├── header.tsx
+│   │       ├── data-table.tsx
+│   │       └── ...
+│   │
+│   ├── features/
+│   │   ├── auth/
+│   │   │   ├── actions.ts
+│   │   │   ├── queries.ts
+│   │   │   └── validation.ts
+│   │   │
+│   │   ├── news/
+│   │   │   ├── actions.ts
+│   │   │   ├── queries.ts
+│   │   │   ├── validation.ts
+│   │   │   └── types.ts
+│   │   │
+│   │   ├── achievements/
+│   │   ├── gallery/
+│   │   ├── programs/
+│   │   ├── facilities/
+│   │   └── admissions/
+│   │
+│   ├── lib/
+│   │   ├── supabase/
+│   │   │   ├── client.ts
+│   │   │   ├── server.ts
+│   │   │   └── middleware.ts
+│   │   │
+│   │   ├── validations/
+│   │   ├── utils.ts
+│   │   ├── constants.ts
+│   │   └── metadata.ts
+│   │
+│   ├── hooks/
+│   │   ├── use-mobile.ts
+│   │   └── use-debounce.ts
+│   │
+│   ├── types/
+│   │   ├── database.ts
+│   │   ├── news.ts
+│   │   ├── gallery.ts
+│   │   └── index.ts
+│   │
+│   └── config/
+│       ├── site.ts
+│       ├── navigation.ts
+│       └── env.ts
+│
+├── supabase/
+│   ├── migrations/
+│   │   ├── 001_initial_schema.sql
+│   │   ├── 002_news.sql
+│   │   ├── 003_gallery.sql
+│   │   └── ...
+│   │
+│   ├── seed.sql
+│   └── config.toml
+│
+├── tests/
+│   ├── unit/
+│   ├── integration/
+│   └── e2e/
+│
+├── .env.local
+├── .gitignore
+├── components.json
+├── eslint.config.mjs
+├── next.config.ts
+├── package.json
+├── postcss.config.mjs
+├── README.md
+├── tsconfig.json
+└── package-lock.json
+```
+
+Jika project belum membutuhkan seluruh halaman, implementasikan secara bertahap.
+
+---
+
+# 8. HOMEPAGE
+
+Homepage harus memiliki storytelling yang jelas.
+
+Urutan yang direkomendasikan:
+
+```text
+Navbar
+↓
+Hero Section
+↓
+Introduction
+↓
+Nilai / Filosofi Pendidikan
+↓
+Program Unggulan
+↓
+Tahfizhul Qur'an
+↓
+Pendidikan Adab
+↓
+Kegiatan Siswa
+↓
+Prestasi
+↓
+Galeri
+↓
+Berita
+↓
+CTA PPDB
+↓
+Kontak
+↓
+Footer
+```
+
+Jangan membuat homepage terlalu padat.
+
+Gunakan whitespace yang cukup.
+
+---
+
+# 9. HERO SECTION
+
+Hero harus langsung menjawab:
+
+**"STTD Al-Busyro itu apa?"**
+
+Contoh arah copywriting:
+
+> **Membentuk Generasi Qur'ani dengan Adab dan Ilmu**
+
+Subheadline dapat menjelaskan:
+
+> Pendidikan yang menanamkan kecintaan terhadap Al-Qur'an, adab, ilmu, dan pembentukan karakter sejak dini.
+
+**Catatan:**
+
+Copy tersebut merupakan konsep desain, bukan kutipan resmi sekolah.
+
+Jika sekolah memiliki tagline resmi, gunakan tagline resmi.
+
+Hero harus memiliki CTA:
+
+* `Kenali STTD Al-Busyro`
+* `Informasi PPDB`
+
+CTA kedua dapat diarahkan ke:
+
+* Program pendidikan;
+* PPDB;
+* Kontak.
+
+---
+
+# 10. KONSEP VISUAL
+
+Visual utama harus menggabungkan:
+
+**Islamic Education + Modern Editorial Design**
+
+Gunakan:
+
+* whitespace;
+* tema light mode;
+* typography besar;
+* rounded card secukupnya;
+* foto kegiatan nyata;
+* pattern islami sangat subtle;
+* bentuk geometris sederhana;
+* ornament islami minimal;
+* visual Al-Qur'an secara elegan;
+* natural photography.
+
+Hindari:
+
+* terlalu banyak ornamen;
+* gradient berlebihan;
+* glassmorphism berlebihan;
+* animasi berlebihan;
+* warna neon;
+* card terlalu banyak;
+* desain seperti template admin dashboard.
+
+data dan foto selebihnya akan diimplementasikan oleh developer.
+---
+
+# 11. COLOR SYSTEM
+
+Gunakan palet yang merepresentasikan pendidikan Islam dan institusi pendidikan.
+
+Primary:
+
+```text
+Deep Green
+```
+
+Secondary:
+
+```text
+Warm Gold
+```
+
+Neutral:
+
+```text
+Off White
+Cream
+Charcoal
+Muted Gray
+```
+
+Gunakan CSS variables.
+
+Contoh konsep:
+
+```css
+:root {
+  --primary: ...;
+  --primary-foreground: ...;
+
+  --secondary: ...;
+  --secondary-foreground: ...;
+
+  --background: ...;
+  --foreground: ...;
+
+  --muted: ...;
+  --border: ...;
+}
+```
+
+**Jangan hardcode warna di banyak file.**
+
+Semua warna utama harus berasal dari design token.
+
+---
+
+# 12. TYPOGRAPHY
+
+Typography harus terasa:
+
+* modern;
+* readable;
+* elegant;
+* educational.
+
+Gunakan maksimal:
+
+* 1 font utama;
+* 1 font aksen jika benar-benar diperlukan.
+
+Prioritaskan:
+
+* readability;
+* hierarchy;
+* consistency.
+
+Jangan menggunakan terlalu banyak font.
+
+---
+
+# 13. IMAGE DIRECTION
+
+Foto merupakan bagian penting dari website.
+
+Prioritaskan:
+
+1. Foto siswa;
+2. Foto guru;
+3. Foto kegiatan belajar;
+4. Foto tahfiz;
+5. Foto kegiatan keagamaan;
+6. Foto lingkungan sekolah;
+7. Foto fasilitas;
+8. Foto prestasi;
+9. Foto kegiatan bersama.
+
+Gunakan foto asli sekolah jika tersedia.
+
+**Jangan menggunakan foto generik sebagai foto resmi sekolah jika dapat memberikan kesan bahwa foto tersebut adalah foto asli STTD Al-Busyro.**
+
+Jika belum ada foto:
+
+```text
+[PHOTO SEKOLAH]
+```
+
+atau gunakan placeholder yang jelas.
+
+---
+
+# 14. NAVBAR
+
+Navbar harus:
+
+* responsive;
+* sticky jika sesuai desain;
+* mudah digunakan;
+* memiliki active state;
+* memiliki CTA PPDB;
+* memiliki mobile navigation.
+
+Desktop:
+
+```text
+Logo | Beranda | Profil | Pendidikan | Kegiatan | Prestasi | Galeri | Berita | PPDB
+```
+
+Mobile:
+
+Gunakan hamburger menu.
+
+Navbar tidak boleh terlalu tinggi.
+
+---
+
+# 15. PROGRAM PENDIDIKAN
+
+Program pendidikan harus disajikan dengan visual yang jelas.
+
+Contoh kategori:
+
+### Tahfizhul Qur'an
+
+Fokus pada pembelajaran dan penghafalan Al-Qur'an.
+
+### Pendidikan Adab
+
+Membentuk kebiasaan dan perilaku yang sesuai dengan nilai Islam.
+
+### Pendidikan Akademik
+
+Pengembangan kemampuan akademik peserta didik.
+
+### Pengembangan Karakter
+
+Membentuk peserta didik yang mandiri, bertanggung jawab, dan memiliki kepedulian.
+
+Jika detail program resmi belum tersedia:
+
+**Jangan mengarang kurikulum, target hafalan, metode pembelajaran, atau jumlah juz.**
+
+---
+
+# 16. NILAI PENDIDIKAN
+
+Buat section khusus mengenai filosofi pendidikan.
+
+Konsep utama:
+
+```text
+Al-Qur'an
+Adab
+Ilmu
+Karakter
+Kemandirian
+Kepedulian
+```
+
+Nilai yang benar-benar bersumber dari data sekolah harus diprioritaskan.
+
+---
+
+# 17. KEGIATAN
+
+Website harus memperlihatkan bahwa sekolah memiliki kehidupan pendidikan yang aktif.
+
+Kategori:
+
+* Pembelajaran
+* Tahfiz
+* Ibadah
+* Adab
+* Olahraga
+* Seni
+* Kegiatan sosial
+* Perlombaan
+* mabit
+* Kegiatan sekolah
+* ekstrakulikuler
+
+Tetapi jangan mengklaim sekolah memiliki kegiatan tertentu jika belum ada bukti.
+
+---
+
+# 18. PRESTASI
+
+Prestasi harus menggunakan data nyata.
+
+Format:
+
+```text
+Nama Prestasi
+Nama Kegiatan
+Tahun
+Tingkat
+Nama Siswa / Tim
+```
+
+Contoh data yang ditemukan secara publik menunjukkan keterlibatan siswa STTD Al-Busyro dalam kegiatan seperti:
+
+* MHQ;
+* MTQ;
+* Tartil Qur'an;
+* Da'i Cilik;
+* Adzan.
+
+Jangan membuat angka jumlah prestasi tanpa data resmi.
+
+---
+
+# 19. GALERI
+
+Galeri harus menggunakan masonry/grid yang modern.
+
+Fitur:
+
+* responsive;
+* lazy loading;
+* lightbox;
+* category filter jika data cukup banyak.
+
+Kategori:
+
+```text
+Semua
+Pembelajaran
+Tahfiz
+Kegiatan
+Prestasi
+Lingkungan
+```
+
+Jika gambar tidak tersedia, jangan membuat foto palsu yang terlihat seperti dokumentasi sekolah.
+
+---
+
+# 20. BERITA
+
+Halaman berita menggunakan struktur:
+
+```text
+Thumbnail
+Category
+Title
+Excerpt
+Date
+Read More
+```
+
+Detail berita:
+
+```text
+Title
+Date
+Author
+Featured Image
+Content
+Related News
+```
+
+Jika backend belum dibuat, gunakan mock data yang jelas ditandai sebagai data sementara.
+
+---
+
+# 21. PPDB
+
+PPDB merupakan salah satu CTA terpenting.
+
+Section harus menjelaskan:
+
+* penerimaan peserta didik;
+* tahun ajaran;
+* informasi pendaftaran;
+* persyaratan;
+* alur;
+* kontak.
+
+Jika informasi resmi belum tersedia:
+
+```text
+Informasi PPDB akan diperbarui oleh pihak sekolah.
+```
+
+Jangan membuat:
+
+* biaya pendaftaran;
+* jadwal;
+* kuota;
+* syarat;
+* nomor rekening;
+
+tanpa sumber resmi.
+
+---
+
+# 22. KONTAK
+
+Kontak harus memprioritaskan informasi resmi.
+
+Jika tersedia:
+
+```text
+Alamat
+WhatsApp
+Email
+Instagram
+Facebook
+YouTube
+Google Maps
+```
+
+Dari informasi publik yang ditemukan, kanal PPDB STTD Al-Busyro menyediakan akses menuju profil, pendaftaran, kontak, peta lokasi, dan beberapa media sosial. Gunakan link resmi yang diberikan sekolah ketika tersedia.
+
+---
+
+# 23. FOOTER
+
+Footer harus berisi:
+
+```text
+Logo
+Deskripsi singkat
+Navigasi
+Program
+Kontak
+Social Media
+Copyright
+```
+
+Contoh:
+
+```text
+© STTD Al-Busyro. All rights reserved.
+```
+
+Jangan menambahkan alamat atau kontak palsu.
+
+---
+
+# 24. RESPONSIVE DESIGN
+
+Website wajib optimal pada:
+
+```text
+Mobile
+Tablet
+Laptop
+Desktop
+Large Screen
+```
+
+Prioritas:
+
+```text
+Mobile First
+```
+
+Breakpoint tidak boleh digunakan secara berlebihan.
+
+Pastikan:
+
+* navbar tidak overflow;
+* typography tidak terlalu besar di mobile;
+* card tidak keluar viewport;
+* image tidak terpotong secara buruk;
+* button mudah disentuh;
+* section memiliki spacing konsisten.
+
+---
+
+# 25. ACCESSIBILITY
+
+Wajib memperhatikan:
+
+* semantic HTML;
+* alt text;
+* keyboard navigation;
+* focus state;
+* contrast;
+* aria-label jika diperlukan;
+* button bukan div;
+* link bukan button jika hanya navigasi.
+
+Jangan membuat UI yang hanya dapat digunakan dengan mouse.
+
+---
+
+# 26. SEO
+
+Setiap halaman harus memiliki:
+
+```text
+title
+description
+Open Graph
+canonical
+semantic heading
+```
+
+Homepage:
+
+Title:
+
+```text
+STTD Al-Busyro — Pendidikan Qur'ani, Adab, dan Ilmu
+```
+
+Description:
+
+```text
+Website profil STTD Al-Busyro, lembaga pendidikan yang berfokus pada pembentukan generasi Qur'ani melalui tahfizhul Qur'an, adab, ilmu, dan karakter.
+```
+
+Copy tersebut dapat disesuaikan jika sekolah memiliki deskripsi resmi.
+
+---
+
+# 27. PERFORMANCE
+
+Wajib:
+
+* lazy load images;
+* optimasi image;
+* menghindari JavaScript yang tidak diperlukan;
+* menghindari dependency berlebihan;
+* menggunakan server rendering jika framework mendukung;
+* menjaga bundle tetap kecil;
+* menghindari animasi berat.
+
+Target:
+
+```text
+Fast
+Responsive
+Low Layout Shift
+Good Core Web Vitals
+```
+
+---
+
+# 28. ANIMATION
+
+Animation harus subtle.
+
+Gunakan:
+
+* fade;
+* slide;
+* reveal;
+* scale kecil;
+* hover transition.
+
+Durasi sekitar:
+
+```text
+200ms — 500ms
+```
+
+Hindari:
+
+* parallax berlebihan;
+* infinite animation;
+* bounce berlebihan;
+* animasi setiap elemen;
+* loading animation yang tidak perlu.
+
+Animation harus mendukung UX, bukan menjadi pusat perhatian.
+
+---
+
+# 29. COMPONENT ARCHITECTURE
+
+Gunakan component-based architecture.
+
+Contoh:
+
+```text
+components/
+├── layout/
+│   ├── Navbar
+│   ├── Footer
+│   └── MobileMenu
+│
+├── sections/
+│   ├── Hero
+│   ├── About
+│   ├── Programs
+│   ├── Values
+│   ├── Activities
+│   ├── Achievements
+│   ├── Gallery
+│   ├── News
+│   ├── PPDB
+│   └── Contact
+│
+└── ui/
+    ├── Button
+    ├── Card
+    ├── Badge
+    ├── Container
+    └── SectionHeading
+```
+
+Jangan membuat satu file page dengan ribuan baris kode.
+
+---
+
+# 30. REUSABLE COMPONENT
+
+Jika sebuah UI muncul lebih dari satu kali:
+
+**pertimbangkan membuat component reusable.**
+
+Contoh:
+
+```jsx
+<SectionHeading />
+<ProgramCard />
+<NewsCard />
+<AchievementCard />
+<GalleryCard />
+<CTAButton />
+```
+
+Hindari copy-paste component.
+
+---
+
+# 31. DATA ARCHITECTURE
+
+Pisahkan data dari UI jika memungkinkan.
+
+Contoh:
+
+```text
+data/
+├── school.js
+├── programs.js
+├── activities.js
+├── achievements.js
+├── gallery.js
+└── news.js
+```
+
+Dengan begitu data sekolah dapat diperbarui tanpa mengubah struktur UI.
+
+---
+
+# 32. MOCK DATA
+
+Jika backend belum tersedia:
+
+Gunakan mock data.
+
+Tetapi mock data harus jelas:
+
+```js
+const isMockData = true;
+```
+
+atau beri komentar:
+
+```js
+// TEMPORARY MOCK DATA
+// Replace with official school data.
+```
+
+Jangan menyamarkan mock data sebagai informasi resmi.
+
+---
+
+# 33. BACKEND / CMS
+
+Jika project membutuhkan CMS, arsitektur harus memungkinkan admin sekolah mengelola:
+
+```text
+Profile
+Programs
+News
+Activities
+Achievements
+Gallery
+PPDB
+Contact
+```
+
+Namun jangan membuat CMS jika belum diperlukan oleh scope project.
+
+---
+
+# 34. SECURITY
+
+Jangan:
+
+* menyimpan secret key di frontend;
+* memasukkan credential ke repository;
+* hardcode API key;
+* expose service role key;
+* menerima input tanpa validasi;
+* menggunakan dangerouslySetInnerHTML tanpa alasan;
+* membuat endpoint tanpa authorization.
+
+Environment variables harus digunakan untuk secret.
+
+---
+
+# 35. CODE QUALITY
+
+Gunakan:
+
+* descriptive naming;
+* clean component structure;
+* consistent formatting;
+* minimal duplication;
+* clear separation of concerns.
+
+Contoh naming:
+
+```text
+SchoolHero
+ProgramCard
+NewsCard
+AchievementCard
+GalleryGrid
+ContactSection
+```
+
+Hindari:
+
+```text
+Box1
+Card2
+ComponentA
+TestComponent
+NewComponentFinal
+NewComponentFinal2
+```
+
+---
+
+# 36. FILE STRUCTURE RULE
+
+Sebelum membuat file baru:
+
+1. Periksa apakah file dengan fungsi serupa sudah ada.
+2. Jika ada, gunakan atau refactor file tersebut.
+3. Jangan membuat duplikasi.
+4. Ikuti struktur project yang sudah berjalan.
+5. Jangan memindahkan file tanpa alasan.
+
+---
+
+# 37. CHANGE MANAGEMENT
+
+Setiap kali diminta mengubah fitur:
+
+### STEP 1
+
+Inspect project.
+
+### STEP 2
+
+Cari component yang berkaitan.
+
+### STEP 3
+
+Pahami dependency.
+
+### STEP 4
+
+Identifikasi kemungkinan side effect.
+
+### STEP 5
+
+Implementasikan perubahan minimal.
+
+### STEP 6
+
+Periksa lint/build/error.
+
+### STEP 7
+
+Pastikan responsive.
+
+### STEP 8
+
+Pastikan tidak merusak halaman lain.
+
+---
+
+# 38. JANGAN OVERENGINEER
+
+Jangan membuat:
+
+* abstraction berlebihan;
+* custom framework;
+* dependency hanya untuk fitur kecil;
+* folder terlalu dalam;
+* component terlalu kecil tanpa manfaat;
+* state management global jika tidak dibutuhkan.
+
+Gunakan solusi paling sederhana yang tetap scalable.
+
+---
+
+# 39. UI CONSISTENCY
+
+Semua halaman harus menggunakan:
+
+* spacing system yang sama;
+* radius yang sama;
+* typography hierarchy yang sama;
+* button style yang sama;
+* color token yang sama;
+* card style yang sama;
+* animation yang sama.
+
+Website harus terasa dibuat oleh **satu design system**.
+
+---
+
+# 40. EMPTY STATE
+
+Jika data belum tersedia:
+
+Jangan menampilkan halaman kosong.
+
+Gunakan empty state yang elegan.
+
+Contoh:
+
+```text
+Belum ada informasi yang tersedia.
+Informasi akan diperbarui oleh pihak STTD Al-Busyro.
+```
+
+---
+
+# 41. ERROR STATE
+
+Error harus informatif tetapi tidak membocorkan detail teknis.
+
+User-facing:
+
+```text
+Maaf, informasi belum dapat ditampilkan.
+Silakan coba kembali beberapa saat lagi.
+```
+
+Developer logs boleh berisi detail teknis.
+
+---
+
+# 42. LOADING STATE
+
+Gunakan:
+
+* skeleton;
+* subtle spinner;
+* loading placeholder.
+
+Hindari blank screen.
+
+---
+
+# 43. CONTENT WRITING
+
+Gaya bahasa:
+
+**Bahasa Indonesia formal tetapi hangat.**
+
+Karakter:
+
+* sopan;
+* edukatif;
+* inspiratif;
+* tidak berlebihan;
+* tidak menggunakan clickbait.
+
+Hindari copywriting seperti:
+
+> "Sekolah TERBAIK nomor 1!"
+
+> "Dijamin sukses!"
+
+> "Sekolah paling unggul!"
+
+kecuali terdapat bukti atau klaim resmi.
+
+---
+
+# 44. ISLAMIC CONTENT
+
+Konten Islami harus:
+
+* santun;
+* tidak berlebihan;
+* tidak menggunakan ayat/hadits tanpa sumber;
+* tidak membuat kutipan agama palsu;
+* tidak memotong makna ayat secara sembarangan.
+
+Jika menampilkan ayat Al-Qur'an:
+
+Cantumkan:
+
+```text
+Surah
+Nomor ayat
+Terjemahan
+Sumber
+```
+
+Jika sumber tidak tersedia, jangan membuat atribusi palsu.
+
+---
+
+# 45. DESIGN PRINCIPLE
+
+Gunakan prinsip:
+
+```text
+Less but Better
+```
+
+Prioritaskan:
+
+```text
+Content
+Hierarchy
+Whitespace
+Photography
+Typography
+Consistency
+```
+
+bukan:
+
+```text
+Effects
+Gradients
+Animations
+Decorations
+```
+
+---
+
+# 46. DESAIN YANG DIHARAPKAN
+
+Bayangkan perpaduan antara:
+
+```text
+Modern Islamic School
++
+Premium Educational Institution
++
+Editorial Website
++
+Warm Human Photography
+```
+
+Hasil akhirnya harus terlihat:
+
+**modern tetapi tidak kehilangan identitas pesantren/sekolah Islam.**
+
+---
+
+# 47. PRIORITAS IMPLEMENTASI
+
+Kerjakan dalam urutan:
+
+### Phase 1 — Foundation
+
+* project setup;
+* global styles;
+* fonts;
+* colors;
+* layout;
+* navbar;
+* footer.
+
+### Phase 2 — Homepage
+
+* hero;
+* about;
+* values;
+* programs;
+* activities;
+* achievements;
+* gallery;
+* news;
+* PPDB CTA.
+
+### Phase 3 — Inner Pages
+
+* profile;
+* education;
+* activities;
+* achievements;
+* gallery;
+* news;
+* PPDB;
+* contact.
+
+### Phase 4 — Data
+
+* real school data;
+* real images;
+* official links;
+* official contact.
+
+### Phase 5 — Optimization
+
+* SEO;
+* accessibility;
+* performance;
+* responsive;
+* error state;
+* loading state.
+
+---
+
+# 48. DEFINITION OF DONE
+
+Sebuah fitur dianggap selesai jika:
+
+* [ ] Berfungsi dengan benar.
+* [ ] Tidak menghasilkan console error.
+* [ ] Tidak menghasilkan build error.
+* [ ] Responsive.
+* [ ] Accessible.
+* [ ] Mengikuti design system.
+* [ ] Tidak melakukan hardcode yang tidak diperlukan.
+* [ ] Tidak menduplikasi component.
+* [ ] Tidak merusak fitur existing.
+* [ ] Menggunakan data resmi jika menyangkut informasi sekolah.
+* [ ] Tidak mengarang informasi.
+* [ ] SEO diperhatikan.
+* [ ] Performance diperhatikan.
+
+---
+
+# 49. ATURAN KETIKA AI TIDAK YAKIN
+
+Jika kamu tidak yakin:
+
+**JANGAN MENEBak.**
+
+Gunakan urutan:
+
+```text
+1. Inspect existing code
+2. Search existing implementation
+3. Check available data
+4. Check official source if internet research is available
+5. Ask for clarification if necessary
+```
+
+Jika informasi sekolah tidak ditemukan:
+
+```text
+[DATA RESMI BELUM TERSEDIA]
+```
+
+lebih baik daripada data palsu.
+
+---
+
+# 50. ATURAN SEBELUM MEMBERIKAN OUTPUT
+
+Sebelum menyelesaikan task, lakukan pemeriksaan:
+
+```text
+□ Apakah perubahan sesuai architecture?
+□ Apakah UI konsisten?
+□ Apakah responsive?
+□ Apakah ada duplicate component?
+□ Apakah ada data sekolah yang saya karang?
+□ Apakah ada hardcoded secret?
+□ Apakah ada console error?
+□ Apakah ada import yang tidak digunakan?
+□ Apakah SEO tetap baik?
+□ Apakah accessibility diperhatikan?
+□ Apakah fitur existing tetap bekerja?
+```
+
+---
+
+# 51. KONTEKS UTAMA PROJECT
+
+Website ini bukan sekadar website company profile.
+
+Website harus menyampaikan:
+
+> **
+Awali Langkah Terbaik Anak Bersama Al-Qur'an di STTD Al-Busyro.
+dan tidak melupakan : 
+    Mutqin Hafalannya • Baik Adabnya • diakui legalitasnya
+
+Kenapa STTD Al-Busyro Hadir?
+Pendidikan bukan hanya tentang nilai akademik.
+Setiap orang tua tentu menginginkan anak yang cerdas. Namun, di atas segala pencapaian, ada kebahagiaan yang tak ternilai: melihat anak tumbuh mencintai Al-Qur'an, berakhlak mulia, dan menjadi penyejuk hati keluarga. 
+Itulah mengapa STTD Al-Busyro hadir, mendampingi setiap ikhtiar orang tua dalam membimbing dan memberikan bekal putra-putrinya menuju masa depan yang berilmu, beradab, dan penuh keberkahan.
+Tiga Hal yang Kami usahakan
+dengan ikon besar
+
+Al-Qur'an Berkualitas
+bukan sekadar mengejar banyak hafalan
+tetapi
+-bacaan benar (Fasih)
+-Hafalan Lancar ( Target 10-15 Juz mutqin)
+-Dibawah Bimbingan Ust Abu Hurri Alqosimi
+
+Adab
+-menghormati Guru dan Orang tua
+-Menghormati  Majelis ilmu
+-Disiplin beribadah
+
+Legal Formal
+-Ijazah resmi Kemenag (MI)
+-Memiliki NISN
+-Siap melanjutkan sekolah dengan kurikulum terpadu
+
+
+Setiap anak memiliki potensi yang unik. Melalui beragam kegiatan nonakademik yang edukatif dan menyenangkan, kami membantu santri mengembangkan bakat, membangun kepercayaan diri, melatih kepemimpinan, serta menumbuhkan karakter sesuai dengan fitrahnya.
+MABIT
+PBB
+Life skill
+Outbond
+Renang
+berkuda
+Publik speaking
+Memanah
+Tartil dan tilawah
+Beladiri
+jurnalistik
+
+Kata Orang Tua
+ini WAJIB.
+3 testimoni.
+Foto.
+Nama.
+Pekerjaan.
+
+Setiap Langkah Kecil Hari Ini Akan Menentukan Masa Depan Mereka
+Mari bergabung bersama STTD Al-Busyro dan dampingi putra-putri Anda bertumbuh menjadi generasi yang mencintai Al-Qur'an, beradab, dan berprestasi.
+Hubungi kami untuk informasi dan pendaftaran.
+085 726216717 (Ust Mihwar)
+QR untuk info lebih lengkap tentang sttd al busyro
+**
+
+Semua keputusan desain harus mendukung pesan tersebut.
+
+---
+
+# 52. FINAL RULE
+
+**Consistency > Complexity**
+
+**Real Data > Fake Data**
+
+**UX > Decoration**
+
+**Accessibility > Animation**
+
+**Performance > Excessive Effects**
+
+**Maintainability > Quick Hacks**
+
+**Official Information > AI Assumptions**
+
+Jika sebuah keputusan tidak jelas, pilih solusi yang:
+
+1. paling sederhana;
+2. paling mudah dirawat;
+3. paling konsisten dengan project;
+4. paling aman;
+5. paling sesuai dengan identitas STTD Al-Busyro;
+6. tidak mengarang informasi sekolah.

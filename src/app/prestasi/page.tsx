@@ -1,0 +1,65 @@
+import { Navbar } from "@/components/layout/navbar";
+import { Footer } from "@/components/layout/footer";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { achievements } from "@/data/achievements";
+import { Trophy } from "lucide-react";
+import { EmptyState } from "@/components/ui/empty-state";
+
+export default function AchievementsPage() {
+  return (
+    <>
+      <Navbar />
+      <main className="flex-1" id="main-content">
+        <section className="bg-slate-50 pt-24 pb-16 sm:pt-32 sm:pb-20">
+          <div className="container-custom">
+            <SectionHeading
+              badge="Prestasi"
+              title="Prestasi Santri"
+              description="Pencapaian yang membanggakan dari para santri STTD Al-Busyro dalam berbagai bidang."
+            />
+          </div>
+        </section>
+
+        <section className="section-spacing">
+          <div className="container-custom">
+            {achievements.length === 0 ? (
+              <EmptyState
+                icon={<Trophy className="h-7 w-7 text-slate-600" />}
+                title="Belum ada data prestasi yang tersedia."
+                description="Informasi akan diperbarui oleh pihak STTD Al-Busyro."
+              />
+            ) : (
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                {achievements.map((achievement) => (
+                  <div
+                    key={achievement.id}
+                    className="rounded-[24px] border border-slate-200 bg-white shadow-sm p-6 transition-all hover:border-slate-300"
+                  >
+                    <div className="flex items-center gap-2 text-sm text-slate-600">
+                      <Trophy className="h-4 w-4 text-amber-600" />
+                      <span>{achievement.year}</span>
+                      <span className="text-slate-500">&bull;</span>
+                      <span>{achievement.level}</span>
+                    </div>
+                    <h3 className="mt-2 font-display text-lg tracking-tight text-slate-900">
+                      {achievement.title}
+                    </h3>
+                    <p className="mt-1 text-sm text-slate-600">
+                      {achievement.competition}
+                    </p>
+                    {achievement.participant && (
+                      <p className="mt-1 text-xs text-slate-400">
+                        {achievement.participant}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}
