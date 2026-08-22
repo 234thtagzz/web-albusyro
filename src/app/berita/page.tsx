@@ -55,7 +55,7 @@ export default function NewsPage() {
                     href={`/berita/${news.slug}`}
                     className="group rounded-[24px] border border-slate-200 bg-white shadow-sm transition-all hover:border-slate-300"
                   >
-                    <div className="aspect-video overflow-hidden rounded-t-[24px] bg-slate-200">
+                    <div className="relative aspect-video overflow-hidden rounded-t-[24px] bg-slate-200">
                       {news.imageUrl ? (
                         <Image
                           src={news.imageUrl}

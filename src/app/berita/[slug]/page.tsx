@@ -69,7 +69,7 @@ export default async function NewsDetailPage({
               </h1>
 
               {news.imageUrl && (
-                <div className="mt-6 aspect-video overflow-hidden rounded-[24px] bg-white">
+                <div className="relative mt-6 aspect-video overflow-hidden rounded-[24px] bg-white">
                   <Image
                     src={news.imageUrl}
                     alt={news.imageAlt}
