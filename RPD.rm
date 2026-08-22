@@ -90,12 +90,10 @@ Nilai pendidikan yang dapat ditampilkan:
 
 ---
 
-# 3. ATURAN PALING PENTING — JANGAN MENGARANG DATA
+# 3. ATURAN PENTING
 
+bila belum tahu data informasi sekolah bisa berikan dummy data untuk data sementara, agar developer nyata yang memperbaikinya.
 Ini adalah aturan wajib.
-
-**JANGAN PERNAH mengarang informasi resmi sekolah.**
-tapi bila nanti ada ketidak cocokan data developer yang akan memperbaiki data.
 
 Jangan membuat fakta mengenai:
 
@@ -134,7 +132,7 @@ atau
 
 `[ISI DATA RESMI SEKOLAH]`
 
-Jangan membuat angka atau nama palsu hanya agar desain terlihat lengkap.
+buat agar desain terlihat lengkap.
 
 ---
 

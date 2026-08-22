@@ -6,22 +6,26 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { mainNavigation, ctaNavigation } from "@/data/navigation";
+import { school } from "@/data/school";
+import Image from "next/image";
 
 function BrandMark({ className }: { className?: string }) {
   return (
-    <span
-      className={cn(
-        "flex h-9 w-9 items-center justify-center rounded-[10px] bg-primary",
-        className
-      )}
-    >
-      <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" aria-hidden="true">
-        <g fill="none" stroke="currentColor" strokeWidth="1.8">
-          <rect x="7" y="7" width="10" height="10" />
-          <rect x="7" y="7" width="10" height="10" transform="rotate(45 12 12)" />
-        </g>
-      </svg>
-    </span>
+      <div
+        className={cn(
+          "relative flex h-9 w-9 items-center justify-center overflow-hidden rounded-[10px] bg-primary",
+          className
+        )}
+      >
+        <Image
+          src="/logo_.png"
+          alt={`Logo ${school.name}`}
+          fill
+          priority
+          sizes="36px"
+          className="object-cover"
+        />
+    </div>
   );
 }
 
@@ -81,7 +85,7 @@ export function Navbar() {
       >
         <nav className="container-custom flex h-16 items-center justify-between lg:h-[76px]">
           <Link href="/" className="group flex items-center gap-2.5">
-            <BrandMark className="text-primary-foreground transition-colors group-hover:bg-emerald-700" />
+            <BrandMark />
             <span className="leading-tight">
               <span className="block font-display text-[15px] tracking-tight text-slate-900">
                 STTD Al&#8209;Busyro
