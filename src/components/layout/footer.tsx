@@ -3,6 +3,7 @@ import { Phone, MapPin, MessageCircle, Heart } from "lucide-react";
 import { school } from "@/data/school";
 import { footerNavigation } from "@/data/navigation";
 import { waLink } from "@/data/home";
+import { Logo } from "./logo";
 
 export function Footer() {
   return (
@@ -12,24 +13,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-5">
             <Link href="/" className="inline-flex items-center gap-3">
-              <span className="flex h-10 w-10 items-center justify-center rounded-[12px] bg-emerald-800 text-emerald-50">
-                <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
-                  <g
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                  >
-                    <rect x="7" y="7" width="10" height="10" />
-                    <rect
-                      x="7"
-                      y="7"
-                      width="10"
-                      height="10"
-                      transform="rotate(45 12 12)"
-                    />
-                  </g>
-                </svg>
-              </span>
+              <Logo />
               <span className="leading-tight">
                 <span className="block font-display text-lg tracking-tight text-white">
                   STTD Al&#8209;Busyro

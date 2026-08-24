@@ -138,7 +138,7 @@ export function Hero() {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex h-12 items-center gap-2 rounded-full bg-primary px-7 text-[15px] font-semibold text-primary-foreground shadow-md transition-all hover:-translate-y-0.5 hover:bg-emerald-700 hover:shadow-lg"
+                className="group inline-flex h-12 items-center gap-2 rounded-full bg-primary-2 px-7 text-[15px] font-semibold text-primary-foreground shadow-md transition-all hover:-translate-y-0.5 hover:bg-primary-3 hover:shadow-lg"
               >
                 Daftar PPDB
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
