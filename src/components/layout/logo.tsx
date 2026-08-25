@@ -11,7 +11,7 @@ function Logo({ className }: { className?: string }) {
         )}
       >
         <Image
-          src="/logo_.png"
+          src="/images/logo_.png"
           alt={`Logo ${school.name}`}
           fill
           priority
