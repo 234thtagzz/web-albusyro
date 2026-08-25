@@ -37,7 +37,7 @@ export function Identity() {
               </span>
               <h2 className="font-display mt-5 text-[clamp(1.75rem,3.2vw,2.5rem)] leading-[1.12] text-slate-900">
                 Integrasi hafalan Al-Qur&rsquo;an, pendidikan adab, dan ilmu
-                umum di jantung Solo Raya.
+                dalam Satu Madrasah.
               </h2>
             </Reveal>
 
@@ -74,8 +74,8 @@ export function Identity() {
             <Reveal delay={0.1} className="relative">
               <div className="overflow-hidden rounded-[28px] border border-slate-200 shadow-md">
                 <Image
-                  src="/images/identity-geometri.svg"
-                  alt="Komposisi geometris islami — lengkung mihrab dan bintang delapan"
+                  src="/images/halaqoh quran.png"
+                  alt="Potret Halagoh"
                   width={900}
                   height={900}
                   sizes="(max-width: 1024px) 90vw, 520px"

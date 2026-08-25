@@ -218,7 +218,7 @@ export function Hero() {
                   style={{ color: "var(--secondary-1, #f57c00)" }}
                 />
                 <span className="text-xs font-medium text-slate-700">
-                  Gentan, Baki — Solo Raya
+                  Gentan, Baki — Sukoharjo
                 </span>
               </div>
             </div>

@@ -9,9 +9,9 @@ export const school = {
   logo: '/logo_.png',
   tagline: "Membentuk Generasi Qur'ani dengan Adab dan Ilmu",
   description:
-    "Sekolah Tahfizhul Qur'an tingkat dasar di Solo Raya yang menanamkan kecintaan terhadap Al-Qur'an, adab sebelum ilmu, dan pembentukan karakter sejak dini.",
+    "Bersama Mencetak Generasi Qur'ani yang Beradab dan Berprestasi Bukan hanya mengejar hafalan, tetapi membentuk anak yang dekat dengan Allah, baik kepada sesama, dan siap menghadapi masa depan.",
   longDescription:
-    "STTD Al-Busyro adalah sekolah tahfizhul Qur'an tingkat dasar yang berlokasi di Gentan, Kecamatan Baki, Kabupaten Sukoharjo — Solo Raya. Berdiri oleh Ust. Abu Hurri Al-Qosimi, pencipta Metode Al-Qosimi, sekolah ini menggabungkan program tahfizh intensif dengan pelajaran umum serta pendidikan adab, mendampingi setiap ikhtiar orang tua membekali putra-putrinya menuju masa depan yang berilmu, beradab, dan penuh keberkahan.",
+    "STTD Al-Busyro Adalah sekolah dasar (SD) yang memiliki program tahfizh intensif (mengutamakan baiknya bacaan dan lancarnya hafalan) yang dipadukan dengan kurikulum kementrian agama (Madrasah). kami berupaya memberikan lingkungan Islami yang mendukung tumbuh kembang anak sesuai dengan fitrah dan potensi yang telah Allah berikan. Sehingga anak memiliki bekal dasar untuk menyambut masa depan cemerlang yang penuh dengan tantangan.",
   city: "Surakarta (Solo Raya)",
   address: "Gentan, Kec. Baki, Kabupaten Sukoharjo, Jawa Tengah",
   phone: "085 726216717",
