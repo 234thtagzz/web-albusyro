@@ -3,16 +3,16 @@ import { school } from "./school";
 
 export const heroStats = [
   {
-    value: "18–22",
-    label: "Juz — target hafalan 6 tahun",
+    value: "10-15",
+    label: "Juz - target hafalan Mutqin dan Fasih Bacaannya.",
   },
   {
-    value: "30",
-    label: "Juz — capaian program asrama",
+    value: "Adab",
+    label: "Ketika Beribadah, Bermajelis, Serta kepada Guru dan Orang Tua.",
   },
   {
-    value: "MI",
-    label: "Ijazah resmi Kemenag + NISN",
+    value: "Legalitas",
+    label: "Kurikulum Terpadu Kemenag + NISN dan Ijazah MI (Kemenag).",
   },
 ] as const;
 

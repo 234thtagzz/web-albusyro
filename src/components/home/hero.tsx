@@ -7,6 +7,7 @@ import { ArrowRight, MapPin } from "lucide-react";
 import { gsap } from "@/lib/gsap";
 import { school } from "@/data/school";
 import { heroStats, waLink } from "@/data/home";
+import FotoStack from "@/components/components/FotoStats";
 
 export function Hero() {
   const scope = useRef<HTMLElement>(null);
@@ -117,10 +118,10 @@ export function Hero() {
               </span>
               <span data-hero="line" className="block">
                 Qur&rsquo;ani dengan{" "}
-                <span className="text-emerald-700">Adab</span>
+                <span className="text-primary-3">Adab</span>
               </span>
               <span data-hero="line" className="block">
-                dan <span className="text-emerald-700">Ilmu</span>.
+                dan <span className="text-primary-3">Ilmu</span>.
               </span>
             </h1>
 
@@ -138,7 +139,7 @@ export function Hero() {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group inline-flex h-12 items-center gap-2 rounded-full bg-primary-2 px-7 text-[15px] font-semibold text-primary-foreground shadow-md transition-all hover:-translate-y-0.5 hover:bg-primary-3 hover:shadow-lg"
+                className="group inline-flex h-12 items-center gap-2 rounded-full bg-primary-2 px-7 text-[15px] font-semibold text-popover-1 shadow-md transition-all hover:-translate-y-0.5 hover:bg-primary-3 hover:shadow-lg"
               >
                 Daftar PPDB
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -159,10 +160,10 @@ export function Hero() {
                   className="px-4 first:pl-0 last:pr-0"
                 >
                   <dt className="sr-only">{stat.label}</dt>
-                  <dd className="font-display text-2xl text-emerald-900 sm:text-3xl">
+                  <dd className="font-display text-2xl text-primary-3 sm:text-3xl">
                     {stat.value}
                   </dd>
-                  <dd className="mt-1 text-[11px] leading-snug text-slate-500 sm:text-xs">
+                  <dd className="mt-1 text-[11px] leading-snug text-popover-foreground sm:text-xs">
                     {stat.label}
                   </dd>
                 </div>
@@ -173,42 +174,7 @@ export function Hero() {
           {/* Kolom visual berlapis */}
           <div className="lg:col-span-6 xl:col-span-5 xl:col-start-8">
             <div className="relative mx-auto max-w-[420px] lg:max-w-none">
-              <div
-                aria-hidden="true"
-                data-hero="visual"
-                className="absolute -inset-2 -rotate-2 rounded-[36px] border border-emerald-100 bg-white sm:-inset-3"
-              />
-              <div
-                data-hero="visual"
-                className="relative aspect-[4/5] overflow-hidden rounded-[28px] border border-slate-200 shadow-xl"
-              >
-                <Image
-                  src="/images/hero-mihrab.svg"
-                  alt={`Ornamen mihrab dan mushaf — identitas ${school.name}`}
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 90vw, 480px"
-                  className="object-cover"
-                />
-              </div>
-
-              {/* Kartu metode */}
-              <div
-                data-hero="float"
-                className="absolute -bottom-6 -left-3 flex items-center gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-lg sm:-left-8"
-              >
-                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-emerald-800 font-display text-sm text-emerald-50">
-                  AQ
-                </span>
-                <span>
-                  <span className="block text-sm font-bold text-slate-900">
-                    Metode Al&#8209;Qosimi
-                  </span>
-                  <span className="block text-xs text-slate-500">
-                    Diajukan langsung sang pendiri
-                  </span>
-                </span>
-              </div>
+              <FotoStack />
 
               {/* Chip lokasi */}
               <div

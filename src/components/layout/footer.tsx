@@ -7,7 +7,7 @@ import { Logo } from "./logo";
 
 export function Footer() {
   return (
-    <footer className="bg-emerald-950 text-emerald-100/70">
+    <footer className="bg-primary-1 text-popover-1">
       <div className="container-custom pt-20 pb-14">
         <div className="grid gap-12 lg:grid-cols-12">
           {/* Brand */}
