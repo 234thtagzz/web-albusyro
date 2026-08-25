@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { mainNavigation, ctaNavigation } from "@/data/navigation";
 import { school } from "@/data/school";
-import {logo_.png} from "";
+import { Logo } from "@/components/layout/logo";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -64,9 +64,7 @@ export function Navbar() {
             href="/"
             className="flex items-center gap-2.5 font-heading text-lg font-extrabold tracking-tight text-white"
           >
-            <span>
-              
-            </span>
+            <Logo />
             <span className="hidden sm:inline">{school.shortName}</span>
           </Link>
 
