@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { Reveal, Stagger } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { school } from "@/data/school";
 import { iconMap, type IconName } from "@/lib/icons";
@@ -25,14 +26,16 @@ export default function ProfilePage() {
         <section className="section-spacing">
           <div className="container-custom">
             <div className="mx-auto max-w-3xl">
+              <Reveal>
               <h2 className="font-display text-2xl tracking-tight text-slate-900 sm:text-3xl">
                 {whyData.headline}
               </h2>
               <p className="mt-4 text-[15px] leading-relaxed text-slate-600 sm:text-base">
                 {whyData.description}
               </p>
+              </Reveal>
 
-              <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <Stagger className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {whyData.threeMainPoints.map((point) => (
                   <div
                     key={point.title}
@@ -57,7 +60,7 @@ export default function ProfilePage() {
                     </ul>
                   </div>
                 ))}
-              </div>
+              </Stagger>
             </div>
           </div>
         </section>
@@ -69,7 +72,8 @@ export default function ProfilePage() {
               title="Visi dan Misi"
               description="Arah dan tujuan pendidikan STTD Al-Busyro."
             />
-            <div className="mx-auto max-w-3xl space-y-4">
+            <Reveal>
+            <div className="mx-auto max-w-3xl space-y-4 mt-5">
               <div className="rounded-[24px] border border-slate-200 bg-white shadow-sm p-6 sm:p-8">
                 <h3 className="font-display text-lg tracking-tight text-slate-900">Visi</h3>
                 <p className="mt-2 text-slate-600">{school.vision}</p>
@@ -86,6 +90,7 @@ export default function ProfilePage() {
                 </ul>
               </div>
             </div>
+            </Reveal>
           </div>
         </section>
 
@@ -96,7 +101,7 @@ export default function ProfilePage() {
               title="Nilai-Nilai yang Kami Tanamkan"
               description="Tiga pilar hubungan yang menjadi fondasi pendidikan di STTD Al-Busyro."
             />
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-5">
               <div className="rounded-[24px] border border-slate-200 bg-white shadow-sm p-6">
                 <h3 className="font-display text-lg tracking-tight text-slate-900">
                   {values.relationWithAllah.title}
@@ -136,7 +141,7 @@ export default function ProfilePage() {
                   ))}
                 </ul>
               </div>
-            </div>
+            </Stagger>
           </div>
         </section>
 
@@ -147,7 +152,7 @@ export default function ProfilePage() {
               title="Filosofi Pendidikan"
               description="Enam pilar yang membentuk fondasi pendidikan di STTD Al-Busyro."
             />
-            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 mt-5">
               {school.values.map((value) => {
                 const Icon = iconMap[value.icon as IconName];
                 return (
@@ -167,11 +172,11 @@ export default function ProfilePage() {
                   </div>
                 );
               })}
-            </div>
+            </Stagger>
           </div>
         </section>
-      </main>
-      <Footer />
+        </main>
+        <Footer />
     </>
   );
 }

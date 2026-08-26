@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { Stagger } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { EmptyState } from "@/components/ui/empty-state";
 import { CategoryFilter } from "@/components/ui/category-filter";
@@ -78,7 +79,7 @@ export default function GalleryPage() {
                 description="Galeri akan diperbarui oleh pihak STTD Al-Busyro."
               />
             ) : (
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+              <Stagger className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
                 {filteredItems.map((item, index) => (
                   <button
                     key={item.id}
@@ -99,7 +100,7 @@ export default function GalleryPage() {
                     </div>
                   </button>
                 ))}
-              </div>
+              </Stagger>
             )}
           </div>
         </section>
@@ -155,8 +156,8 @@ export default function GalleryPage() {
             </div>
           </div>
         )}
-      </main>
-      <Footer />
+        </main>
+        <Footer />
     </>
   );
 }

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone, MapPin, MessageCircle, Heart } from "lucide-react";
+import { Phone, MapPin, MessageCircle, Heart, ArrowRight } from "lucide-react";
 import { school } from "@/data/school";
 import { footerNavigation } from "@/data/navigation";
 import { waLink } from "@/data/home";
@@ -41,12 +41,13 @@ export function Footer() {
             <ul className="mt-5 space-y-2.5">
               {[...footerNavigation.main, ...footerNavigation.more].map(
                 (item) => (
-                  <li key={item.href}>
+                  <li key={item.href} className="group">
                     <Link
                       href={item.href}
-                      className="text-[15px] transition-colors hover:text-white"
+                      className="inline-flex items-center gap-1.5 text-[15px] transition-colors hover:text-white"
                     >
                       {item.label}
+                      <ArrowRight className="h-3.5 w-3.5 -translate-x-1 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" />
                     </Link>
                   </li>
                 )
@@ -61,12 +62,13 @@ export function Footer() {
             </h3>
             <ul className="mt-5 space-y-2.5">
               {footerNavigation.programs.map((item) => (
-                <li key={item.href}>
+                <li key={item.href} className="group">
                   <Link
                     href={item.href}
-                    className="text-[15px] transition-colors hover:text-white"
+                    className="inline-flex items-center gap-1.5 text-[15px] transition-colors hover:text-white"
                   >
                     {item.label}
+                    <ArrowRight className="h-3.5 w-3.5 -translate-x-1 opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" />
                   </Link>
                 </li>
               ))}
@@ -115,8 +117,8 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-emerald-900/80">
-        <div className="container-custom flex flex-col items-center justify-between gap-2 py-6 text-[13px] text-primary-4/60 sm:flex-row">
+      <div className="border-t border-primary-4">
+        <div className="container-custom flex flex-col items-center justify-between gap-2 py-6 text-[13px] text-primary-4 sm:flex-row">
           <p>{school.copyright}</p>
           <p className="flex items-center gap-1.5">
             Dibangun dengan

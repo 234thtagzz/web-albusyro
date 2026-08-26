@@ -7,19 +7,19 @@ const pillars = [
     no: "01",
     title: "Al-Qur'an",
     description:
-      "Bacaan yang fasih dan hafalan yang mutqin dengan target 18–22 juz dalam enam tahun.",
+      "bukan sekadar mengejar banyaknya hafalan tetapi juga	bacaan benar (Fasih), Hafalan Lancar ( Target 10-15 Juz mutqin), dan Metode Dibawah Bimbingan Ust Abu Hurri Alqosimi",
   },
   {
     no: "02",
     title: "Adab",
     description:
-      "Adab sebelum ilmu — kepada Allah, guru, orang tua, sesama, dan lingkungan.",
+      "Adab menghormati Guru dan Orang tua, Bermajelis ilmu, dan Ketika Beribadah.",
   },
   {
     no: "03",
-    title: "Ilmu",
+    title: "Akademik",
     description:
-      "Kurikulum umum terpadu berijazah resmi Kemenag, siap melanjutkan ke jenjang berikutnya.",
+      "Ijazah resmi Kemenag (MI), Terdaftar NISN, dan Menggunakan Kurikuum Terpadu",
   },
 ];
 

@@ -12,30 +12,31 @@ export const school = {
     "Bersama Mencetak Generasi Qur'ani yang Beradab dan Berprestasi Bukan hanya mengejar hafalan, tetapi membentuk anak yang dekat dengan Allah, baik kepada sesama, dan siap menghadapi masa depan.",
   longDescription:
     "STTD Al-Busyro Adalah sekolah dasar (SD) yang memiliki program tahfizh intensif (mengutamakan baiknya bacaan dan lancarnya hafalan) yang dipadukan dengan kurikulum kementrian agama (Madrasah). kami berupaya memberikan lingkungan Islami yang mendukung tumbuh kembang anak sesuai dengan fitrah dan potensi yang telah Allah berikan. Sehingga anak memiliki bekal dasar untuk menyambut masa depan cemerlang yang penuh dengan tantangan.",
-  city: "Surakarta (Solo Raya)",
+  city: "Surakarta",
   address: "Gentan, Kec. Baki, Kabupaten Sukoharjo, Jawa Tengah",
   phone: "085 726216717",
   phoneContact: "Ust Mihwar",
   whatsapp: "6285726216717",
-  email: "[DATA RESMI BELUM TERSEDIA]",
+  email: "sekolahtahfizhalbusyro@gmail.com",
   social: {
-    instagram: "[DATA RESMI BELUM TERSEDIA]",
-    facebook: "[DATA RESMI BELUM TERSEDIA]",
+    instagram: "@sttdalbusyro",
+    facebook: "sttdalbusyro",
     youtube: "[DATA RESMI BELUM TERSEDIA]",
     whatsapp: "[DATA RESMI BELUM TERSEDIA]",
   },
-  motto: "Mutqin Hafalannya • Baik Adabnya • Diakui Legalitasnya",
+  motto: "Bersama Mencetak Generasi Qur’ani",
   vision:
-    "Mencetak generasi Qur'ani yang hafalannya mutqin, adabnya baik, dan siap melanjutkan pendidikan ke jenjang berikutnya.",
+    "Mencetak generasi Qur’ani yang berakhlaq Islami dan bermanhaj salafush shalih.",
   mission: [
-    "Menyelenggarakan pembiasaan hafalan Al-Qur'an dengan Metode Al-Qosimi yang teruji.",
-    "Menanamkan adab sebelum ilmu: kepada Allah, sesama manusia, dan alam.",
-    "Mengintegrasikan program tahfizh dengan kurikulum umum dan ijazah resmi Kemenag.",
-    "Membina kemandirian santri melalui program sekolah dan asrama.",
+    "Menanamkan aqidah shahihah kepada anak didik.",
+    "Membimbing anak menghafal Al-Quran dan Al-Hadits.",
+    "Membekali anak dengan ilmu-ilmu Al-Quran.",
+    "Membekali anak dengan ilmu-ilmu syar’i yang sesuai dengan perkembangannya.",
+    "Memberikan keteladanan yang sesuai dengan Al-Quran dan As-Sunnah.",
   ],
   method: {
     name: "Metode Al-Qosimi",
-    founder: "Ust. Abu Hurri Al-Qosimi",
+    founder: "Ust. Abu Hurri Al-Qosimi Al-Hafidz",
     description:
       "Metode tahfizh yang diciptakan langsung oleh pendiri STTD Al-Busyro. Santri membaca ayat yang akan dihafal secara berulang hingga terbentuk gambaran kuat di ingatan, kemudian menghafalnya — terbukti cocok untuk anak-anak hingga dewasa.",
     variants: [

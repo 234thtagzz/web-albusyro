@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { Stagger } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { EmptyState } from "@/components/ui/empty-state";
 import { CategoryFilter } from "@/components/ui/category-filter";
@@ -48,7 +49,7 @@ export default function NewsPage() {
                 description="Berita akan diperbarui oleh pihak STTD Al-Busyro."
               />
             ) : (
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {filteredNews.map((news) => (
                   <Link
                     key={news.id}
@@ -86,12 +87,12 @@ export default function NewsPage() {
                     </div>
                   </Link>
                 ))}
-              </div>
+              </Stagger>
             )}
           </div>
         </section>
-      </main>
-      <Footer />
+        </main>
+        <Footer />
     </>
   );
 }

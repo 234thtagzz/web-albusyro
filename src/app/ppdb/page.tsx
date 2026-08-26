@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { Reveal, Stagger } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { school } from "@/data/school";
 import { ArrowRight, Phone } from "lucide-react";
@@ -22,7 +23,7 @@ export default function AdmissionPage() {
 
         <section className="section-spacing">
           <div className="container-custom">
-            <div className="mx-auto max-w-3xl space-y-4">
+            <Stagger className="mx-auto max-w-3xl space-y-4">
               {[
                 { title: "Jadwal Pendaftaran", desc: "Informasi PPDB akan diperbarui oleh pihak STTD Al-Busyro." },
                 { title: "Persyaratan", desc: "Informasi persyaratan akan diperbarui oleh pihak STTD Al-Busyro." },
@@ -39,12 +40,13 @@ export default function AdmissionPage() {
                   <p className="mt-2 text-sm text-slate-600">{item.desc}</p>
                 </div>
               ))}
-            </div>
+            </Stagger>
           </div>
         </section>
 
         <section className="section-spacing bg-primary">
           <div className="container-custom">
+            <Reveal>
             <div className="mx-auto max-w-3xl text-center">
               <h2 className="font-display text-[clamp(1.75rem,4vw,3rem)] leading-[1.06] tracking-tight text-white">
                 {school.cta.headline}
@@ -66,10 +68,11 @@ export default function AdmissionPage() {
                 <span>{school.phone} ({school.phoneContact})</span>
               </div>
             </div>
+            </Reveal>
           </div>
         </section>
-      </main>
-      <Footer />
+        </main>
+        <Footer />
     </>
   );
 }

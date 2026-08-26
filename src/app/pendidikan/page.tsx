@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { Reveal, Stagger } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { school } from "@/data/school";
 import { programs } from "@/data/programs";
@@ -29,7 +30,7 @@ export default function EducationPage() {
 
         <section className="section-spacing">
           <div className="container-custom">
-            <div className="space-y-6">
+            <Stagger className="space-y-6">
               {programs.map((program, index) => {
                 const Icon = iconMap[program.icon as IconName];
                 return (
@@ -70,7 +71,7 @@ export default function EducationPage() {
                   </div>
                 );
               })}
-            </div>
+            </Stagger>
           </div>
         </section>
 
@@ -93,8 +94,8 @@ export default function EducationPage() {
             </div>
           </div>
         </section>
-      </main>
-      <Footer />
+        </main>
+        <Footer />
     </>
   );
 }

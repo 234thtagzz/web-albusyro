@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { Stagger } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { EmptyState } from "@/components/ui/empty-state";
 import { CategoryFilter } from "@/components/ui/category-filter";
@@ -46,7 +47,7 @@ export default function ActivitiesPage() {
             {filteredActivities.length === 0 ? (
               <EmptyState title="Belum ada kegiatan dalam kategori ini." />
             ) : (
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {filteredActivities.map((activity) => (
                   <div
                     key={activity.id}
@@ -63,12 +64,12 @@ export default function ActivitiesPage() {
                     </p>
                   </div>
                 ))}
-              </div>
+              </Stagger>
             )}
           </div>
         </section>
-      </main>
-      <Footer />
+        </main>
+        <Footer />
     </>
   );
 }

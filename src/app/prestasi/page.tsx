@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { Stagger } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { achievements } from "@/data/achievements";
 import { Trophy } from "lucide-react";
@@ -29,7 +30,7 @@ export default function AchievementsPage() {
                 description="Informasi akan diperbarui oleh pihak STTD Al-Busyro."
               />
             ) : (
-              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {achievements.map((achievement) => (
                   <div
                     key={achievement.id}
@@ -54,12 +55,12 @@ export default function AchievementsPage() {
                     )}
                   </div>
                 ))}
-              </div>
+              </Stagger>
             )}
           </div>
         </section>
-      </main>
-      <Footer />
+        </main>
+        <Footer />
     </>
   );
 }

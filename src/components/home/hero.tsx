@@ -137,7 +137,7 @@ export function Hero() {
                   style={{ backgroundColor: "var(--secondary-1, #f57c00)" }}
                 />
                 <span 
-                  className="relative inline-flex h-4 w-4 rounded-full"
+                  className="relative inline-flex h-2 w-4 rounded-full"
                   style={{ backgroundColor: "var(--secondary-1, #f57c00)" }}
                 />
               </span>
@@ -218,7 +218,7 @@ export function Hero() {
                   style={{ color: "var(--secondary-1, #f57c00)" }}
                 />
                 <span className="text-xs font-medium text-slate-700">
-                  Gentan, Baki — Sukoharjo
+                  Kuncen, Waru, Baki, Sukoharjo — Jawa Tengah 
                 </span>
               </div>
             </div>

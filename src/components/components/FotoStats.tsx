@@ -42,21 +42,21 @@ export default function FotoStack() {
     if (id === 1) {
       return isActive
         ? "-translate-x-12 sm:-translate-x-20 md:-translate-x-24 translate-y-4 sm:translate-y-6 z-40 rotate-0 scale-105 sm:scale-110 shadow-2xl"
-        : "-rotate-[10deg] sm:-rotate-[14deg] -translate-x-12 sm:-translate-x-20 md:-translate-x-24 translate-y-4 sm:translate-y-6 z-10 hover:z-40 hover:rotate-0 hover:scale-105 sm:hover:scale-110 hover:shadow-2xl";
+        : "-rotate-[10deg] sm:-rotate-[14deg] -translate-x-12 sm:-translate-x-20 md:-translate-x-24 translate-y-4 sm:translate-y-6 z-10 hover:z-41 hover:rotate-0 hover:scale-105 sm:hover:scale-110 hover:shadow-2xl";
     }
 
     // Kartu Tengah (ID 2)
     if (id === 2) {
       return isActive
         ? "translate-x-0 translate-y-0 z-40 rotate-0 scale-105 sm:scale-110 shadow-2xl"
-        : "rotate-0 translate-x-0 translate-y-0 z-30 scale-100 sm:scale-105 shadow-2xl hover:z-40 hover:scale-110";
+        : "rotate-0 translate-x-0 translate-y-0 z-30 scale-100 sm:scale-105 shadow-2xl hover:z-41 hover:scale-110";
     }
 
     // Kartu Kanan (ID 3)
     if (id === 3) {
       return isActive
         ? "translate-x-12 sm:translate-x-20 md:translate-x-24 translate-y-4 sm:translate-y-6 z-40 rotate-0 scale-105 sm:scale-110 shadow-2xl"
-        : "rotate-[10deg] sm:rotate-[14deg] translate-x-12 sm:translate-x-20 md:translate-x-24 translate-y-4 sm:translate-y-6 z-10 hover:z-40 hover:rotate-0 hover:scale-105 sm:hover:scale-110 hover:shadow-2xl";
+        : "rotate-[10deg] sm:rotate-[14deg] translate-x-12 sm:translate-x-20 md:translate-x-24 translate-y-4 sm:translate-y-6 z-10 hover:z-41 hover:rotate-0 hover:scale-105 sm:hover:scale-110 hover:shadow-2xl";
     }
 
     return "";

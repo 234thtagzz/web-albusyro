@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { Reveal, Stagger } from "@/components/motion/reveal";
 import { newsItems } from "@/data/news";
 import { ArrowLeft, Calendar, User } from "lucide-react";
 
@@ -37,8 +38,9 @@ export default async function NewsDetailPage({
     <>
       <Navbar />
       <main className="flex-1" id="main-content">
-        <article className="section-spacing">
+          <article className="section-spacing">
           <div className="container-custom">
+            <Reveal>
             <div className="mx-auto max-w-3xl">
               <Link
                 href="/berita"
@@ -85,13 +87,16 @@ export default async function NewsDetailPage({
                 <p>{news.content}</p>
               </div>
             </div>
+            </Reveal>
 
             {relatedNews.length > 0 && (
               <div className="mx-auto mt-16 max-w-3xl">
+                <Reveal>
                 <h2 className="mb-6 font-display text-xl tracking-tight text-slate-900">
                   Berita Terkait
                 </h2>
-                <div className="grid gap-4 sm:grid-cols-3">
+                </Reveal>
+                <Stagger className="grid gap-4 sm:grid-cols-3">
                   {relatedNews.map((item) => (
                     <Link
                       key={item.id}
@@ -104,13 +109,13 @@ export default async function NewsDetailPage({
                       </h3>
                     </Link>
                   ))}
-                </div>
+                </Stagger>
               </div>
             )}
           </div>
         </article>
-      </main>
-      <Footer />
+        </main>
+        <Footer />
     </>
   );
 }

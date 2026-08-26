@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { Reveal, Stagger } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { school } from "@/data/school";
 import { Phone, Mail, MapPin, MessageCircle, ExternalLink } from "lucide-react";
@@ -21,7 +22,7 @@ export default function ContactPage() {
 
         <section className="section-spacing">
           <div className="container-custom">
-            <div className="mx-auto grid max-w-3xl gap-4 sm:grid-cols-2">
+            <Stagger className="mx-auto grid max-w-3xl gap-4 sm:grid-cols-2">
               {school.phone !== "[DATA RESMI BELUM TERSEDIA]" && (
                 <a
                   href={`tel:${school.phone.replace(/\s/g, "")}`}
@@ -75,8 +76,9 @@ export default function ContactPage() {
                   <p className="mt-1 text-sm text-slate-600">{school.address}</p>
                 </div>
               )}
-            </div>
+            </Stagger>
 
+            <Reveal>
             <div className="mx-auto mt-8 max-w-3xl">
               <div className="rounded-[24px] border border-slate-200 bg-white shadow-sm p-6 sm:p-8">
                 <h3 className="font-display text-lg tracking-tight text-slate-900">Media Sosial</h3>
@@ -118,7 +120,9 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
+            </Reveal>
 
+            <Reveal>
             <div className="mx-auto mt-8 max-w-3xl">
               <div className="rounded-[24px] border border-slate-200 bg-white shadow-sm p-6 sm:p-8">
                 <h3 className="font-display text-lg tracking-tight text-slate-900">Lokasi</h3>
@@ -130,10 +134,11 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
+            </Reveal>
           </div>
         </section>
-      </main>
-      <Footer />
+        </main>
+        <Footer />
     </>
   );
 }
