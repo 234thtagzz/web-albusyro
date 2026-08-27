@@ -62,10 +62,10 @@ export function Navbar() {
             <Logo />
             <span className="leading-tight">
               <span className="block font-display text-[15px] tracking-tight text-slate-900">
-                STTD Al&#8209;Busyro
+                STTD Al&#8209;BUSYRO
               </span>
               <span className="block text-[11px] font-medium uppercase tracking-[0.14em] text-slate-500">
-                Tahfizhul Qur&rsquo;an · Solo Raya
+                Sekolah Tahfidz — Setara SD
               </span>
             </span>
           </Link>

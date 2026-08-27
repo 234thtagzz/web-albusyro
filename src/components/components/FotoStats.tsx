@@ -15,13 +15,13 @@ const cards: FotoCard[] = [
     id: 1,
     title: "The Great Pyramid",
     location: "Giza, Egypt",
-    image: "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&q=80&w=600",
+    image: "/images/poto_2.webp",
   },
   {
     id: 2,
     title: "Cappadocia",
     location: "Göreme, Turkey",
-    image: "https://images.unsplash.com/photo-1641128324972-af3212f0f6bd?auto=format&fit=crop&q=80&w=600",
+    image: "/images/poto_1.webp",
   },
   {
     id: 3,

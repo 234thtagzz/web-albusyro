@@ -14,7 +14,7 @@ const pillars = [
     no: "02",
     title: "Adab",
     description:
-      "Adab menghormati Guru dan Orang tua, Bermajelis ilmu, dan Ketika Beribadah.",
+      "Menumbuhkan karakter Islami melalui pembiasaan adab kepada Allah, orang tua, guru, dan sesama.",
   },
   {
     no: "03",
