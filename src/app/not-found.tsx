@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
   return (
@@ -18,12 +19,12 @@ export default function NotFound() {
                 Maaf, halaman yang Anda cari tidak tersedia atau telah dipindahkan.
               </p>
               <div className="mt-6">
-                <Link
-                  href="/"
-                  className="inline-flex h-[44px] items-center gap-2 rounded-[12px] bg-primary px-6 text-[15px] font-medium text-white transition-colors hover:bg-emerald-700"
+                <Button
+                  render={<Link href="/" />}
+                  className="h-[44px] rounded-[12px] px-6 text-[15px] font-medium"
                 >
                   Kembali ke Beranda
-                </Link>
+                </Button>
               </div>
             </div>
           </div>

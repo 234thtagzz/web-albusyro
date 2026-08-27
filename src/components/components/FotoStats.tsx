@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 
 interface FotoCard {
   id: number;
@@ -78,10 +79,12 @@ export default function FotoStack() {
 
             {/* Image Box - Diubah menjadi Rasio Potret (3:4) */}
             <div className="relative aspect-[3/4] w-full rounded-[18px] sm:rounded-[22px] overflow-hidden">
-                <img
+                <Image
                 src={card.image}
                 alt={card.title}
-                className="w-full h-full object-cover"
+                fill
+                sizes="270px"
+                className="object-cover"
                 />
 
             </div>

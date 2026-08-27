@@ -4,6 +4,8 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal, Stagger } from "@/components/motion/reveal";
 import { admissionSteps, waLink } from "@/data/home";
 import { school } from "@/data/school";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 export function Admission() {
   return (
@@ -33,9 +35,12 @@ export function Admission() {
                 />
               )}
 
-              <span className="font-display flex h-12 w-12 items-center justify-center rounded-full border border-emerald-200 bg-emerald-50 text-[15px] text-emerald-800">
+              <Badge
+                variant="secondary"
+                className="font-display flex h-12 w-12 items-center justify-center rounded-full border border-emerald-200 bg-emerald-50 text-[15px] text-emerald-800"
+              >
                 {step.no}
-              </span>
+              </Badge>
 
               <h3 className="font-display mt-5 text-xl tracking-tight text-slate-900">
                 {step.title}
@@ -43,9 +48,12 @@ export function Admission() {
               <p className="mt-2.5 text-sm leading-relaxed text-slate-600">
                 {step.description}
               </p>
-              <p className="mt-4 inline-flex items-center rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-500">
+              <Badge
+                variant="outline"
+                className="mt-4 inline-flex items-center rounded-full border-slate-200 bg-slate-100 px-3 py-1 text-xs font-medium text-slate-500"
+              >
                 {step.meta}
-              </p>
+              </Badge>
             </article>
           ))}
         </Stagger>
@@ -62,24 +70,29 @@ export function Admission() {
               </p>
             </div>
             <div className="flex flex-wrap items-center gap-3">
-              <a
-                href={waLink(
-                  "Assalamualaikum, saya ingin bertanya tentang PPDB STTD Al-Busyro."
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex h-12 items-center gap-2 rounded-full bg-primary px-6 text-[15px] font-semibold text-primary-foreground shadow-md transition-all hover:-translate-y-0.5 hover:bg-emerald-700 hover:shadow-lg"
+              <Button
+                render={
+                  <a
+                    href={waLink(
+                      "Assalamualaikum, saya ingin bertanya tentang PPDB STTD Al-Busyro."
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  />
+                }
+                className="group h-12 gap-2 rounded-full bg-primary px-6 text-[15px] font-semibold text-primary-foreground shadow-md transition-all hover:-translate-y-0.5 hover:bg-emerald-700 hover:shadow-lg"
               >
                 <MessageCircle className="h-[18px] w-[18px]" />
                 Hubungi Panitia
-              </a>
-              <Link
-                href="/ppdb"
-                className="inline-flex h-12 items-center gap-2 rounded-full border border-slate-300 bg-white px-6 text-[15px] font-medium text-slate-700 transition-colors hover:border-slate-400 hover:text-slate-900"
+              </Button>
+              <Button
+                variant="outline"
+                render={<Link href="/ppdb" />}
+                className="h-12 gap-2 rounded-full border-slate-300 bg-white px-6 text-[15px] font-medium text-slate-700 transition-colors hover:border-slate-400 hover:text-slate-900"
               >
                 Info Lengkap PPDB
                 <ArrowRight className="h-4 w-4" />
-              </Link>
+              </Button>
             </div>
           </div>
         </Reveal>
@@ -87,4 +100,3 @@ export function Admission() {
     </section>
   );
 }
-

@@ -7,6 +7,8 @@ import { gsap } from "@/lib/gsap";
 import { school } from "@/data/school";
 import { heroStats, waLink } from "@/data/home";
 import FotoStack from "@/components/components/FotoStats";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
 export function Hero() {
   const scope = useRef<HTMLElement>(null);
@@ -127,9 +129,10 @@ export function Hero() {
         <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
           {/* Kolom teks */}
           <div className="lg:col-span-6 xl:col-span-6">
-            <span
+            <Badge
+              variant="secondary"
               data-hero="badge"
-              className="inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-emerald-50 px-4 py-1.5 text-xs font-semibold tracking-wide text-emerald-800 shadow-sm"
+              className="gap-2 rounded-full border border-emerald-100 bg-emerald-50 px-4 py-1.5 text-xs font-semibold tracking-wide text-emerald-800 shadow-sm"
             >
               <span className="relative flex h-2 w-2">
                 <span 
@@ -142,7 +145,7 @@ export function Hero() {
                 />
               </span>
               PPDB Tahun Ajaran Baru Dibuka
-            </span>
+            </Badge>
 
             <h1 className="font-display mt-6 text-[clamp(2.5rem,5.6vw,4.25rem)] leading-[1.02] text-slate-900">
               <span data-hero="line" className="block">
@@ -165,23 +168,28 @@ export function Hero() {
             </p>
 
             <div data-hero="cta" className="mt-8 flex flex-wrap items-center gap-3 sm:gap-4">
-              <Link
-                href={waLink(
-                  "Assalamualaikum, saya ingin mendaftarkan putra/putri saya ke STTD Al-Busyro."
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex h-12 items-center gap-2 rounded-full bg-primary-2 px-7 text-[15px] font-semibold text-popover-1 shadow-md transition-all hover:-translate-y-0.5 hover:bg-primary-3 hover:shadow-lg"
+              <Button
+                render={
+                  <Link
+                    href={waLink(
+                      "Assalamualaikum, saya ingin mendaftarkan putra/putri saya ke STTD Al-Busyro."
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  />
+                }
+                className="group h-12 gap-2 rounded-full bg-primary-2 px-7 text-[15px] font-semibold text-popover-1 shadow-md transition-all hover:-translate-y-0.5 hover:bg-primary-3 hover:shadow-lg"
               >
                 Daftar PPDB
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-              </Link>
-              <Link
-                href="/ppdb"
-                className="inline-flex h-12 items-center rounded-full border border-slate-300 bg-white/90 px-7 text-[15px] font-medium text-slate-700 backdrop-blur transition-colors hover:border-slate-400 hover:text-slate-900"
+              </Button>
+              <Button
+                variant="outline"
+                render={<Link href="/ppdb" />}
+                className="h-12 rounded-full border-slate-300 bg-white/90 px-7 text-[15px] font-medium text-slate-700 backdrop-blur transition-colors hover:border-slate-400 hover:text-slate-900"
               >
                 Lihat Brosur
-              </Link>
+              </Button>
             </div>
 
             <dl className="mt-12 grid grid-cols-3 divide-x divide-slate-200 border-y border-slate-200/80 py-6">

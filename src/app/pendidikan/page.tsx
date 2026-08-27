@@ -1,7 +1,9 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { Reveal, Stagger } from "@/components/motion/reveal";
+import { Stagger } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { school } from "@/data/school";
 import { programs } from "@/data/programs";
 import { iconMap, type IconName } from "@/lib/icons";
@@ -34,41 +36,43 @@ export default function EducationPage() {
               {programs.map((program, index) => {
                 const Icon = iconMap[program.icon as IconName];
                 return (
-                  <div
+                  <Card
                     key={program.id}
                     id={program.id}
-                    className={`scroll-mt-20 rounded-[24px] border border-slate-200 bg-gradient-to-br ${gradients[index]} p-6 sm:p-8 lg:p-10`}
+                    className={`scroll-mt-20 rounded-[24px] border-slate-200 bg-gradient-to-br ${gradients[index]} p-6 sm:p-8 lg:p-10 ring-0`}
                   >
-                    <div className="grid gap-6 lg:grid-cols-2 lg:gap-10">
-                      <div>
-                        <div className="flex h-14 w-14 items-center justify-center rounded-[12px] bg-primary text-white">
-                          {Icon && <Icon className="h-7 w-7" />}
+                    <CardContent>
+                      <div className="grid gap-6 lg:grid-cols-2 lg:gap-10">
+                        <div>
+                          <div className="flex h-14 w-14 items-center justify-center rounded-[12px] bg-primary text-white">
+                            {Icon && <Icon className="h-7 w-7" />}
+                          </div>
+                          <h2 className="mt-4 font-display text-2xl tracking-tight text-slate-900 sm:text-3xl">
+                            {program.title}
+                          </h2>
+                          <p className="mt-3 text-[15px] leading-relaxed text-slate-600">
+                            {program.description}
+                          </p>
                         </div>
-                        <h2 className="mt-4 font-display text-2xl tracking-tight text-slate-900 sm:text-3xl">
-                          {program.title}
-                        </h2>
-                        <p className="mt-3 text-[15px] leading-relaxed text-slate-600">
-                          {program.description}
-                        </p>
+                        <div>
+                          <h3 className="mb-3 text-xs font-medium uppercase tracking-[0.08em] text-slate-400">
+                            Highlight
+                          </h3>
+                          <ul className="space-y-3">
+                            {program.highlights.map((item) => (
+                              <li
+                                key={item}
+                                className="flex items-start gap-3 text-[15px] text-slate-700"
+                              >
+                                <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-primary" aria-hidden="true" />
+                                {item}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       </div>
-                      <div>
-                        <h3 className="mb-3 text-xs font-medium uppercase tracking-[0.08em] text-slate-400">
-                          Highlight
-                        </h3>
-                        <ul className="space-y-3">
-                          {program.highlights.map((item) => (
-                            <li
-                              key={item}
-                              className="flex items-start gap-3 text-[15px] text-slate-700"
-                            >
-                              <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full bg-primary" aria-hidden="true" />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+                    </CardContent>
+                  </Card>
                 );
               })}
             </Stagger>
@@ -84,12 +88,13 @@ export default function EducationPage() {
             />
             <div className="flex flex-wrap justify-center gap-3">
               {school.activities.map((activity) => (
-                <div
+                <Badge
                   key={activity}
+                  variant="secondary"
                   className="rounded-full border border-slate-200 bg-slate-100 px-5 py-2.5 text-sm font-medium text-slate-600 transition-all hover:border-primary/30 hover:bg-emerald-50 hover:text-primary"
                 >
                   {activity}
-                </div>
+                </Badge>
               ))}
             </div>
           </div>

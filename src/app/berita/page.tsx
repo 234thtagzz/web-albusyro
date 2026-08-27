@@ -9,6 +9,8 @@ import { Stagger } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { EmptyState } from "@/components/ui/empty-state";
 import { CategoryFilter } from "@/components/ui/category-filter";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { newsItems, newsCategories, type NewsCategory } from "@/data/news";
 import { Newspaper } from "lucide-react";
 
@@ -54,37 +56,38 @@ export default function NewsPage() {
                   <Link
                     key={news.id}
                     href={`/berita/${news.slug}`}
-                    className="group rounded-[24px] border border-slate-200 bg-white shadow-sm transition-all hover:border-slate-300"
                   >
-                    <div className="relative aspect-video overflow-hidden rounded-t-[24px] bg-slate-200">
-                      {news.imageUrl ? (
-                        <Image
-                          src={news.imageUrl}
-                          alt={news.imageAlt}
-                          fill
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                          className="object-cover transition-transform group-hover:scale-105"
-                        />
-                      ) : (
-                        <div className="flex h-full items-center justify-center">
-                          <Newspaper className="h-10 w-10 text-slate-300" />
-                        </div>
-                      )}
-                    </div>
-                    <div className="p-5">
-                      <div className="flex items-center gap-2 text-xs text-slate-600">
-                        <span className="rounded-full bg-primary/15 px-2.5 py-0.5 font-medium text-primary">
-                          {news.category}
-                        </span>
-                        <span>{news.date}</span>
+                    <Card className="group rounded-[24px] border-slate-200 bg-white shadow-sm ring-0 transition-all hover:border-slate-300">
+                      <div className="relative aspect-video overflow-hidden rounded-t-[24px] bg-slate-200">
+                        {news.imageUrl ? (
+                          <Image
+                            src={news.imageUrl}
+                            alt={news.imageAlt}
+                            fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            className="object-cover transition-transform group-hover:scale-105"
+                          />
+                        ) : (
+                          <div className="flex h-full items-center justify-center">
+                            <Newspaper className="h-10 w-10 text-slate-300" />
+                          </div>
+                        )}
                       </div>
-                      <h3 className="mt-2 font-display text-lg tracking-tight text-slate-900 line-clamp-2">
-                        {news.title}
-                      </h3>
-                      <p className="mt-2 text-sm text-slate-600 line-clamp-2">
-                        {news.excerpt}
-                      </p>
-                    </div>
+                      <CardContent>
+                        <div className="flex items-center gap-2 text-xs text-slate-600">
+                          <Badge variant="secondary" className="bg-primary/15 text-primary">
+                            {news.category}
+                          </Badge>
+                          <span>{news.date}</span>
+                        </div>
+                        <h3 className="mt-2 font-display text-lg tracking-tight text-slate-900 line-clamp-2">
+                          {news.title}
+                        </h3>
+                        <p className="mt-2 text-sm text-slate-600 line-clamp-2">
+                          {news.excerpt}
+                        </p>
+                      </CardContent>
+                    </Card>
                   </Link>
                 ))}
               </Stagger>

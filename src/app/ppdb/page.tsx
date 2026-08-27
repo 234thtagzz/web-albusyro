@@ -3,6 +3,9 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Reveal, Stagger } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import { school } from "@/data/school";
 import { ArrowRight, Phone } from "lucide-react";
 
@@ -30,15 +33,17 @@ export default function AdmissionPage() {
                 { title: "Biaya", desc: "Informasi biaya akan diperbarui oleh pihak STTD Al-Busyro." },
                 { title: "FAQ", desc: "Pertanyaan umum akan segera tersedia." },
               ].map((item) => (
-                <div
+                <Card
                   key={item.title}
-                  className="rounded-[24px] border border-slate-200 bg-white shadow-sm p-6 sm:p-8"
+                  className="rounded-[24px] border-slate-200 bg-white shadow-sm ring-0"
                 >
-                  <h2 className="font-display text-lg tracking-tight text-slate-900">
-                    {item.title}
-                  </h2>
-                  <p className="mt-2 text-sm text-slate-600">{item.desc}</p>
-                </div>
+                  <CardContent className="sm:p-8">
+                    <h2 className="font-display text-lg tracking-tight text-slate-900">
+                      {item.title}
+                    </h2>
+                    <p className="mt-2 text-sm text-slate-600">{item.desc}</p>
+                  </CardContent>
+                </Card>
               ))}
             </Stagger>
           </div>
@@ -55,17 +60,19 @@ export default function AdmissionPage() {
                 {school.cta.description}
               </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
-                <Link
-                  href="/kontak"
-                  className="inline-flex h-[52px] items-center gap-2 rounded-full bg-white px-8 text-[15px] font-semibold text-emerald-900 shadow-md transition-all hover:-translate-y-0.5 hover:bg-emerald-50 hover:shadow-lg sm:w-auto"
+                <Button
+                  render={<Link href="/kontak" />}
+                  className="h-[52px] rounded-full bg-white px-8 text-[15px] font-semibold text-emerald-900 shadow-md transition-all hover:-translate-y-0.5 hover:bg-emerald-50 hover:shadow-lg sm:w-auto"
                 >
                   Hubungi Kami
                   <ArrowRight className="h-4 w-4" />
-                </Link>
+                </Button>
               </div>
               <div className="mt-8 flex items-center justify-center gap-2 text-sm text-emerald-200/90">
                 <Phone className="h-4 w-4" />
-                <span>{school.phone} ({school.phoneContact})</span>
+                <Badge variant="outline" className="border-emerald-300/30 text-emerald-100/90">
+                  {school.phone} ({school.phoneContact})
+                </Badge>
               </div>
             </div>
             </Reveal>

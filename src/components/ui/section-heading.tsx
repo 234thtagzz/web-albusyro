@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { Badge } from "@/components/ui/badge";
 
 interface SectionHeadingProps {
   title: string;
@@ -24,9 +25,10 @@ export function SectionHeading({
       )}
     >
       {badge && (
-        <span
+        <Badge
+          variant="secondary"
           className={cn(
-            "mb-4 flex items-center gap-2.5 text-xs font-semibold uppercase tracking-[0.16em] text-emerald-700",
+            "mb-4 gap-2.5 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-emerald-700",
             align === "center" && "justify-center"
           )}
         >
@@ -35,7 +37,7 @@ export function SectionHeading({
           {align === "center" && (
             <span className="h-px w-8 bg-amber-500" aria-hidden="true" />
           )}
-        </span>
+        </Badge>
       )}
       <h2 className="font-display text-[clamp(1.75rem,3.5vw,2.625rem)] leading-[1.08] text-slate-900">
         {title}

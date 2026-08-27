@@ -7,6 +7,8 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { mainNavigation, ctaNavigation } from "@/data/navigation";
 import { Logo } from "./logo";
+import { Button } from "@/components/ui/button";
+import { Sheet, SheetContent, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,13 +37,6 @@ export function Navbar() {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = isMobileOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [isMobileOpen]);
 
   const closeMobile = () => setIsMobileOpen(false);
 
@@ -90,17 +85,24 @@ export function Navbar() {
                 {item.label}
               </Link>
             ))}
-            <Link
-              href={ctaNavigation.href}
+            <Button
+              variant="default"
               className="ml-2 rounded-full bg-primary px-5 py-2.5 text-[14.5px] font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-emerald-700"
+              render={
+                <Link
+                  href={ctaNavigation.href}
+                />
+              }
             >
               {ctaNavigation.label}
-            </Link>
+            </Button>
           </div>
 
-          <button
+          <Button
+            variant="ghost"
+            size="icon"
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className="flex h-10 w-10 items-center justify-center rounded-full text-slate-700 transition-colors hover:bg-slate-100 lg:hidden"
+            className="rounded-full text-slate-700 transition-colors hover:bg-slate-100 lg:hidden"
             aria-label={isMobileOpen ? "Tutup menu" : "Buka menu"}
           >
             {isMobileOpen ? (
@@ -108,11 +110,13 @@ export function Navbar() {
             ) : (
               <Menu className="h-5 w-5" />
             )}
-          </button>
+          </Button>
         </nav>
 
-        {isMobileOpen && (
-          <div className="border-b border-slate-200 bg-white lg:hidden">
+        <Sheet open={isMobileOpen} onOpenChange={setIsMobileOpen}>
+          <SheetContent side="top" showCloseButton={false} className="bg-white border-b border-slate-200 lg:hidden p-0">
+            <SheetTitle className="sr-only">Menu Navigasi</SheetTitle>
+            <SheetDescription className="sr-only">Navigasi utama situs web</SheetDescription>
             <div className="container-custom flex flex-col gap-1 py-4 pb-6">
               {mainNavigation.map((item) => (
                 <Link
@@ -137,8 +141,8 @@ export function Navbar() {
                 {ctaNavigation.label}
               </Link>
             </div>
-          </div>
-        )}
+          </SheetContent>
+        </Sheet>
       </header>
     </>
   );

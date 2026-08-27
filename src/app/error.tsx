@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { Button } from "@/components/ui/button";
 
 export default function Error({
   reset,
@@ -25,18 +26,19 @@ export default function Error({
                 Maaf, informasi belum dapat ditampilkan. Silakan coba kembali beberapa saat lagi.
               </p>
               <div className="mt-6 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-                <button
+                <Button
                   onClick={() => reset()}
-                  className="inline-flex h-[44px] items-center gap-2 rounded-[12px] bg-primary px-6 text-[15px] font-medium text-white transition-colors hover:bg-emerald-700"
+                  className="h-[44px] rounded-[12px] px-6 text-[15px] font-medium"
                 >
                   Coba Lagi
-                </button>
-                <Link
-                  href="/"
-                  className="inline-flex h-[44px] items-center gap-2 rounded-[12px] border border-slate-300 bg-transparent px-6 text-[15px] font-medium text-slate-700 transition-colors hover:bg-slate-100"
+                </Button>
+                <Button
+                  variant="outline"
+                  render={<Link href="/" />}
+                  className="h-[44px] rounded-[12px] px-6 text-[15px] font-medium"
                 >
                   Kembali ke Beranda
-                </Link>
+                </Button>
               </div>
             </div>
           </div>

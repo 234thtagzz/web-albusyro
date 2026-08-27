@@ -5,6 +5,9 @@ import { notFound } from "next/navigation";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Reveal, Stagger } from "@/components/motion/reveal";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { newsItems } from "@/data/news";
 import { ArrowLeft, Calendar, User } from "lucide-react";
 
@@ -42,18 +45,19 @@ export default async function NewsDetailPage({
           <div className="container-custom">
             <Reveal>
             <div className="mx-auto max-w-3xl">
-              <Link
-                href="/berita"
-                className="mb-8 inline-flex items-center gap-2 text-sm text-slate-600 transition-colors hover:text-primary"
+              <Button
+                variant="ghost"
+                render={<Link href="/berita" />}
+                className="mb-8 text-slate-600 hover:text-primary"
               >
                 <ArrowLeft className="h-4 w-4" />
                 Kembali ke Berita
-              </Link>
+              </Button>
 
               <div className="flex items-center gap-3 text-sm text-slate-600">
-                <span className="rounded-full bg-primary/15 px-3 py-1 font-medium text-primary">
+                <Badge variant="secondary" className="bg-primary/15 text-primary">
                   {news.category}
-                </span>
+                </Badge>
                 <span className="flex items-center gap-1">
                   <Calendar className="h-3.5 w-3.5" />
                   {news.date}
@@ -101,12 +105,15 @@ export default async function NewsDetailPage({
                     <Link
                       key={item.id}
                       href={`/berita/${item.slug}`}
-                      className="rounded-[16px] border border-slate-200 bg-white shadow-sm p-4 transition-all hover:border-slate-300"
                     >
-                      <span className="text-xs text-slate-600">{item.date}</span>
-                      <h3 className="mt-1 font-display text-sm tracking-tight text-slate-900 line-clamp-2">
-                        {item.title}
-                      </h3>
+                      <Card className="rounded-[16px] border-slate-200 bg-white shadow-sm ring-0 transition-all hover:border-slate-300">
+                        <CardContent className="p-4">
+                          <span className="text-xs text-slate-600">{item.date}</span>
+                          <h3 className="mt-1 font-display text-sm tracking-tight text-slate-900 line-clamp-2">
+                            {item.title}
+                          </h3>
+                        </CardContent>
+                      </Card>
                     </Link>
                   ))}
                 </Stagger>

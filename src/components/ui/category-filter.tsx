@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 
 interface CategoryFilterProps {
   categories: readonly string[];
@@ -14,31 +14,24 @@ export function CategoryFilter({
   onChange,
 }: CategoryFilterProps) {
   return (
-    <div
-      className="flex flex-wrap gap-2"
-      role="tablist"
+    <ToggleGroup
+      value={[active]}
+      onValueChange={(values) => {
+        if (values.length > 0) onChange(values[0]);
+      }}
+      variant="outline"
+      spacing={4}
       aria-label="Filter kategori"
     >
-      {categories.map((category) => {
-        const isActive = active === category;
-        return (
-          <button
-            key={category}
-            type="button"
-            role="tab"
-            aria-selected={isActive}
-            onClick={() => onChange(category)}
-            className={cn(
-              "rounded-full px-4 py-2 text-sm font-medium transition-colors",
-              isActive
-                ? "bg-primary text-primary-foreground shadow-sm"
-                : "border border-slate-200 bg-white text-slate-600 hover:border-slate-300 hover:text-slate-900"
-            )}
-          >
-            {category}
-          </button>
-        );
-      })}
-    </div>
+      {categories.map((category) => (
+        <ToggleGroupItem
+          key={category}
+          value={category}
+          className="rounded-full"
+        >
+          {category}
+        </ToggleGroupItem>
+      ))}
+    </ToggleGroup>
   );
 }

@@ -8,12 +8,13 @@ import { Stagger } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { EmptyState } from "@/components/ui/empty-state";
 import { CategoryFilter } from "@/components/ui/category-filter";
+import { Dialog, DialogContent, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import {
   galleryItems,
   galleryCategories,
   type GalleryCategory,
 } from "@/data/gallery";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export default function GalleryPage() {
   const [activeCategory, setActiveCategory] =
@@ -44,10 +45,8 @@ export default function GalleryPage() {
       if (e.key === "ArrowRight") goToNext();
     };
     document.addEventListener("keydown", handleKeyDown);
-    document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "";
     };
   }, [lightboxIndex, closeLightbox, goToPrev, goToNext]);
 
@@ -105,57 +104,59 @@ export default function GalleryPage() {
           </div>
         </section>
 
-        {lightboxIndex !== null && filteredItems.length > 0 && (
-          <div
-            role="dialog"
-            aria-modal="true"
-            aria-label="Tampilan gambar galeri"
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/95"
-            onClick={closeLightbox}
-          >
-            <button
-              onClick={closeLightbox}
-              className="absolute top-4 right-4 text-white/70 transition-colors hover:text-white"
-              aria-label="Tutup"
-            >
-              <X className="h-6 w-6" />
-            </button>
+        <Dialog open={lightboxIndex !== null} onOpenChange={(open) => !open && closeLightbox()}>
+          <DialogContent showCloseButton={false} className="sm:max-w-4xl bg-black/95 border-0 p-6">
+            <DialogTitle className="sr-only">Tampilan gambar galeri</DialogTitle>
+            <DialogDescription className="sr-only">
+              {lightboxIndex !== null ? filteredItems[lightboxIndex]?.title : ""}
+            </DialogDescription>
+            {lightboxIndex !== null && filteredItems.length > 0 && (
+              <>
+                <button
+                  onClick={closeLightbox}
+                  className="absolute top-4 right-4 text-white/70 transition-colors hover:text-white z-10"
+                  aria-label="Tutup"
+                >
+                  ✕
+                </button>
 
-            {lightboxIndex > 0 && (
-              <button
-                onClick={(e) => { e.stopPropagation(); goToPrev(); }}
-                className="absolute left-4 text-white/70 transition-colors hover:text-white"
-                aria-label="Gambar sebelumnya"
-              >
-                <ChevronLeft className="h-8 w-8" />
-              </button>
+                {lightboxIndex > 0 && (
+                  <button
+                    onClick={goToPrev}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 text-white/70 transition-colors hover:text-white z-10"
+                    aria-label="Gambar sebelumnya"
+                  >
+                    <ChevronLeft className="h-8 w-8" />
+                  </button>
+                )}
+
+                {lightboxIndex < filteredItems.length - 1 && (
+                  <button
+                    onClick={goToNext}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 transition-colors hover:text-white z-10"
+                    aria-label="Gambar selanjutnya"
+                  >
+                    <ChevronRight className="h-8 w-8" />
+                  </button>
+                )}
+
+                <div className="flex flex-col items-center">
+                  <Image
+                    src={filteredItems[lightboxIndex].imageUrl}
+                    alt={filteredItems[lightboxIndex].alt}
+                    width={1600}
+                    height={900}
+                    className="h-auto max-h-[70vh] w-auto rounded-[16px] object-contain"
+                  />
+                  <p className="mt-3 text-center text-sm text-white/70">
+                    {lightboxIndex + 1} / {filteredItems.length} &mdash;{" "}
+                    {filteredItems[lightboxIndex].title}
+                  </p>
+                </div>
+              </>
             )}
-
-            {lightboxIndex < filteredItems.length - 1 && (
-              <button
-                onClick={(e) => { e.stopPropagation(); goToNext(); }}
-                className="absolute right-4 text-white/70 transition-colors hover:text-white"
-                aria-label="Gambar selanjutnya"
-              >
-                <ChevronRight className="h-8 w-8" />
-              </button>
-            )}
-
-            <div className="max-h-[80vh] max-w-[90vw]" onClick={(e) => e.stopPropagation()}>
-              <Image
-                src={filteredItems[lightboxIndex].imageUrl}
-                alt={filteredItems[lightboxIndex].alt}
-                width={1600}
-                height={900}
-                className="h-auto max-h-[80vh] w-auto max-w-[90vw] rounded-[16px] object-contain"
-              />
-              <p className="mt-3 text-center text-sm text-white/70">
-                {lightboxIndex + 1} / {filteredItems.length} &mdash;{" "}
-                {filteredItems[lightboxIndex].title}
-              </p>
-            </div>
-          </div>
-        )}
+          </DialogContent>
+        </Dialog>
         </main>
         <Footer />
     </>

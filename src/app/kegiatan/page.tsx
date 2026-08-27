@@ -7,6 +7,8 @@ import { Stagger } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { EmptyState } from "@/components/ui/empty-state";
 import { CategoryFilter } from "@/components/ui/category-filter";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import {
   activities,
   activityCategories,
@@ -49,20 +51,22 @@ export default function ActivitiesPage() {
             ) : (
               <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {filteredActivities.map((activity) => (
-                  <div
+                  <Card
                     key={activity.id}
-                    className="rounded-[24px] border border-slate-200 bg-white shadow-sm p-6 transition-all hover:border-slate-300"
+                    className="rounded-[24px] border-slate-200 bg-white shadow-sm ring-0 transition-all hover:border-slate-300"
                   >
-                    <span className="mb-3 inline-block rounded-full bg-primary/15 px-3 py-1 text-xs font-medium text-primary">
-                      {activity.category}
-                    </span>
-                    <h3 className="font-display text-lg tracking-tight text-slate-900">
-                      {activity.title}
-                    </h3>
-                    <p className="mt-2 text-[15px] leading-relaxed text-slate-600">
-                      {activity.description}
-                    </p>
-                  </div>
+                    <CardContent>
+                      <Badge variant="secondary" className="mb-3 bg-primary/15 text-primary">
+                        {activity.category}
+                      </Badge>
+                      <h3 className="font-display text-lg tracking-tight text-slate-900">
+                        {activity.title}
+                      </h3>
+                      <p className="mt-2 text-[15px] leading-relaxed text-slate-600">
+                        {activity.description}
+                      </p>
+                    </CardContent>
+                  </Card>
                 ))}
               </Stagger>
             )}

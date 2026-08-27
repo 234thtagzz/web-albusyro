@@ -2,6 +2,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Stagger } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { Card, CardContent } from "@/components/ui/card";
 import { achievements } from "@/data/achievements";
 import { Trophy } from "lucide-react";
 import { EmptyState } from "@/components/ui/empty-state";
@@ -32,28 +33,30 @@ export default function AchievementsPage() {
             ) : (
               <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
                 {achievements.map((achievement) => (
-                  <div
+                  <Card
                     key={achievement.id}
-                    className="rounded-[24px] border border-slate-200 bg-white shadow-sm p-6 transition-all hover:border-slate-300"
+                    className="rounded-[24px] border-slate-200 bg-white shadow-sm ring-0 transition-all hover:border-slate-300"
                   >
-                    <div className="flex items-center gap-2 text-sm text-slate-600">
-                      <Trophy className="h-4 w-4 text-amber-600" />
-                      <span>{achievement.year}</span>
-                      <span className="text-slate-500">&bull;</span>
-                      <span>{achievement.level}</span>
-                    </div>
-                    <h3 className="mt-2 font-display text-lg tracking-tight text-slate-900">
-                      {achievement.title}
-                    </h3>
-                    <p className="mt-1 text-sm text-slate-600">
-                      {achievement.competition}
-                    </p>
-                    {achievement.participant && (
-                      <p className="mt-1 text-xs text-slate-400">
-                        {achievement.participant}
+                    <CardContent>
+                      <div className="flex items-center gap-2 text-sm text-slate-600">
+                        <Trophy className="h-4 w-4 text-amber-600" />
+                        <span>{achievement.year}</span>
+                        <span className="text-slate-500">&bull;</span>
+                        <span>{achievement.level}</span>
+                      </div>
+                      <h3 className="mt-2 font-display text-lg tracking-tight text-slate-900">
+                        {achievement.title}
+                      </h3>
+                      <p className="mt-1 text-sm text-slate-600">
+                        {achievement.competition}
                       </p>
-                    )}
-                  </div>
+                      {achievement.participant && (
+                        <p className="mt-1 text-xs text-slate-400">
+                          {achievement.participant}
+                        </p>
+                      )}
+                    </CardContent>
+                  </Card>
                 ))}
               </Stagger>
             )}

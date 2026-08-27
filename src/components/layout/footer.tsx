@@ -4,6 +4,7 @@ import { school } from "@/data/school";
 import { footerNavigation } from "@/data/navigation";
 import { waLink } from "@/data/home";
 import { Logo } from "./logo";
+import { Button } from "@/components/ui/button";
 
 export function Footer() {
   return (
@@ -102,17 +103,22 @@ export function Footer() {
               </li>
             </ul>
 
-            <a
-              href={waLink(
-                "Assalamualaikum, saya ingin bertanya tentang PPDB STTD Al-Busyro."
-              )}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-7 inline-flex items-center gap-2.5 rounded-full bg-white px-5 py-3 text-[15px] font-semibold text-primary-1 shadow-md transition-all hover:-translate-y-0.5 hover:bg-emerald-50 hover:shadow-lg"
+            <Button
+              variant="secondary"
+              className="mt-7 gap-2.5 rounded-full bg-white px-5 py-3 text-[15px] font-semibold text-primary-1 shadow-md transition-all hover:-translate-y-0.5 hover:bg-emerald-50 hover:shadow-lg"
+              render={
+                <a
+                  href={waLink(
+                    "Assalamualaikum, saya ingin bertanya tentang PPDB STTD Al-Busyro."
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                />
+              }
             >
               <MessageCircle className="h-[18px] w-[18px]" />
               Tanya PPDB via WhatsApp
-            </a>
+            </Button>
           </div>
         </div>
       </div>
