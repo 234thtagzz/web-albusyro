@@ -103,10 +103,11 @@ export function Navbar() {
 
             {/* CTA Button */}
             <Button
-              asChild
+              render={<Link href={ctaNavigation.href} />}
+              nativeButton={false}
               className="ml-2 h-9 rounded-full bg-teal-600 px-5 text-[13.5px] font-semibold text-white shadow-md shadow-teal-600/20 transition-all hover:bg-teal-700 hover:shadow-lg lg:h-10"
             >
-              <Link href={ctaNavigation.href}>{ctaNavigation.label}</Link>
+              {ctaNavigation.label}
             </Button>
           </div>
 
