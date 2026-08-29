@@ -104,6 +104,7 @@ export function Footer() {
             </ul>
 
             <Button
+              nativeButton={false}
               variant="secondary"
               className="mt-7 gap-2.5 rounded-full bg-white px-5 py-3 text-[15px] font-semibold text-primary-1 shadow-md transition-all hover:-translate-y-0.5 hover:bg-emerald-50 hover:shadow-lg"
               render={

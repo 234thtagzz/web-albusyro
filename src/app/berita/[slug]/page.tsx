@@ -46,6 +46,7 @@ export default async function NewsDetailPage({
             <Reveal>
             <div className="mx-auto max-w-3xl">
               <Button
+                nativeButton={false}
                 variant="ghost"
                 render={<Link href="/berita" />}
                 className="mb-8 text-slate-600 hover:text-primary"

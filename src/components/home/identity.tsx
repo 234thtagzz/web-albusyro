@@ -84,7 +84,7 @@ export function Identity() {
                 />
               </div>
 
-              <Card className="relative z-10 -mt-14 ml-4 rounded-[20px] border border-emerald-800/10 bg-emerald-50 shadow-lg sm:ml-8">
+              <Card className="relative z-10 -mt-14 ml-4 rounded-[20px] border border-primary-5/10 bg-emerald-50 shadow-lg sm:ml-8">
                 <CardContent className="p-6 sm:p-7">
                   <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-700">
                     Visi Kami

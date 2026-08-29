@@ -100,6 +100,7 @@ export default function ContactPage() {
                   <div className="mt-4 flex flex-wrap gap-3">
                     {school.social.instagram !== "[DATA RESMI BELUM TERSEDIA]" && (
                       <Button
+                        nativeButton={false}
                         variant="outline"
                         render={<a href={school.social.instagram} target="_blank" rel="noopener noreferrer" />}
                         className="rounded-[12px]"
@@ -110,6 +111,7 @@ export default function ContactPage() {
                     )}
                     {school.social.facebook !== "[DATA RESMI BELUM TERSEDIA]" && (
                       <Button
+                        nativeButton={false}
                         variant="outline"
                         render={<a href={school.social.facebook} target="_blank" rel="noopener noreferrer" />}
                         className="rounded-[12px]"
@@ -120,6 +122,7 @@ export default function ContactPage() {
                     )}
                     {school.social.youtube !== "[DATA RESMI BELUM TERSEDIA]" && (
                       <Button
+                        nativeButton={false}
                         variant="outline"
                         render={<a href={school.social.youtube} target="_blank" rel="noopener noreferrer" />}
                         className="rounded-[12px]"

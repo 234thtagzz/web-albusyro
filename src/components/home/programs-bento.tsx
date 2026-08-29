@@ -138,6 +138,7 @@ export function ProgramsBento() {
                   </p>
                 </div>
                 <Button
+                  nativeButton={false}
                   render={<Link href="/kegiatan" />}
                   variant="ghost"
                   className="hidden shrink-0 items-center gap-1.5 rounded-full border border-slate-200 px-4 py-2 text-sm font-medium text-slate-600 transition-colors hover:border-slate-300 hover:text-slate-900 sm:inline-flex"
@@ -203,6 +204,7 @@ function RevealLink() {
   return (
     <div className="lg:col-span-5 lg:justify-self-end">
       <Button
+        nativeButton={false}
         render={<Link href="/pendidikan" />}
         variant="ghost"
         className="group inline-flex items-center gap-2 text-[15px] font-semibold text-emerald-800 transition-colors hover:text-emerald-700"

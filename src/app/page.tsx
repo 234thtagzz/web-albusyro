@@ -5,6 +5,7 @@ import { Identity } from "@/components/home/identity";
 import { ProgramsBento } from "@/components/home/programs-bento";
 import { Admission } from "@/components/home/admission";
 import { DepartmentsSection } from "@/components/home/stats";
+import Testimoni from "@/components/home/testimoni";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <DepartmentsSection />
         <Identity />
         <ProgramsBento />
+        <Testimoni />
         <Admission />
       </main>
       <Footer />

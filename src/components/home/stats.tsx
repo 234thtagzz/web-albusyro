@@ -27,7 +27,7 @@ const departments: Department[] = [
 
 export function DepartmentsSection() {
   return (
-    <section className="bg-gradient-to-b from-sky-50/60 to-cyan-50/30 py-16 px-4">
+    <section className="bg-gradient-to-b from-primary-3/5 to-primary-3/70 py-16 px-4">
       <div className="mx-auto max-w-4xl">
         <h2 className="mb-10 text-center text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
           Our Departments
@@ -42,7 +42,7 @@ export function DepartmentsSection() {
                 className="group flex aspect-square flex-col items-center justify-center rounded-3xl border border-white/80 bg-white/90 p-6 shadow-xl shadow-cyan-900/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-cyan-900/10"
               >
                 {/* Container Icon */}
-                <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-cyan-50/80 text-cyan-600 transition-transform duration-300 group-hover:scale-110">
+                <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary-5/10 text-primary-5 transition-transform duration-300 group-hover:scale-110">
                   <Icon className="h-12 w-12 stroke-[1.75]" />
                 </div>
 

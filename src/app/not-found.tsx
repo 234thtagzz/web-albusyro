@@ -20,6 +20,7 @@ export default function NotFound() {
               </p>
               <div className="mt-6">
                 <Button
+                  nativeButton={false}
                   render={<Link href="/" />}
                   className="h-[44px] rounded-[12px] px-6 text-[15px] font-medium"
                 >

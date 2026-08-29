@@ -75,7 +75,7 @@ export function Hero() {
           aria-hidden="true"
           className="pointer-events-none absolute inset-0 z-0 opacity-50"
           style={{
-            backgroundImage: "url('/images/lanscape.JPG.jpeg')",
+            backgroundImage: "url('/images/lanscape.JPG.webp')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -86,7 +86,7 @@ export function Hero() {
           className="pointer-events-none absolute inset-0 z-[1]"
           style={{
             background:
-              "linear-gradient(to top, var(--primary-1) 0%, color-mix(in srgb, var(--primary-1) 80%, transparent) 20%, transparent 65%)",
+              "linear-gradient(to top, var(--primary-4) 0%, color-mix(in srgb, var(--primary-4) 80%, transparent) 20%, transparent 65%)",
           }}
         />
 
@@ -202,7 +202,7 @@ export function Hero() {
                     rel="noopener noreferrer"
                   />
                 }
-                className="h-12 w-full rounded-2xl bg-teal-600 px-6 font-semibold text-white shadow-lg shadow-teal-600/25 transition-all hover:bg-teal-700 flex items-center justify-center gap-2"
+                className="h-12 w-full rounded-2xl px-6 font-semibold text-white shadow-lg shadow-teal-600/25 transition-all flex items-center justify-center gap-2"
               >
                 Daftar PPDB
                 <ArrowRight className="h-4 w-4" />

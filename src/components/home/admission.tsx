@@ -71,6 +71,7 @@ export function Admission() {
             </div>
             <div className="flex flex-wrap items-center gap-3">
               <Button
+                nativeButton={false}
                 render={
                   <a
                     href={waLink(
@@ -86,6 +87,7 @@ export function Admission() {
                 Hubungi Panitia
               </Button>
               <Button
+                nativeButton={false}
                 variant="outline"
                 render={<Link href="/ppdb" />}
                 className="h-12 gap-2 rounded-full border-slate-300 bg-white px-6 text-[15px] font-medium text-slate-700 transition-colors hover:border-slate-400 hover:text-slate-900"

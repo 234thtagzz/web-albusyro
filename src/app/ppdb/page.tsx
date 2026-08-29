@@ -61,6 +61,7 @@ export default function AdmissionPage() {
               </p>
               <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
                 <Button
+                  nativeButton={false}
                   render={<Link href="/kontak" />}
                   className="h-[52px] rounded-full bg-white px-8 text-[15px] font-semibold text-emerald-900 shadow-md transition-all hover:-translate-y-0.5 hover:bg-emerald-50 hover:shadow-lg sm:w-auto"
                 >

@@ -33,6 +33,7 @@ export default function Error({
                   Coba Lagi
                 </Button>
                 <Button
+                  nativeButton={false}
                   variant="outline"
                   render={<Link href="/" />}
                   className="h-[44px] rounded-[12px] px-6 text-[15px] font-medium"

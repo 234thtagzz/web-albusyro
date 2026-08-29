@@ -93,8 +93,8 @@ export function Navbar() {
                 className={cn(
                   "rounded-full px-3.5 py-1.5 text-[14px] font-medium transition-colors",
                   isActive(item.href)
-                    ? "bg-slate-900/10 text-slate-900 font-semibold"
-                    : "text-slate-600 hover:bg-slate-900/5 hover:text-slate-900"
+                    ? "bg-primary-3 text-muted font-semibold"
+                    : "text-slate-600 hover:bg-primary-3/20 hover:text-slate-900"
                 )}
               >
                 {item.label}
@@ -105,7 +105,7 @@ export function Navbar() {
             <Button
               render={<Link href={ctaNavigation.href} />}
               nativeButton={false}
-              className="ml-2 h-9 rounded-full bg-teal-600 px-5 text-[13.5px] font-semibold text-white shadow-md shadow-teal-600/20 transition-all hover:bg-teal-700 hover:shadow-lg lg:h-10"
+              className="ml-2 h-9 rounded-full px-5 text-[13.5px] font-semibold text-white shadow-md shadow-teal-600/20 transition-all hover:shadow-lg lg:h-10"
             >
               {ctaNavigation.label}
             </Button>
@@ -116,7 +116,7 @@ export function Navbar() {
             variant="ghost"
             size="icon"
             onClick={() => setIsMobileOpen(!isMobileOpen)}
-            className="h-9 w-9 rounded-full text-slate-700 hover:bg-slate-900/5 lg:hidden"
+            className="h-9 w-9 rounded-full text-slate-700 hover:bg-primary-3/20 lg:hidden"
             aria-label={isMobileOpen ? "Tutup menu" : "Buka menu"}
           >
             {isMobileOpen ? (
@@ -147,8 +147,8 @@ export function Navbar() {
                   className={cn(
                     "rounded-2xl px-4 py-2.5 text-base font-medium transition-colors",
                     isActive(item.href)
-                      ? "bg-teal-50 text-teal-900 font-semibold"
-                      : "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
+                      ? "bg-primary-3 text-muted font-semibold"
+                      : "text-slate-600 hover:bg-primary-4/10 hover:text-slate-900"
                   )}
                 >
                   {item.label}
@@ -157,7 +157,7 @@ export function Navbar() {
               <Link
                 href={ctaNavigation.href}
                 onClick={closeMobile}
-                className="mt-3 block w-full rounded-full bg-teal-600 py-3 text-center text-base font-semibold text-white shadow-md transition-colors hover:bg-teal-700"
+                className="mt-3 block w-full rounded-full py-3 bg-primary-3 hover:bg-primary-3/80 text-center text-base font-semibold text-white shadow-md transition-colors"
               >
                 {ctaNavigation.label}
               </Link>
