@@ -4,6 +4,7 @@ import { Hero } from "@/components/home/hero";
 import { Identity } from "@/components/home/identity";
 import { ProgramsBento } from "@/components/home/programs-bento";
 import { Admission } from "@/components/home/admission";
+import { DepartmentsSection } from "@/components/home/stats";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Navbar />
       <main className="flex-1" id="main-content">
         <Hero />
+        <DepartmentsSection />
         <Identity />
         <ProgramsBento />
         <Admission />

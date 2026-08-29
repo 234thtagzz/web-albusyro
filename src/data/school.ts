@@ -9,7 +9,7 @@ export const school = {
   logo: '/logo_.png',
   tagline: "Membentuk Generasi Qur'ani dengan Adab dan Ilmu",
   description:
-    "Bersama Mencetak Generasi Qur'ani yang Beradab dan Berprestasi Bukan hanya mengejar hafalan, tetapi membentuk anak yang dekat dengan Allah, baik kepada sesama, dan siap menghadapi masa depan.",
+    "STTD AL-BUSYRO adalah Sekolah Tahfizhul Qur’an Tingkat Dasar Mutqin Hafalannya, Fasih Bacaannya, Baik Adabnya, Diakui Legalitasnya.",
   longDescription:
     "STTD Al-Busyro Adalah sekolah dasar (SD) yang memiliki program tahfizh intensif (mengutamakan baiknya bacaan dan lancarnya hafalan) yang dipadukan dengan kurikulum kementrian agama (Madrasah). kami berupaya memberikan lingkungan Islami yang mendukung tumbuh kembang anak sesuai dengan fitrah dan potensi yang telah Allah berikan. Sehingga anak memiliki bekal dasar untuk menyambut masa depan cemerlang yang penuh dengan tantangan.",
   city: "Surakarta",

@@ -59,7 +59,7 @@ export function Navbar() {
       <header
         className={cn(
           "fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-6 sm:pt-4 transition-all duration-300",
-          isScrolled ? "sm:pt-2" : "sm:pt-4"
+          isScrolled ? "sm:pt-2" : "sm:pt-5 lg:pt-10"
         )}
       >
         {/* Glassmorphism Capsule Navbar */}
