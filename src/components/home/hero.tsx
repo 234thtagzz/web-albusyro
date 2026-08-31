@@ -86,7 +86,7 @@ export function Hero() {
           className="pointer-events-none absolute inset-0 z-[1]"
           style={{
             background:
-              "linear-gradient(to top, var(--primary-4) 0%, color-mix(in srgb, var(--primary-4) 80%, transparent) 20%, transparent 65%)",
+              "linear-gradient(to top, var(--primary-3) 0%, color-mix(in srgb, var(--primary-4) 80%, transparent) 20%, transparent 65%)",
           }}
         />
 
