@@ -1,58 +1,66 @@
-import React from "react";
-import { Ambulance, Baby, HeartPulse } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { CheckCircle2 } from "lucide-react";
+import { school } from "@/data/school";
 
-interface Department {
-  id: string;
-  title: string;
-  icon: React.ElementType;
-}
-
-const departments: Department[] = [
-  {
-    id: "emergency",
-    title: "Emergency\nCare",
-    icon: Ambulance,
-  },
-  {
-    id: "pediatric",
-    title: "Pediatric\nDepartment",
-    icon: Baby,
-  },
-  {
-    id: "cardiology",
-    title: "Cardiology",
-    icon: HeartPulse,
-  },
-];
+const UNIFIED_ICON = "bg-primary-1 text-white";
+const UNIFIED_BADGE = "border-primary-1/15 bg-primary-1/10 text-primary-1";
 
 export function DepartmentsSection() {
   return (
-    <section className="bg-gradient-to-b from-primary-3/5 to-primary-3/70 py-16 px-4">
-      <div className="mx-auto max-w-4xl">
-        <h2 className="mb-10 text-center text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
-          Our Departments
-        </h2>
+    <section className="relative overflow-hidden bg-[#FDF9F3]">
+      <div className="absolute -top-24 left-1/2 h-[600px] w-[700px] -translate-x-1/2 rounded-full bg-primary-4/10 blur-[90px]" aria-hidden />
+      {/* header strip */}
+      <div className="relative overflow-hidden border-b border-stone-100 bg-gradient-to-r from-primary-1 via-primary-2 to-secondary-1/70">
+        <div className="absolute inset-0 opacity-20">
+          <div className="h-full w-full bg-[repeating-linear-gradient(135deg,transparent_0_12px,white_12px_13px)]" />
+        </div>
+        <div className="container-custom relative py-7 sm:py-9">
+          <Badge variant="outline" className="inline-flex items-center gap-2 rounded-full border-white/20 bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-white backdrop-blur">
+            Kenapa Kami Hadir
+          </Badge>
+          <h2 className="font-display mt-3 text-[26px] font-bold tracking-tight text-white sm:text-[32px] lg:text-[36px]">
+            {school.whyChooseUs.headline}
+          </h2>
+          <p className="mt-2 max-w-2xl text-[13px] leading-[1.75] text-white/80">{school.whyChooseUs.description}</p>
+        </div>
+      </div>
 
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-8">
-          {departments.map((dept) => {
-            const Icon = dept.icon;
-            return (
-              <div
-                key={dept.id}
-                className="group flex aspect-square flex-col items-center justify-center rounded-3xl border border-white/80 bg-white/90 p-6 shadow-xl shadow-cyan-900/5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-cyan-900/10"
-              >
-                {/* Container Icon */}
-                <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-primary-5/10 text-primary-5 transition-transform duration-300 group-hover:scale-110">
-                  <Icon className="h-12 w-12 stroke-[1.75]" />
-                </div>
+      <div className="container-custom relative py-12 sm:py-16">
+        <div className="mx-auto max-w-xl text-center">
+          <Badge variant="outline" className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] ${UNIFIED_BADGE}`}>
+            Tiga Hal yang Kami Usahakan
+          </Badge>
+          <h3 className="font-display mt-3 text-[24px] font-bold tracking-tight text-primary-1 sm:text-[28px]">
+            Pilar Kehadiran STTD Al-Busyro
+          </h3>
+          <div className="mx-auto mt-3 h-1 w-12 rounded-full bg-primary-1" />
+        </div>
 
-                {/* Judul Departemen */}
-                <h3 className="whitespace-pre-line text-center text-base font-bold leading-snug text-slate-800 sm:text-lg">
-                  {dept.title}
-                </h3>
-              </div>
-            );
-          })}
+        <div className="mt-10 grid gap-4 sm:grid-cols-3">
+          {school.whyChooseUs.threeMainPoints.map((point, i) => (
+            <Card
+              key={point.title}
+              className="group relative overflow-hidden rounded-[20px] border-stone-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md hover:border-primary-1/15"
+            >
+              <div className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-primary-1/5 blur-xl transition group-hover:bg-primary-1/10" />
+              <CardContent className="p-0">
+                <span className={`flex h-8 w-8 items-center justify-center rounded-full text-[11px] font-bold text-white shadow-sm ${UNIFIED_ICON}`}>
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <h3 className="font-display mt-4 text-[16px] font-bold text-primary-1">{point.title}</h3>
+                <p className="mt-1 text-[11px] font-medium text-stone-500">{point.subtitle}</p>
+                <ul className="mt-4 space-y-2">
+                  {point.items.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-shrink-0 text-primary-1" />
+                      <span className="text-[12.5px] leading-[1.65] text-stone-700">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>

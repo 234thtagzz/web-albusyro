@@ -1,216 +1,135 @@
-"use client";
-
-import { useEffect, useRef } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Calendar, GraduationCap, MapPin, Sparkles } from "lucide-react";
-import { gsap } from "@/lib/gsap";
+import { ArrowDown, ArrowRight } from "lucide-react";
 import { school } from "@/data/school";
 import { waLink } from "@/data/home";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+
+function Blob({
+  className,
+  delay = "",
+}: {
+  className: string;
+  delay?: string;
+}) {
+  return (
+    <div
+      aria-hidden
+      className={`pointer-events-none absolute rounded-full blur-3xl opacity-40 ${className} ${
+        delay ? delay : "animate-blob"
+      }`}
+    />
+  );
+}
 
 export function Hero() {
-  const scope = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const el = scope.current;
-    if (!el) return;
-
-    const ctx = gsap.context(() => {
-      const reduceMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-      ).matches;
-      if (reduceMotion) return;
-
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-      tl.fromTo(
-        "[data-hero='card']",
-        { opacity: 0, y: 24 },
-        { opacity: 1, y: 0, duration: 0.8 }
-      )
-        .fromTo(
-          "[data-hero='badge']",
-          { opacity: 0, y: 16 },
-          { opacity: 1, y: 0, duration: 0.5 },
-          "-=0.4"
-        )
-        .fromTo(
-          "[data-hero='line']",
-          { opacity: 0, y: 24 },
-          { opacity: 1, y: 0, duration: 0.7, stagger: 0.1 },
-          "-=0.3"
-        )
-        .fromTo(
-          "[data-hero='sub']",
-          { opacity: 0, y: 16 },
-          { opacity: 1, y: 0, duration: 0.6 },
-          "-=0.4"
-        )
-        .fromTo(
-          "[data-hero='visual']",
-          { opacity: 0, scale: 0.95 },
-          { opacity: 1, scale: 1, duration: 0.8 },
-          "-=0.5"
-        )
-        .fromTo(
-          "[data-hero='glass-bar']",
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.6 },
-          "-=0.4"
-        );
-    }, el);
-
-    return () => ctx.revert();
-  }, []);
-
   return (
-    <section ref={scope} className="relative px-3 pt-3 pb-12 sm:px-6 sm:pt-4 lg:pt-5">
+    <section className="relative overflow-hidden bg-primary-1">
+      {/* bg image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/lanscape.JPG.webp"
+          alt="STTD Al-Busyro — Lingkungan belajar tahfizh"
+          fill
+          priority
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-primary-1/85 via-primary-2/60 to-secondary-1/35" />
+        <div className="absolute inset-0 bg-[#0f172a]/35" />
+      </div>
+
+      <Blob className="h-[420px] w-[520px] -top-28 -left-24 bg-primary-4/50" />
+      <Blob className="h-[360px] w-[460px] -bottom-24 -right-20 bg-secondary-3/40 animate-blob-delay" />
+      <Blob className="h-[220px] w-[220px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/10 blur-2xl opacity-20 animate-float" />
+
       <div
-        data-hero="card"
-        className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-teal-100/80 p-6 pt-26 sm:p-10 sm:pt-30 lg:p-22 lg:pt-30 shadow-2xl shadow-teal-900/5"
-      >
-        {/* Background image */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-0 opacity-50"
-          style={{
-            backgroundImage: "url('/images/lanscape.JPG.webp')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-        />
-        {/* Gradient overlay from bottom with primary color */}
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 z-[1]"
-          style={{
-            background:
-              "linear-gradient(to top, var(--primary-3) 0%, color-mix(in srgb, var(--primary-4) 80%, transparent) 20%, transparent 65%)",
-          }}
-        />
+        aria-hidden
+        className="absolute inset-0 opacity-[0.07]"
+        style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
+          backgroundSize: "22px 22px",
+        }}
+      />
 
-        <div className="relative z-[2] grid items-center gap-10 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-7">
-            <Badge
-              data-hero="badge"
-              className="inline-flex items-center gap-2 rounded-full border border-teal-200/80 bg-white/80 px-4 py-1.5 text-xs font-semibold text-teal-900 shadow-sm backdrop-blur"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-3/40 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-3/80" />
-              </span>
-              PPDB Tahun Ajaran Baru Dibuka
-            </Badge>
-
-            <h1 className="font-display mt-6 text-3xl font-extrabold tracking-tight text-muted-foreground sm:text-5xl lg:text-6xl lg:leading-[1.1]">
-              <span data-hero="line" className="block">
-                Membentuk Generasi
-              </span>
-              <span data-hero="line" className="block text-primary-2">
-                Qur&rsquo;ani
-              </span>
-              <span data-hero="line" className="block">
-                dengan Adab & Ilmu
-              </span>
-            </h1>
-
-            <p
-              data-hero="sub"
-              className="font-body mt-5 max-w-xl text-base leading-relaxed text-accent sm:text-lg"
-            >
-              {school?.description ||
-                "Pendidikan tahfidz Al-Qur'an terpadu dengan pembentukan adab dan ilmu dasar yang kokoh."}
-            </p>
-          </div>
-
-          <div data-hero="visual" className="lg:col-span-5">
-            <div className="relative mx-auto max-w-[380px] lg:max-w-none">
-              {/* Mobile/tablet: badge di dalam visual */}
-              <div className="absolute -top-4 -right-2 flex items-center gap-2 rounded-full border border-white/80 bg-white/90 py-1.5 px-3.5 shadow-md backdrop-blur lg:hidden">
-                <MapPin className="h-4 w-4 text-teal-700" />
-                <span className="text-xs font-semibold text-slate-700">
-                  Sukoharjo — Jawa Tengah
-                </span>
-              </div>
-            </div>
-          </div>
+      <div className="relative flex min-h-[540px] flex-col items-center justify-center px-6 pb-20 pt-28 sm:min-h-[600px]">
+        {/* top badge */}
+        <div className="animate-fade-up inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 backdrop-blur-md">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-secondary-3" />
+            <span className="relative inline-flex h-2 w-2 rounded-full bg-secondary-2" />
+          </span>
+          <span className="text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
+            PPDB 2026/2027 · Sukoharjo — Jawa Tengah
+          </span>
         </div>
 
-        <div
-          data-hero="glass-bar"
-          className="relative z-[2] mt-10 rounded-2xl border border-white/80 bg-white p-4 shadow-xl shadow-teal-900/10 backdrop-blur-xl sm:rounded-3xl sm:p-5 "
-        >
-          <div className="relative">
-            {/* Laptop (lg): badge di kanan, 5px di atas grid */}
-            <div className="absolute bottom-[calc(100%+40px)] right-0 hidden items-center gap-2 rounded-full border border-white/80 bg-white/90 py-1.5 px-3.5 shadow-md backdrop-blur lg:flex">
-              <MapPin className="h-4 w-4 text-teal-700" />
-              <span className="text-xs font-semibold text-slate-700">
-                Sukoharjo — Jawa Tengah
-              </span>
-            </div>
-            <div className="relative z-[2] grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:items-center">
-            <div className="flex items-center gap-3 rounded-2xl border border-slate-200/60 bg-white px-4 py-3 shadow-xs">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-teal-50 text-teal-700">
-                <GraduationCap className="h-5 w-5" />
-              </div>
-              <div>
-                <p className="text-[11px] font-semibold tracking-wider text-slate-400 uppercase">
-                  Jenjang
-                </p>
-                <p className="text-sm font-bold text-slate-800">Tahfidz Setara SD</p>
-              </div>
-            </div>
+        <h1 className="animate-fade-up animation-delay-150 mt-5 text-center font-display text-[30px] font-bold leading-[0.95] tracking-tight text-white sm:text-[44px] lg:text-[52px]">
+          Membentuk
+          <br />
+          <span className="block">Generasi Qur&apos;ani</span>
+          <span className="relative mt-1 inline-block">
+            <span className="relative z-10 bg-gradient-to-r from-secondary-3 to-secondary-1 bg-clip-text text-transparent">
+              dengan Adab & Ilmu
+            </span>
+            <span className="absolute bottom-1 left-0 h-[10px] w-full -rotate-1 bg-secondary-3/30 -z-0" />
+          </span>
+        </h1>
 
-            <div className="flex items-center gap-3 rounded-2xl border border-slate-200/60 bg-white px-4 py-3 shadow-xs">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-50 text-emerald-700">
-                <Calendar className="h-5 w-5" />
-              </div>
-              <div>
-                <p className="text-[11px] font-semibold tracking-wider text-slate-400 uppercase">
-                  Tahun Ajaran
-                </p>
-                <p className="text-sm font-bold text-slate-800">2026 / 2027</p>
-              </div>
-            </div>
+        <p className="animate-fade-up animation-delay-300 mt-4 max-w-2xl text-center text-[14px] leading-relaxed text-white/80 sm:text-[15px]">
+          {school.tagline} — {school.description}
+        </p>
+        <p className="animate-fade-up animation-delay-300 mt-2 max-w-xl text-center text-[13px] leading-relaxed text-white/65">
+          Pendidikan tahfizhul Qur&apos;an tingkat dasar yang memadukan hafalan mutqin, adab, dan kurikulum terpadu Kemenag.
+        </p>
 
-            <div className="flex items-center gap-3 rounded-2xl border border-slate-200/60 bg-white px-4 py-3 shadow-xs">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50 text-amber-700">
-                <Sparkles className="h-5 w-5" />
-              </div>
-              <div>
-                <p className="text-[11px] font-semibold tracking-wider text-slate-400 uppercase">
-                  Kuota PPDB
-                </p>
-                <p className="text-sm font-bold text-slate-800">Tersedia</p>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <Button
-                nativeButton={false}
-                render={
-                  <Link
-                    href={
-                      waLink
-                        ? waLink(
-                            "Assalamualaikum, saya ingin mendaftarkan putra/putri saya ke STTD Al-Busyro."
-                          )
-                        : "/ppdb"
-                    }
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  />
-                }
-                className="h-12 w-full rounded-2xl px-6 font-semibold text-white shadow-lg shadow-teal-600/25 transition-all flex items-center justify-center gap-2"
-              >
-                Daftar PPDB
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-          </div>
+        {/* CTA row — sesuai RPD 9: Kenali + PPDB */}
+        <div className="animate-fade-up animation-delay-500 mt-7 flex flex-col items-center gap-3 sm:flex-row">
+          <Link
+            href="/profil"
+            className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-2.5 text-[13px] font-bold text-primary-1 shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0"
+          >
+            Kenali STTD Al-Busyro
+            <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+          </Link>
+          <Link
+            href={waLink("Assalamualaikum, saya ingin mendaftarkan putra/putri saya ke STTD Al-Busyro.")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 rounded-full bg-secondary-1 px-6 py-2.5 text-[13px] font-bold text-white shadow-lg shadow-secondary-1/30 transition hover:-translate-y-0.5 hover:bg-secondary-2 hover:shadow-xl active:translate-y-0"
+          >
+            Informasi PPDB
+            <ArrowDown className="h-4 w-4 transition group-hover:translate-y-0.5" />
+          </Link>
         </div>
+
+        {/* stats pill — sama seperti profil */}
+        <div className="animate-scale-in animation-delay-700 mt-10 hidden items-center gap-6 rounded-2xl border border-white/15 bg-white/10 px-6 py-3 backdrop-blur-md sm:flex">
+          {[
+            { v: "6 thn", l: "Program SD" },
+            { v: "10–15", l: "Juz Mutqin" },
+            { v: "Adab", l: "Sebelum Ilmu" },
+          ].map((s, i) => (
+            <div key={s.l} className="flex items-center gap-6">
+              {i !== 0 && <span className="h-8 w-px bg-white/15" />}
+              <div className="text-center">
+                <p className="font-display text-[16px] font-bold leading-none text-white">{s.v}</p>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/60">{s.l}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div aria-hidden className="absolute inset-x-0 bottom-0 leading-none">
+        <svg viewBox="0 0 1440 64" preserveAspectRatio="none" className="h-[48px] w-full sm:h-[64px]">
+          <path
+            d="M0 32 Q 180 64 360 32 T 720 32 T 1080 32 T 1440 32 L 1440 64 L 0 64 Z"
+            className="fill-white"
+          />
+          <path
+            d="M0 36 Q 180 60 360 36 T 720 36 T 1080 36 T 1440 36"
+            className="fill-secondary-3/20"
+          />
+        </svg>
       </div>
     </section>
   );

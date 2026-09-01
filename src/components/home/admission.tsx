@@ -1,102 +1,95 @@
 import Link from "next/link";
 import { ArrowRight, MessageCircle } from "lucide-react";
-import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal, Stagger } from "@/components/motion/reveal";
 import { admissionSteps, waLink } from "@/data/home";
 import { school } from "@/data/school";
 import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+
+const UNIFIED_ICON = "bg-primary-1 text-white";
+const UNIFIED_BADGE = "border-primary-1/15 bg-primary-1/10 text-primary-1";
 
 export function Admission() {
   return (
-    <section className="border-t border-slate-200 bg-white">
-      <div className="container-custom section-spacing">
-        <div className="grid items-end gap-6 lg:grid-cols-12">
-          <SectionHeading
-            badge="Alur PPDB"
-            title="Tiga langkah menuju Al-Busyro"
-            description="Proses penerimaan peserta didik baru yang jelas dan didampingi panitia di setiap tahapannya."
-            className="lg:col-span-8"
-          />
+    <section className="relative overflow-hidden border-t border-stone-200 bg-white">
+      <div className="pointer-events-none absolute -top-20 left-0 h-[400px] w-[500px] rounded-full bg-primary-4/12 blur-[80px]" aria-hidden />
+      <div className="container-custom section-spacing relative">
+        <div className="mx-auto max-w-xl text-center">
+          <Badge variant="outline" className={`mx-auto rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] ${UNIFIED_BADGE}`}>
+            Alur PPDB
+          </Badge>
+          <h2 className="font-display mt-3 text-[28px] font-bold tracking-tight text-primary-1 sm:text-[32px]">
+            Tiga langkah menuju Al-Busyro
+          </h2>
+          <p className="mx-auto mt-2 max-w-lg text-[13px] leading-relaxed text-stone-500">
+            Proses penerimaan peserta didik baru yang jelas dan didampingi panitia di setiap tahapannya.
+          </p>
+          <div className="mx-auto mt-4 h-1 w-12 rounded-full bg-primary-1" />
         </div>
 
-        <Stagger
-          className="mt-14 grid gap-10 md:grid-cols-3 md:gap-8"
-          stagger={0.12}
-          aria-label="Tahapan pendaftaran"
-        >
+        <Stagger className="mt-12 grid gap-6 md:grid-cols-3" stagger={0.08} aria-label="Tahapan pendaftaran">
           {admissionSteps.map((step, index) => (
-            <article key={step.no} role="listitem" className="relative">
-              {/* Garis penghubung */}
-              {index < admissionSteps.length - 1 && (
-                <span
-                  aria-hidden="true"
-                  className="absolute top-6 left-16 hidden h-px w-[calc(100%-4rem)] border-t border-dashed border-slate-300 md:block"
-                />
-              )}
-
-              <Badge
-                variant="secondary"
-                className="font-display flex h-12 w-12 items-center justify-center rounded-full border border-emerald-200 bg-emerald-50 text-[15px] text-emerald-800"
-              >
-                {step.no}
-              </Badge>
-
-              <h3 className="font-display mt-5 text-xl tracking-tight text-slate-900">
-                {step.title}
-              </h3>
-              <p className="mt-2.5 text-sm leading-relaxed text-slate-600">
-                {step.description}
-              </p>
-              <Badge
-                variant="outline"
-                className="mt-4 inline-flex items-center rounded-full border-slate-200 bg-slate-100 px-3 py-1 text-xs font-medium text-slate-500"
-              >
-                {step.meta}
-              </Badge>
-            </article>
+            <Card
+              key={step.no}
+              className="group relative rounded-[20px] border-stone-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md hover:border-primary-1/15"
+            >
+              <CardContent className="p-0">
+                {index < admissionSteps.length - 1 && (
+                  <span
+                    aria-hidden="true"
+                    className="absolute left-10 top-6 hidden h-px w-[calc(100%-2.5rem)] border-t border-dashed border-stone-200 md:block"
+                  />
+                )}
+                <div className={`relative flex h-10 w-10 items-center justify-center rounded-full text-[13px] font-bold text-white shadow-sm ${UNIFIED_ICON}`}>
+                  {step.no}
+                </div>
+                <h3 className="font-display mt-5 text-[16px] font-bold tracking-tight text-primary-1">{step.title}</h3>
+                <p className="mt-2 text-[13px] leading-relaxed text-stone-600">{step.description}</p>
+                <Badge variant="outline" className={`mt-4 rounded-full px-3 py-1 text-[11px] font-medium ${UNIFIED_BADGE}`}>
+                  {step.meta}
+                </Badge>
+              </CardContent>
+            </Card>
           ))}
         </Stagger>
 
-        {/* CTA band */}
-        <Reveal delay={0.1}>
-          <div className="mt-20 flex flex-col items-start gap-7 rounded-[28px] border border-slate-200 bg-slate-50 p-8 shadow-sm sm:p-10 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-xl">
-              <h3 className="font-display text-2xl leading-snug tracking-tight text-slate-900 sm:text-[1.75rem]">
-                Setiap langkah kecil hari ini menentukan masa depan mereka.
-              </h3>
-              <p className="mt-3 text-[15px] leading-relaxed text-slate-600">
-                {school.cta.description}
-              </p>
-            </div>
-            <div className="flex flex-wrap items-center gap-3">
-              <Button
-                nativeButton={false}
-                render={
-                  <a
-                    href={waLink(
-                      "Assalamualaikum, saya ingin bertanya tentang PPDB STTD Al-Busyro."
-                    )}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  />
-                }
-                className="group h-12 gap-2 rounded-full bg-primary px-6 text-[15px] font-semibold text-primary-foreground shadow-md transition-all hover:-translate-y-0.5 hover:bg-emerald-700 hover:shadow-lg"
-              >
-                <MessageCircle className="h-[18px] w-[18px]" />
-                Hubungi Panitia
-              </Button>
-              <Button
-                nativeButton={false}
-                variant="outline"
-                render={<Link href="/ppdb" />}
-                className="h-12 gap-2 rounded-full border-slate-300 bg-white px-6 text-[15px] font-medium text-slate-700 transition-colors hover:border-slate-400 hover:text-slate-900"
-              >
-                Info Lengkap PPDB
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
+        <Reveal delay={0.08}>
+          <Card className="mt-14 rounded-[24px] border-stone-200 bg-stone-50 shadow-sm">
+            <CardContent className="flex flex-col items-start gap-6 p-6 sm:p-8 lg:flex-row lg:items-center lg:justify-between">
+              <div className="max-w-xl">
+                <h3 className="font-display text-[20px] font-bold leading-snug tracking-tight text-primary-1 sm:text-[22px]">
+                  {school.cta.headline}
+                </h3>
+                <p className="mt-2 text-[13px] leading-relaxed text-stone-600">{school.cta.description}</p>
+              </div>
+              <div className="flex flex-wrap items-center gap-3">
+                <Button
+                  nativeButton={false}
+                  render={
+                    <a
+                      href={waLink("Assalamualaikum, saya ingin bertanya tentang PPDB STTD Al-Busyro.")}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    />
+                  }
+                  className="h-11 gap-2 rounded-full bg-primary-1 px-6 text-[13px] font-bold text-white shadow-md hover:bg-primary-2"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  Hubungi Panitia
+                </Button>
+                <Button
+                  nativeButton={false}
+                  variant="outline"
+                  render={<Link href="/ppdb" />}
+                  className="h-11 gap-2 rounded-full border-stone-200 bg-white px-6 text-[13px] font-bold text-primary-1 hover:border-primary-1/20 hover:bg-stone-50"
+                >
+                  Info Lengkap PPDB
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
         </Reveal>
       </div>
     </section>

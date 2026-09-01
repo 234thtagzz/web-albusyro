@@ -2,6 +2,11 @@
 
 import { Star, Quote } from "lucide-react";
 import { Reveal, Stagger } from "@/components/motion/reveal";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+
+const UNIFIED_ICON = "bg-primary-1 text-white";
+const UNIFIED_BADGE = "border-primary-1/15 bg-primary-1/10 text-primary-1";
 
 const testimoniData = [
   {
@@ -60,92 +65,56 @@ const testimoniData = [
   },
 ];
 
-const avatarColors = [
-  "bg-primary-1",
-  "bg-secondary-1",
-  "bg-primary-2",
-  "bg-secondary-2",
-  "bg-primary-3",
-  "bg-primary-1",
-];
-
 export default function Testimoni() {
   return (
-    <section
-      className="section-spacing bg-[var(--muted)]"
-      id="testimoni"
-    >
-      <div className="container-custom">
-        {/* Header */}
-        <Reveal className="text-center mb-14">
-          <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold bg-[var(--primary-4)]/30 text-[var(--primary-foreground)] mb-4 tracking-wide uppercase">
-            Testimoni
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl text-[var(--foreground)] mb-4">
+    <section className="relative overflow-hidden border-t border-stone-200 bg-[#FDF9F3]" id="testimoni">
+      <div className="pointer-events-none absolute -top-28 right-0 h-[420px] w-[460px] rounded-full bg-primary-4/15 blur-[70px]" aria-hidden />
+      <div className="container-custom section-spacing relative">
+        <Reveal className="mx-auto max-w-xl text-center">
+          <Badge variant="outline" className={`mx-auto rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] ${UNIFIED_BADGE}`}>
+            Kata Orang Tua
+          </Badge>
+          <h2 className="font-display mt-3 text-3xl tracking-tight text-primary-1 sm:text-4xl lg:text-[40px]">
             Apa Kata Mereka?
           </h2>
-          <p className="text-[var(--muted-foreground)] max-w-xl mx-auto text-base sm:text-lg">
-            Cerita nyata dari wali santri dan alumni yang telah merasakan
-            manfaat belajar di Pesantren Al-Busyro.
+          <p className="mx-auto mt-3 max-w-xl text-[14px] leading-relaxed text-stone-500">
+            Cerita nyata dari wali santri dan alumni yang telah merasakan manfaat belajar di STTD Al-Busyro.
           </p>
+          <div className="mx-auto mt-4 h-1 w-12 rounded-full bg-primary-1" />
         </Reveal>
 
-        {/* Grid Cards — horizontal scroll carousel */}
         <Stagger
-          className="flex gap-5 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          stagger={0.1}
-          y={24}
+          className="mt-10 flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          stagger={0.06}
+          y={16}
         >
-          {testimoniData.map((item, index) => (
-            <div
+          {testimoniData.map((item) => (
+            <Card
               key={item.id}
-              className="relative bg-[var(--card)] rounded-[var(--radius-xl)] p-6 shadow-sm border border-[var(--border)] flex flex-col gap-4 hover:shadow-md transition-shadow duration-300 flex-shrink-0 w-[85vw] sm:w-[360px] snap-start"
+              className="group relative flex flex-shrink-0 snap-start flex-col gap-4 rounded-[20px] border-stone-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md hover:border-primary-1/15 w-[85vw] sm:w-[360px]"
             >
-              {/* Quote icon */}
-              <div className="absolute top-5 right-5 opacity-10">
-                <Quote
-                  size={48}
-                  className="text-[var(--primary-1)]"
-                  fill="currentColor"
-                />
-              </div>
-
-              {/* Rating */}
-              <div className="flex gap-1">
-                {Array.from({ length: item.rating }).map((_, i) => (
-                  <Star
-                    key={i}
-                    size={16}
-                    className="text-[var(--secondary-1)] fill-[var(--secondary-1)]"
-                  />
-                ))}
-              </div>
-
-              {/* Pesan */}
-              <p className="text-[var(--card-foreground)] text-sm sm:text-base leading-relaxed flex-1">
-                &ldquo;{item.pesan}&rdquo;
-              </p>
-
-              {/* Divider */}
-              <div className="h-px bg-[var(--border)]" />
-
-              {/* Author */}
-              <div className="flex items-center gap-3">
-                <div
-                  className={`w-11 h-11 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0 ${avatarColors[index % avatarColors.length]}`}
-                >
-                  {item.inisial}
+              <CardContent className="flex flex-1 flex-col gap-4 p-0">
+                <div className="absolute right-5 top-5 opacity-10">
+                  <Quote size={44} className="text-primary-1" fill="currentColor" />
                 </div>
-                <div>
-                  <p className="font-semibold text-[var(--foreground)] text-sm">
-                    {item.nama}
-                  </p>
-                  <p className="text-xs text-[var(--muted-foreground)]">
-                    {item.jabatan}
-                  </p>
+                <div className="flex gap-1">
+                  {Array.from({ length: item.rating }).map((_, i) => (
+                    <Star key={i} size={14} className="fill-primary-1 text-primary-1" />
+                  ))}
                 </div>
-              </div>
-            </div>
+                <p className="flex-1 text-sm leading-relaxed text-stone-700">&ldquo;{item.pesan}&rdquo;</p>
+                <div className="h-px bg-stone-100" />
+                <div className="flex items-center gap-3">
+                  <div className={`flex h-10 w-10 items-center justify-center rounded-full text-xs font-bold text-white shadow-sm ${UNIFIED_ICON}`}>
+                    {item.inisial}
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-primary-1">{item.nama}</p>
+                    <p className="text-xs text-stone-500">{item.jabatan}</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
           ))}
         </Stagger>
       </div>
