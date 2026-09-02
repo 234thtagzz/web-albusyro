@@ -3,11 +3,19 @@ import { Footer } from "@/components/layout/footer";
 import { Stagger } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Card, CardContent } from "@/components/ui/card";
-import { achievements } from "@/data/achievements";
 import { Trophy } from "lucide-react";
 import { EmptyState } from "@/components/ui/empty-state";
+import { createClient } from "@/lib/supabase/server";
+import { achievements as fallback } from "@/data/achievements";
 
-export default function AchievementsPage() {
+export const revalidate = 60;
+
+export default async function AchievementsPage() {
+  const supabase = await createClient();
+  const { data, error } = await supabase.from("prestasi").select("*").order("created_at", { ascending: false });
+  const achievements = data && data.length > 0 ? data : fallback;
+  const isFallback = !data || data.length === 0;
+
   return (
     <>
       <Navbar />
@@ -19,6 +27,9 @@ export default function AchievementsPage() {
               title="Prestasi Santri"
               description="Pencapaian yang membanggakan dari para santri STTD Al-Busyro dalam berbagai bidang."
             />
+            {isFallback && !error && (
+              <p className="mt-3 text-xs text-amber-600">Menampilkan data sementara — kelola via /admin/prestasi</p>
+            )}
           </div>
         </section>
 
@@ -32,7 +43,7 @@ export default function AchievementsPage() {
               />
             ) : (
               <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {achievements.map((achievement) => (
+                {achievements.map((achievement: any) => (
                   <Card
                     key={achievement.id}
                     className="rounded-[24px] border-slate-200 bg-white shadow-sm ring-0 transition-all hover:border-slate-300"

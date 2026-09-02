@@ -166,10 +166,11 @@ function HeroProfil() {
 
 // ─── Sejarah — tatanan asimetris + bercak ──────
 function SejarahSection() {
+  // Dipecah menjadi 4 paragraf menjorok — tetap terasa padat & editorial dalam satu card
   const storyParagraphs = [
     "Sekolah Tahfizhul Qur'an Tingkat Dasar, atau lebih dikenal dengan STTD Al-Busyro, merupakan lembaga pendidikan Islam yang didirikan sebagai salah satu wujud cita-cita dan harapan Ust. Abu Hurri Al-Qosimi dalam rangka membumikan Al-Qur'an.",
     "Sebagai pendiri STTD Al-Busyro sekaligus penggagas Metode Al-Qosimi, beliau mengembangkan pendidikan yang menempatkan Al-Qur'an sebagai prioritas utama dalam proses pembelajaran. STTD Al-Busyro merupakan sekolah setingkat SD yang memberikan perhatian khusus terhadap pendidikan Al-Qur'an.",
-    "Kegiatan Tahfizh Al-Qur'an menjadi prioritas utama, dengan perhatian tidak hanya pada jumlah hafalan, tetapi juga pada kelancaran dan kemantapan hafalan (mutqin). Di samping pendidikan Al-Qur'an, STTD Al-Busyro tetap memberikan pembelajaran umum sebagai bekal bagi peserta didik.",
+    "Kegiatan Tahfizh Al-Qur'an menjadi prioritas utama, dengan perhatian tidak hanya pada jumlah hafalan, tetapi juga pada kelancaran dan kemantapan hafalan (mutqin). Di samping pendidikan Al-Qur'an, STTD Al-Busyro tetap memberikan pembelajaran umum sebagai bekal bagi peserta didik dalam membangun dasar-dasar ilmu yang diperlukan untuk kehidupan mereka di masa mendatang.",
     "Dengan demikian, pendidikan di STTD Al-Busyro diarahkan untuk membentuk generasi yang tidak hanya memiliki hafalan Al-Qur'an, tetapi juga memiliki bacaan yang baik, adab yang mulia, wawasan yang memadai, dan kesiapan untuk bersaing di masa depan.",
   ];
 
@@ -222,19 +223,24 @@ function SejarahSection() {
               <div className="absolute -left-4 -top-4 h-full w-full rounded-[36px] border-2 border-secondary-3/30 bg-secondary-3/5 rotate-1" />
               <div className="absolute -right-3 -bottom-3 h-full w-full rounded-[36px] bg-primary-4/20 -rotate-1" />
 
-              {/* main arch image */}
+              {/* main arch image — top terpotong, foto digeser kebawah */}
               <div className="relative overflow-hidden rounded-t-[160px] rounded-b-[28px] border-[6px] border-white bg-stone-100 shadow-[0_24px_48px_-16px_rgba(0,0,0,0.3)]">
-                <div className="relative aspect-[4/5] w-full">
+                {/* top crop overlay: memberi kesan terpotong 18px di atas */}
+                <div className="pointer-events-none absolute left-0 right-0 top-0 z-10 h-[18px] bg-white" aria-hidden />
+                <div className="pointer-events-none absolute left-0 right-0 top-[18px] z-10 h-[10px] bg-gradient-to-b from-white to-transparent" aria-hidden />
+                <div className="relative aspect-[4/5] w-full overflow-hidden">
                   <Image
-                    src="/images/halaqoh quran.png"
-                    alt="Halaqah Al-Qur'an STTD Al-Busyro"
+                    src="/images/Ust Al Qosim.webp"
+                    alt="Sang Pendiri"
                     fill
-                    className="object-cover object-top transition duration-700 hover:scale-[1.03]"
+                    sizes="(max-width: 1024px) 360px, 360px"
+                    className="object-cover scale-[1.12] transition duration-700 hover:scale-[1.15]"
+                    style={{ objectPosition: "center 18%" }}
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary-1/30 via-transparent to-transparent" />
                 </div>
-                {/* top accent bar */}
-                <div className="absolute left-0 right-0 top-0 h-1.5 bg-gradient-to-r from-primary-1 via-secondary-1 to-primary-4" />
+                {/* top accent bar — tepat di bawah crop */}
+                <div className="absolute left-0 right-0 top-[18px] z-10 h-1.5 bg-gradient-to-r from-primary-1 via-secondary-1 to-primary-4" />
               </div>
 
               {/* floating badges — with transform on hover */}
@@ -243,8 +249,8 @@ function SejarahSection() {
                 <p className="font-display text-[12px] font-bold leading-none text-primary-1">Al-Qosimi</p>
               </div>
               <div className="animate-float animation-delay-1000 absolute -left-3 bottom-16 rounded-2xl border border-white bg-primary-1 px-3.5 py-2.5 shadow-xl">
-                <p className="text-[11px] font-bold leading-none text-white">Mutqin</p>
-                <p className="text-[10px] font-medium text-white/70">Hafalan kuat</p>
+                <p className="text-[11px] font-bold leading-none text-white">Sang Pendiri</p>
+                <p className="text-[10px] font-medium text-white/70">Ust. Abu Hurri Al-Qosimi Al-Hafidz</p>
               </div>
             </div>
 
@@ -296,26 +302,42 @@ function SejarahSection() {
               </CardContent>
             </Card>
 
-            {/* story paragraphs — numbered accent */}
-            <div className="space-y-3">
-              {storyParagraphs.map((para, i) => (
-                <Card key={i} className="group border-transparent bg-transparent shadow-none transition hover:border-stone-100 hover:bg-stone-50">
-                  <CardContent className="flex gap-4 p-3">
-                    <span className={`mt-1 hidden h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-[11px] font-bold sm:flex ${UNIFIED_ICON}`}>
-                      {i + 1}
-                    </span>
-                    <p className="flex-1 text-[13.5px] leading-[1.85] text-stone-600 sm:text-[14px]">
+            {/* story — satu card, paragraf menjorok, terasa padat */}
+            <Card className="rounded-2xl border-stone-200 bg-white shadow-sm">
+              <CardContent className="p-6 sm:p-7">
+                {/* header kecil di dalam card */}
+                <div className="mb-4 flex items-center gap-2 border-b border-stone-100 pb-3">
+                  <span className="h-1 w-6 rounded-full bg-primary-1" />
+                  <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-stone-400">
+                    Sejarah Singkat
+                  </p>
+                  <span className="ml-auto hidden items-center gap-1.5 text-[11px] font-medium text-stone-400 sm:flex">
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary-1/40" />
+                    4 paragraf
+                  </span>
+                </div>
+                <div className="space-y-4">
+                  {storyParagraphs.map((para, i) => (
+                    <p
+                      key={i}
+                      className={`text-[13.5px] leading-[1.9] text-stone-600 sm:text-[14px] ${
+                        i === 0 ? "" : "indent-8"
+                      }`}
+                    >
                       {i === 0 && (
-                        <span className="float-left mr-2 mt-0.5 font-display text-[36px] font-bold leading-none text-primary-1">
+                        <span className="float-left mr-2 mt-1 font-display text-[42px] font-bold leading-[0.8] text-primary-1 select-none">
                           S
                         </span>
                       )}
                       {para}
                     </p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                  ))}
+                </div>
+                <p className="mt-5 border-t border-dashed border-stone-200 pt-3 text-center text-[11px] italic leading-relaxed text-stone-400">
+                  — dirangkum dari profil resmi STTD Al-Busyro & Metode Al-Qosimi
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
 

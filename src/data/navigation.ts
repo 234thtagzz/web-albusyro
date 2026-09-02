@@ -6,7 +6,6 @@ export interface NavItem {
 export const mainNavigation: NavItem[] = [
   { label: "Beranda", href: "/" },
   { label: "Profil", href: "/profil" },
-  { label: "Pendidikan", href: "/pendidikan" },
   { label: "Kegiatan", href: "/kegiatan" },
   { label: "Prestasi", href: "/prestasi" },
   { label: "Galeri", href: "/galeri" },
@@ -22,7 +21,6 @@ export const footerNavigation = {
   main: [
     { label: "Beranda", href: "/" },
     { label: "Profil", href: "/profil" },
-    { label: "Pendidikan", href: "/pendidikan" },
     { label: "Kegiatan", href: "/kegiatan" },
   ],
   more: [
@@ -31,10 +29,20 @@ export const footerNavigation = {
     { label: "Berita", href: "/berita" },
     { label: "PPDB", href: "/ppdb" },
   ],
+  // footer kolom "Kegiatan" — poin-poin kegiatan santri (sinkron dengan school.activities)
+  kegiatan: [
+    { label: "Mabit & Tartil-Tilawah", href: "/kegiatan" },
+    { label: "Berkuda & Memanah", href: "/kegiatan" },
+    { label: "Renang & Beladiri", href: "/kegiatan" },
+    { label: "Outbond & PBB", href: "/kegiatan" },
+    { label: "Public Speaking & Jurnalistik", href: "/kegiatan" },
+    { label: "Life Skill", href: "/kegiatan" },
+  ],
+  // legacy: tetap diekspor agar tidak breaking jika ada import lama
   programs: [
-    { label: "Tahfizhul Qur'an", href: "/pendidikan#tahfizh" },
-    { label: "Pendidikan Adab", href: "/pendidikan#adab" },
-    { label: "Pendidikan Akademik", href: "/pendidikan#akademik" },
-    { label: "Pembentukan Karakter", href: "/pendidikan#karakter" },
+    { label: "Tahfizhul Qur'an", href: "/kegiatan" },
+    { label: "Pendidikan Adab", href: "/kegiatan" },
+    { label: "Pendidikan Akademik", href: "/kegiatan" },
+    { label: "Pembentukan Karakter", href: "/kegiatan" },
   ],
 };

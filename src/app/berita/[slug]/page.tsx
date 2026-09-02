@@ -8,11 +8,25 @@ import { Reveal, Stagger } from "@/components/motion/reveal";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { newsItems } from "@/data/news";
+import { newsItems as fallback } from "@/data/news";
 import { ArrowLeft, Calendar, User } from "lucide-react";
+import { createClient as createServerClient } from "@/lib/supabase/server";
+import { createClient as createAnonClient } from "@supabase/supabase-js";
+import type { Database } from "@/types/database";
 
-export function generateStaticParams() {
-  return newsItems.map((news) => ({ slug: news.slug }));
+function getAnonClient() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
+  const key = (process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY)!;
+  return createAnonClient<Database>(url, key);
+}
+
+export const revalidate = 60;
+
+export async function generateStaticParams() {
+  const supabase = getAnonClient();
+  const { data } = await supabase.from("berita").select("slug");
+  if (data && data.length > 0) return data.map((n) => ({ slug: n.slug }));
+  return fallback.map((news) => ({ slug: news.slug }));
 }
 
 export async function generateMetadata({
@@ -21,7 +35,10 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const news = newsItems.find((n) => n.slug === slug);
+  const supabase = getAnonClient();
+  const { data } = await supabase.from("berita").select("title,excerpt").eq("slug", slug).single();
+  if (data) return { title: data.title, description: data.excerpt ?? undefined };
+  const news = fallback.find((n) => n.slug === slug);
   if (!news) return { title: "Berita Tidak Ditemukan" };
   return { title: news.title, description: news.excerpt };
 }
@@ -32,10 +49,13 @@ export default async function NewsDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const news = newsItems.find((n) => n.slug === slug);
+  const supabase = await createServerClient();
+  const { data: row } = await supabase.from("berita").select("*").eq("slug", slug).single();
+  const news: any = row ?? fallback.find((n) => n.slug === slug);
   if (!news) notFound();
 
-  const relatedNews = newsItems.filter((n) => n.id !== news.id).slice(0, 3);
+  const { data: relatedRows } = await supabase.from("berita").select("id,slug,title,published_at").neq("id", news.id).order("published_at", { ascending: false }).limit(3);
+  const relatedNews: any[] = relatedRows && relatedRows.length > 0 ? relatedRows : fallback.filter((n) => n.id !== news.id).slice(0, 3);
 
   return (
     <>
@@ -61,7 +81,7 @@ export default async function NewsDetailPage({
                 </Badge>
                 <span className="flex items-center gap-1">
                   <Calendar className="h-3.5 w-3.5" />
-                  {news.date}
+                  {news.published_at ? new Date(news.published_at).toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" }) : news.date}
                 </span>
                 {news.author && (
                   <span className="flex items-center gap-1">
@@ -75,11 +95,11 @@ export default async function NewsDetailPage({
                 {news.title}
               </h1>
 
-              {news.imageUrl && (
+              {(news.image_url || news.imageUrl) && (
                 <div className="relative mt-6 aspect-video overflow-hidden rounded-[24px] bg-white">
                   <Image
-                    src={news.imageUrl}
-                    alt={news.imageAlt}
+                    src={news.image_url ?? news.imageUrl}
+                    alt={news.image_alt ?? news.imageAlt ?? news.title}
                     width={1200}
                     height={675}
                     sizes="(max-width: 768px) 100vw, 768px"
@@ -102,14 +122,14 @@ export default async function NewsDetailPage({
                 </h2>
                 </Reveal>
                 <Stagger className="grid gap-4 sm:grid-cols-3">
-                  {relatedNews.map((item) => (
+                  {relatedNews.map((item: any) => (
                     <Link
                       key={item.id}
                       href={`/berita/${item.slug}`}
                     >
                       <Card className="rounded-[16px] border-slate-200 bg-white shadow-sm ring-0 transition-all hover:border-slate-300">
                         <CardContent className="p-4">
-                          <span className="text-xs text-slate-600">{item.date}</span>
+                          <span className="text-xs text-slate-600">{item.published_at ? new Date(item.published_at).toLocaleDateString("id-ID") : item.date}</span>
                           <h3 className="mt-1 font-display text-sm tracking-tight text-slate-900 line-clamp-2">
                             {item.title}
                           </h3>

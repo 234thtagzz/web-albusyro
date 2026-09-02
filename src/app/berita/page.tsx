@@ -1,26 +1,19 @@
-"use client";
-
-import { useState } from "react";
-import Link from "next/link";
-import Image from "next/image";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { Stagger } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
-import { EmptyState } from "@/components/ui/empty-state";
-import { CategoryFilter } from "@/components/ui/category-filter";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { newsItems, newsCategories, type NewsCategory } from "@/data/news";
-import { Newspaper } from "lucide-react";
+import { createClient } from "@/lib/supabase/server";
+import { newsItems as fallback } from "@/data/news";
+import { BeritaClient } from "@/components/berita/berita-client";
 
-export default function NewsPage() {
-  const [activeCategory, setActiveCategory] = useState<NewsCategory>("Semua");
+export const revalidate = 60;
 
-  const filteredNews =
-    activeCategory === "Semua"
-      ? newsItems
-      : newsItems.filter((n) => n.category === activeCategory);
+export default async function NewsPage() {
+  const supabase = await createClient();
+  const { data } = await supabase.from("berita").select("*").order("published_at", { ascending: false });
+  const rows = data && data.length > 0 ? data : fallback.map((r) => ({
+    id: r.id, slug: r.slug, title: r.title, excerpt: r.excerpt, content: r.content, category: r.category as any, author: r.author, image_url: r.imageUrl, image_alt: r.imageAlt, published_at: new Date().toISOString(), created_at: new Date().toISOString(), updated_at: new Date().toISOString()
+  } as any));
+  const isFallback = !data || data.length === 0;
 
   return (
     <>
@@ -38,60 +31,7 @@ export default function NewsPage() {
 
         <section className="section-spacing">
           <div className="container-custom">
-            <CategoryFilter
-              categories={newsCategories}
-              active={activeCategory}
-              onChange={(c) => setActiveCategory(c as NewsCategory)}
-            />
-
-            {filteredNews.length === 0 ? (
-              <EmptyState
-                icon={<Newspaper className="h-7 w-7 text-slate-600" />}
-                title="Belum ada berita yang tersedia."
-                description="Berita akan diperbarui oleh pihak STTD Al-Busyro."
-              />
-            ) : (
-              <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {filteredNews.map((news) => (
-                  <Link
-                    key={news.id}
-                    href={`/berita/${news.slug}`}
-                  >
-                    <Card className="group rounded-[24px] border-slate-200 bg-white shadow-sm ring-0 transition-all hover:border-slate-300">
-                      <div className="relative aspect-video overflow-hidden rounded-t-[24px] bg-slate-200">
-                        {news.imageUrl ? (
-                          <Image
-                            src={news.imageUrl}
-                            alt={news.imageAlt}
-                            fill
-                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                            className="object-cover transition-transform group-hover:scale-105"
-                          />
-                        ) : (
-                          <div className="flex h-full items-center justify-center">
-                            <Newspaper className="h-10 w-10 text-slate-300" />
-                          </div>
-                        )}
-                      </div>
-                      <CardContent>
-                        <div className="flex items-center gap-2 text-xs text-slate-600">
-                          <Badge variant="secondary" className="bg-primary/15 text-primary">
-                            {news.category}
-                          </Badge>
-                          <span>{news.date}</span>
-                        </div>
-                        <h3 className="mt-2 font-display text-lg tracking-tight text-slate-900 line-clamp-2">
-                          {news.title}
-                        </h3>
-                        <p className="mt-2 text-sm text-slate-600 line-clamp-2">
-                          {news.excerpt}
-                        </p>
-                      </CardContent>
-                    </Card>
-                  </Link>
-                ))}
-              </Stagger>
-            )}
+            <BeritaClient items={rows as any} fallback={isFallback} />
           </div>
         </section>
         </main>

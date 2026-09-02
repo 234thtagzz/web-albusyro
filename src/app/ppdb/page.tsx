@@ -8,8 +8,22 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { school } from "@/data/school";
 import { ArrowRight, Phone } from "lucide-react";
+import { createClient } from "@/lib/supabase/server";
 
-export default function AdmissionPage() {
+export const revalidate = 60;
+
+export default async function AdmissionPage() {
+  const supabase = await createClient();
+  const { data } = await supabase.from("ppdb_info").select("*").eq("is_active", true).order("created_at", { ascending: false }).limit(1).maybeSingle();
+  const info = data ?? null;
+  const faq: any[] = Array.isArray(info?.faq) ? info.faq : [];
+  const cards = [
+    { title: "Jadwal Pendaftaran", desc: info?.jadwal ?? "Informasi PPDB akan diperbarui oleh pihak STTD Al-Busyro." },
+    { title: "Persyaratan", desc: info?.persyaratan ?? "Informasi persyaratan akan diperbarui oleh pihak STTD Al-Busyro." },
+    { title: "Biaya", desc: info?.biaya ?? "Informasi biaya akan diperbarui oleh pihak STTD Al-Busyro." },
+    { title: info ? `Tahun Ajaran ${info.tahun_ajaran}` : "FAQ", desc: faq.length > 0 ? faq.map((f: any) => `${f.q}: ${f.a}`).join(" | ") : "Pertanyaan umum akan segera tersedia." },
+  ];
+
   return (
     <>
       <Navbar />
@@ -19,20 +33,16 @@ export default function AdmissionPage() {
             <SectionHeading
               badge="PPDB"
               title="Penerimaan Peserta Didik Baru"
-              description="Informasi pendaftaran santri baru STTD Al-Busyro."
+              description={info ? `Tahun Ajaran ${info.tahun_ajaran} • Informasi pendaftaran santri baru STTD Al-Busyro.` : "Informasi pendaftaran santri baru STTD Al-Busyro."}
             />
+            {info && <p className="mt-3 text-xs text-stone-500">Kontak: {info.kontak ?? school.phone} • Kelola via /admin/ppdb</p>}
           </div>
         </section>
 
         <section className="section-spacing">
           <div className="container-custom">
             <Stagger className="mx-auto max-w-3xl space-y-4">
-              {[
-                { title: "Jadwal Pendaftaran", desc: "Informasi PPDB akan diperbarui oleh pihak STTD Al-Busyro." },
-                { title: "Persyaratan", desc: "Informasi persyaratan akan diperbarui oleh pihak STTD Al-Busyro." },
-                { title: "Biaya", desc: "Informasi biaya akan diperbarui oleh pihak STTD Al-Busyro." },
-                { title: "FAQ", desc: "Pertanyaan umum akan segera tersedia." },
-              ].map((item) => (
+              {cards.map((item) => (
                 <Card
                   key={item.title}
                   className="rounded-[24px] border-slate-200 bg-white shadow-sm ring-0"
@@ -41,7 +51,7 @@ export default function AdmissionPage() {
                     <h2 className="font-display text-lg tracking-tight text-slate-900">
                       {item.title}
                     </h2>
-                    <p className="mt-2 text-sm text-slate-600">{item.desc}</p>
+                    <p className="mt-2 text-sm text-slate-600 whitespace-pre-wrap">{item.desc}</p>
                   </CardContent>
                 </Card>
               ))}

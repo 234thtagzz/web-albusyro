@@ -56,14 +56,14 @@ export function Footer() {
             </ul>
           </nav>
 
-          {/* Program */}
-          <nav className="lg:col-span-2" aria-label="Program footer">
+          {/* Kegiatan — menggantikan Program */}
+          <nav className="lg:col-span-2" aria-label="Kegiatan footer">
             <h3 className="text-xs font-semibold uppercase tracking-[0.18em] text-primary-4">
-              Program
+              Kegiatan
             </h3>
             <ul className="mt-5 space-y-2.5">
-              {footerNavigation.programs.map((item) => (
-                <li key={item.href} className="group">
+              {(footerNavigation.kegiatan ?? footerNavigation.programs).map((item) => (
+                <li key={item.label} className="group">
                   <Link
                     href={item.href}
                     className="inline-flex items-center gap-1.5 text-[15px] transition-colors hover:text-white"

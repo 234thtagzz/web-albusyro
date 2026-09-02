@@ -187,7 +187,7 @@ export function AktivitasSection() {
                   <div className="mt-4 hidden items-center gap-2 lg:flex">
                     <span className="flex h-2 w-2 rounded-full bg-primary-1 animate-pulse" />
                     <span className="text-[11px] font-semibold tracking-wide text-stone-400">
-                      04:00 — 21:00 WIB · Full Day
+                      07:25 — 15:00 WIB · Full Day
                     </span>
                   </div>
                   <Separator className="mt-5 hidden lg:block bg-stone-100" />
@@ -211,61 +211,61 @@ export function AktivitasSection() {
                     <div className="space-y-3">
                       {[
                         {
-                          time: "07.25–07.45",
+                          time: "07.25 – 07.45",
                           title: "Halaqoh Tahfidz — Pertama",
                           desc: "Ziyadah & murojaah pagi bersama musyrif halaqah.",
                           icon: BookOpen,
                         },
                         {
-                          time: "07.45–08.40",
+                          time: "07.45 – 08.40",
                           title: "Halaqoh Tahfidz — Kedua",
                           desc: "Lanjutan setoran hafalan dengan Metode Al-Qosimi.",
                           icon: BookOpen,
                         },
                         {
-                          time: "08.40–09.30",
+                          time: "08.40 – 09.30",
                           title: "Pembelajaran Diniyyah I",
                           desc: "Pelajaran umum + diniyah terpadu — sesi pertama.",
                           icon: BookText,
                         },
                         {
-                          time: "09.30–09.45",
+                          time: "09.30 – 09.45",
                           title: "Istirahat",
                           desc: "Jeda sejenak — snack & persiapan kelas berikutnya.",
                           icon: Sparkles,
                         },
                         {
-                          time: "09.45–10.45",
+                          time: "09.45 – 10.45",
                           title: "Halaqoh Tahfidz — Ketiga",
                           desc: "Murojaah mutqin dan penguatan hafalan.",
                           icon: BookOpen,
                         },
                         {
-                          time: "10.45–12.00",
+                          time: "10.45 – 12.00",
                           title: "Pembelajaran Diniyyah II",
                           desc: "Pelajaran umum + diniyah terpadu — sesi kedua.",
                           icon: BookText,
                         },
                         {
-                          time: "12.00–12.35",
+                          time: "12.00 – 12.35",
                           title: "Dzuhur + Makan Siang",
                           desc: "Shalat berjamaah dan makan siang bersama.",
                           icon: HeartHandshake,
                         },
                         {
-                          time: "12.35–13.35",
+                          time: "12.35 – 13.35",
                           title: "Halaqoh Tahfidz — Keempat",
                           desc: "Halaqah siang — setoran & tasmi’ berkala.",
                           icon: BookOpen,
                         },
                         {
-                          time: "13.35–14.35",
+                          time: "13.35 – 14.35",
                           title: "Tidur Siang",
                           desc: "Qailulah — istirahat untuk menjaga stamina.",
                           icon: Sparkles,
                         },
                         {
-                          time: "14.35–15.00",
+                          time: "14.35 – 15.00",
                           title: "Ashar + Persiapan Pulang",
                           desc: "Shalat Ashar berjamaah dan persiapan pulang.",
                           icon: HeartHandshake,
@@ -306,7 +306,11 @@ export function AktivitasSection() {
                     </div>
                     <p className="mt-4 flex items-center gap-2 text-[11px] font-medium text-stone-400">
                       <span className="h-1.5 w-1.5 rounded-full bg-stone-300" />
-                      Jadwal dapat menyesuaikan kegiatan asrama & hari Jumat — merujuk pengasuh halaqah.
+                      Setiap Hari senin ada Apel Pagi dan Halaqoh Tahsin.
+                    </p>
+                    <p className="mt-4 flex items-center gap-2 text-[11px] font-medium text-stone-400">
+                      <span className="h-1.5 w-1.5 rounded-full bg-stone-300" />
+                      Khusus Hari Sabtu Pengembangan Softskill dan Pulang Jam 12:00.
                     </p>
                   </div>
                 </div>

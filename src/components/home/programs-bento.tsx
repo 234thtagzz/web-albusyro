@@ -167,11 +167,11 @@ function RevealLink() {
     <div className="lg:col-span-5 lg:justify-self-end">
       <Button
         nativeButton={false}
-        render={<Link href="/pendidikan" />}
+        render={<Link href="/kegiatan" />}
         variant="ghost"
         className="group inline-flex items-center gap-2 rounded-full text-[14px] font-semibold text-primary-1 hover:bg-primary-1/10"
       >
-        Lihat rincian pendidikan
+        Lihat semua kegiatan
         <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
       </Button>
     </div>
