@@ -2,6 +2,9 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import type { Database } from "@/types/database";
+
+type GaleriCategory = Database["public"]["Tables"]["galeri"]["Row"]["category"];
 
 async function uploadIfNeeded(file: File | null, bucket: string) {
   if (!file || file.size === 0) return null;
@@ -26,14 +29,14 @@ export async function createGaleri(formData: FormData) {
   try {
     const uploaded = await uploadIfNeeded(file, "galeri");
     if (uploaded) image_url = uploaded;
-  } catch (e: any) {
-    return { error: e.message };
+  } catch (e: unknown) {
+    return { error: e instanceof Error ? e.message : "Upload gagal" };
   }
   if (!image_url) return { error: "Image wajib (upload file atau isi URL)" };
 
   const supabase = await createClient();
   const { error } = await supabase.from("galeri").insert({
-    title, category: category as any, description, image_url, alt,
+    title, category: category as GaleriCategory, description, image_url, alt,
   });
   if (error) return { error: error.message };
   revalidatePath("/galeri");
@@ -54,14 +57,14 @@ export async function updateGaleri(id: string, formData: FormData) {
   try {
     const uploaded = await uploadIfNeeded(file, "galeri");
     if (uploaded) image_url = uploaded;
-  } catch (e: any) {
-    return { error: e.message };
+  } catch (e: unknown) {
+    return { error: e instanceof Error ? e.message : "Upload gagal" };
   }
   if (!image_url) return { error: "Image wajib" };
 
   const supabase = await createClient();
   const { error } = await supabase.from("galeri").update({
-    title, category: category as any, description, image_url, alt,
+    title, category: category as GaleriCategory, description, image_url, alt,
   }).eq("id", id);
   if (error) return { error: error.message };
   revalidatePath("/galeri");

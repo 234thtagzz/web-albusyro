@@ -2,6 +2,9 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import type { Database } from "@/types/database";
+
+type BeritaCategory = Database["public"]["Tables"]["berita"]["Row"]["category"];
 
 function slugify(s: string) {
   return s.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
@@ -23,7 +26,7 @@ export async function createBerita(formData: FormData) {
 
   const supabase = await createClient();
   const { error } = await supabase.from("berita").insert({
-    slug, title, excerpt, content, category: category as any, author, image_url, image_alt,
+    slug, title, excerpt, content, category: category as BeritaCategory, author, image_url, image_alt,
   });
   if (error) return { error: error.message };
   revalidatePath("/berita");
@@ -46,7 +49,7 @@ export async function updateBerita(id: string, formData: FormData) {
 
   const supabase = await createClient();
   const { error } = await supabase.from("berita").update({
-    slug, title, excerpt, content, category: category as any, author, image_url, image_alt,
+    slug, title, excerpt, content, category: category as BeritaCategory, author, image_url, image_alt,
   }).eq("id", id);
   if (error) return { error: error.message };
   revalidatePath("/berita");

@@ -5,13 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { school } from "@/data/school";
 import { galleryItems } from "@/data/gallery";
 import { AktivitasSection } from "@/components/components/jadwal"
 import { Badge } from "@/components/ui/badge";
 import { Target, ArrowDown } from "lucide-react"
 
-const UNIFIED_ICON = "bg-primary-1 text-white";
 const UNIFIED_BADGE = "border-primary-1/15 bg-primary-1/10 text-primary-1 hover:bg-primary-1/15";
 
 

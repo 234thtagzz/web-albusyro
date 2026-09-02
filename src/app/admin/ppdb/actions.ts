@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import type { Json } from "@/types/database";
 
 export async function createPpdb(formData: FormData) {
   const tahun_ajaran = String(formData.get("tahun_ajaran") ?? "").trim();
@@ -10,10 +11,10 @@ export async function createPpdb(formData: FormData) {
   const biaya = String(formData.get("biaya") ?? "").trim() || null;
   const kontak = String(formData.get("kontak") ?? "").trim() || null;
   const is_active = formData.get("is_active") === "on";
-  let faq: any = [];
+  let faq: Json = [];
   try {
     const raw = String(formData.get("faq") ?? "[]").trim();
-    faq = raw ? JSON.parse(raw) : [];
+    faq = raw ? (JSON.parse(raw) as Json) : [];
   } catch { return { error: "FAQ harus JSON valid, contoh: [{\"q\":\"Apa syarat?\",\"a\":\"...\"}]" }; }
 
   if (!tahun_ajaran) return { error: "Tahun ajaran wajib" };
@@ -39,10 +40,10 @@ export async function updatePpdb(id: string, formData: FormData) {
   const biaya = String(formData.get("biaya") ?? "").trim() || null;
   const kontak = String(formData.get("kontak") ?? "").trim() || null;
   const is_active = formData.get("is_active") === "on";
-  let faq: any = [];
+  let faq: Json = [];
   try {
     const raw = String(formData.get("faq") ?? "[]").trim();
-    faq = raw ? JSON.parse(raw) : [];
+    faq = raw ? (JSON.parse(raw) as Json) : [];
   } catch { return { error: "FAQ harus JSON valid" }; }
 
   if (!tahun_ajaran) return { error: "Tahun ajaran wajib" };

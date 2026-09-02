@@ -3,7 +3,6 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import Image from "next/image";
 import { Plus, Pencil, Trash2 } from "lucide-react";
 import { deleteGaleri } from "./actions";
 

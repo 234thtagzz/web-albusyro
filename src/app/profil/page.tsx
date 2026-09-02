@@ -25,7 +25,6 @@ import {
 const UNIFIED_ICON = "bg-primary-1 text-white";
 const UNIFIED_BADGE =
   "border-primary-1/15 bg-primary-1/10 text-primary-1 hover:bg-primary-1/15";
-const UNIFIED_DOT = "bg-primary-1";
 
 /* ────────────────────────────────────────────────
    Shared decorative blobs — reusable bercak hiasan

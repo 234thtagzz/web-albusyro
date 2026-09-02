@@ -51,11 +51,13 @@ export default async function NewsDetailPage({
   const { slug } = await params;
   const supabase = await createServerClient();
   const { data: row } = await supabase.from("berita").select("*").eq("slug", slug).single();
-  const news: any = row ?? fallback.find((n) => n.slug === slug);
+  type FallbackNews = (typeof fallback)[number];
+  type NewsRow = Database["public"]["Tables"]["berita"]["Row"];
+  const news = (row ?? fallback.find((n) => n.slug === slug)) as (NewsRow | FallbackNews | null | undefined) & { id: string; slug: string; title: string; category: string; content: string; published_at?: string | null; date?: string; author?: string | null; image_url?: string | null; imageUrl?: string; image_alt?: string | null; imageAlt?: string; excerpt?: string | null };
   if (!news) notFound();
 
   const { data: relatedRows } = await supabase.from("berita").select("id,slug,title,published_at").neq("id", news.id).order("published_at", { ascending: false }).limit(3);
-  const relatedNews: any[] = relatedRows && relatedRows.length > 0 ? relatedRows : fallback.filter((n) => n.id !== news.id).slice(0, 3);
+  const relatedNews = (relatedRows && relatedRows.length > 0 ? relatedRows : fallback.filter((n) => n.id !== news.id).slice(0, 3)) as Array<{ id: string; slug: string; title: string; published_at?: string | null; date?: string }>
 
   return (
     <>
@@ -95,18 +97,22 @@ export default async function NewsDetailPage({
                 {news.title}
               </h1>
 
-              {(news.image_url || news.imageUrl) && (
-                <div className="relative mt-6 aspect-video overflow-hidden rounded-[24px] bg-white">
-                  <Image
-                    src={news.image_url ?? news.imageUrl}
-                    alt={news.image_alt ?? news.imageAlt ?? news.title}
-                    width={1200}
-                    height={675}
-                    sizes="(max-width: 768px) 100vw, 768px"
-                    className="h-auto w-full object-cover"
-                  />
-                </div>
-              )}
+              {(() => {
+                const imgSrc = (news.image_url ?? news.imageUrl) as string | undefined;
+                const imgAlt = (news.image_alt ?? news.imageAlt ?? news.title) as string;
+                return imgSrc ? (
+                  <div className="relative mt-6 aspect-video overflow-hidden rounded-[24px] bg-white">
+                    <Image
+                      src={imgSrc}
+                      alt={imgAlt}
+                      width={1200}
+                      height={675}
+                      sizes="(max-width: 768px) 100vw, 768px"
+                      className="h-auto w-full object-cover"
+                    />
+                  </div>
+                ) : null;
+              })()}
 
               <div className="mt-8 text-[15px] leading-relaxed text-slate-600">
                 <p>{news.content}</p>
@@ -122,7 +128,7 @@ export default async function NewsDetailPage({
                 </h2>
                 </Reveal>
                 <Stagger className="grid gap-4 sm:grid-cols-3">
-                  {relatedNews.map((item: any) => (
+                  {relatedNews.map((item) => (
                     <Link
                       key={item.id}
                       href={`/berita/${item.slug}`}

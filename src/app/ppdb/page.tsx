@@ -16,12 +16,13 @@ export default async function AdmissionPage() {
   const supabase = await createClient();
   const { data } = await supabase.from("ppdb_info").select("*").eq("is_active", true).order("created_at", { ascending: false }).limit(1).maybeSingle();
   const info = data ?? null;
-  const faq: any[] = Array.isArray(info?.faq) ? info.faq : [];
+  type FaqItem = { q: string; a: string };
+  const faq: FaqItem[] = Array.isArray(info?.faq) ? (info.faq as FaqItem[]) : [];
   const cards = [
     { title: "Jadwal Pendaftaran", desc: info?.jadwal ?? "Informasi PPDB akan diperbarui oleh pihak STTD Al-Busyro." },
     { title: "Persyaratan", desc: info?.persyaratan ?? "Informasi persyaratan akan diperbarui oleh pihak STTD Al-Busyro." },
     { title: "Biaya", desc: info?.biaya ?? "Informasi biaya akan diperbarui oleh pihak STTD Al-Busyro." },
-    { title: info ? `Tahun Ajaran ${info.tahun_ajaran}` : "FAQ", desc: faq.length > 0 ? faq.map((f: any) => `${f.q}: ${f.a}`).join(" | ") : "Pertanyaan umum akan segera tersedia." },
+    { title: info ? `Tahun Ajaran ${info.tahun_ajaran}` : "FAQ", desc: faq.length > 0 ? faq.map((f) => `${f.q}: ${f.a}`).join(" | ") : "Pertanyaan umum akan segera tersedia." },
   ];
 
   return (

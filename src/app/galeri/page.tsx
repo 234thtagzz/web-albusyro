@@ -4,19 +4,18 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { createClient } from "@/lib/supabase/server";
 import { galleryItems as fallback } from "@/data/gallery";
 import { GaleriClient } from "@/components/galeri/galeri-client";
+import type { Database } from "@/types/database";
+
+type GaleriRow = Database["public"]["Tables"]["galeri"]["Row"];
 
 export const revalidate = 60;
 
 export default async function GalleryPage() {
   const supabase = await createClient();
   const { data } = await supabase.from("galeri").select("*").order("created_at", { ascending: false });
-  const mapped = data && data.length > 0
-    ? data.map((r) => ({ ...r, imageUrl: r.image_url, alt: r.alt ?? r.title } as any))
-    : fallback.map((r) => ({ ...r, image_url: r.imageUrl, alt: r.alt } as any));
-  // GaleriClient expects Row[] shape; we pass raw rows
-  const rows = data && data.length > 0 ? data : fallback.map((r) => ({
-    id: r.id, title: r.title, category: r.category as any, description: r.description, image_url: (r as any).imageUrl ?? (r as any).image_url, alt: r.alt, created_at: new Date().toISOString(), updated_at: new Date().toISOString()
-  } as any));
+  const rows: GaleriRow[] = data && data.length > 0 ? data : fallback.map((r) => ({
+    id: r.id, title: r.title, category: r.category as GaleriRow["category"], description: r.description, image_url: (r as unknown as { imageUrl: string }).imageUrl ?? (r as unknown as { image_url: string }).image_url, alt: r.alt, created_at: new Date().toISOString(), updated_at: new Date().toISOString()
+  }));
   const isFallback = !data || data.length === 0;
 
   return (
@@ -35,7 +34,7 @@ export default async function GalleryPage() {
 
         <section className="section-spacing">
           <div className="container-custom">
-            <GaleriClient items={rows as any} fallback={isFallback} />
+            <GaleriClient items={rows} fallback={isFallback} />
           </div>
         </section>
         </main>

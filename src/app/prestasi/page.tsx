@@ -43,7 +43,7 @@ export default async function AchievementsPage() {
               />
             ) : (
               <Stagger className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {achievements.map((achievement: any) => (
+                {achievements.map((achievement) => (
                   <Card
                     key={achievement.id}
                     className="rounded-[24px] border-slate-200 bg-white shadow-sm ring-0 transition-all hover:border-slate-300"

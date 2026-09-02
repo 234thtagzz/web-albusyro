@@ -4,15 +4,18 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { createClient } from "@/lib/supabase/server";
 import { newsItems as fallback } from "@/data/news";
 import { BeritaClient } from "@/components/berita/berita-client";
+import type { Database } from "@/types/database";
+
+type BeritaRow = Database["public"]["Tables"]["berita"]["Row"];
 
 export const revalidate = 60;
 
 export default async function NewsPage() {
   const supabase = await createClient();
   const { data } = await supabase.from("berita").select("*").order("published_at", { ascending: false });
-  const rows = data && data.length > 0 ? data : fallback.map((r) => ({
-    id: r.id, slug: r.slug, title: r.title, excerpt: r.excerpt, content: r.content, category: r.category as any, author: r.author, image_url: r.imageUrl, image_alt: r.imageAlt, published_at: new Date().toISOString(), created_at: new Date().toISOString(), updated_at: new Date().toISOString()
-  } as any));
+  const rows: BeritaRow[] = data && data.length > 0 ? data : fallback.map((r) => ({
+    id: r.id, slug: r.slug, title: r.title, excerpt: r.excerpt, content: r.content, category: r.category as BeritaRow["category"], author: r.author, image_url: r.imageUrl, image_alt: r.imageAlt, published_at: new Date().toISOString(), created_at: new Date().toISOString(), updated_at: new Date().toISOString()
+  }));
   const isFallback = !data || data.length === 0;
 
   return (
@@ -31,7 +34,7 @@ export default async function NewsPage() {
 
         <section className="section-spacing">
           <div className="container-custom">
-            <BeritaClient items={rows as any} fallback={isFallback} />
+            <BeritaClient items={rows} fallback={isFallback} />
           </div>
         </section>
         </main>

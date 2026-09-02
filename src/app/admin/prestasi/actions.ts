@@ -2,6 +2,10 @@
 
 import { revalidatePath } from "next/cache";
 import { createClient } from "@/lib/supabase/server";
+import type { Database } from "@/types/database";
+
+type PrestasiCategory = Database["public"]["Tables"]["prestasi"]["Row"]["category"];
+type PrestasiLevel = Database["public"]["Tables"]["prestasi"]["Row"]["level"];
 
 export async function createPrestasi(formData: FormData) {
   const title = String(formData.get("title") ?? "").trim();
@@ -16,7 +20,7 @@ export async function createPrestasi(formData: FormData) {
 
   const supabase = await createClient();
   const { error } = await supabase.from("prestasi").insert({
-    title, competition, category: category as any, year, level: level as any, participant, image_url,
+    title, competition, category: category as PrestasiCategory, year, level: level as PrestasiLevel, participant, image_url,
   });
   if (error) return { error: error.message };
   revalidatePath("/prestasi");
@@ -37,7 +41,7 @@ export async function updatePrestasi(id: string, formData: FormData) {
 
   const supabase = await createClient();
   const { error } = await supabase.from("prestasi").update({
-    title, competition, category: category as any, year, level: level as any, participant, image_url,
+    title, competition, category: category as PrestasiCategory, year, level: level as PrestasiLevel, participant, image_url,
   }).eq("id", id);
   if (error) return { error: error.message };
   revalidatePath("/prestasi");

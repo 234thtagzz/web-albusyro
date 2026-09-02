@@ -1,10 +1,8 @@
 import { createClient } from "@/lib/supabase/server";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Trash2 } from "lucide-react";
 import { deletePendaftar, updateStatus } from "./actions";
-import { Select } from "@/components/ui/select";
 
 export default async function PendaftarPage() {
   const supabase = await createClient();

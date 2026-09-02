@@ -82,7 +82,7 @@ export function Identity() {
             </Reveal>
 
             <div className="space-y-3">
-              {pillars.map((p, i) => (
+              {pillars.map((p) => (
                 <Card key={p.no} className="group rounded-2xl border-stone-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md hover:border-primary-1/20">
                   <CardContent className="flex gap-4 p-5">
                     <span className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-white shadow-sm ${UNIFIED_ICON}`}>
