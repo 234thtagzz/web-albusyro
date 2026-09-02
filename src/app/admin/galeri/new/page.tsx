@@ -8,8 +8,11 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { createGaleri } from "../actions";
 import { redirect } from "next/navigation";
+import { ImageField } from "@/components/admin/image-field";
 
-export default function NewGaleriPage() {
+export default async function NewGaleriPage({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
+  const { error } = await searchParams;
+
   async function action(formData: FormData) {
     "use server";
     const res = await createGaleri(formData);
@@ -23,6 +26,7 @@ export default function NewGaleriPage() {
         <ArrowLeft className="h-4 w-4" /> Kembali
       </Button>
       <h1 className="font-display text-2xl font-bold text-stone-900">Tambah Galeri</h1>
+      {error && <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{decodeURIComponent(error)}</div>}
       <Card className="rounded-2xl border-stone-200 bg-white">
         <CardContent className="p-6">
           <form action={action} className="space-y-4" encType="multipart/form-data">
@@ -42,16 +46,11 @@ export default function NewGaleriPage() {
                 </Select>
               </div>
               <div className="space-y-1.5">
-                <Label htmlFor="image_url">Image URL (atau upload file)</Label>
-                <Input id="image_url" name="image_url" placeholder="/images/dummy/... atau https://..." />
-              </div>
-              <div className="sm:col-span-2 space-y-1.5">
-                <Label htmlFor="file">Upload file (opsional, akan upload ke bucket galeri)</Label>
-                <Input id="file" name="file" type="file" accept="image/*" />
-              </div>
-              <div className="sm:col-span-2 space-y-1.5">
                 <Label htmlFor="alt">Alt text</Label>
                 <Input id="alt" name="alt" placeholder="Santri mengikuti halaqah" />
+              </div>
+              <div className="sm:col-span-2">
+                <ImageField labelUrl="Gambar Galeri *" labelFile="Upload gambar galeri" required />
               </div>
               <div className="sm:col-span-2 space-y-1.5">
                 <Label htmlFor="description">Deskripsi</Label>

@@ -46,12 +46,20 @@ export function GaleriClient({ items, fallback = false }: { items: Row[]; fallba
               key={item.id}
               onClick={() => open(index)}
               aria-label={`Lihat gambar: ${item.title}`}
-              className="group relative aspect-square overflow-hidden rounded-[16px] bg-white"
+              className="group relative aspect-square overflow-hidden rounded-[16px] border border-stone-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-primary-1/15 hover:shadow-md"
             >
-              <Image src={item.image_url} alt={item.alt ?? item.title} fill sizes="(max-width: 640px) 50vw, 33vw" className="object-cover transition-transform group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+              <Image
+                src={item.image_url}
+                alt={item.alt ?? item.title}
+                fill
+                sizes="(max-width: 640px) 50vw, 33vw"
+                className="object-cover transition-transform group-hover:scale-105"
+                unoptimized={item.image_url.includes("supabase.co")}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-1/60 via-primary-1/10 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
               <div className="absolute bottom-0 left-0 right-0 p-3 opacity-0 transition-opacity group-hover:opacity-100">
-                <p className="text-sm font-medium text-white">{item.title}</p>
+                <p className="text-sm font-bold text-white drop-shadow">{item.title}</p>
+                <p className="text-xs font-medium text-white/80">{item.category}</p>
               </div>
             </button>
           ))}

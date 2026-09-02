@@ -8,8 +8,11 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { createBerita } from "../actions";
 import { redirect } from "next/navigation";
+import { ImageField } from "@/components/admin/image-field";
 
-export default function NewBeritaPage() {
+export default async function NewBeritaPage({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
+  const { error } = await searchParams;
+
   async function action(formData: FormData) {
     "use server";
     const res = await createBerita(formData);
@@ -25,9 +28,10 @@ export default function NewBeritaPage() {
         <ArrowLeft className="h-4 w-4" /> Kembali
       </Button>
       <h1 className="font-display text-2xl font-bold text-stone-900">Tambah Berita</h1>
+      {error && <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{decodeURIComponent(error)}</div>}
       <Card className="rounded-2xl border-stone-200 bg-white">
         <CardContent className="p-6">
-          <form action={action} className="space-y-4">
+          <form action={action} className="space-y-4" encType="multipart/form-data">
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="sm:col-span-2 space-y-1.5">
                 <Label htmlFor="title">Judul *</Label>
@@ -50,12 +54,11 @@ export default function NewBeritaPage() {
                 <Label htmlFor="author">Author</Label>
                 <Input id="author" name="author" placeholder="Panitia PPDB" />
               </div>
-              <div className="space-y-1.5">
-                <Label htmlFor="image_url">Image URL</Label>
-                <Input id="image_url" name="image_url" placeholder="/images/dummy/news-1.png atau https://..." />
+              <div className="sm:col-span-2">
+                <ImageField labelUrl="Gambar Berita" labelFile="Upload gambar berita" />
               </div>
               <div className="sm:col-span-2 space-y-1.5">
-                <Label htmlFor="image_alt">Image Alt</Label>
+                <Label htmlFor="image_alt">Image Alt (deskripsi gambar untuk aksesibilitas)</Label>
                 <Input id="image_alt" name="image_alt" placeholder="Suasana gedung STTD Al-Busyro" />
               </div>
               <div className="sm:col-span-2 space-y-1.5">

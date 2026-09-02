@@ -1,19 +1,38 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { createClient } from "@/lib/supabase/server";
+import { createClient, createServiceClient } from "@/lib/supabase/server";
 import type { Database } from "@/types/database";
 
 type GaleriCategory = Database["public"]["Tables"]["galeri"]["Row"]["category"];
 
+async function getStorageClient() {
+  try {
+    return { client: createServiceClient(), isService: true };
+  } catch {
+    return { client: await createClient(), isService: false };
+  }
+}
+
 async function uploadIfNeeded(file: File | null, bucket: string) {
-  if (!file || file.size === 0) return null;
-  const supabase = await createClient();
-  const ext = file.name.split(".").pop() ?? "jpg";
-  const name = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
-  const { error } = await supabase.storage.from(bucket).upload(name, file, { contentType: file.type });
-  if (error) throw new Error(error.message);
-  const { data } = supabase.storage.from(bucket).getPublicUrl(name);
+  if (!(file instanceof File) || file.size === 0) return null;
+  if (file.size > 5 * 1024 * 1024) throw new Error("Ukuran file maksimal 5MB");
+  if (!file.type.startsWith("image/")) throw new Error("File harus berupa gambar");
+  const ext = file.name.split(".").pop()?.toLowerCase() ?? "jpg";
+  const safeExt = ext.replace(/[^a-z0-9]/g, "") || "jpg";
+  const name = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${safeExt}`;
+  const buffer = await file.arrayBuffer();
+  const { client, isService } = await getStorageClient();
+  const { error } = await client.storage.from(bucket).upload(name, buffer, {
+    contentType: file.type || "image/jpeg",
+    cacheControl: "3600",
+    upsert: false,
+  });
+  if (error) {
+    const hint = isService ? "" : " (anon). Jika RLS menolak, isi SUPABASE_SERVICE_ROLE_KEY di .env.local.";
+    throw new Error(`${error.message}${hint} — Pastikan bucket '${bucket}' ada (jalankan supabase.sql).`);
+  }
+  const { data } = client.storage.from(bucket).getPublicUrl(name);
   return data.publicUrl;
 }
 
@@ -39,9 +58,10 @@ export async function createGaleri(formData: FormData) {
     title, category: category as GaleriCategory, description, image_url, alt,
   });
   if (error) return { error: error.message };
-  revalidatePath("/galeri");
-  revalidatePath("/kegiatan");
-  revalidatePath("/admin/galeri");
+  revalidatePath("/galeri", "page");
+  revalidatePath("/kegiatan", "page");
+  revalidatePath("/admin/galeri", "page");
+  revalidatePath("/", "layout");
   return { ok: true };
 }
 
@@ -67,9 +87,10 @@ export async function updateGaleri(id: string, formData: FormData) {
     title, category: category as GaleriCategory, description, image_url, alt,
   }).eq("id", id);
   if (error) return { error: error.message };
-  revalidatePath("/galeri");
-  revalidatePath("/kegiatan");
-  revalidatePath("/admin/galeri");
+  revalidatePath("/galeri", "page");
+  revalidatePath("/kegiatan", "page");
+  revalidatePath("/admin/galeri", "page");
+  revalidatePath("/", "layout");
   return { ok: true };
 }
 
@@ -77,8 +98,9 @@ export async function deleteGaleri(id: string) {
   const supabase = await createClient();
   const { error } = await supabase.from("galeri").delete().eq("id", id);
   if (error) return { error: error.message };
-  revalidatePath("/galeri");
-  revalidatePath("/kegiatan");
-  revalidatePath("/admin/galeri");
+  revalidatePath("/galeri", "page");
+  revalidatePath("/kegiatan", "page");
+  revalidatePath("/admin/galeri", "page");
+  revalidatePath("/", "layout");
   return { ok: true };
 }

@@ -28,6 +28,7 @@ export default async function AdminPrestasiPage() {
             <table className="w-full text-sm">
               <thead className="bg-stone-50 text-left text-xs uppercase tracking-wider text-stone-500">
                 <tr>
+                  <th className="px-4 py-3">Gambar</th>
                   <th className="px-4 py-3">Prestasi</th>
                   <th className="px-4 py-3">Kategori</th>
                   <th className="px-4 py-3">Tahun</th>
@@ -39,6 +40,14 @@ export default async function AdminPrestasiPage() {
                 {data?.map((row) => (
                   <tr key={row.id} className="hover:bg-stone-50/50">
                     <td className="px-4 py-3">
+                      {row.image_url ? (
+                        // eslint-disable-next-line @next/next/no-img-element
+                        <img src={row.image_url} alt={row.title} className="h-12 w-16 rounded-lg object-cover border border-stone-200" />
+                      ) : (
+                        <div className="flex h-12 w-16 items-center justify-center rounded-lg border border-dashed border-stone-200 bg-stone-50 text-xs text-stone-400">No img</div>
+                      )}
+                    </td>
+                    <td className="px-4 py-3 max-w-[260px]">
                       <p className="font-medium text-stone-900 line-clamp-1">{row.title}</p>
                       <p className="text-xs text-stone-400 line-clamp-1">{row.competition} • {row.participant}</p>
                     </td>
@@ -59,7 +68,7 @@ export default async function AdminPrestasiPage() {
                     </td>
                   </tr>
                 ))}
-                {data?.length === 0 && <tr><td colSpan={5} className="px-4 py-12 text-center text-stone-400">Belum ada prestasi</td></tr>}
+                {data?.length === 0 && <tr><td colSpan={6} className="px-4 py-12 text-center text-stone-400">Belum ada prestasi</td></tr>}
               </tbody>
             </table>
           </div>

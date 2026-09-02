@@ -9,9 +9,17 @@ import { Select } from "@/components/ui/select";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { updateGaleri } from "../../actions";
+import { ImageField } from "@/components/admin/image-field";
 
-export default async function EditGaleriPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function EditGaleriPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ error?: string }>;
+}) {
   const { id } = await params;
+  const { error: errParam } = await searchParams;
   const supabase = await createClient();
   const { data } = await supabase.from("galeri").select("*").eq("id", id).single();
   if (!data) notFound();
@@ -29,6 +37,7 @@ export default async function EditGaleriPage({ params }: { params: Promise<{ id:
         <ArrowLeft className="h-4 w-4" /> Kembali
       </Button>
       <h1 className="font-display text-2xl font-bold text-stone-900">Edit Galeri</h1>
+      {errParam && <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{decodeURIComponent(errParam)}</div>}
       <Card className="rounded-2xl border-stone-200 bg-white">
         <CardContent className="p-6">
           <form action={action} className="space-y-4" encType="multipart/form-data">
@@ -48,16 +57,11 @@ export default async function EditGaleriPage({ params }: { params: Promise<{ id:
                 </Select>
               </div>
               <div className="space-y-1.5">
-                <Label htmlFor="image_url">Image URL</Label>
-                <Input id="image_url" name="image_url" defaultValue={data.image_url ?? ""} />
-              </div>
-              <div className="sm:col-span-2 space-y-1.5">
-                <Label htmlFor="file">Ganti file (opsional)</Label>
-                <Input id="file" name="file" type="file" accept="image/*" />
-              </div>
-              <div className="sm:col-span-2 space-y-1.5">
                 <Label htmlFor="alt">Alt text</Label>
                 <Input id="alt" name="alt" defaultValue={data.alt ?? ""} />
+              </div>
+              <div className="sm:col-span-2">
+                <ImageField imageUrl={data.image_url} labelUrl="Gambar Galeri" labelFile="Ganti gambar (opsional)" />
               </div>
               <div className="sm:col-span-2 space-y-1.5">
                 <Label htmlFor="description">Deskripsi</Label>

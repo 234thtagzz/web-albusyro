@@ -2,6 +2,8 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   images: {
+    // next/image butuh izin host storage; gunakan unoptimized fallback bila host belum terdaftar
+    unoptimized: false,
     remotePatterns: [
       {
         protocol: "https",
@@ -14,6 +16,14 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "*.supabase.co",
+      },
+      {
+        protocol: "https",
+        hostname: "**.supabase.co",
+      },
+      {
+        protocol: "https",
+        hostname: "**.supabase.in",
       },
     ],
   },

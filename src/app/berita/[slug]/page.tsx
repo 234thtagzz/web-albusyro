@@ -109,6 +109,7 @@ export default async function NewsDetailPage({
                       height={675}
                       sizes="(max-width: 768px) 100vw, 768px"
                       className="h-auto w-full object-cover"
+                      unoptimized={imgSrc.includes("supabase.co")}
                     />
                   </div>
                 ) : null;

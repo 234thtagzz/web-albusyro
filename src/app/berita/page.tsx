@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { SectionHeading } from "@/components/ui/section-heading";
+import { PageHero } from "@/components/ui/page-hero";
 import { createClient } from "@/lib/supabase/server";
 import { newsItems as fallback } from "@/data/news";
 import { BeritaClient } from "@/components/berita/berita-client";
@@ -22,23 +22,20 @@ export default async function NewsPage() {
     <>
       <Navbar />
       <main className="flex-1" id="main-content">
-        <section className="bg-slate-50 pt-24 pb-16 sm:pt-32 sm:pb-20">
-          <div className="container-custom">
-            <SectionHeading
-              badge="Berita"
-              title="Berita & Pengumuman"
-              description="Informasi terkini dari STTD Al-Busyro."
-            />
-          </div>
-        </section>
-
-        <section className="section-spacing">
-          <div className="container-custom">
+        <PageHero
+          badge="Berita"
+          title="Berita & Pengumuman"
+          description="Informasi terkini dari STTD Al-Busyro — kegiatan, prestasi, dan pengumuman resmi madrasah."
+        />
+        <section className="section-spacing relative overflow-hidden border-t border-stone-200 bg-white">
+          <div className="pointer-events-none absolute -top-20 left-0 h-[400px] w-[500px] rounded-full bg-primary-4/10 blur-[80px]" aria-hidden />
+          <div className="pointer-events-none absolute -bottom-20 right-0 h-[360px] w-[360px] rounded-full bg-secondary-3/10 blur-[70px]" aria-hidden />
+          <div className="container-custom relative">
             <BeritaClient items={rows} fallback={isFallback} />
           </div>
         </section>
-        </main>
-        <Footer />
+      </main>
+      <Footer />
     </>
   );
 }

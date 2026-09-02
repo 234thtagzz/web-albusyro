@@ -7,8 +7,11 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { createPrestasi } from "../actions";
 import { redirect } from "next/navigation";
+import { ImageField } from "@/components/admin/image-field";
 
-export default function NewPrestasiPage() {
+export default async function NewPrestasiPage({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
+  const { error } = await searchParams;
+
   async function action(formData: FormData) {
     "use server";
     const res = await createPrestasi(formData);
@@ -22,9 +25,10 @@ export default function NewPrestasiPage() {
         <ArrowLeft className="h-4 w-4" /> Kembali
       </Button>
       <h1 className="font-display text-2xl font-bold text-stone-900">Tambah Prestasi</h1>
+      {error && <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{decodeURIComponent(error)}</div>}
       <Card className="rounded-2xl border-stone-200 bg-white">
         <CardContent className="p-6">
-          <form action={action} className="space-y-4">
+          <form action={action} className="space-y-4" encType="multipart/form-data">
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="sm:col-span-2 space-y-1.5">
                 <Label htmlFor="title">Nama Prestasi *</Label>
@@ -63,9 +67,8 @@ export default function NewPrestasiPage() {
                 <Label htmlFor="participant">Peserta</Label>
                 <Input id="participant" name="participant" placeholder="Ahmad Fauzan (Kelas VI)" />
               </div>
-              <div className="sm:col-span-2 space-y-1.5">
-                <Label htmlFor="image_url">Image URL (opsional)</Label>
-                <Input id="image_url" name="image_url" placeholder="https://... atau /images/..." />
+              <div className="sm:col-span-2">
+                <ImageField labelUrl="Gambar Prestasi" labelFile="Upload gambar prestasi" />
               </div>
             </div>
             <div className="flex gap-3">

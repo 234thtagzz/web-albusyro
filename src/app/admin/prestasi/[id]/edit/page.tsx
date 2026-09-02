@@ -8,9 +8,17 @@ import { Select } from "@/components/ui/select";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { updatePrestasi } from "../../actions";
+import { ImageField } from "@/components/admin/image-field";
 
-export default async function EditPrestasiPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function EditPrestasiPage({
+  params,
+  searchParams,
+}: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ error?: string }>;
+}) {
   const { id } = await params;
+  const { error: errParam } = await searchParams;
   const supabase = await createClient();
   const { data } = await supabase.from("prestasi").select("*").eq("id", id).single();
   if (!data) notFound();
@@ -28,9 +36,10 @@ export default async function EditPrestasiPage({ params }: { params: Promise<{ i
         <ArrowLeft className="h-4 w-4" /> Kembali
       </Button>
       <h1 className="font-display text-2xl font-bold text-stone-900">Edit Prestasi</h1>
+      {errParam && <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{decodeURIComponent(errParam)}</div>}
       <Card className="rounded-2xl border-stone-200 bg-white">
         <CardContent className="p-6">
-          <form action={action} className="space-y-4">
+          <form action={action} className="space-y-4" encType="multipart/form-data">
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="sm:col-span-2 space-y-1.5">
                 <Label htmlFor="title">Nama Prestasi *</Label>
@@ -69,9 +78,8 @@ export default async function EditPrestasiPage({ params }: { params: Promise<{ i
                 <Label htmlFor="participant">Peserta</Label>
                 <Input id="participant" name="participant" defaultValue={data.participant ?? ""} />
               </div>
-              <div className="sm:col-span-2 space-y-1.5">
-                <Label htmlFor="image_url">Image URL</Label>
-                <Input id="image_url" name="image_url" defaultValue={data.image_url ?? ""} />
+              <div className="sm:col-span-2">
+                <ImageField imageUrl={data.image_url} labelUrl="Gambar Prestasi" labelFile="Ganti gambar (opsional)" />
               </div>
             </div>
             <div className="flex gap-3">
