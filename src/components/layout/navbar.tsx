@@ -132,7 +132,7 @@ export function Navbar() {
           <SheetContent
             side="top"
             showCloseButton={false}
-            className="top-16 mx-auto max-w-[calc(100%-1.5rem)] rounded-3xl border border-slate-200/80 bg-white/95 p-4 shadow-xl backdrop-blur-xl lg:hidden"
+            className="top-16 mt-2 mx-auto max-w-[calc(100%-1.5rem)] rounded-3xl border border-slate-200/80 bg-white/95 p-4 shadow-xl backdrop-blur-xl lg:hidden"
           >
             <SheetTitle className="sr-only">Menu Navigasi</SheetTitle>
             <SheetDescription className="sr-only">

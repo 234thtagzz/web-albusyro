@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Phone, MapPin, MessageCircle, Heart, ArrowRight } from "lucide-react";
+import { Phone, MapPin, MessageCircle, Heart, ArrowRight, UserLock } from "lucide-react";
 import { school } from "@/data/school";
 import { footerNavigation } from "@/data/navigation";
 import { waLink } from "@/data/home";
@@ -119,6 +119,17 @@ export function Footer() {
             >
               <MessageCircle className="h-[18px] w-[18px]" />
               Tanya PPDB via WhatsApp
+            </Button>
+            <Button
+              variant="secondary"
+              className=" mt-2 rounded-full bg-white px-5 py-3 text-[15px] font-semibold text-primary-1 shadow-md transition-all hover:-translate-y-0.5 hover:bg-emerald-50 hover:shadow-lg"
+            >
+              <Link href="/admin"
+                className="flex justify-between gap-2.5"
+              >
+                <UserLock className="mt-0.5"/>
+                Admin Sekolah
+              </Link>
             </Button>
           </div>
         </div>
