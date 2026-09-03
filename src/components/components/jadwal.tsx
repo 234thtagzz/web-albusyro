@@ -48,8 +48,9 @@ const activityIconMap: Record<string, typeof BookOpen> = {
 
 export function AktivitasSection() {
   return (
-    <section id="aktivitas" className="relative overflow-hidden bg-[#FDF9F3]">
-      <Blob className="h-[700px] w-[700px] -top-40 left-1/2 -translate-x-1/2 bg-primary-4/12 blur-[90px]" />
+    <section id="aktivitas" className="section-spacing relative overflow-hidden border-t border-stone-200 bg-white">
+      <div className="pointer-events-none absolute -top-20 left-0 h-[400px] w-[500px] rounded-full bg-primary-4/10 blur-[80px]" aria-hidden />
+      <div className="pointer-events-none absolute -bottom-20 right-0 h-[360px] w-[360px] rounded-full bg-secondary-3/10 blur-[70px]" aria-hidden />
 
       {/* header strip — sama seperti Sejarah di profil */}
       <div className="relative overflow-hidden border-b border-stone-100 bg-gradient-to-r from-primary-1 via-primary-2 to-secondary-1/70">

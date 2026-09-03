@@ -5,10 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
+import { PageHero } from "@/components/ui/page-hero";
 import { galleryItems } from "@/data/gallery";
 import { AktivitasSection } from "@/components/components/jadwal"
 import { Badge } from "@/components/ui/badge";
-import { Target, ArrowDown } from "lucide-react"
+import { Target } from "lucide-react"
 
 const UNIFIED_BADGE = "border-primary-1/15 bg-primary-1/10 text-primary-1 hover:bg-primary-1/15";
 
@@ -33,112 +34,7 @@ function Blob({
   );
 }
 
-// ─── Hero Kegiatan ───────────────────────────────────────
-function HeroKegiatan() {
-  return (
-    <section className="relative overflow-hidden bg-primary-1">
-      <div className="absolute inset-0">
-        <Image
-          src="/images/lanscape.JPG.webp"
-          alt="Kegiatan Santri STTD Al-Busyro"
-          fill
-          priority
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-1/85 via-primary-2/65 to-secondary-1/35" />
-        <div className="absolute inset-0 bg-[#0f172a]/30" />
-      </div>
 
-      <Blob className="h-[420px] w-[520px] -top-28 -left-24 bg-primary-4/50" />
-      <Blob className="h-[360px] w-[460px] -bottom-24 -right-20 bg-secondary-3/40 animate-blob-delay" />
-      <Blob className="h-[220px] w-[220px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white/10 blur-2xl opacity-20 animate-float" />
-
-      <div
-        aria-hidden
-        className="absolute inset-0 opacity-[0.07]"
-        style={{
-          backgroundImage: `radial-gradient(circle at 1px 1px, white 1px, transparent 0)`,
-          backgroundSize: "22px 22px",
-        }}
-      />
-
-      <div className="relative flex min-h-[520px] flex-col items-center justify-center px-6 pt-28 pb-20 sm:min-h-[560px]">
-        <div className="animate-fade-up inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 backdrop-blur-md">
-          <span className="relative flex h-2 w-2">
-            <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-secondary-3" />
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-secondary-2" />
-          </span>
-          <span className="text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
-            Kurikulum & Aktivitas · Surakarta
-          </span>
-        </div>
-
-        <h1 className="animate-fade-up animation-delay-150 mt-5 text-center font-display text-[34px] font-bold leading-[0.95] tracking-tight text-white sm:text-[46px] lg:text-[54px]">
-          Kegiatan
-          <span className="relative mx-2 inline-block">
-            <span className="relative z-10 bg-gradient-to-r from-secondary-3 to-secondary-1 bg-clip-text text-transparent">
-              Santri
-            </span>
-            <span className="absolute bottom-1 left-0 h-[10px] w-full -rotate-1 bg-secondary-3/30 -z-0" />
-          </span>
-        </h1>
-
-        <p className="animate-fade-up animation-delay-300 mt-4 max-w-xl text-center text-[14px] leading-relaxed text-white/80 sm:text-[15px]">
-          Beragam kegiatan membentuk karakter, keberanian, dan potensi — di luar kelas, di dalam adab.
-        </p>
-
-        <div className="animate-fade-up animation-delay-500 mt-7 flex flex-col items-center gap-4 sm:flex-row">
-          <div className="flex items-center gap-2 text-[12px] font-medium tracking-wide text-white/70">
-            <Link href="/" className="transition hover:text-white">
-              Home
-            </Link>
-            <span className="text-white/30">/</span>
-            <span className="rounded-full bg-white px-3 py-1 text-[11px] font-bold tracking-wide text-primary-1">
-              Kegiatan
-            </span>
-          </div>
-          <span className="hidden h-4 w-px bg-white/20 sm:block" />
-          <a
-            href="#aktivitas"
-            className="group inline-flex items-center gap-2 rounded-full bg-secondary-1 px-5 py-2.5 text-[13px] font-bold text-white shadow-lg shadow-secondary-1/30 transition hover:-translate-y-0.5 hover:bg-secondary-2 hover:shadow-xl active:translate-y-0"
-          >
-            Lihat Agenda
-            <ArrowDown className="h-4 w-4 transition group-hover:translate-y-0.5" />
-          </a>
-        </div>
-
-        <div className="animate-scale-in animation-delay-700 mt-10 hidden items-center gap-6 rounded-2xl border border-white/15 bg-white/10 px-6 py-3 backdrop-blur-md sm:flex">
-          {[
-            { v: "11", l: "Aktivitas" },
-            { v: "4", l: "Kategori" },
-            { v: "Mutqin", l: "Pembinaan" },
-          ].map((s, i) => (
-            <div key={s.l} className="flex items-center gap-6">
-              {i !== 0 && <span className="h-8 w-px bg-white/15" />}
-              <div className="text-center">
-                <p className="font-display text-[16px] font-bold leading-none text-white">{s.v}</p>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/60">{s.l}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div aria-hidden className="absolute inset-x-0 bottom-0 leading-none">
-        <svg viewBox="0 0 1440 64" preserveAspectRatio="none" className="h-[48px] w-full sm:h-[64px]">
-          <path
-            d="M0 32 Q 180 64 360 32 T 720 32 T 1080 32 T 1440 32 L 1440 64 L 0 64 Z"
-            className="fill-white"
-          />
-          <path
-            d="M0 36 Q 180 60 360 36 T 720 36 T 1080 36 T 1440 36"
-            className="fill-secondary-3/20"
-          />
-        </svg>
-      </div>
-    </section>
-  );
-}
 
 
 // ─── Arsip Foto — pindahan dari profil ─────────────────
@@ -154,9 +50,9 @@ function ArchiveSection() {
     active === "Semua" ? galleryItems : galleryItems.filter((g) => g.category === active);
 
   return (
-    <section className="relative overflow-hidden border-b border-stone-200 bg-white">
-      <Blob className="h-[420px] w-[420px] -top-24 right-0 bg-primary-4/15 blur-[70px]" />
-      <Blob className="h-[360px] w-[360px] -bottom-20 left-0 bg-secondary-3/12 blur-[60px] animate-blob-delay" />
+    <section className="section-spacing relative overflow-hidden border-t border-stone-200 bg-white">
+      <div className="pointer-events-none absolute -top-20 left-0 h-[400px] w-[500px] rounded-full bg-primary-4/10 blur-[80px]" aria-hidden />
+      <div className="pointer-events-none absolute -bottom-20 right-0 h-[360px] w-[360px] rounded-full bg-secondary-3/10 blur-[70px]" aria-hidden />
 
       <div className="container-custom relative py-12 sm:py-16">
         <div className="mb-8 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
@@ -235,8 +131,9 @@ function ArchiveSection() {
 // ─── Penutup CTA kecil — konsisten dengan profil (Why Choose Us band) ───
 function KegiatanClosing() {
   return (
-    <section className="relative overflow-hidden bg-[#FDF9F3]">
-      <Blob className="h-[600px] w-[600px] -top-20 -right-20 bg-primary-4/15 blur-[80px]" />
+    <section className="section-spacing relative overflow-hidden border-t border-stone-200 bg-white">
+      <div className="pointer-events-none absolute -top-20 left-0 h-[400px] w-[500px] rounded-full bg-primary-4/10 blur-[80px]" aria-hidden />
+      <div className="pointer-events-none absolute -bottom-20 right-0 h-[360px] w-[360px] rounded-full bg-secondary-3/10 blur-[70px]" aria-hidden />
       <div className="container-custom relative py-12 sm:py-16">
         <div className="relative overflow-hidden rounded-[24px] border border-stone-200 bg-white p-6 shadow-sm sm:p-8">
           <Blob className="h-40 w-40 -top-10 -right-10 bg-secondary-3/15 blur-2xl" />
@@ -280,7 +177,11 @@ export default function KegiatanPage() {
     <>
       <Navbar />
       <main className="flex-1" id="main-content">
-        <HeroKegiatan />
+        <PageHero
+          badge="Kegiatan"
+          title="Kegiatan Santri"
+          description="Beragam kegiatan membentuk karakter, keberanian, dan potensi — di luar kelas, di dalam adab. Dari halaqah tahfizh hingga berkuda dan memanah."
+        />
         <AktivitasSection />
         <ArchiveSection />
         <KegiatanClosing />
