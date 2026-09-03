@@ -121,15 +121,13 @@ export function Footer() {
               Tanya PPDB via WhatsApp
             </Button>
             <Button
+              nativeButton={false}
               variant="secondary"
+              render={<Link href="/admin" className="flex justify-between gap-2.5" />}
               className=" mt-2 rounded-full bg-white px-5 py-3 text-[15px] font-semibold text-primary-1 shadow-md transition-all hover:-translate-y-0.5 hover:bg-emerald-50 hover:shadow-lg"
             >
-              <Link href="/admin"
-                className="flex justify-between gap-2.5"
-              >
-                <UserLock className="mt-0.5"/>
-                Admin Sekolah
-              </Link>
+              <UserLock className="mt-0.5" />
+              Admin Sekolah
             </Button>
           </div>
         </div>

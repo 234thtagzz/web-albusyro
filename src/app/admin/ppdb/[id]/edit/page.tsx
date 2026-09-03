@@ -9,8 +9,9 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { updatePpdb } from "../../actions";
 
-export default async function EditPpdbPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function EditPpdbPage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ error?: string }> }) {
   const { id } = await params;
+  const { error: errParam } = await searchParams;
   const supabase = await createClient();
   const { data } = await supabase.from("ppdb_info").select("*").eq("id", id).single();
   if (!data) notFound();
@@ -28,6 +29,7 @@ export default async function EditPpdbPage({ params }: { params: Promise<{ id: s
         <ArrowLeft className="h-4 w-4" /> Kembali
       </Button>
       <h1 className="font-display text-2xl font-bold text-stone-900">Edit PPDB Info</h1>
+      {errParam && <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{decodeURIComponent(errParam)}</div>}
       <Card className="rounded-2xl border-stone-200 bg-white">
         <CardContent className="p-6">
           <form action={action} className="space-y-4">

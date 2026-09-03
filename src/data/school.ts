@@ -185,5 +185,7 @@ export const school = {
     primaryButton: "Informasi PPDB",
     secondaryButton: "Hubungi Kami",
   },
-  copyright: `© ${new Date().getFullYear()} STTD Al-Busyro. All rights reserved.`,
+  get copyright() {
+    return `© ${new Date().getFullYear()} STTD Al-Busyro. All rights reserved.`;
+  },
 };

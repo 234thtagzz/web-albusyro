@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
@@ -22,6 +22,7 @@ export function ImageField({
   required,
 }: Props) {
   const [preview, setPreview] = useState<string | null>(imageUrl ?? null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   function onFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -54,14 +55,14 @@ export function ImageField({
           onChange={(e) => {
             const val = e.target.value.trim();
             if (val && !preview?.startsWith("blob:")) setPreview(val);
-            if (!val && !document.getElementById(fileName)) setPreview(null);
+            if (!val && !fileInputRef.current?.files?.length) setPreview(null);
           }}
         />
         <p className="text-xs text-stone-500">Jika upload file, file akan diupload ke Supabase Storage dan menggantikan URL.</p>
       </div>
       <div className="space-y-1.5">
         <Label htmlFor={fileName}>{labelFile}</Label>
-        <Input id={fileName} name={fileName} type="file" accept="image/*" onChange={onFileChange} />
+        <Input ref={fileInputRef} id={fileName} name={fileName} type="file" accept="image/*" onChange={onFileChange} />
         <p className="text-xs text-stone-500">Maks 5MB • JPG, PNG, WebP • akan tersimpan di bucket sesuai jenis data</p>
       </div>
     </div>

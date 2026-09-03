@@ -111,7 +111,7 @@ export function Identity() {
               <div className="relative overflow-hidden rounded-t-[160px] rounded-b-[28px] border-[6px] border-white bg-stone-100 shadow-[0_24px_48px_-16px_rgba(0,0,0,0.25)]">
                 <div className="relative aspect-[4/5] w-full">
                   <Image
-                    src="/images/halaqoh quran.png"
+                    src="/images/halaqoh quran.webp"
                     alt="Halaqah Al-Qur'an STTD Al-Busyro"
                     fill
                     className="object-cover object-top"
