@@ -38,7 +38,7 @@ function Blob({
 
 
 // ─── Arsip Foto — pindahan dari profil ─────────────────
-const archiveTabs = ["Semua", "Tahfiz", "Pembelajaran", "Kegiatan", "Lingkungan"] as const;
+const archiveTabs = ["Semua", "Tahfizh", "Akademik", "Kegiatan", "Lingkungan"] as const;
 type ArchiveTab = (typeof archiveTabs)[number];
 
 // satu palet clean — semua badge kategori pakai shadcn Badge outline emerald
@@ -86,53 +86,7 @@ function ArchiveSection() {
           </div>
         </div>
 
-        {/* Banner "Mau intip kegiatan kita?" — baris 88, palet globals.css */}
-        <div className="relative mb-8 overflow-hidden rounded-[24px] bg-gradient-to-br from-primary-1 via-primary-2 to-primary-3 p-[1.5px] shadow-sm">
-          <div className="relative overflow-hidden rounded-[22px] bg-gradient-to-br from-primary-1 via-primary-2 to-[#1b5e20] p-6 sm:p-8">
-            <div className="pointer-events-none absolute -right-16 -top-16 h-48 w-48 rounded-full bg-primary-4/25 blur-2xl" aria-hidden />
-            <div className="pointer-events-none absolute -bottom-12 -left-10 h-40 w-40 rounded-full bg-secondary-3/20 blur-2xl" aria-hidden />
-            <div className="pointer-events-none absolute right-20 top-6 h-20 w-20 rounded-full bg-white/10 blur-xl" aria-hidden />
-            <div className="relative flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex items-start gap-4">
-                <div className="hidden h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-white/20 bg-white/15 shadow-sm backdrop-blur sm:flex">
-                  <Eye className="h-6 w-6 text-white" />
-                </div>
-                <div>
-                  <div className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/10 px-2.5 py-1 backdrop-blur">
-                    <Sparkles className="h-3 w-3 text-secondary-3" />
-                    <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-white">Intip Yuk</span>
-                  </div>
-                  <h3 className="font-display mt-2 text-[20px] font-bold leading-tight text-white sm:text-[22px]">
-                    Mau intip kegiatan kita?
-                  </h3>
-                  <p className="mt-1.5 max-w-[560px] text-[13px] leading-relaxed text-white/85">
-                    Dari halaqah tahfiz pagi sampai berkuda &amp; memanah — semua momen seru santri ada di bawah.
-                    Pilih tab kategori di atas untuk filter galeri!
-                  </p>
-                </div>
-              </div>
-              <div className="flex shrink-0 items-center gap-3">
-                <a
-                  href="#galeri"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.getElementById("galeri-grid")?.scrollIntoView({ behavior: "smooth", block: "start" });
-                  }}
-                  className="group inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-[13px] font-bold text-primary-1 shadow-md transition hover:-translate-y-0.5 hover:bg-primary-4 hover:text-primary-foreground hover:shadow-lg"
-                >
-                  <Camera className="h-4 w-4" />
-                  Lihat Galeri
-                  <ArrowDown className="h-3.5 w-3.5 transition group-hover:translate-y-0.5" />
-                </a>
-                <span className="hidden text-[11px] font-medium leading-tight text-white/60 sm:block">
-                  8 foto
-                  <br />
-                  terbaru
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
+
 
         <div id="galeri-grid" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((item, i) => {

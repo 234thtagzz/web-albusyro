@@ -88,4 +88,10 @@ export const activities: Activity[] = [
     category: "Kegiatan Sekolah",
     description: "Pengembangan keterampilan menulis dan berita.",
   },
+  {
+    id: "12",
+    title: "Sains Club (MIPA)",
+    category: "Kegiatan Sekolah",
+    description: "Pengembangan pengetahuan umum dengan eksperiman ringan.",
+  },
 ];

@@ -25,7 +25,7 @@ export default async function AchievementsPage() {
         <PageHero
           badge="Prestasi"
           title="Prestasi Santri"
-          description="Pencapaian yang membanggakan dari para santri STTD Al-Busyro dalam berbagai bidang — tilawah, tahfizh, seni, dan akademik."
+          description="Pencapaian yang membanggakan dari para santri STTD Al-Busyro dalam berbagai bidang."
           meta={isFallback && !error ? "Menampilkan data sementara — kelola via /admin/prestasi" : undefined}
         />
         <section className="section-spacing relative overflow-hidden border-t border-stone-200 bg-white">

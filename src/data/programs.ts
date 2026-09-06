@@ -14,7 +14,7 @@ export const programs: Program[] = [
     id: "tahfizh",
     title: "Tahfizhul Qur'an",
     description:
-      "Fokus pada pembelajaran dan penghafalan Al-Qur'an dengan Metode Al-Qosimi — bacaan fasih dan hafalan mutqin, target 18-22 juz dalam 6 tahun.",
+      "Fokus pada pembelajaran dan penghafalan Al-Qur'an dengan Metode Al-Qosimi — bacaan fasih dan hafalan mutqin, target 10 - 15 Juz Mutqin.",
     highlights: [
       "Metode Al-Qosimi (MMUSBOB, MHL-PA, MMC)",
       "Target 18-22 Juz / 6 Tahun",

@@ -67,7 +67,7 @@ export function AktivitasSection() {
             Aktivitas Santri
           </h2>
           <p className="mt-1 max-w-xl text-[13px] leading-relaxed text-white/80">
-            Dari halaqah tahfizh hingga berkuda dan memanah — setiap kegiatan menanamkan adab, disiplin, dan keberanian.
+            Setiap keiatan mengandung nilai yang bermanfaat untuk diri, sekitar, dan agama.
           </p>
         </div>
       </div>
@@ -77,8 +77,8 @@ export function AktivitasSection() {
         <div className="grid gap-4 sm:grid-cols-3">
           {[
             {
-              title: "Keagamaan",
-              desc: "Mabit, tartil & tilawah — memperkuat ruhiyah dan cinta Al-Qur'an.",
+              title: "Tarbiyyah",
+              desc: "tartil & tilawah — memperkuat ruhiyah dan cinta Al-Qur'an.",
               icon: HeartHandshake,
             },
             {
@@ -333,7 +333,7 @@ export function AktivitasSection() {
                     </p>
                     <p className="mt-4 flex items-center gap-2 text-[11px] font-medium text-stone-400">
                       <span className="h-1.5 w-1.5 rounded-full bg-stone-300" />
-                      Khusus Hari Sabtu Pengembangan Softskill dan Pulang Jam 12:00.
+                      Khusus Hari Sabtu Pengembangan Softskill dan Pulang Jam 10:00.
                     </p>
                   </div>
                 </div>

@@ -39,7 +39,7 @@ export function ProgramsBento() {
               </h3>
               <p className="mt-4 max-w-xl text-[14px] leading-relaxed text-white/80">
                 Santri membaca ayat berulang hingga terbentuk gambaran kuat di ingatan, kemudian menghafalnya — metode
-                yang diciptakan langsung oleh pendiri sekolah dan terbukti cocok untuk anak-anak hingga dewasa.
+                yang diciptakan langsung oleh pendiri sekolah dan terbukti cocok untuk anak-anak hingga dewasa dengan <strong>{school.method.konsep}</strong>
               </p>
 
               <ul className="mt-8 space-y-3">
@@ -61,7 +61,7 @@ export function ProgramsBento() {
                   Target {school.programs.targetNonAsrama}
                 </Badge>
                 <Badge variant="outline" className="rounded-full border-white/20 bg-white/10 px-4 py-2 text-xs font-medium text-white">
-                  Asrama: {school.programs.targetAsrama}
+                  {school.programs.targetAsrama}
                 </Badge>
               </div>
             </CardContent>
@@ -95,7 +95,7 @@ export function ProgramsBento() {
                 Pembinaan intensif di bawah pengasuh untuk menambah kapasitas hafalan sekaligus melatih kemandirian santri.
               </p>
               <p className="mt-5 flex items-center gap-1.5 text-sm font-semibold text-primary-1">
-                Hingga 30 juz
+                mengutamakan Bacaan Fasih
                 <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
               </p>
             </CardContent>

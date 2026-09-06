@@ -58,10 +58,10 @@ function SejarahSection() {
   ];
 
   const milestones = [
-    { year: "2014", label: "Berdiri" },
-    { year: "2018", label: "Akreditasi" },
-    { year: "2021", label: "Ekspansi" },
-    { year: "2024", label: "Berkembang" },
+    { year: "2011", label: "Berdiri" },
+    { year: "2018", label: "Lulus Angkatan 1" },
+    { year: "2020", label: "Gedung Sendiri" },
+    { year: "2025", label: "Proses Izin Operasional" },
   ];
 
   return (
@@ -287,9 +287,9 @@ function SejarahSection() {
 // ─── Motto · Visi · Misi · Kata Mutiara ─────────
 function MottoVisiMisiSection() {
   const quotes = [
-    "Al-Qur'an adalah cahaya yang menerangi setiap langkah kehidupan.",
-    "Hafalan tanpa pemahaman adalah kulit tanpa isi; bekali keduanya.",
-    "Didiklah anak dengan Al-Qur'an sebelum dunia mendidik mereka dengan selainnya.",
+    "Mengutamakan lancarnya hafalan, daripada banyaknya hafalan",
+    "kunci hafalan sukses; Muroja'ah tanpa disuruh",
+    "Banyak waktu= Banyak Hafalan, Sedikit Waktu Sedikit Hafalan.",
   ];
 
   return (
@@ -390,10 +390,10 @@ function MottoVisiMisiSection() {
         <div>
           <div className="mx-auto max-w-xl text-center">
             <Badge variant="outline" className={`mx-auto rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] ${UNIFIED_BADGE}`}>
-              Kata Mutiara
+              Prinsip Menghafal
             </Badge>
             <h3 className="font-display mt-3 text-[22px] font-bold tracking-tight text-primary-1 sm:text-[26px]">
-              Dari Sang Pendiri
+            Metode Al-Qosimi
             </h3>
             <p className="mt-1 text-[12px] text-stone-500">{school.method.founder}</p>
             <div className="mx-auto mt-3 h-1 w-12 rounded-full bg-primary-1" />
@@ -597,7 +597,7 @@ export default function ProfilePage() {
         <PageHero
           badge="Profil"
           title="Profil Al-Busyro"
-          description="Membumikan Al-Qur'an — mencetak generasi qur'ani yang fasih bacaannya, mutqin hafalannya, dan mulia adabnya. Mengenal sejarah, visi, misi, dan nilai STTD Al-Busyro Surakarta."
+          description="STTD AL-BUSYRO adalah Sekolah Tahfizhul Qur’an Tingkat Dasar Mutqin Hafalannya, Fasih Bacaannya, Baik Adabnya, Diakui Legalitasnya."
         />
         <SejarahSection />
         <MottoVisiMisiSection />

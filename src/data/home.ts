@@ -21,22 +21,22 @@ export const admissionSteps = [
     no: "01",
     title: "Pendaftaran Online",
     description:
-      "Isi formulir pendaftaran dan lengkapi dokumen (kartu keluarga, akta kelahiran, dan pas foto) bersama panitia PPDB.",
+      "Isi formulir pendaftaran dan lengkapi dokumen kartu keluarga dan akta kelahiran.",
     meta: "Dibuka setiap hari kerja",
   },
   {
     no: "02",
-    title: "Seleksi & Wawancara",
+    title: "Wawancara & Observasi",
     description:
-      "Calon santri mengikuti tes baca Al-Qur'an, dilanjutkan wawancara bersama orang tua untuk menyamakan visi pendidikan.",
-    meta: "Tanpa syarat hafalan awal",
+      "Calon Wali santri melakukan wawancara untuk menyamakan visi pendidikan dilanjutkan observasi calon santri.",
+    meta: "ONE DAY SERVICE",
   },
   {
     no: "03",
     title: "Daftar Ulang",
     description:
-      "Pengumuman hasil seleksi, pelaksanaan daftar ulang, serta penjadwalan masa orientasi santri baru.",
-    meta: "NISN & ijazah MI diproses sekolah",
+      "Calon wali santri melakukan daftar ulang sesuai jadwal yang telah ditentukan",
+    meta: "Cash atau Transfer",
   },
 ] as const;
 

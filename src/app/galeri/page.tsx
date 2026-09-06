@@ -25,7 +25,7 @@ export default async function GalleryPage() {
         <PageHero
           badge="Galeri"
           title="Dokumentasi Kegiatan"
-          description="Momen-momen penting dalam kegiatan pendidikan di STTD Al-Busyro — pembelajaran, tahfizh, dan kebersamaan santri."
+          description="Momen-momen penting dalam kegiatan pendidikan di STTD Al-Busyro."
         />
         <section className="section-spacing relative overflow-hidden border-t border-stone-200 bg-white">
           <div className="pointer-events-none absolute -top-20 left-0 h-[400px] w-[500px] rounded-full bg-primary-4/10 blur-[80px]" aria-hidden />

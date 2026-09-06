@@ -76,10 +76,10 @@ export function Navbar() {
             <Logo />
             <span className="leading-tight">
               <span className="block font-display text-[14px] font-bold tracking-tight text-slate-900 sm:text-[15px]">
-                STTD Al&#8209;BUSYRO
+                STTD AL&#8209;BUSYRO
               </span>
-              <span className="block text-[10px] font-medium uppercase tracking-[0.12em] text-slate-500 sm:text-[11px]">
-                Sekolah Tahfidz — Setara SD
+              <span className="block text-[10px] font-bold uppercase tracking-[0.12em] text-slate-500 sm:text-[11px]">
+                SEKOLAH TAHFIZH — SETARA SD
               </span>
             </span>
           </Link>

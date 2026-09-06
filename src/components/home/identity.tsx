@@ -25,7 +25,7 @@ const pillars = [
   },
   {
     no: "03",
-    title: "Legal Formal",
+    title: "Akademik",
     description:
       "Ijazah resmi Kemenag (MI), memiliki NISN, dan kurikulum terpadu siap melanjutkan jenjang berikutnya.",
   },

@@ -63,7 +63,7 @@ export function Hero() {
         </div>
 
         <h1 className="animate-fade-up animation-delay-150 mt-5 text-center font-display text-[30px] font-bold leading-[0.95] tracking-tight text-white sm:text-[44px] lg:text-[52px]">
-          Membentuk
+          Mencetak
           <br />
           <span className="block">Generasi Qur&apos;ani</span>
           <span className="relative mt-1 inline-block">
@@ -104,7 +104,7 @@ export function Hero() {
         {/* stats pill — sama seperti profil */}
         <div className="animate-scale-in animation-delay-700 mt-10 hidden items-center gap-6 rounded-2xl border border-white/15 bg-white/10 px-6 py-3 backdrop-blur-md sm:flex">
           {[
-            { v: "6 thn", l: "Program SD" },
+            { v: "Akademik", l: "Pendidikan MI" },
             { v: "10–15", l: "Juz Mutqin" },
             { v: "Adab", l: "Sebelum Ilmu" },
           ].map((s, i) => (

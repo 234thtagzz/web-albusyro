@@ -38,20 +38,25 @@ export const school = {
   method: {
     name: "Metode Al-Qosimi",
     founder: "Ust. Abu Hurri Al-Qosimi Al-Hafidz",
+    konsep: "Konsep S3 Perawatan",
     description:
-      "Metode tahfizh yang diciptakan langsung oleh pendiri STTD Al-Busyro. Santri membaca ayat yang akan dihafal secara berulang hingga terbentuk gambaran kuat di ingatan, kemudian menghafalnya — terbukti cocok untuk anak-anak hingga dewasa.",
+      "Metode tahfizh yang diciptakan langsung oleh pendiri STTD Al-Busyro. Santri membaca ayat yang akan dihafal secara berulang hingga terbentuk gambaran kuat di ingatan, kemudian menghafalnya — terbukti cocok untuk anak-anak hingga dewasa dengan.",
     variants: [
       {
-        name: "MMUSBOB",
-        detail: "Membaca berulang 25x dalam 3 ronde baru, lalu menghafal.",
+        name: "Sebelum",
+        detail: "Membaca berulang 40x (atau 20x bagi usia emas) sebelum mengafal",
       },
       {
-        name: "MHL-PA",
-        detail: "Pengulangan bacaan hingga 40x sebelum menghafal.",
+        name: "Sedang",
+        detail: "Proses membaca berulang sampai lancar",
       },
       {
-        name: "MMC",
-        detail: "Tahsin & murajaah keseluruhan Al-Qur'an minimal 40x.",
+        name: "Setelah",
+        detail: "Mengulang hafalan baru yang belum diseor sekali duduk",
+      },
+      {
+        name: "Perawatan",
+        detail: "Muroja'ah hafalan lama yang tersruktur untuk menjaga hafalan lama",
       },
     ],
   },
@@ -127,8 +132,8 @@ export const school = {
         subtitle: "Bukan sekadar mengejar banyak hafalan",
         items: [
           "Bacaan benar (Fasih)",
-          "Hafalan Lancar (Target 18-22 Juz / 6 Tahun)",
-          "Metode Al-Qosimi dari Pendirinya Langsung",
+          "Hafalan Lancar ( Target 10 - 15 Juz Mutqin)",
+          "Dibawah Bimbingan Ustadz Abu Hurri Al- Qosimi Al-Hafizh",
         ],
       },
       {
@@ -141,7 +146,7 @@ export const school = {
         ],
       },
       {
-        title: "Legal Formal",
+        title: "Akademik",
         subtitle: "Ijazah resmi dan siap melanjutkan",
         items: [
           "Ijazah Resmi Kemenag (MI)",
@@ -153,7 +158,7 @@ export const school = {
   },
   programs: {
     sekolah: {
-      title: "Program Sekolah",
+      title: "Program Unggulan",
       description:
         "Wajib bagi seluruh siswa: pelajaran umum menunjang pengetahuan dan persiapan ujian kenegaraan, diseimbangkan dengan pendidikan agama agar siswa tidak hanya fokus pada hafalan.",
     },
@@ -162,8 +167,8 @@ export const school = {
       description:
         "Pembinaan intensif di bawah pengasuh untuk menambah kapasitas hafalan sekaligus melatih kemandirian santri dalam menjalankan kewajiban harian.",
     },
-    targetNonAsrama: "18-22 Juz dalam 6 tahun",
-    targetAsrama: "Hingga 30 Juz",
+    targetNonAsrama: "10 - 15 Juz Mutqin",
+    targetAsrama: "Mengutamakan Bacaan Fasih",
   },
   activities: [
     "Mabit",
@@ -177,6 +182,7 @@ export const school = {
     "Tartil dan Tilawah",
     "Beladiri",
     "Jurnalistik",
+    "Sains clup"
   ],
   cta: {
     headline: "Setiap Langkah Kecil Hari Ini Akan Menentukan Masa Depan Mereka",
