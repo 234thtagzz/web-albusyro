@@ -30,34 +30,35 @@ export const galleryItems: GalleryItem[] = [
     category: "Tahfiz",
     description:
       "Setoran hafalan santri di depan ustadz pembimbing sebelum pembelajaran dimulai.",
-    imageUrl: "/images/dummy/gallery-1.png",
+    imageUrl: "/images/dummy/halaqoh 1.webp",
     alt: "Santri mengikuti halaqah tahfizh pagi",
   },
   {
     id: "2",
-    title: "Pembelajaran Kelas MI",
-    category: "Pembelajaran",
-    description:
-      "Suasana kelas pelajaran umum dengan kurikulum terpadu sekolah dan asrama.",
-    imageUrl: "/images/dummy/gallery-2.png",
-    alt: "Suasana pembelajaran di kelas",
-  },
-  {
-    id: "3",
     title: "Latihan Berkuda Santri",
     category: "Kegiatan",
     description:
       "Ekstrakurikuler berkuda sebagai sarana pengembangan keberanian dan potensi diri.",
-    imageUrl: "/images/dummy/gallery-3.png",
+    imageUrl: "/images/dummy/berkuda.webp",
     alt: "Santri mengikuti latihan berkuda",
   },
+  {
+    id: "3",
+    title: "Pembelajaran Kelas MI",
+    category: "Pembelajaran",
+    description:
+      "Suasana kelas pelajaran umum dengan kurikulum terpadu sekolah dan asrama.",
+    imageUrl: "/images/dummy/belajar 1.webp",
+    alt: "Suasana pembelajaran di kelas",
+  },
+
   {
     id: "4",
     title: "Penyerahan Piagam Juara MTQ",
     category: "Prestasi",
     description:
       "Perwakilan sekolah menerima piagam juara pada MTQ tingkat Kota Surakarta.",
-    imageUrl: "/images/dummy/gallery-4.png",
+    imageUrl: "/images/dummy/megang piala.webp",
     alt: "Penyerahan piagam juara MTQ",
   },
   {
