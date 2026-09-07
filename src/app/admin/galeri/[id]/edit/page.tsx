@@ -35,7 +35,7 @@ export default async function EditGaleriPage({
       {errParam && <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{decodeURIComponent(errParam)}</div>}
       <Card className="rounded-2xl border-stone-200 bg-white">
         <CardContent className="p-6">
-          <form action={action} className="space-y-4" encType="multipart/form-data">
+          <form action={action} className="space-y-4">
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="sm:col-span-2 space-y-1.5">
                 <Label htmlFor="title">Judul *</Label>
