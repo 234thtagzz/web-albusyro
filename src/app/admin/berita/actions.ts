@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import type { Database } from "@/types/database";
 
@@ -128,4 +129,16 @@ export async function uploadBeritaImage(formData: FormData) {
   if (error) return { error: error.message };
   const { data } = supabase.storage.from("berita").getPublicUrl(name);
   return { url: data.publicUrl };
+}
+
+export async function createBeritaAction(formData: FormData) {
+  const res = await createBerita(formData);
+  if (res?.error) redirect(`/admin/berita/new?error=${encodeURIComponent(res.error)}`);
+  redirect("/admin/berita");
+}
+
+export async function updateBeritaAction(id: string, formData: FormData) {
+  const res = await updateBerita(id, formData);
+  if (res?.error) redirect(`/admin/berita/${id}/edit?error=${encodeURIComponent(res.error)}`);
+  redirect("/admin/berita");
 }

@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { updatePpdb } from "../../actions";
+import { updatePpdbAction } from "../../actions";
 
 export default async function EditPpdbPage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams: Promise<{ error?: string }> }) {
   const { id } = await params;
@@ -16,12 +16,7 @@ export default async function EditPpdbPage({ params, searchParams }: { params: P
   const { data } = await supabase.from("ppdb_info").select("*").eq("id", id).single();
   if (!data) notFound();
 
-  async function action(formData: FormData) {
-    "use server";
-    const res = await updatePpdb(id, formData);
-    if (res?.error) redirect(`/admin/ppdb/${id}/edit?error=${encodeURIComponent(res.error)}`);
-    redirect("/admin/ppdb");
-  }
+  const action = updatePpdbAction.bind(null, id);
 
   return (
     <div className="max-w-3xl space-y-6">

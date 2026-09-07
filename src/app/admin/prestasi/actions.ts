@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import type { Database } from "@/types/database";
 
@@ -105,4 +106,16 @@ export async function deletePrestasi(id: string) {
   revalidatePath("/admin/prestasi", "page");
   revalidatePath("/", "layout");
   return { ok: true };
+}
+
+export async function createPrestasiAction(formData: FormData) {
+  const res = await createPrestasi(formData);
+  if (res?.error) redirect(`/admin/prestasi/new?error=${encodeURIComponent(res.error)}`);
+  redirect("/admin/prestasi");
+}
+
+export async function updatePrestasiAction(id: string, formData: FormData) {
+  const res = await updatePrestasi(id, formData);
+  if (res?.error) redirect(`/admin/prestasi/${id}/edit?error=${encodeURIComponent(res.error)}`);
+  redirect("/admin/prestasi");
 }

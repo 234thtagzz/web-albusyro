@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import type { Database } from "@/types/database";
 
@@ -58,10 +59,10 @@ export async function createGaleri(formData: FormData) {
     title, category: category as GaleriCategory, description, image_url, alt,
   });
   if (error) return { error: error.message };
-  revalidatePath("/galeri", "page");
-  revalidatePath("/kegiatan", "page");
-  revalidatePath("/admin/galeri", "page");
-  revalidatePath("/", "layout");
+  try { revalidatePath("/galeri", "page"); } catch {}
+  try { revalidatePath("/kegiatan", "page"); } catch {}
+  try { revalidatePath("/admin/galeri", "page"); } catch {}
+  try { revalidatePath("/", "layout"); } catch {}
   return { ok: true };
 }
 
@@ -87,10 +88,10 @@ export async function updateGaleri(id: string, formData: FormData) {
     title, category: category as GaleriCategory, description, image_url, alt,
   }).eq("id", id);
   if (error) return { error: error.message };
-  revalidatePath("/galeri", "page");
-  revalidatePath("/kegiatan", "page");
-  revalidatePath("/admin/galeri", "page");
-  revalidatePath("/", "layout");
+  try { revalidatePath("/galeri", "page"); } catch {}
+  try { revalidatePath("/kegiatan", "page"); } catch {}
+  try { revalidatePath("/admin/galeri", "page"); } catch {}
+  try { revalidatePath("/", "layout"); } catch {}
   return { ok: true };
 }
 
@@ -98,9 +99,22 @@ export async function deleteGaleri(id: string) {
   const supabase = await createClient();
   const { error } = await supabase.from("galeri").delete().eq("id", id);
   if (error) return { error: error.message };
-  revalidatePath("/galeri", "page");
-  revalidatePath("/kegiatan", "page");
-  revalidatePath("/admin/galeri", "page");
-  revalidatePath("/", "layout");
+  try { revalidatePath("/galeri", "page"); } catch {}
+  try { revalidatePath("/kegiatan", "page"); } catch {}
+  try { revalidatePath("/admin/galeri", "page"); } catch {}
+  try { revalidatePath("/", "layout"); } catch {}
   return { ok: true };
+}
+
+// Wrapper untuk <form action> — Next.js 16 butuh exported top-level action, bukan closure inline
+export async function createGaleriAction(formData: FormData) {
+  const res = await createGaleri(formData);
+  if (res?.error) redirect(`/admin/galeri/new?error=${encodeURIComponent(res.error)}`);
+  redirect("/admin/galeri");
+}
+
+export async function updateGaleriAction(id: string, formData: FormData) {
+  const res = await updateGaleri(id, formData);
+  if (res?.error) redirect(`/admin/galeri/${id}/edit?error=${encodeURIComponent(res.error)}`);
+  redirect("/admin/galeri");
 }

@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,7 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { updatePrestasi } from "../../actions";
+import { updatePrestasiAction } from "../../actions";
 import { ImageField } from "@/components/admin/image-field";
 
 export default async function EditPrestasiPage({
@@ -23,12 +23,7 @@ export default async function EditPrestasiPage({
   const { data } = await supabase.from("prestasi").select("*").eq("id", id).single();
   if (!data) notFound();
 
-  async function action(formData: FormData) {
-    "use server";
-    const res = await updatePrestasi(id, formData);
-    if (res?.error) redirect(`/admin/prestasi/${id}/edit?error=${encodeURIComponent(res.error)}`);
-    redirect("/admin/prestasi");
-  }
+  const action = updatePrestasiAction.bind(null, id);
 
   return (
     <div className="max-w-3xl space-y-6">

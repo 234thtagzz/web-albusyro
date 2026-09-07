@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    serverActions: {
+      bodySizeLimit: "10mb",
+    },
+  },
   images: {
     // next/image butuh izin host storage; gunakan unoptimized fallback bila host belum terdaftar
     unoptimized: false,

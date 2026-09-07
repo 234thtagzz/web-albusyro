@@ -1,6 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import type { Json } from "@/types/database";
 
@@ -80,4 +81,16 @@ export async function toggleActivePpdb(id: string, is_active: boolean) {
   revalidatePath("/ppdb");
   revalidatePath("/admin/ppdb");
   return { ok: true };
+}
+
+export async function createPpdbAction(formData: FormData) {
+  const res = await createPpdb(formData);
+  if (res?.error) redirect(`/admin/ppdb/new?error=${encodeURIComponent(res.error)}`);
+  redirect("/admin/ppdb");
+}
+
+export async function updatePpdbAction(id: string, formData: FormData) {
+  const res = await updatePpdb(id, formData);
+  if (res?.error) redirect(`/admin/ppdb/${id}/edit?error=${encodeURIComponent(res.error)}`);
+  redirect("/admin/ppdb");
 }

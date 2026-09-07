@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { updateGaleri } from "../../actions";
+import { updateGaleriAction } from "../../actions";
 import { ImageField } from "@/components/admin/image-field";
 
 export default async function EditGaleriPage({
@@ -24,12 +24,7 @@ export default async function EditGaleriPage({
   const { data } = await supabase.from("galeri").select("*").eq("id", id).single();
   if (!data) notFound();
 
-  async function action(formData: FormData) {
-    "use server";
-    const res = await updateGaleri(id, formData);
-    if (res?.error) redirect(`/admin/galeri/${id}/edit?error=${encodeURIComponent(res.error)}`);
-    redirect("/admin/galeri");
-  }
+  const action = updateGaleriAction.bind(null, id);
 
   return (
     <div className="max-w-3xl space-y-6">

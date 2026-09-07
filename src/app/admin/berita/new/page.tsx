@@ -6,21 +6,11 @@ import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { createBerita } from "../actions";
-import { redirect } from "next/navigation";
+import { createBeritaAction } from "../actions";
 import { ImageField } from "@/components/admin/image-field";
 
 export default async function NewBeritaPage({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
   const { error } = await searchParams;
-
-  async function action(formData: FormData) {
-    "use server";
-    const res = await createBerita(formData);
-    if (res?.error) {
-      redirect(`/admin/berita/new?error=${encodeURIComponent(res.error)}`);
-    }
-    redirect("/admin/berita");
-  }
 
   return (
     <div className="max-w-3xl space-y-6">
@@ -31,7 +21,7 @@ export default async function NewBeritaPage({ searchParams }: { searchParams: Pr
       {error && <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{decodeURIComponent(error)}</div>}
       <Card className="rounded-2xl border-stone-200 bg-white">
         <CardContent className="p-6">
-          <form action={action} className="space-y-4" encType="multipart/form-data">
+          <form action={createBeritaAction} className="space-y-4" encType="multipart/form-data">
             <div className="grid gap-4 sm:grid-cols-2">
               <div className="sm:col-span-2 space-y-1.5">
                 <Label htmlFor="title">Judul *</Label>

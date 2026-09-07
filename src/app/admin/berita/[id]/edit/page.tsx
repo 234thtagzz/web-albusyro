@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -8,7 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Select } from "@/components/ui/select";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { updateBerita } from "../../actions";
+import { updateBeritaAction } from "../../actions";
 import { ImageField } from "@/components/admin/image-field";
 
 export default async function EditBeritaPage({
@@ -24,12 +24,7 @@ export default async function EditBeritaPage({
   const { data, error } = await supabase.from("berita").select("*").eq("id", id).single();
   if (error || !data) notFound();
 
-  async function action(formData: FormData) {
-    "use server";
-    const res = await updateBerita(id, formData);
-    if (res?.error) redirect(`/admin/berita/${id}/edit?error=${encodeURIComponent(res.error)}`);
-    redirect("/admin/berita");
-  }
+  const action = updateBeritaAction.bind(null, id);
 
   return (
     <div className="max-w-3xl space-y-6">

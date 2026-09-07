@@ -5,18 +5,10 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { createPpdb } from "../actions";
-import { redirect } from "next/navigation";
+import { createPpdbAction } from "../actions";
 
 export default async function NewPpdbPage({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
   const { error } = await searchParams;
-
-  async function action(formData: FormData) {
-    "use server";
-    const res = await createPpdb(formData);
-    if (res?.error) redirect(`/admin/ppdb/new?error=${encodeURIComponent(res.error)}`);
-    redirect("/admin/ppdb");
-  }
 
   return (
     <div className="max-w-3xl space-y-6">
@@ -27,7 +19,7 @@ export default async function NewPpdbPage({ searchParams }: { searchParams: Prom
       {error && <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{decodeURIComponent(error)}</div>}
       <Card className="rounded-2xl border-stone-200 bg-white">
         <CardContent className="p-6">
-          <form action={action} className="space-y-4">
+          <form action={createPpdbAction} className="space-y-4">
             <div className="grid gap-4">
               <div className="space-y-1.5">
                 <Label htmlFor="tahun_ajaran">Tahun Ajaran *</Label>
