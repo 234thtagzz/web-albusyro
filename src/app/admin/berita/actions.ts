@@ -46,8 +46,11 @@ async function uploadIfNeeded(file: File | null, bucket: string) {
 export async function createBerita(formData: FormData) {
   const title = String(formData.get("title") ?? "").trim();
   const slugRaw = String(formData.get("slug") ?? "").trim();
-  const excerpt = String(formData.get("excerpt") ?? "").trim() || null;
-  const content = String(formData.get("content") ?? "").trim();
+  // excerpt tetap trim, tapi normalisasi \r\n
+  const excerptRaw = String(formData.get("excerpt") ?? "").replace(/\r\n/g, "\n").trim();
+  const excerpt = excerptRaw || null;
+  // content: normalisasi \r\n -> \n, trim hanya di ujung agar spasi/enter di tengah & indent per paragraf tidak hilang
+  const content = String(formData.get("content") ?? "").replace(/\r\n/g, "\n").trim();
   const category = String(formData.get("category") ?? "Berita");
   const author = String(formData.get("author") ?? "").trim() || null;
   let image_url = String(formData.get("image_url") ?? "").trim() || null;
@@ -79,8 +82,9 @@ export async function createBerita(formData: FormData) {
 export async function updateBerita(id: string, formData: FormData) {
   const title = String(formData.get("title") ?? "").trim();
   const slugRaw = String(formData.get("slug") ?? "").trim();
-  const excerpt = String(formData.get("excerpt") ?? "").trim() || null;
-  const content = String(formData.get("content") ?? "").trim();
+  const excerptRaw = String(formData.get("excerpt") ?? "").replace(/\r\n/g, "\n").trim();
+  const excerpt = excerptRaw || null;
+  const content = String(formData.get("content") ?? "").replace(/\r\n/g, "\n").trim();
   const category = String(formData.get("category") ?? "Berita");
   const author = String(formData.get("author") ?? "").trim() || null;
   let image_url = String(formData.get("image_url") ?? "").trim() || null;

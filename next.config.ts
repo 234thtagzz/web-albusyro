@@ -30,6 +30,16 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "**.supabase.in",
       },
+      // Izinkan URL eksternal yang diinput admin (mis. gstatic, googleusercontent, cloudinary, dll)
+      // Next 16: hostname "**" = semua host https
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+      {
+        protocol: "http",
+        hostname: "**",
+      },
     ],
   },
 };

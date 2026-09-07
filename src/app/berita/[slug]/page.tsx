@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Fragment } from "react";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Reveal, Stagger } from "@/components/motion/reveal";
@@ -13,6 +14,45 @@ import { ArrowLeft, Calendar, User } from "lucide-react";
 import { createClient as createServerClient } from "@/lib/supabase/server";
 import { createClient as createAnonClient } from "@supabase/supabase-js";
 import type { Database } from "@/types/database";
+
+function BeritaContent({ content }: { content: string }) {
+  // Normalisasi \r\n -> \n, pertahankan spasi & enter
+  const normalized = String(content ?? "").replace(/\r\n/g, "\n");
+  // Split paragraf: 2x enter (atau lebih) = paragraf baru menjorok
+  // Single enter = <br> di dalam paragraf yang sama
+  const paragraphs = normalized.split(/\n\s*\n/).filter((p) => p.length > 0);
+  // Fallback jika tidak ada double newline: tetap perlakukan tiap baris non-kosong sebagai paragraf agar Enter sekali juga menjorok
+  const effectiveParagraphs =
+    paragraphs.length <= 1 && normalized.includes("\n") && !/\n\s*\n/.test(normalized)
+      ? normalized.split(/\n/).filter((p) => p.trim().length > 0 || p.length > 0)
+      : paragraphs;
+
+  if (effectiveParagraphs.length === 0) {
+    // Konten kosong atau hanya whitespace -> render apa adanya dengan pre-wrap
+    return <p className="whitespace-pre-wrap break-words text-justify indent-8">{content}</p>;
+  }
+
+  return (
+    <div className="space-y-4">
+      {effectiveParagraphs.map((para, i) => {
+        const lines = para.split("\n");
+        return (
+          <p
+            key={i}
+            className="whitespace-pre-wrap break-words text-justify indent-8 text-[15px] leading-relaxed text-slate-600"
+          >
+            {lines.map((line, idx) => (
+              <Fragment key={idx}>
+                {line}
+                {idx < lines.length - 1 && <br />}
+              </Fragment>
+            ))}
+          </p>
+        );
+      })}
+    </div>
+  );
+}
 
 function getAnonClient() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -115,8 +155,8 @@ export default async function NewsDetailPage({
                 ) : null;
               })()}
 
-              <div className="mt-8 text-[15px] leading-relaxed text-slate-600">
-                <p>{news.content}</p>
+              <div className="mt-8">
+                <BeritaContent content={String(news.content ?? "")} />
               </div>
             </div>
             </Reveal>

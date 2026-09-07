@@ -71,7 +71,16 @@ export default async function EditBeritaPage({
               </div>
               <div className="sm:col-span-2 space-y-1.5">
                 <Label htmlFor="content">Content *</Label>
-                <Textarea id="content" name="content" required rows={8} defaultValue={data.content} />
+                <Textarea
+                  id="content"
+                  name="content"
+                  required
+                  rows={12}
+                  className="whitespace-pre-wrap"
+                  placeholder={"Tulis isi berita... \nEnter = baris baru, 2x Enter = paragraf baru menjorok."}
+                  defaultValue={data.content}
+                />
+                <p className="text-xs text-stone-500">Tips: tekan <b>Enter</b> untuk baris baru, <b>2x Enter</b> untuk paragraf baru yang otomatis menjorok di halaman publik.</p>
               </div>
             </div>
             <div className="flex gap-3">

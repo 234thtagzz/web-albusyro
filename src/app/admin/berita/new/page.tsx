@@ -57,7 +57,14 @@ export default async function NewBeritaPage({ searchParams }: { searchParams: Pr
               </div>
               <div className="sm:col-span-2 space-y-1.5">
                 <Label htmlFor="content">Content *</Label>
-                <Textarea id="content" name="content" required placeholder="Isi lengkap berita..." rows={8} />
+                <Textarea
+                  id="content"
+                  name="content"
+                  required
+                  rows={12}
+                  className="whitespace-pre-wrap"
+                />
+                <p className="text-xs text-stone-500">Tips: tekan <b>Enter</b> untuk baris baru, <b>2x Enter</b> untuk paragraf baru yang otomatis menjorok di halaman publik. Spasi & enter dipertahankan.</p>
               </div>
             </div>
             <div className="flex gap-3">
