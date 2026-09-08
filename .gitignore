@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# windows reserved name - cegah error git add "invalid path 'nul'"
+nul
+NUL
+/nul
