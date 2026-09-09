@@ -5,6 +5,7 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { school } from "@/data/school";
+import { waLink } from "@/data/home";
 import { Phone, Mail, MapPin, MessageCircle, ExternalLink } from "lucide-react";
 
 export default function ContactPage() {
@@ -34,7 +35,7 @@ export default function ContactPage() {
                       <div className="flex h-10 w-10 items-center justify-center rounded-[10px] bg-primary/15 text-primary">
                         <Phone className="h-5 w-5" />
                       </div>
-                      <h3 className="mt-3 text-sm font-medium text-slate-900">Telepon / WhatsApp</h3>
+                      <h3 className="mt-3 text-sm font-medium text-slate-900">Telepon</h3>
                       <p className="mt-1 text-sm text-slate-600">{school.phone}</p>
                       {school.phoneContact && (
                         <p className="text-xs text-slate-400">({school.phoneContact})</p>
@@ -44,9 +45,9 @@ export default function ContactPage() {
                 </a>
               )}
 
-              {school.social.whatsapp !== "[DATA RESMI BELUM TERSEDIA]" && (
+              {school.whatsapp && (
                 <a
-                  href={school.social.whatsapp}
+                  href={waLink("Assalamualaikum, saya ingin bertanya mengenai STTD Al-Busyro.")}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -56,7 +57,10 @@ export default function ContactPage() {
                         <MessageCircle className="h-5 w-5" />
                       </div>
                       <h3 className="mt-3 text-sm font-medium text-slate-900">WhatsApp</h3>
-                      <p className="mt-1 text-sm text-slate-600">{school.social.whatsapp}</p>
+                      <p className="mt-1 text-sm text-slate-600">{school.phone}</p>
+                      {school.phoneContact && (
+                        <p className="text-xs text-slate-400">({school.phoneContact})</p>
+                      )}
                     </CardContent>
                   </Card>
                 </a>

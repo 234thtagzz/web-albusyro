@@ -40,7 +40,7 @@ export function PpdbRegistrationForm() {
           </Badge>
           <h3 className="font-display text-xl font-bold tracking-tight text-primary-1">Form Pendaftaran PPDB</h3>
           <p className="mt-1 text-[13px] leading-relaxed text-stone-600">
-            Isi data calon santri dengan lengkap. Data akan langsung masuk ke dashboard admin dan dapat dilihat di <span className="font-medium text-primary-1">/admin/pendaftar</span>.
+            Isi data calon santri dengan lengkap dan benar. Tim panitia PPDB kami akan segera memverifikasi dan menghubungi Anda melalui WhatsApp.
           </p>
           <div className="mt-3 h-1 w-12 rounded-full bg-primary-1" />
         </div>
@@ -90,7 +90,7 @@ export function PpdbRegistrationForm() {
               <Send className="h-4 w-4" />
               {isPending ? "Mengirim..." : "Kirim Pendaftaran"}
             </Button>
-            <p className="text-xs text-stone-500">Admin melihat data di menu Pendaftar • status awal pending</p>
+            <p className="text-xs text-stone-500">Data Anda tersimpan secara aman dan akan dikonfirmasi oleh panitia.</p>
           </div>
         </form>
       </CardContent>

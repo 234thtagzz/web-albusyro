@@ -2,7 +2,8 @@ import { createClient } from "@/lib/supabase/server";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
-import { deletePendaftar, updateStatus } from "./actions";
+import { deletePendaftar } from "./actions";
+import { PendaftarStatusSelect } from "@/components/admin/pendaftar-status-select";
 
 export default async function PendaftarPage() {
   const supabase = await createClient();
@@ -42,14 +43,7 @@ export default async function PendaftarPage() {
                     </td>
                     <td className="px-4 py-3 text-xs text-stone-500">{row.asal_sekolah ?? "-"}<br />{row.alamat ?? ""}</td>
                     <td className="px-4 py-3">
-                      <form action={async (formData: FormData) => { "use server"; const s = String(formData.get("status") ?? "pending"); await updateStatus(row.id, s); }}>
-                        <select name="status" defaultValue={row.status} className="rounded-full border border-stone-200 bg-white px-2 py-1 text-xs" onChange={(e) => (e.target as HTMLSelectElement).form?.requestSubmit()}>
-                          <option value="pending">pending</option>
-                          <option value="wa_verified">wa_verified</option>
-                          <option value="diterima">diterima</option>
-                          <option value="ditolak">ditolak</option>
-                        </select>
-                      </form>
+                      <PendaftarStatusSelect id={row.id} currentStatus={row.status} />
                     </td>
                     <td className="px-4 py-3 text-xs text-stone-500">{new Date(row.created_at).toLocaleDateString("id-ID")}</td>
                     <td className="px-4 py-3 text-right">

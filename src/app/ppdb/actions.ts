@@ -1,7 +1,7 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import { createClient } from "@/lib/supabase/server";
+import { createClient, createServiceClient } from "@/lib/supabase/server";
 
 function isValidWA(wa: string) {
   return /^08[0-9]{8,12}$/.test(wa) || /^628[0-9]{8,12}$/.test(wa);
@@ -21,7 +21,13 @@ export async function submitPpdbRegistration(formData: FormData) {
   if (!isValidWA(wa_wali)) return { error: "No WA tidak valid. Gunakan format 08xxxxxxxxxx atau 628xxxxxxxxxx (8-14 digit)" };
   if (nisn && !/^[0-9]{8,12}$/.test(nisn)) return { error: "NISN harus 8-12 digit angka" };
 
-  const supabase = await createClient();
+  let supabase;
+  try {
+    supabase = createServiceClient();
+  } catch {
+    supabase = await createClient();
+  }
+
   const { error } = await supabase.from("ppdb_registrations").insert({
     nama,
     nisn,

@@ -7,9 +7,9 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { PageHero } from "@/components/ui/page-hero";
 import { galleryItems } from "@/data/gallery";
-import { AktivitasSection } from "@/components/components/jadwal"
+import { AktivitasSection } from "@/components/kegiatan/aktivitas";
 import { Badge } from "@/components/ui/badge";
-import { Target, Eye, Sparkles, Camera, ArrowDown } from "lucide-react"
+import { Target } from "lucide-react";
 
 const UNIFIED_BADGE = "border-primary-1/15 bg-primary-1/10 text-primary-1 hover:bg-primary-1/15";
 
