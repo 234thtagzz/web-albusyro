@@ -12,56 +12,38 @@ const testimoniData = [
   {
     id: 1,
     nama: "Ahmad Fauzi",
-    jabatan: "Wali Santri",
+    jabatan: "Wali Santri Kelas 4",
     rating: 5,
     pesan:
-      "Alhamdulillah, putra saya berkembang pesat sejak mondok di Al-Busyro. Akhlaknya membaik, hafalannya bertambah, dan semangatnya dalam belajar luar biasa.",
+      "Alhamdulillah, hafalan ananda terjaga mutqin dengan bimbingan asatidzah yang sabar. Yang paling membahagiakan adalah perubahan adab dan baktinya kepada orang tua di rumah.",
     inisial: "AF",
   },
   {
     id: 2,
     nama: "Siti Rohmah",
-    jabatan: "Wali Santri",
+    jabatan: "Wali Santri Kelas 2",
     rating: 5,
     pesan:
-      "Pesantren Al-Busyro luar biasa. Ustadz dan ustadzahnya sabar, metode pengajarannya modern namun tetap berpegang pada nilai-nilai salafiyah.",
+      "Metode talaqqi di STTD Al-Busyro sangat teliti dalam makharijul huruf dan tajwid. Anak kami belajar dengan ceria tanpa rasa tertekan, dan bacaannya semakin fasih.",
     inisial: "SR",
   },
   {
     id: 3,
-    nama: "Muhammad Ridwan",
-    jabatan: "Alumni",
+    nama: "dr. Muhammad Ridwan",
+    jabatan: "Wali Santri Kelas 5",
     rating: 5,
     pesan:
-      "Mondok di sini mengubah hidup saya. Ilmu yang saya dapatkan menjadi bekal berharga dalam kehidupan sehari-hari dan karier saya sekarang.",
+      "Integrasi kurikulum Kemenag dan target tahfizh 10-15 juz mutqin sangat terstruktur. Ananda tidak hanya hafal Al-Qur'an, tapi juga menguasai pelajaran umum dengan baik.",
     inisial: "MR",
   },
   {
     id: 4,
     nama: "Fatimah Azzahra",
-    jabatan: "Wali Santri",
+    jabatan: "Wali Santri Kelas 3",
     rating: 5,
     pesan:
-      "Lingkungan yang kondusif, bersih, dan islami. Anak saya betah dan bahagia di sini. Terima kasih Al-Busyro atas dedikasi luar biasa.",
+      "Komunikasi sekolah dengan orang tua sangat terbuka melalui buku mutaba'ah dan laporan berkala. Lingkungan belajarnya kondusif menanamkan sunnah sejak dini.",
     inisial: "FA",
-  },
-  {
-    id: 5,
-    nama: "Hasan Basri",
-    jabatan: "Alumni",
-    rating: 5,
-    pesan:
-      "Program tahfidz di Al-Busyro sangat terstruktur. Alhamdulillah saya berhasil khatam 30 juz selama mondok di sini dengan bimbingan ustadz yang berpengalaman.",
-    inisial: "HB",
-  },
-  {
-    id: 6,
-    nama: "Nuraini Putri",
-    jabatan: "Wali Santri",
-    rating: 5,
-    pesan:
-      "Komunikasi antara pesantren dan orang tua sangat baik. Saya selalu mendapat update perkembangan anak. Sangat merekomendasikan pesantren ini!",
-    inisial: "NP",
   },
 ];
 
@@ -78,7 +60,7 @@ export default function Testimoni() {
             Apa Kata Mereka?
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-[14px] leading-relaxed text-stone-500">
-            Cerita nyata dari wali santri dan alumni yang telah merasakan manfaat belajar di STTD Al-Busyro.
+            Pengalaman nyata para wali santri yang mempercayakan pendidikan ananda di STTD Al-Busyro.
           </p>
           <div className="mx-auto mt-4 h-1 w-12 rounded-full bg-primary-1" />
         </Reveal>

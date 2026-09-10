@@ -143,6 +143,7 @@ drop policy if exists "admin write ppdb_info" on ppdb_info;
 drop policy if exists "public insert ppdb_registrations" on ppdb_registrations;
 drop policy if exists "admin select ppdb_registrations" on ppdb_registrations;
 drop policy if exists "admin write ppdb_registrations" on ppdb_registrations;
+drop policy if exists "admin delete ppdb_registrations" on ppdb_registrations;
 
 create policy "public read prestasi" on prestasi for select using (true);
 create policy "admin write prestasi" on prestasi for all using (auth.role() = 'authenticated') with check (auth.role() = 'authenticated');
@@ -159,6 +160,7 @@ create policy "admin write ppdb_info" on ppdb_info for all using (auth.role() = 
 create policy "public insert ppdb_registrations" on ppdb_registrations for insert with check (true);
 create policy "admin select ppdb_registrations" on ppdb_registrations for select using (auth.role() = 'authenticated');
 create policy "admin write ppdb_registrations" on ppdb_registrations for update using (auth.role() = 'authenticated') with check (auth.role() = 'authenticated');
+create policy "admin delete ppdb_registrations" on ppdb_registrations for delete using (auth.role() = 'authenticated');
 
 -- ============================================================
 -- 8. STORAGE BUCKETS (public read)

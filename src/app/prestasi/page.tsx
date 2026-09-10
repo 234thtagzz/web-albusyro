@@ -14,9 +14,8 @@ export const revalidate = 60;
 
 export default async function AchievementsPage() {
   const supabase = await createClient();
-  const { data, error } = await supabase.from("prestasi").select("*").order("created_at", { ascending: false });
+  const { data } = await supabase.from("prestasi").select("*").order("created_at", { ascending: false });
   const achievements = data && data.length > 0 ? data : fallback;
-  const isFallback = !data || data.length === 0;
 
   return (
     <>
@@ -26,7 +25,6 @@ export default async function AchievementsPage() {
           badge="Prestasi"
           title="Prestasi Santri"
           description="Pencapaian yang membanggakan dari para santri STTD Al-Busyro dalam berbagai bidang."
-          meta={isFallback && !error ? "Menampilkan data sementara — kelola via /admin/prestasi" : undefined}
         />
         <section className="section-spacing relative overflow-hidden border-t border-stone-200 bg-white">
           <div className="pointer-events-none absolute -top-20 left-0 h-[400px] w-[500px] rounded-full bg-primary-4/10 blur-[80px]" aria-hidden />

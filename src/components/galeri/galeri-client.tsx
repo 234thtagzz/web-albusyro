@@ -12,7 +12,7 @@ import type { Database } from "@/types/database";
 type Row = Database["public"]["Tables"]["galeri"]["Row"];
 const cats = ["Semua","Pembelajaran","Tahfiz","Kegiatan","Prestasi","Lingkungan"] as const;
 
-export function GaleriClient({ items, fallback = false }: { items: Row[]; fallback?: boolean }) {
+export function GaleriClient({ items }: { items: Row[]; fallback?: boolean }) {
   const [active, setActive] = useState("Semua");
   const [idx, setIdx] = useState<number | null>(null);
 
@@ -36,7 +36,6 @@ export function GaleriClient({ items, fallback = false }: { items: Row[]; fallba
   return (
     <>
       <CategoryFilter categories={[...cats]} active={active} onChange={(c) => setActive(c)} />
-      {fallback && <p className="mt-3 text-xs text-amber-600">Menampilkan data sementara — kelola via /admin/galeri</p>}
       {filtered.length === 0 ? (
         <EmptyState title="Belum ada dokumentasi yang tersedia." description="Galeri akan diperbarui oleh pihak STTD Al-Busyro." />
       ) : (

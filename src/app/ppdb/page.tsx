@@ -59,7 +59,7 @@ export default async function AdmissionPage() {
           badge="PPDB"
           title="Penerimaan Peserta Didik Baru"
           description={info ? `Tahun Ajaran ${info.tahun_ajaran} • Informasi pendaftaran santri baru STTD Al-Busyro.` : "Informasi pendaftaran santri baru STTD Al-Busyro."}
-          meta={info ? `Kontak: ${info.kontak ?? school.phone} • Kelola via /admin/ppdb` : undefined}
+          meta={info?.kontak ? `Kontak Panitia: ${info.kontak}` : `Kontak Panitia: ${school.phone} (${school.phoneContact})`}
         />
 
         {/* Info cards — mirror Admission steps */}
@@ -73,7 +73,7 @@ export default async function AdmissionPage() {
                   Informasi PPDB
                 </Badge>
                 <h2 className="font-display mt-3 text-[28px] font-bold tracking-tight text-primary-1 sm:text-[32px]">Empat hal yang perlu diketahui</h2>
-                <p className="mx-auto mt-2 max-w-lg text-[13px] leading-relaxed text-stone-500">Semua informasi dikelola via Supabase dan dapat diperbarui panitia tanpa redeploy.</p>
+                <p className="mx-auto mt-2 max-w-lg text-[13px] leading-relaxed text-stone-500">Informasi resmi pendaftaran dan persyaratan santri baru STTD Al-Busyro.</p>
                 <div className="mx-auto mt-4 h-1 w-12 rounded-full bg-primary-1" />
               </div>
             </Reveal>

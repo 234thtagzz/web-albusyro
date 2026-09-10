@@ -14,14 +14,13 @@ import type { Database } from "@/types/database";
 type Row = Database["public"]["Tables"]["berita"]["Row"];
 const cats = ["Semua","Berita","Pengumuman","Kegiatan","Prestasi"] as const;
 
-export function BeritaClient({ items, fallback = false }: { items: Row[]; fallback?: boolean }) {
+export function BeritaClient({ items }: { items: Row[]; fallback?: boolean }) {
   const [active, setActive] = useState("Semua");
   const filtered = active === "Semua" ? items : items.filter((n) => n.category === active);
 
   return (
     <>
       <CategoryFilter categories={[...cats]} active={active} onChange={(c) => setActive(c)} />
-      {fallback && <p className="mt-3 text-xs text-amber-600">Menampilkan data sementara — kelola via /admin/berita</p>}
       {filtered.length === 0 ? (
         <EmptyState icon={<Newspaper className="h-7 w-7 text-slate-600" />} title="Belum ada berita yang tersedia." description="Berita akan diperbarui oleh pihak STTD Al-Busyro." />
       ) : (
