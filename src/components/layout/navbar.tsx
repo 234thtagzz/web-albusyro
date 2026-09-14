@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { mainNavigation, ctaNavigation } from "@/data/navigation";
-import { Logo } from "./logo";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -71,17 +71,17 @@ export function Navbar() {
               : "border-white/70 bg-white/60 shadow-lg shadow-slate-900/5 backdrop-blur-md hover:bg-white/80"
           )}
         >
-          {/* Brand Logo */}
-          <Link href="/" className="group flex items-center gap-2.5">
-            <Logo />
-            <span className="leading-tight">
-              <span className="block font-display text-[14px] font-bold tracking-tight text-slate-900 sm:text-[15px]">
-                STTD AL&#8209;BUSYRO
-              </span>
-              <span className="block text-[10px] font-bold uppercase tracking-[0.12em] text-slate-500 sm:text-[11px]">
-                SEKOLAH TAHFIZH — SETARA SD
-              </span>
-            </span>
+          {/* Brand Logo - Banner LOGO.png (1623x487, ~3.33:1) */}
+          <Link href="/" className="group flex shrink-0 items-center">
+            <Image
+              src="/images/LOGO.png"
+              alt="STTD Al-Busyro - Sekolah Tahfizhul Qur'an Tingkat Dasar"
+              width={1623}
+              height={487}
+              priority
+              sizes="(max-width: 640px) 180px, (max-width: 1024px) 220px, 260px"
+              className="shrink-0 w-auto object-contain object-left h-16"
+            />
           </Link>
 
           {/* Desktop Navigation Links */}
