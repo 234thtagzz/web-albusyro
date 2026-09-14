@@ -5,8 +5,22 @@ import { footerNavigation } from "@/data/navigation";
 import { waLink } from "@/data/home";
 import { Logo } from "./logo";
 import { Button } from "@/components/ui/button";
+import type { PpdbData } from "@/lib/ppdb-utils";
+import { createPpdbWaLink } from "@/lib/ppdb-utils";
 
-export function Footer() {
+interface FooterProps {
+  ppdbInfo?: PpdbData | null;
+}
+
+export function Footer({ ppdbInfo }: FooterProps) {
+  const phone = ppdbInfo?.no_hp ?? school.phone;
+  const contactName = ppdbInfo?.nama_admin ?? school.phoneContact;
+  const waHref = ppdbInfo
+    ? createPpdbWaLink(
+        ppdbInfo,
+        `Assalamualaikum ${contactName}, saya ingin bertanya tentang PPDB STTD Al-Busyro.`
+      )
+    : waLink("Assalamualaikum, saya ingin bertanya tentang PPDB STTD Al-Busyro.");
   return (
     <footer className="bg-primary-1 text-popover-1">
       <div className="container-custom pt-20 pb-14">
@@ -94,9 +108,9 @@ export function Footer() {
               <li className="flex items-start gap-2.5">
                   <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary-4" />
                   <span>
-                    {school.phone}
+                    {phone}
                     <span className="block text-sm text-primary-4">
-                      ({school.phoneContact})
+                      ({contactName})
                     </span>
                   </span>
 
@@ -109,9 +123,7 @@ export function Footer() {
               className="mt-7 gap-2.5 rounded-full bg-white px-5 py-3 text-[15px] font-semibold text-primary-1 shadow-md transition-all hover:-translate-y-0.5 hover:bg-emerald-50 hover:shadow-lg"
               render={
                 <a
-                  href={waLink(
-                    "Assalamualaikum, saya ingin bertanya tentang PPDB STTD Al-Busyro."
-                  )}
+                  href={waHref}
                   target="_blank"
                   rel="noopener noreferrer"
                 />

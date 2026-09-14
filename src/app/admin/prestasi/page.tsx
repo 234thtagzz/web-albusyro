@@ -1,14 +1,12 @@
 import { createClient } from "@/lib/supabase/server";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import { Plus, Pencil, Trash2 } from "lucide-react";
-import { deletePrestasi } from "./actions";
+import { Plus } from "lucide-react";
+import { AdminPrestasiTable } from "@/components/admin/prestasi-table";
 
 export default async function AdminPrestasiPage() {
   const supabase = await createClient();
-  const { data } = await supabase.from("prestasi").select("*").order("year", { ascending: false });
+  const { data, error } = await supabase.from("prestasi").select("*").order("year", { ascending: false });
 
   return (
     <div className="space-y-6">
@@ -22,58 +20,13 @@ export default async function AdminPrestasiPage() {
         </Button>
       </div>
 
-      <Card className="rounded-2xl border-stone-200 bg-white overflow-hidden">
-        <CardContent className="p-0">
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead className="bg-stone-50 text-left text-xs uppercase tracking-wider text-stone-500">
-                <tr>
-                  <th className="px-4 py-3">Gambar</th>
-                  <th className="px-4 py-3">Prestasi</th>
-                  <th className="px-4 py-3">Kategori</th>
-                  <th className="px-4 py-3">Tahun</th>
-                  <th className="px-4 py-3">Tingkat</th>
-                  <th className="px-4 py-3 text-right">Aksi</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-stone-100">
-                {data?.map((row) => (
-                  <tr key={row.id} className="hover:bg-stone-50/50">
-                    <td className="px-4 py-3">
-                      {row.image_url ? (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img src={row.image_url} alt={row.title} className="h-12 w-16 rounded-lg object-cover border border-stone-200" />
-                      ) : (
-                        <div className="flex h-12 w-16 items-center justify-center rounded-lg border border-dashed border-stone-200 bg-stone-50 text-xs text-stone-400">No img</div>
-                      )}
-                    </td>
-                    <td className="px-4 py-3 max-w-[260px]">
-                      <p className="font-medium text-stone-900 line-clamp-1">{row.title}</p>
-                      <p className="text-xs text-stone-400 line-clamp-1">{row.competition} • {row.participant}</p>
-                    </td>
-                    <td className="px-4 py-3"><Badge variant="outline" className="rounded-full text-xs">{row.category}</Badge></td>
-                    <td className="px-4 py-3 text-xs">{row.year}</td>
-                    <td className="px-4 py-3 text-xs">{row.level}</td>
-                    <td className="px-4 py-3">
-                      <div className="flex justify-end gap-1">
-                        <Button variant="ghost" size="icon-sm" render={<Link href={`/admin/prestasi/${row.id}/edit`} />} nativeButton={false}>
-                          <Pencil className="h-4 w-4" />
-                        </Button>
-                        <form action={async () => { "use server"; await deletePrestasi(row.id); }}>
-                          <Button variant="ghost" size="icon-sm" type="submit" className="text-red-600 hover:bg-red-50">
-                            <Trash2 className="h-4 w-4" />
-                          </Button>
-                        </form>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
-                {data?.length === 0 && <tr><td colSpan={6} className="px-4 py-12 text-center text-stone-400">Belum ada prestasi</td></tr>}
-              </tbody>
-            </table>
-          </div>
-        </CardContent>
-      </Card>
+      {error && (
+        <div className="rounded-xl bg-red-50 border border-red-200 px-4 py-3 text-sm text-red-700">
+          {error.message}
+        </div>
+      )}
+
+      <AdminPrestasiTable initialData={data ?? []} />
     </div>
   );
 }

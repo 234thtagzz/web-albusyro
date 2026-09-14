@@ -17,7 +17,7 @@ export default async function AdminDashboard() {
     { label: "Berita", count: berita.count ?? 0, href: "/admin/berita", icon: Newspaper, color: "bg-primary-1" },
     { label: "Prestasi", count: prestasi.count ?? 0, href: "/admin/prestasi", icon: Trophy, color: "bg-secondary-1" },
     { label: "Galeri", count: galeri.count ?? 0, href: "/admin/galeri", icon: Images, color: "bg-primary-2" },
-    { label: "PPDB Info", count: ppdb.count ?? 0, href: "/admin/ppdb", icon: GraduationCap, color: "bg-stone-700" },
+    { label: "Pengaturan PPDB", count: ppdb.count ?? 0, href: "/admin/ppdb", icon: GraduationCap, color: "bg-stone-700" },
     { label: "Pendaftar", count: pendaftar.count ?? 0, href: "/admin/pendaftar", icon: Users, color: "bg-emerald-600" },
   ];
 
@@ -49,7 +49,7 @@ export default async function AdminDashboard() {
             <li>Berita: Judul + slug + kategori + konten + gambar (upload ke bucket berita)</li>
             <li>Prestasi: Nama Prestasi + Kegiatan + Tahun + Tingkat + Peserta + gambar (bucket prestasi)</li>
             <li>Galeri: Judul + Kategori + gambar (bucket galeri) + deskripsi</li>
-            <li>PPDB: hanya 1 yang <code>is_active=true</code> yang tampil di /ppdb — form publik otomatis masuk ke Pendaftar</li>
+            <li>PPDB: 1 data master pengaturan (Nama Admin, Nomor HP, Tahun Ajaran Baru, Biaya, Jadwal, Persyaratan) — form publik otomatis masuk ke Pendaftar</li>
           </ul>
         </CardContent>
       </Card>

@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { SubmitButton } from "@/components/admin/submit-button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
@@ -50,7 +51,7 @@ export default async function NewGaleriPage({ searchParams }: { searchParams: Pr
               </div>
             </div>
             <div className="flex gap-3">
-              <Button type="submit" className="rounded-full bg-primary-1 text-white">Simpan</Button>
+              <SubmitButton className="rounded-full bg-primary-1 text-white" loadingText="Menyimpan...">Simpan</SubmitButton>
               <Button variant="outline" render={<Link href="/admin/galeri" />} nativeButton={false}>Batal</Button>
             </div>
           </form>

@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { SubmitButton } from "@/components/admin/submit-button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Logo } from "@/components/layout/logo";
@@ -39,9 +39,9 @@ export default async function LoginPage({
               <Label htmlFor="password">Password</Label>
               <Input id="password" name="password" type="password" required />
             </div>
-            <Button type="submit" className="w-full rounded-full bg-primary-1 text-white hover:bg-primary-2 h-10">
+            <SubmitButton className="w-full rounded-full bg-primary-1 text-white hover:bg-primary-2 h-10">
               Masuk
-            </Button>
+            </SubmitButton>
           </form>
 
           <p className="mt-4 text-center text-xs text-stone-400">
@@ -63,7 +63,7 @@ async function loginAction(formData: FormData) {
   const { error } = await supabase.auth.signInWithPassword({ email, password });
 
   if (error) {
-    redirect(`/login?error=${encodeURIComponent(error.message)}`);
+    redirect(`/login?error=${encodeURIComponent(error.message)}&next=${encodeURIComponent(next)}`);
   }
   redirect(next);
 }

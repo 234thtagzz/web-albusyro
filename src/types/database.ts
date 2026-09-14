@@ -127,10 +127,11 @@ export interface Database {
         Row: {
           id: string;
           tahun_ajaran: string;
+          nama_admin: string | null;
+          no_hp: string | null;
           jadwal: string | null;
           persyaratan: string | null;
           biaya: string | null;
-          faq: Json;
           kontak: string | null;
           is_active: boolean;
           created_at: string;
@@ -139,10 +140,11 @@ export interface Database {
         Insert: {
           id?: string;
           tahun_ajaran: string;
+          nama_admin?: string | null;
+          no_hp?: string | null;
           jadwal?: string | null;
           persyaratan?: string | null;
           biaya?: string | null;
-          faq?: Json;
           kontak?: string | null;
           is_active?: boolean;
           created_at?: string;
@@ -151,10 +153,11 @@ export interface Database {
         Update: {
           id?: string;
           tahun_ajaran?: string;
+          nama_admin?: string | null;
+          no_hp?: string | null;
           jadwal?: string | null;
           persyaratan?: string | null;
           biaya?: string | null;
-          faq?: Json;
           kontak?: string | null;
           is_active?: boolean;
           created_at?: string;
@@ -171,6 +174,8 @@ export interface Database {
           nama_wali: string;
           wa_wali: string;
           alamat: string | null;
+          foto_kk: string | null;
+          foto_akta: string | null;
           status: "pending" | "diterima" | "ditolak" | "wa_verified";
           created_at: string;
         };
@@ -182,6 +187,8 @@ export interface Database {
           nama_wali: string;
           wa_wali: string;
           alamat?: string | null;
+          foto_kk?: string | null;
+          foto_akta?: string | null;
           status?: "pending" | "diterima" | "ditolak" | "wa_verified";
           created_at?: string;
         };
@@ -193,6 +200,8 @@ export interface Database {
           nama_wali?: string;
           wa_wali?: string;
           alamat?: string | null;
+          foto_kk?: string | null;
+          foto_akta?: string | null;
           status?: "pending" | "diterima" | "ditolak" | "wa_verified";
           created_at?: string;
         };

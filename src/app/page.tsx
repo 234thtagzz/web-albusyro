@@ -6,20 +6,25 @@ import { ProgramsBento } from "@/components/home/programs-bento";
 import { Admission } from "@/components/home/admission";
 import { DepartmentsSection } from "@/components/home/stats";
 import Testimoni from "@/components/home/testimoni";
+import { getPpdbInfo } from "@/lib/supabase/ppdb";
 
-export default function Home() {
+export const revalidate = 60;
+
+export default async function Home() {
+  const ppdbInfo = await getPpdbInfo();
+
   return (
     <>
       <Navbar />
       <main className="flex-1" id="main-content">
-        <Hero />
+        <Hero ppdbInfo={ppdbInfo} />
         <DepartmentsSection />
         <Identity />
         <ProgramsBento />
         <Testimoni />
-        <Admission />
+        <Admission ppdbInfo={ppdbInfo} />
       </main>
-      <Footer />
+      <Footer ppdbInfo={ppdbInfo} />
     </>
   );
 }
