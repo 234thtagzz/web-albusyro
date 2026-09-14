@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { galleryItems as fallback } from "@/data/gallery";
 import { GaleriClient } from "@/components/galeri/galeri-client";
 import type { Database } from "@/types/database";
+import { FotoStack } from "@/components/components/FotoStats";
 
 type GaleriRow = Database["public"]["Tables"]["galeri"]["Row"];
 
@@ -32,6 +33,23 @@ export default async function GalleryPage() {
           <div className="pointer-events-none absolute -bottom-20 right-0 h-[360px] w-[360px] rounded-full bg-secondary-3/10 blur-[70px]" aria-hidden />
           <div className="container-custom relative">
             <GaleriClient items={rows} fallback={isFallback} />
+          </div>
+        </section>
+
+        <section className="section-spacing overflow-hidden relative" id="prestasi">
+          <div className="container-custom relative z-10">
+            <div className="text-center mb-12">
+              <h2 className="heading-lg mt-4">
+                Dokumentasi Kegiatan
+              </h2>
+              <p className="text-lg text-stone-500 max-w-2xl mx-auto">
+                Foto-foto terbaik dari berbagai kegiatan sekolah yang
+                menunjukkan
+                semangat belajar dan kreativitas siswa.
+              </p>
+            </div>
+
+            <FotoStack />
           </div>
         </section>
       </main>

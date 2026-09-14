@@ -31,7 +31,7 @@ const cards: FotoCard[] = [
   },
 ];
 
-export default function FotoStack() {
+export function FotoStack() {
   // Simpan kartu yang aktif diklik (default: kartu 2 di tengah)
   const [activeId, setActiveId] = useState<number>(2);
 
@@ -77,27 +77,27 @@ export default function FotoStack() {
             {/* Card Frame */}
             <div className="w-[230px] sm:w-[270px] bg-white rounded-[24px] sm:rounded-[28px] p-2.5 sm:p-3 shadow-xl border border-slate-100/80 flex flex-col relative">
 
-            {/* Image Box - Diubah menjadi Rasio Potret (3:4) */}
-            <div className="relative aspect-[3/4] w-full rounded-[18px] sm:rounded-[22px] overflow-hidden">
+              {/* Image Box - Diubah menjadi Rasio Potret (3:4) */}
+              <div className="relative aspect-[3/4] w-full rounded-[18px] sm:rounded-[22px] overflow-hidden">
                 <Image
-                src={card.image}
-                alt={card.title}
-                fill
-                sizes="270px"
-                className="object-cover"
+                  src={card.image}
+                  alt={card.title}
+                  fill
+                  sizes="270px"
+                  className="object-cover"
                 />
 
-            </div>
+              </div>
 
-            {/* Title & Location */}
-            <div className="px-1 pt-2.5 pb-1.5 flex items-baseline justify-between">
+              {/* Title & Location */}
+              <div className="px-1 pt-2.5 pb-1.5 flex items-baseline justify-between">
                 <h3 className="font-bold text-slate-900 text-base sm:text-lg tracking-tight">
-                {card.title}
+                  {card.title}
                 </h3>
                 <span className="text-[10px] sm:text-[11px] text-slate-400 font-medium">
-                {card.location}
+                  {card.location}
                 </span>
-            </div>
+              </div>
 
             </div>
           </div>
@@ -106,3 +106,5 @@ export default function FotoStack() {
     </div>
   );
 }
+
+export default FotoStack;

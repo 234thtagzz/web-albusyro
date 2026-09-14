@@ -77,11 +77,12 @@ create index if not exists idx_berita_published on berita(published_at desc);
 create table if not exists ppdb_info (
   id uuid primary key default gen_random_uuid(),
   tahun_ajaran text not null, -- contoh: '2026/2027'
-  jadwal text,       -- markdown, nullable = [DATA BELUM TERSEDIA]
-  persyaratan text,  -- markdown
-  biaya text,        -- markdown
-  faq jsonb not null default '[]'::jsonb,
-  kontak text,
+  nama_admin text,   -- contoh: 'Ust. Mihwar'
+  no_hp text,        -- contoh: '085726216717'
+  jadwal text,       -- markdown, rincian jadwal
+  persyaratan text,  -- markdown, rincian berkas
+  biaya text,        -- markdown, rincian biaya
+  kontak text,       -- gabungan: '085726216717 (Ust. Mihwar)'
   is_active boolean not null default true,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
@@ -100,6 +101,8 @@ create table if not exists ppdb_registrations (
   nama_wali text not null,
   wa_wali text not null check (wa_wali ~ '^08[0-9]{8,12}$' or wa_wali ~ '^628[0-9]{8,12}$'),
   alamat text,
+  foto_kk text,
+  foto_akta text,
   status text not null default 'pending' check (status in ('pending','diterima','ditolak','wa_verified')),
   created_at timestamptz not null default now()
 );
@@ -167,13 +170,16 @@ create policy "admin write ppdb_registrations" on ppdb_registrations for update 
 insert into storage.buckets (id, name, public) values ('galeri','galeri', true) on conflict (id) do nothing;
 insert into storage.buckets (id, name, public) values ('berita','berita', true) on conflict (id) do nothing;
 insert into storage.buckets (id, name, public) values ('prestasi','prestasi', true) on conflict (id) do nothing;
+insert into storage.buckets (id, name, public) values ('pendaftar','pendaftar', true) on conflict (id) do nothing;
 
 -- Storage RLS
 drop policy if exists "public read storage" on storage.objects;
 drop policy if exists "admin write storage" on storage.objects;
+drop policy if exists "public insert pendaftar storage" on storage.objects;
 
-create policy "public read storage" on storage.objects for select using (bucket_id in ('galeri','berita','prestasi'));
-create policy "admin write storage" on storage.objects for all using (auth.role() = 'authenticated') with check (bucket_id in ('galeri','berita','prestasi'));
+create policy "public read storage" on storage.objects for select using (bucket_id in ('galeri','berita','prestasi','pendaftar'));
+create policy "admin write storage" on storage.objects for all using (auth.role() = 'authenticated') with check (bucket_id in ('galeri','berita','prestasi','pendaftar'));
+create policy "public insert pendaftar storage" on storage.objects for insert with check (bucket_id = 'pendaftar');
 
 -- ============================================================
 -- 9. SEED DUMMY (opsional, biar tidak EmptyState)
@@ -211,9 +217,9 @@ insert into berita (slug, title, excerpt, content, category, author, image_url, 
 ('kalender-pendidikan-dan-agenda-semester-ganjil','Kalender Pendidikan Semester Ganjil 2026/2027 Dirilis','Sekolah merilis kalender pendidikan semester ganjil. Orang tua diminta mencatat agenda penting seperti mabit rutin dan evaluasi hafalan.','Sekolah resmi merilis kalender pendidikan semester ganjil tahun ajaran 2026/2027. Beberapa agenda penting di antaranya mabit rutin bulanan, evaluasi capaian hafalan setiap akhir bulan, pekan adab, serta pentas seni Islami akhir semester.','Pengumuman','Tata Usaha','/images/dummy/news-6.png','Kalender pendidikan semester ganjil','2026-01-12')
 on conflict (slug) do nothing;
 
--- PPDB Info (1 aktif)
-insert into ppdb_info (tahun_ajaran, jadwal, persyaratan, biaya, faq, kontak, is_active) values
-('2026/2027','Informasi PPDB akan diperbarui oleh pihak STTD Al-Busyro.','Informasi persyaratan akan diperbarui oleh pihak STTD Al-Busyro.','Informasi biaya akan diperbarui oleh pihak STTD Al-Busyro.','[]','085 726216717 (Ust Mihwar)', true)
+-- PPDB Info (1 data master aktif)
+insert into ppdb_info (tahun_ajaran, nama_admin, no_hp, kontak, jadwal, persyaratan, biaya, is_active) values
+('2026/2027','Ust. Mihwar','085726216717','085726216717 (Ust. Mihwar)','Gelombang I: 1 Oktober – 31 Desember 2025. Gelombang II: 1 Januari – 31 Maret 2026. Pelayanan kantor: Senin – Sabtu pukul 08.00 – 14.00 WIB.','1. Mengisi formulir pendaftaran\n2. Fotokopi KK (2 lembar)\n3. Fotokopi Akta Kelahiran (2 lembar)\n4. Pas foto santri 3x4 (3 lembar)\n5. Observasi santri & wawancara wali','Biaya formulir pendaftaran: Rp 150.000. Rincian infaq pendidikan, seragam, dan SPP bulanan disampaikan saat observasi atau dapat dikonsultasikan langsung ke panitia.', true)
 on conflict do nothing;
 
 -- Selesai. Jalankan: SELECT * FROM prestasi; SELECT * FROM galeri; SELECT * FROM berita; SELECT * FROM ppdb_info;

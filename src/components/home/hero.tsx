@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { school } from "@/data/school";
-import { waLink } from "@/data/home";
+import type { PpdbData } from "@/lib/ppdb-utils";
 
 function Blob({
   className,
@@ -21,7 +21,13 @@ function Blob({
   );
 }
 
-export function Hero() {
+interface HeroProps {
+  ppdbInfo?: PpdbData | null;
+}
+
+export function Hero({ ppdbInfo }: HeroProps) {
+  const tahunAjaran = ppdbInfo?.tahun_ajaran ?? "2026/2027";
+
   return (
     <section className="relative overflow-hidden bg-primary-1">
       {/* bg image */}
@@ -51,14 +57,14 @@ export function Hero() {
       />
 
       <div className="relative flex min-h-[540px] flex-col items-center justify-center px-6 pb-20 pt-28 sm:min-h-[600px]">
-        {/* top badge */}
+        {/* top badge dinamis tahun ajaran dari input admin */}
         <div className="animate-fade-up inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 backdrop-blur-md">
           <span className="relative flex h-2 w-2">
             <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-secondary-3" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-secondary-2" />
           </span>
           <span className="text-[11px] font-semibold tracking-[0.14em] text-white/90 uppercase">
-            PPDB 2026/2027 · Sukoharjo — Jawa Tengah
+            PPDB TA {tahunAjaran} · Sukoharjo — Jawa Tengah
           </span>
         </div>
 
@@ -91,13 +97,11 @@ export function Hero() {
             <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
           </Link>
           <Link
-            href={waLink("Assalamualaikum, saya ingin mendaftarkan putra/putri saya ke STTD Al-Busyro.")}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/ppdb"
             className="group inline-flex items-center gap-2 rounded-full bg-secondary-1 px-6 py-2.5 text-[13px] font-bold text-white shadow-lg shadow-secondary-1/30 transition hover:-translate-y-0.5 hover:bg-secondary-2 hover:shadow-xl active:translate-y-0"
           >
-            Informasi PPDB
-            <ArrowDown className="h-4 w-4 transition group-hover:translate-y-0.5" />
+            Informasi PPDB (TA {tahunAjaran})
+            <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
           </Link>
         </div>
 
@@ -117,19 +121,6 @@ export function Hero() {
             </div>
           ))}
         </div>
-      </div>
-
-      <div aria-hidden className="absolute inset-x-0 bottom-0 leading-none">
-        <svg viewBox="0 0 1440 64" preserveAspectRatio="none" className="h-[48px] w-full sm:h-[64px]">
-          <path
-            d="M0 32 Q 180 64 360 32 T 720 32 T 1080 32 T 1440 32 L 1440 64 L 0 64 Z"
-            className="fill-white"
-          />
-          <path
-            d="M0 36 Q 180 60 360 36 T 720 36 T 1080 36 T 1440 36"
-            className="fill-secondary-3/20"
-          />
-        </svg>
       </div>
     </section>
   );
