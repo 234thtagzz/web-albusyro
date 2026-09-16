@@ -162,11 +162,6 @@ export const school = {
       description:
         "Wajib bagi seluruh siswa: pelajaran umum menunjang pengetahuan dan persiapan ujian kenegaraan, diseimbangkan dengan pendidikan agama agar siswa tidak hanya fokus pada hafalan.",
     },
-    asrama: {
-      title: "Program Asrama",
-      description:
-        "Pembinaan intensif di bawah pengasuh untuk menambah kapasitas hafalan sekaligus melatih kemandirian santri dalam menjalankan kewajiban harian.",
-    },
     targetNonAsrama: "10 - 15 Juz Mutqin",
     targetAsrama: "Mengutamakan Bacaan Fasih",
   },

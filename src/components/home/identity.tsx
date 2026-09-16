@@ -97,7 +97,7 @@ export function Identity() {
               ))}
             </div>
 
-            <Button variant="outline" render={<Link href="/profil" />} className="rounded-full border-primary-1/15 bg-primary-1/5 text-primary-1 hover:bg-primary-1 hover:text-white">
+            <Button variant="outline" render={<Link href="/profil" />} nativeButton={false} className="rounded-full border-primary-1/15 bg-primary-1/5 text-primary-1 hover:bg-primary-1 hover:text-white">
               Selengkapnya tentang profil
               <ArrowRight className="h-4 w-4" />
             </Button>

@@ -77,32 +77,37 @@ export function ProgramsBento() {
               <p className="mt-3 flex-1 text-sm leading-relaxed text-stone-600">
                 Pelajaran umum menunjang pengetahuan dan persiapan ujian kenegaraan, diseimbangkan dengan pendidikan agama.
               </p>
-              <p className="mt-5 flex items-center gap-1.5 text-sm font-semibold text-primary-1">
-                Ijazah resmi Kemenag
-                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-              </p>
+              <a
+                href="/kegiatan"
+              >
+                <p className="mt-5 flex items-center gap-1.5 text-sm font-semibold text-primary-1">
+                  Kegiatan Kami
+                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+                </p>
+              </a>
             </CardContent>
           </Card>
 
-          {/* Asrama — satu palet */}
-          <Card className="group flex flex-col rounded-[24px] border-stone-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-md hover:border-primary-1/20">
+          {/* Legalitas — satu palet */}
+          <Card className="flex flex-col rounded-[24px] border-primary-1/15 bg-primary-1/5 p-7">
             <CardContent className="flex flex-1 flex-col p-0">
-              <span className={`flex h-11 w-11 items-center justify-center rounded-xl shadow-sm transition group-hover:scale-105 ${UNIFIED_ICON}`}>
-                <Home className="h-5 w-5" />
+              <span className={`flex h-11 w-11 items-center justify-center rounded-xl shadow-sm ${UNIFIED_ICON}`}>
+                <ShieldCheck className="h-5 w-5" />
               </span>
-              <h3 className="font-display mt-5 text-lg tracking-tight text-primary-1">{school.programs.asrama.title}</h3>
-              <p className="mt-3 flex-1 text-sm leading-relaxed text-stone-600">
-                Pembinaan intensif di bawah pengasuh untuk menambah kapasitas hafalan sekaligus melatih kemandirian santri.
-              </p>
-              <p className="mt-5 flex items-center gap-1.5 text-sm font-semibold text-primary-1">
-                mengutamakan Bacaan Fasih
-                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
-              </p>
+              <h3 className="font-display mt-5 text-lg tracking-tight text-primary-1">Legal & Diakui</h3>
+              <ul className="mt-4 space-y-2.5">
+                {legalityPoints.map((point) => (
+                  <li key={point} className="flex items-start gap-2.5 text-sm text-stone-700">
+                    <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-1" aria-hidden="true" />
+                    {point}
+                  </li>
+                ))}
+              </ul>
             </CardContent>
           </Card>
 
           {/* Ekstrakurikuler — Badge satu palet */}
-          <Card className="rounded-[24px] border-stone-200 bg-white p-7 shadow-sm sm:p-9 lg:col-span-2">
+          <Card className="rounded-[24px] border-stone-200 bg-white p-7 shadow-sm sm:p-9 lg:col-span-3">
             <CardContent className="p-0">
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -139,23 +144,6 @@ export function ProgramsBento() {
             </CardContent>
           </Card>
 
-          {/* Legalitas — satu palet */}
-          <Card className="flex flex-col rounded-[24px] border-primary-1/15 bg-primary-1/5 p-7">
-            <CardContent className="flex flex-1 flex-col p-0">
-              <span className={`flex h-11 w-11 items-center justify-center rounded-xl shadow-sm ${UNIFIED_ICON}`}>
-                <ShieldCheck className="h-5 w-5" />
-              </span>
-              <h3 className="font-display mt-5 text-lg tracking-tight text-primary-1">Legal & Diakui</h3>
-              <ul className="mt-4 space-y-2.5">
-                {legalityPoints.map((point) => (
-                  <li key={point} className="flex items-start gap-2.5 text-sm text-stone-700">
-                    <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-primary-1" aria-hidden="true" />
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
         </Stagger>
       </div>
     </section>
