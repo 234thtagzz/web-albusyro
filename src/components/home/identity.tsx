@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { BookOpen, ArrowRight } from "lucide-react";
+import { HeaderStrip } from "@/components/ui/header-strip";
 
 const UNIFIED_ICON = "bg-primary-1 text-white";
 const UNIFIED_BADGE = "border-primary-1/15 bg-primary-1/10 text-primary-1";
@@ -54,24 +55,11 @@ export function Identity() {
       <Blob className="h-[500px] w-[600px] -top-32 -right-40 bg-primary-4/20 blur-[80px]" />
       <Blob className="h-[360px] w-[360px] -bottom-20 -left-28 bg-secondary-3/15 blur-[70px] animate-blob-delay" />
 
-      {/* header strip — konsisten profil */}
-      <div className="relative overflow-hidden border-b border-stone-100 bg-gradient-to-r from-primary-1 via-primary-2 to-secondary-1/70">
-        <div className="absolute inset-0 opacity-20">
-          <div className="h-full w-full bg-[repeating-linear-gradient(135deg,transparent_0_12px,white_12px_13px)]" />
-        </div>
-        <Blob className="h-40 w-64 -top-10 right-10 bg-white/15 blur-2xl opacity-40" />
-        <div className="container-custom relative py-7 sm:py-9">
-          <Badge variant="outline" className="inline-flex items-center gap-2 rounded-full border-white/20 bg-white/15 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-white backdrop-blur">
-            Tentang Sekolah
-          </Badge>
-          <h2 className="font-display mt-3 text-[26px] font-bold tracking-tight text-white sm:text-[32px] lg:text-[38px]">
-            Integrasi hafalan, adab, dan ilmu dalam satu madrasah
-          </h2>
-          <p className="mt-1 max-w-xl text-[13px] leading-relaxed text-white/80">
-            Awali langkah terbaik anak bersama Al-Qur&apos;an — mutqin hafalannya, baik adabnya, diakui legalitasnya.
-          </p>
-        </div>
-      </div>
+      <HeaderStrip
+        badge="Tentang Sekolah"
+        title="Integrasi hafalan, adab, dan ilmu dalam satu madrasah"
+        description="Awali langkah terbaik anak bersama Al-Qur&apos;an — mutqin hafalannya, baik adabnya, diakui legalitasnya."
+      />
 
       <div className="container-custom relative py-12 sm:py-16 lg:py-20">
         <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-12">

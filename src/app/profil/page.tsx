@@ -19,6 +19,7 @@ import {
   HeartHandshake,
   Leaf,
 } from "lucide-react";
+import { HeaderStrip } from "@/components/ui/header-strip";
 
 // satu kombinasi clean untuk badge + kotak icon di profil/kegiatan/beranda
 const UNIFIED_ICON = "bg-primary-1 text-white";
@@ -76,25 +77,11 @@ function SejarahSection() {
         <div className="h-full w-full rounded-[32px] rotate-12 border-2 border-dashed border-secondary-3" />
       </div>
 
-      {/* header strip — diagonal accent */}
-      <div className="relative overflow-hidden border-b border-stone-100 bg-gradient-to-r from-primary-1 via-primary-2 to-secondary-1/70">
-        <div className="absolute inset-0 opacity-20">
-          <div className="h-full w-full bg-[repeating-linear-gradient(135deg,transparent_0_12px,white_12px_13px)]" />
-        </div>
-        <Blob className="h-40 w-64 -top-10 right-10 bg-white/15 blur-2xl opacity-40" />
-        <div className="container-custom relative py-7 sm:py-9">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 backdrop-blur">
-            <Star className="h-3.5 w-3.5 text-secondary-3 fill-secondary-3" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-white">Profil & Sejarah</span>
-          </div>
-          <h2 className="font-display mt-3 text-[26px] font-bold tracking-tight text-white sm:text-[32px] lg:text-[38px]">
-            Perjalanan STTD Al-Busyro
-          </h2>
-          <p className="mt-1 max-w-xl text-[13px] leading-relaxed text-white/80">
-            Dari mimpi membumikan Al-Qur&apos;an hingga menjadi sekolah rujukan tahfizh tingkat dasar.
-          </p>
-        </div>
-      </div>
+      <HeaderStrip
+        badge={<><Star className="mr-1.5" />Profil &amp; Sejarah</>}
+        title="Perjalanan STTD Al-Busyro"
+        description="Dari mimpi membumikan Al-Qur&apos;an hingga menjadi sekolah rujukan tahfizh tingkat dasar."
+      />
 
       <div className="container-custom relative py-12 sm:py-16 lg:py-20">
         {/* top: tatanan baru — image kiri (sticky) + teks kanan */}
@@ -156,7 +143,7 @@ function SejarahSection() {
             {/* founder pill — satu palet */}
             <Card className="group rounded-2xl border-primary-1/10 bg-primary-1/[0.06] shadow-sm transition hover:border-primary-1/20 hover:shadow-md">
               <CardContent className="flex items-center gap-4 p-5">
-                <div className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl shadow-md transition group-hover:scale-105 ${UNIFIED_ICON}`}>
+                <div className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-sm shadow-md transition group-hover:scale-105 ${UNIFIED_ICON}`}>
                   <BookOpen className="h-5 w-5" />
                 </div>
                 <div>
@@ -267,7 +254,7 @@ function SejarahSection() {
             >
               <CardContent className="flex gap-4 p-5">
                 <div
-                  className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl shadow-sm transition group-hover:scale-105 ${UNIFIED_ICON}`}
+                  className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-sm shadow-sm transition group-hover:scale-105 ${UNIFIED_ICON}`}
                 >
                   <item.icon className="h-5 w-5" />
                 </div>
@@ -337,7 +324,7 @@ function MottoVisiMisiSection() {
             <div className="absolute left-0 top-0 h-1 w-full bg-primary-1" />
             <CardContent className="p-7">
               <div className="flex items-center gap-3">
-                <span className={`flex h-11 w-11 items-center justify-center rounded-xl shadow-md transition group-hover:scale-105 ${UNIFIED_ICON}`}>
+                <span className={`flex h-11 w-11 items-center justify-center rounded-sm shadow-md transition group-hover:scale-105 ${UNIFIED_ICON}`}>
                   <Eye className="h-5 w-5" />
                 </span>
                 <div>
@@ -361,7 +348,7 @@ function MottoVisiMisiSection() {
             <div className="absolute left-0 top-0 h-1 w-full bg-primary-1" />
             <CardContent className="p-7">
               <div className="flex items-center gap-3">
-                <span className={`flex h-11 w-11 items-center justify-center rounded-xl shadow-md transition group-hover:scale-105 ${UNIFIED_ICON}`}>
+                <span className={`flex h-11 w-11 items-center justify-center rounded-sm shadow-md transition group-hover:scale-105 ${UNIFIED_ICON}`}>
                   <Target className="h-5 w-5" />
                 </span>
                 <div>
@@ -373,7 +360,7 @@ function MottoVisiMisiSection() {
                 {school.mission.map((item, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-3 rounded-xl border border-transparent px-2 py-1.5 transition hover:border-stone-100 hover:bg-stone-50"
+                    className="flex items-start gap-3 rounded-sm border border-transparent px-2 py-1.5 transition hover:border-stone-100 hover:bg-stone-50"
                   >
                     <span className={`mt-0.5 flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-white ${UNIFIED_ICON}`}>
                       {i + 1}
@@ -406,7 +393,7 @@ function MottoVisiMisiSection() {
                 className="group relative flex flex-col gap-4 rounded-[20px] border-primary-1/10 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md"
               >
                 <CardContent className="flex flex-1 flex-col gap-4 p-6">
-                  <div className={`flex h-9 w-9 items-center justify-center rounded-xl shadow-sm transition group-hover:scale-105 ${UNIFIED_ICON}`}>
+                  <div className={`flex h-9 w-9 items-center justify-center rounded-sm shadow-sm transition group-hover:scale-105 ${UNIFIED_ICON}`}>
                     <Quote className="h-4 w-4" />
                   </div>
                   <p className="flex-1 text-[13.5px] font-medium italic leading-[1.8] text-stone-700">
@@ -565,7 +552,7 @@ function MuseumInfo() {
                   className="group rounded-[20px] border-primary-1/10 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md hover:border-primary-1/20"
                 >
                   <CardContent className="flex gap-4 p-5">
-                    <div className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-xl shadow-sm transition group-hover:scale-105 ${UNIFIED_ICON}`}>
+                    <div className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-sm shadow-sm transition group-hover:scale-105 ${UNIFIED_ICON}`}>
                       {Icon ? <Icon className="h-5 w-5" /> : <BookOpen className="h-5 w-5" />}
                     </div>
                     <div>

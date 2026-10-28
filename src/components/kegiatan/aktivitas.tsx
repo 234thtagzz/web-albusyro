@@ -14,6 +14,7 @@ import {
   Users,
   GraduationCap,
 } from "lucide-react";
+import { HeaderStrip } from "@/components/ui/header-strip";
 
 function Blob({
   className,
@@ -52,25 +53,11 @@ export function AktivitasSection() {
       <div className="pointer-events-none absolute -top-20 left-0 h-[400px] w-[500px] rounded-full bg-primary-4/10 blur-[80px]" aria-hidden />
       <div className="pointer-events-none absolute -bottom-20 right-0 h-[360px] w-[360px] rounded-full bg-secondary-3/10 blur-[70px]" aria-hidden />
 
-      {/* header strip — sama seperti Sejarah di profil */}
-      <div className="relative overflow-hidden border-b border-stone-100 bg-gradient-to-r from-primary-1 via-primary-2 to-secondary-1/70">
-        <div className="absolute inset-0 opacity-20">
-          <div className="h-full w-full bg-[repeating-linear-gradient(135deg,transparent_0_12px,white_12px_13px)]" />
-        </div>
-        <Blob className="h-40 w-64 -top-10 right-10 bg-white/15 blur-2xl opacity-40" />
-        <div className="container-custom relative py-7 sm:py-9">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 backdrop-blur">
-            <Star className="h-3.5 w-3.5 text-secondary-3 fill-secondary-3" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-white">Kurikulum & Aktivitas</span>
-          </div>
-          <h2 className="font-display mt-3 text-[26px] font-bold tracking-tight text-white sm:text-[32px] lg:text-[38px]">
-            Aktivitas Santri
-          </h2>
-          <p className="mt-1 max-w-xl text-[13px] leading-relaxed text-white/80">
-            Setiap kegiatan mengandung nilai yang bermanfaat untuk diri, sekitar, dan agama.
-          </p>
-        </div>
-      </div>
+      <HeaderStrip
+        badge={<><Star className="mr-1.5" />Kurikulum &amp; Aktivitas</>}
+        title="Aktivitas Santri"
+        description="Setiap kegiatan mengandung nilai yang bermanfaat untuk diri, sekitar, dan agama."
+      />
 
       <div className="container-custom relative py-12 sm:py-16 lg:py-20 space-y-14">
         {/* highlight strip — 3 kartu ringkas, sekarang satu palet clean */}
@@ -99,7 +86,7 @@ export function AktivitasSection() {
               <CardContent className="p-6">
                 <div className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-primary-1/5 blur-xl transition group-hover:bg-primary-1/10" />
                 <div
-                  className={`flex h-11 w-11 items-center justify-center rounded-xl shadow-sm transition group-hover:scale-105 ${UNIFIED_ICON}`}
+                  className={`flex h-11 w-11 items-center justify-center rounded-sm shadow-sm transition group-hover:scale-105 ${UNIFIED_ICON}`}
                 >
                   <item.icon className="h-5 w-5" />
                 </div>
@@ -136,7 +123,7 @@ export function AktivitasSection() {
                   <CardContent className="flex flex-1 flex-col gap-4 p-5">
                     <div className="flex items-start justify-between gap-3">
                       <div
-                        className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl shadow-sm transition group-hover:scale-105 ${UNIFIED_ICON}`}
+                        className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-sm shadow-sm transition group-hover:scale-105 ${UNIFIED_ICON}`}
                       >
                         <Icon className="h-5 w-5" />
                       </div>
@@ -165,25 +152,11 @@ export function AktivitasSection() {
         </div>
       </div>
 
-      {/* header strip — sama seperti Sejarah di profil */}
-      <div className="relative overflow-hidden border-b border-stone-100 bg-gradient-to-r from-primary-1 via-primary-2 to-secondary-1/70">
-        <div className="absolute inset-0 opacity-20">
-          <div className="h-full w-full bg-[repeating-linear-gradient(135deg,transparent_0_12px,white_12px_13px)]" />
-        </div>
-        <Blob className="h-40 w-64 -top-10 right-10 bg-white/15 blur-2xl opacity-40" />
-        <div className="container-custom relative py-7 sm:py-9">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 backdrop-blur">
-            <Star className="h-3.5 w-3.5 text-secondary-3 fill-secondary-3" />
-            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-white">Keseharian Santri</span>
-          </div>
-          <h2 className="font-display mt-3 text-[26px] font-bold tracking-tight text-white sm:text-[32px] lg:text-[38px]">
-            Jadwal Harian
-          </h2>
-          <p className="mt-1 max-w-xl text-[13px] leading-relaxed text-white/80">
-            Dari berangkat hingga pulang kami pastikan setiap kegiatan yang santri lakukan bermanfaat dan berdampak pada masa depan mereka.
-          </p>
-        </div>
-      </div>
+      <HeaderStrip
+        badge={<><Star className="mr-1.5" />Keseharian Santri</>}
+        title="Jadwal Harian"
+        description="Dari berangkat hingga pulang kami pastikan setiap kegiatan yang santri lakukan bermanfaat dan berdampak pada masa depan mereka."
+      />
       
       <div className="container-custom relative py-12 sm:py-16 lg:py-20 space-y-14">
         {/* Jadwal Harian — Card shadcn + Badge/Badge-dot satu palet */}
@@ -300,13 +273,13 @@ export function AktivitasSection() {
                         >
                           <CardContent className="flex gap-3 p-3 sm:gap-4 sm:p-4">
                             <div className="relative hidden flex-shrink-0 sm:flex sm:flex-col sm:items-center">
-                              <div className={`flex h-9 w-9 items-center justify-center rounded-xl shadow-sm transition group-hover:scale-105 ${UNIFIED_ICON}`}
+                              <div className={`flex h-9 w-9 items-center justify-center rounded-sm shadow-sm transition group-hover:scale-105 ${UNIFIED_ICON}`}
                               >
                                 <item.icon className="h-4 w-4" />
                               </div>
                               <span className={`mt-2 hidden h-2 w-2 rounded-full sm:block ${UNIFIED_DOT} ring-4 ring-white shadow-sm`} />
                             </div>
-                            <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-xl shadow-sm sm:hidden ${UNIFIED_ICON}`}>
+                            <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-sm shadow-sm sm:hidden ${UNIFIED_ICON}`}>
                               <item.icon className="h-4 w-4" />
                             </div>
                             <div className="min-w-0 flex-1">
