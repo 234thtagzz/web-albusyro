@@ -780,7 +780,7 @@ style: { "background-color": "#f9f9f9" }
 ```
 border border-2                      /* Border width */
 border-gray-200 border-gray-300      /* Border color */
-rounded rounded-lg rounded-xl rounded-2xl rounded-full  /* Border radius */
+rounded rounded-lg rounded-sm rounded-2xl rounded-full  /* Border radius */
 ```
 
 ### Effects
@@ -905,8 +905,8 @@ create_artboard:
     <p className="text-xl text-gray-500 text-center">The AI-powered design tool that turns ideas into production-ready pages. No code required.</p>
   </div>
   <div className="flex items-center gap-4">
-    <button className="px-8 py-3.5 text-base font-semibold text-white bg-blue-600 rounded-xl">Start Free Trial</button>
-    <button className="px-8 py-3.5 text-base font-semibold text-gray-700 bg-white border-2 border-gray-200 rounded-xl">Watch Demo</button>
+    <button className="px-8 py-3.5 text-base font-semibold text-white bg-blue-600 rounded-sm">Start Free Trial</button>
+    <button className="px-8 py-3.5 text-base font-semibold text-gray-700 bg-white border-2 border-gray-200 rounded-sm">Watch Demo</button>
   </div>
 </section>
 ```
@@ -937,21 +937,21 @@ create_artboard:
   </div>
   <div className="flex gap-8 w-full max-w-6xl">
     <div className="flex flex-col gap-4 p-8 bg-white rounded-2xl shadow-sm grow">
-      <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-xl">
+      <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-sm">
         <span className="text-blue-600 text-lg font-bold">1</span>
       </div>
       <h3 className="text-xl font-semibold text-gray-900">Real-Time Collaboration</h3>
       <p className="text-sm text-gray-500 leading-relaxed">Work together with your team in real time. See cursors, selections, and changes as they happen.</p>
     </div>
     <div className="flex flex-col gap-4 p-8 bg-white rounded-2xl shadow-sm grow">
-      <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-xl">
+      <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-sm">
         <span className="text-green-600 text-lg font-bold">2</span>
       </div>
       <h3 className="text-xl font-semibold text-gray-900">One-Click Deploy</h3>
       <p className="text-sm text-gray-500 leading-relaxed">Push to production with a single click. Built-in CI/CD, preview deployments, and rollbacks.</p>
     </div>
     <div className="flex flex-col gap-4 p-8 bg-white rounded-2xl shadow-sm grow">
-      <div className="flex items-center justify-center w-12 h-12 bg-purple-100 rounded-xl">
+      <div className="flex items-center justify-center w-12 h-12 bg-purple-100 rounded-sm">
         <span className="text-purple-600 text-lg font-bold">3</span>
       </div>
       <h3 className="text-xl font-semibold text-gray-900">AI Assistant</h3>
@@ -1039,8 +1039,8 @@ create_artboard:
   <h2 className="text-4xl font-bold text-white text-center">Ready to get started?</h2>
   <p className="text-lg text-gray-400 text-center max-w-xl">Join thousands of teams already building faster. Start your free trial today.</p>
   <div className="flex items-center gap-4">
-    <button className="px-8 py-3.5 text-base font-semibold text-gray-900 bg-white rounded-xl">Start Free Trial</button>
-    <button className="px-8 py-3.5 text-base font-semibold text-gray-300 bg-transparent border border-gray-700 rounded-xl">Talk to Sales</button>
+    <button className="px-8 py-3.5 text-base font-semibold text-gray-900 bg-white rounded-sm">Start Free Trial</button>
+    <button className="px-8 py-3.5 text-base font-semibold text-gray-300 bg-transparent border border-gray-700 rounded-sm">Talk to Sales</button>
   </div>
 </section>
 ```
@@ -1211,8 +1211,8 @@ add_section:
         <p className="text-xl text-gray-500 text-center leading-relaxed">The all-in-one platform for modern product teams. Design, build, test, and deploy from a single dashboard.</p>
       </div>
       <div className="flex items-center gap-4">
-        <button className="px-8 py-4 text-base font-semibold text-white bg-blue-600 rounded-xl">Start Free Trial</button>
-        <button className="px-8 py-4 text-base font-semibold text-gray-700 bg-white border-2 border-gray-200 rounded-xl">Watch Demo</button>
+        <button className="px-8 py-4 text-base font-semibold text-white bg-blue-600 rounded-sm">Start Free Trial</button>
+        <button className="px-8 py-4 text-base font-semibold text-gray-700 bg-white border-2 border-gray-200 rounded-sm">Watch Demo</button>
       </div>
       <p className="text-sm text-gray-400">Free for 14 days. No credit card required.</p>
     </section>
@@ -1247,21 +1247,21 @@ add_section:
       </div>
       <div className="flex gap-6 w-full max-w-5xl">
         <div className="flex flex-col gap-4 p-8 bg-gray-50 rounded-2xl grow">
-          <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-xl">
+          <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-sm">
             <span className="text-blue-600 font-bold">1</span>
           </div>
           <h3 className="text-lg font-semibold text-gray-900">Visual Editor</h3>
           <p className="text-sm text-gray-500 leading-relaxed">Drag-and-drop interface with pixel-perfect precision. Design at the speed of thought.</p>
         </div>
         <div className="flex flex-col gap-4 p-8 bg-gray-50 rounded-2xl grow">
-          <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-xl">
+          <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-sm">
             <span className="text-green-600 font-bold">2</span>
           </div>
           <h3 className="text-lg font-semibold text-gray-900">Instant Deploy</h3>
           <p className="text-sm text-gray-500 leading-relaxed">One-click deployment to our global CDN. Preview environments for every branch.</p>
         </div>
         <div className="flex flex-col gap-4 p-8 bg-gray-50 rounded-2xl grow">
-          <div className="flex items-center justify-center w-12 h-12 bg-purple-100 rounded-xl">
+          <div className="flex items-center justify-center w-12 h-12 bg-purple-100 rounded-sm">
             <span className="text-purple-600 font-bold">3</span>
           </div>
           <h3 className="text-lg font-semibold text-gray-900">AI Copilot</h3>
@@ -1281,8 +1281,8 @@ add_section:
       <h2 className="text-4xl font-bold text-white text-center">Start building today</h2>
       <p className="text-lg text-gray-400 text-center max-w-xl">Join 10,000+ teams already shipping faster with Launchpad. Free trial, no strings attached.</p>
       <div className="flex items-center gap-4">
-        <button className="px-8 py-4 text-base font-semibold text-gray-900 bg-white rounded-xl">Start Free Trial</button>
-        <button className="px-8 py-4 text-base font-semibold text-gray-300 bg-transparent border border-gray-700 rounded-xl">Talk to Sales</button>
+        <button className="px-8 py-4 text-base font-semibold text-gray-900 bg-white rounded-sm">Start Free Trial</button>
+        <button className="px-8 py-4 text-base font-semibold text-gray-300 bg-transparent border border-gray-700 rounded-sm">Talk to Sales</button>
       </div>
     </section>
 ```

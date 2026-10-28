@@ -6,6 +6,7 @@ import { ProgramsBento } from "@/components/home/programs-bento";
 import { Admission } from "@/components/home/admission";
 import { DepartmentsSection } from "@/components/home/stats";
 import Testimoni from "@/components/home/testimoni";
+import { LatestNews } from "@/components/home/latest-news";
 import { getPpdbInfo } from "@/lib/supabase/ppdb";
 
 export const revalidate = 60;
@@ -23,6 +24,7 @@ export default async function Home() {
         <ProgramsBento />
         <Testimoni />
         <Admission ppdbInfo={ppdbInfo} />
+        <LatestNews />
       </main>
       <Footer ppdbInfo={ppdbInfo} />
     </>

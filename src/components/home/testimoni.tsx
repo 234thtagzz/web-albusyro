@@ -50,7 +50,7 @@ const testimoniData = [
 export default function Testimoni() {
   return (
     <section className="relative overflow-hidden border-t border-stone-200 bg-[#FDF9F3]" id="testimoni">
-      <div className="pointer-events-none absolute -top-28 right-0 h-[420px] w-[460px] rounded-full bg-primary-4/15 blur-[70px]" aria-hidden />
+      <div className="pointer-events-none absolute -top-28 right-0 h-[420px] w-[460px] rounded-sm bg-primary-4/15 blur-[70px]" aria-hidden />
       <div className="container-custom section-spacing relative">
         <Reveal className="mx-auto max-w-xl text-center">
           <Badge variant="outline" className={`mx-auto rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.16em] ${UNIFIED_BADGE}`}>
@@ -66,7 +66,7 @@ export default function Testimoni() {
         </Reveal>
 
         <Stagger
-          className="mt-10 flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="mt-10 flex gap-4 overflow-x-auto p-4 snap-x snap-mandatory scroll-smooth [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           stagger={0.06}
           y={16}
         >

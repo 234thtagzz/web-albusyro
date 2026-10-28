@@ -93,7 +93,7 @@ export function FaqBuilder({ initialFaq }: FaqBuilderProps) {
       </p>
 
       {items.length === 0 ? (
-        <div className="rounded-xl border border-dashed border-stone-300 bg-white p-6 text-center">
+        <div className="rounded-sm border border-dashed border-stone-300 bg-white p-6 text-center">
           <p className="text-sm text-stone-500">Belum ada item FAQ.</p>
           <Button
             type="button"
@@ -110,7 +110,7 @@ export function FaqBuilder({ initialFaq }: FaqBuilderProps) {
           {items.map((item, index) => (
             <div
               key={item.id}
-              className="rounded-xl border border-stone-200 bg-white p-3.5 shadow-xs transition space-y-2.5"
+              className="rounded-sm border border-stone-200 bg-white p-3.5 shadow-xs transition space-y-2.5"
             >
               <div className="flex items-center justify-between">
                 <span className="inline-flex items-center rounded-full bg-stone-100 px-2.5 py-0.5 text-xs font-semibold text-stone-700">

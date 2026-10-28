@@ -32,7 +32,7 @@ export default async function AdminDashboard() {
           <Link key={s.label} href={s.href}>
             <Card className="rounded-2xl border-stone-200 bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition">
               <CardContent className="p-5">
-                <div className={`flex h-10 w-10 items-center justify-center rounded-xl text-white ${s.color}`}>
+                <div className={`flex h-10 w-10 items-center justify-center rounded-sm text-white ${s.color}`}>
                   <s.icon className="h-5 w-5" />
                 </div>
                 <p className="mt-3 text-2xl font-bold text-stone-900">{s.count}</p>

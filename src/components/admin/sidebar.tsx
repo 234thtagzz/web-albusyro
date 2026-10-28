@@ -52,7 +52,7 @@ export function AdminNavContent({
               href={item.href}
               onClick={onNavigate}
               className={cn(
-                "flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition",
+                "flex items-center gap-3 rounded-sm px-3 py-2.5 text-sm font-medium transition",
                 active
                   ? "bg-primary-1 text-white shadow-sm"
                   : "text-stone-600 hover:bg-stone-100 hover:text-stone-900"
@@ -68,7 +68,7 @@ export function AdminNavContent({
         <form action={onSignOut}>
           <button
             type="submit"
-            className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium text-stone-600 hover:bg-stone-100 transition"
+            className="flex w-full items-center gap-3 rounded-sm px-3 py-2.5 text-sm font-medium text-stone-600 hover:bg-stone-100 transition"
           >
             <LogOut className="h-4 w-4" />
             Keluar

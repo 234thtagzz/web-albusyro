@@ -70,7 +70,7 @@ export function ProgramsBento() {
           {/* Sekolah — satu palet */}
           <Card className="group flex flex-col rounded-[24px] border-stone-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:shadow-md hover:border-primary-1/20">
             <CardContent className="flex flex-1 flex-col p-0">
-              <span className={`flex h-11 w-11 items-center justify-center rounded-xl shadow-sm transition group-hover:scale-105 ${UNIFIED_ICON}`}>
+              <span className={`flex h-11 w-11 items-center justify-center rounded-sm shadow-sm transition group-hover:scale-105 ${UNIFIED_ICON}`}>
                 <GraduationCap className="h-5 w-5" />
               </span>
               <h3 className="font-display mt-5 text-lg tracking-tight text-primary-1">{school.programs.sekolah.title}</h3>
@@ -91,7 +91,7 @@ export function ProgramsBento() {
           {/* Legalitas — satu palet */}
           <Card className="flex flex-col rounded-[24px] border-primary-1/15 bg-primary-1/5 p-7">
             <CardContent className="flex flex-1 flex-col p-0">
-              <span className={`flex h-11 w-11 items-center justify-center rounded-xl shadow-sm ${UNIFIED_ICON}`}>
+              <span className={`flex h-11 w-11 items-center justify-center rounded-sm shadow-sm ${UNIFIED_ICON}`}>
                 <ShieldCheck className="h-5 w-5" />
               </span>
               <h3 className="font-display mt-5 text-lg tracking-tight text-primary-1">Legal & Diakui</h3>
@@ -111,7 +111,7 @@ export function ProgramsBento() {
             <CardContent className="p-0">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <span className={`flex h-11 w-11 items-center justify-center rounded-xl shadow-sm ${UNIFIED_ICON}`}>
+                  <span className={`flex h-11 w-11 items-center justify-center rounded-sm shadow-sm ${UNIFIED_ICON}`}>
                     <Sparkles className="h-5 w-5" />
                   </span>
                   <h3 className="font-display mt-5 text-lg tracking-tight text-primary-1">Ekstrakurikuler & Kegiatan</h3>

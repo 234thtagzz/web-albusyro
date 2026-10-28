@@ -410,7 +410,7 @@ Everything else (speakers, sponsors, descriptions) is secondary.
 <section className="flex flex-col justify-between p-16 bg-gray-900 w-full h-full">
   <div className="flex items-center justify-between">
     <span className="text-lg font-bold text-gray-400 uppercase tracking-widest">Design Conf 2026</span>
-    <div className="w-12 h-12 bg-blue-500 rounded-xl"></div>
+    <div className="w-12 h-12 bg-blue-500 rounded-sm"></div>
   </div>
   <div className="flex flex-col gap-6">
     <h1 className="text-7xl font-black text-white leading-none">The Future of Interface Design</h1>
@@ -479,7 +479,7 @@ Everything else (speakers, sponsors, descriptions) is secondary.
 <section className="flex flex-col items-center justify-center gap-6 px-12 py-12 bg-blue-600 w-full h-full">
   <h1 className="text-4xl font-extrabold text-white text-center leading-tight">What we shipped this week</h1>
   <p className="text-xl text-blue-100 text-center">3 features, 2 fixes, 1 big announcement</p>
-  <button className="px-8 py-3 text-lg font-bold text-blue-600 bg-white rounded-xl">Read the update</button>
+  <button className="px-8 py-3 text-lg font-bold text-blue-600 bg-white rounded-sm">Read the update</button>
 </section>
 ```
 
@@ -902,7 +902,7 @@ A personal, often emotional piece that sets the tone for an event.
 ### Layout Patterns
 
 - **Centered classic**: Everything centered, generous margins. Name/event large, details smaller below. Timeless.
-- **Frame/border**: Thin decorative border (border-2 rounded-xl with p-8 to p-12 inner padding). Content centered within.
+- **Frame/border**: Thin decorative border (border-2 rounded-sm with p-8 to p-12 inner padding). Content centered within.
 - **Split**: Left half is a color block or image, right half is text. Modern and structured.
 - **Top-heavy**: Large decorative header (color block, pattern, or image) with details in lower third.
 - **Minimal**: Just text on a rich background color. Extreme restraint. Works for formal events.
@@ -965,7 +965,7 @@ Extends the "Email Headers & Newsletter Graphics" section above — this covers 
 ```
 HEADER — Logo left, date/issue right. bg-background, py-4 px-6. Thin bottom border.
 
-HERO — Featured story. Large image (rounded-xl), headline below (text-xl font-bold),
+HERO — Featured story. Large image (rounded-sm), headline below (text-xl font-bold),
   2-line excerpt, "Read more" link.
 
 CONTENT CARDS (x3-5) — Repeating pattern:
@@ -974,7 +974,7 @@ CONTENT CARDS (x3-5) — Repeating pattern:
 
 DIVIDER — Simple horizontal rule (h-px bg-border) between sections.
 
-CTA SECTION — "Subscribe", "Share", or event promo. bg-muted rounded-xl p-6, centered.
+CTA SECTION — "Subscribe", "Share", or event promo. bg-muted rounded-sm p-6, centered.
 
 FOOTER — Unsubscribe link, company address, social icons. text-xs text-muted-foreground.
 ```
@@ -1028,7 +1028,7 @@ Professional business documents — structured, authoritative, and information-r
 
 **Brochure:**
 - Two or three column layout
-- Feature boxes: bg-muted rounded-xl p-6 with icon + heading + description
+- Feature boxes: bg-muted rounded-sm p-6 with icon + heading + description
 - Back page: contact info, location, website
 
 **One-pager / Fact Sheet:**
@@ -1045,8 +1045,8 @@ Professional business documents — structured, authoritative, and information-r
 
 ### Structure Elements
 
-- **Pull quote**: bg-muted p-6 rounded-xl, text-lg font-medium, border-l-4 border-primary
-- **Stat box**: bg-primary text-primary-foreground p-4 rounded-xl, large number + label
+- **Pull quote**: bg-muted p-6 rounded-sm, text-lg font-medium, border-l-4 border-primary
+- **Stat box**: bg-primary text-primary-foreground p-4 rounded-sm, large number + label
 - **Table**: Full-width, header row bg-muted, alternating row stripes, text-xs to text-sm
 - **Dividers**: h-px bg-border between major sections
 

@@ -175,7 +175,7 @@ export default async function AdminPpdbPage({
               </div>
 
               <div className="sm:col-span-2 pt-2">
-                <label className="flex items-center gap-3 rounded-xl border border-stone-200 bg-stone-50/70 p-3.5 cursor-pointer hover:bg-stone-50 transition">
+                <label className="flex items-center gap-3 rounded-sm border border-stone-200 bg-stone-50/70 p-3.5 cursor-pointer hover:bg-stone-50 transition">
                   <input
                     type="checkbox"
                     name="is_active"

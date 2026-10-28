@@ -32,7 +32,7 @@ export default async function EditPrestasiPage({
         <ArrowLeft className="h-4 w-4" /> Kembali
       </Button>
       <h1 className="font-display text-2xl font-bold text-stone-900">Edit Prestasi</h1>
-      {errParam && <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{decodeURIComponent(errParam)}</div>}
+      {errParam && <div className="rounded-sm border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">{decodeURIComponent(errParam)}</div>}
       <Card className="rounded-2xl border-stone-200 bg-white">
         <CardContent className="p-6">
           <form action={action} className="space-y-4">

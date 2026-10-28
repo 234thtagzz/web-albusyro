@@ -265,7 +265,7 @@ export function AdminPendaftarTable({ initialData }: AdminPendaftarTableProps) {
               </DialogHeader>
 
               {/* Preview Body */}
-              <div className="my-2 flex-1 overflow-auto rounded-xl border border-stone-200 bg-stone-950/5 flex items-center justify-center p-3 min-h-[280px] max-h-[58vh]">
+              <div className="my-2 flex-1 overflow-auto rounded-sm border border-stone-200 bg-stone-950/5 flex items-center justify-center p-3 min-h-[280px] max-h-[58vh]">
                 {selectedDoc.url.toLowerCase().endsWith(".pdf") ||
                 selectedDoc.url.startsWith("data:application/pdf") ? (
                   <iframe
@@ -289,7 +289,7 @@ export function AdminPendaftarTable({ initialData }: AdminPendaftarTableProps) {
                   target="_blank"
                   rel="noopener noreferrer"
                   download
-                  className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary-1 px-4 py-2 text-xs font-semibold text-white shadow-xs hover:bg-primary-1/90 transition w-full sm:w-auto"
+                  className="inline-flex items-center justify-center gap-2 rounded-sm bg-primary-1 px-4 py-2 text-xs font-semibold text-white shadow-xs hover:bg-primary-1/90 transition w-full sm:w-auto"
                 >
                   <ExternalLink className="h-3.5 w-3.5" />
                   Buka / Unduh Berkas

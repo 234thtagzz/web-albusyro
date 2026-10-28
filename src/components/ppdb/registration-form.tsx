@@ -107,7 +107,7 @@ export function PpdbRegistrationForm() {
 
         {message && (
           <div
-            className={`mb-5 flex gap-2.5 rounded-xl border p-4 text-sm ${
+            className={`mb-5 flex gap-2.5 rounded-sm border p-4 text-sm ${
               message.type === "success" ? "border-emerald-200 bg-emerald-50 text-emerald-800" : "border-red-200 bg-red-50 text-red-700"
             }`}
           >

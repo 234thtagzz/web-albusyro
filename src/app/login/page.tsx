@@ -26,7 +26,7 @@ export default async function LoginPage({
           <p className="mt-1 text-center text-sm text-stone-500">Masuk untuk mengelola berita, prestasi, galeri, dan PPDB</p>
 
           {params.error && (
-            <div className="mt-4 rounded-xl border border-red-200 bg-red-50 px-4 py-2.5 text-sm text-red-700">{params.error}</div>
+            <div className="mt-4 rounded-sm border border-red-200 bg-red-50 px-4 py-2.5 text-sm text-red-700">{params.error}</div>
           )}
 
           <form action={loginAction} className="mt-6 space-y-4">

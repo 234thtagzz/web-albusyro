@@ -88,7 +88,7 @@ export function ImageField({
       </div>
 
       {preview && (
-        <div className="relative overflow-hidden rounded-xl border border-stone-200 bg-white shadow-xs">
+        <div className="relative overflow-hidden rounded-sm border border-stone-200 bg-white shadow-xs">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={preview}
@@ -116,7 +116,7 @@ export function ImageField({
       )}
 
       {fileSizeWarning && (
-        <div className="flex items-center gap-2 rounded-xl border border-amber-200 bg-amber-50 p-3 text-xs text-amber-800">
+        <div className="flex items-center gap-2 rounded-sm border border-amber-200 bg-amber-50 p-3 text-xs text-amber-800">
           <AlertCircle className="h-4 w-4 shrink-0 text-amber-600" />
           <span>{fileSizeWarning}</span>
         </div>

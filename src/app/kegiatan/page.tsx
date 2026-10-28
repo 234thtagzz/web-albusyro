@@ -57,7 +57,7 @@ function ArchiveSection() {
       <div className="container-custom relative py-12 sm:py-16">
         <div className="mb-8 flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div className="relative">
-            <div className="absolute -left-4 -top-2 h-12 w-12 rounded-xl bg-primary-1/10 rotate-6" />
+            <div className="absolute -left-4 -top-2 h-12 w-12 rounded-sm bg-primary-1/10 rotate-6" />
             <Badge variant="outline" className={`relative rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] ${UNIFIED_BADGE}`}>
               Galeri & Arsip
             </Badge>

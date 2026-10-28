@@ -62,7 +62,7 @@ export function DeleteButton({
         </DialogHeader>
 
         {error && (
-          <div className="rounded-xl border border-red-200 bg-red-50 p-3 text-xs text-red-700">
+          <div className="rounded-sm border border-red-200 bg-red-50 p-3 text-xs text-red-700">
             {error}
           </div>
         )}
