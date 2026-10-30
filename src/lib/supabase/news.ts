@@ -1,5 +1,5 @@
 import { createClient } from "./server";
-import type { News } from "@/types/database";
+import type { News } from "@/data/news";
 
 export async function getLatestNews(limit = 3) {
   const supabase = await createClient();
@@ -20,7 +20,7 @@ export async function getLatestNews(limit = 3) {
     id: row.id,
     slug: row.slug,
     title: row.title,
-    excerpt: row.excerpt,
+    excerpt: row.excerpt ?? "",
     content: row.content,
     category: row.category,
     date: row.published_at,
