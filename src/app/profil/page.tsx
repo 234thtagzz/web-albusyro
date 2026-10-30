@@ -501,7 +501,7 @@ function MuseumInfo() {
               Nilai Pendidikan
             </Badge>
             <h2 className="font-display mt-3 text-[24px] font-bold tracking-tight text-primary-1 sm:text-[28px]">
-              Tiga Pilar Relasi
+              Pilar Relasi
             </h2>
             <p className="mx-auto mt-2 max-w-lg text-[13px] leading-relaxed text-stone-500">
               Pendidikan holistik yang membentuk hubungan harmonis dengan Allah, sesama manusia, dan alam semesta.
@@ -529,45 +529,6 @@ function MuseumInfo() {
                 </ul>
               </div>
             ))}
-          </div>
-        </div>
-
-        {/* 6 Pilar */}
-        <div>
-          <div className="mx-auto max-w-xl text-center">
-            <p className="font-display text-[10px] font-bold uppercase tracking-[0.22em] text-secondary-1">
-              Filosofi Pendidikan
-            </p>
-            <h2 className="font-display mt-1 text-[24px] font-bold tracking-tight text-primary-1 sm:text-[28px]">
-              Enam Pilar Pembentuk Generasi
-            </h2>
-            <div className="mx-auto mt-3 h-1 w-12 rounded-full bg-gradient-to-r from-secondary-1 to-primary-1" />
-          </div>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {school.values.map((v, i) => {
-              const Icon = iconMap[v.icon as IconName];
-              return (
-                <Card
-                  key={v.title}
-                  className="group rounded-[20px] border-primary-1/10 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md hover:border-primary-1/20"
-                >
-                  <CardContent className="flex gap-4 p-5">
-                    <div className={`flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-sm shadow-sm transition group-hover:scale-105 ${UNIFIED_ICON}`}>
-                      {Icon ? <Icon className="h-5 w-5" /> : <BookOpen className="h-5 w-5" />}
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="font-display text-[11px] font-bold text-stone-300">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <p className="font-display text-[14px] font-bold text-primary-1">{v.title}</p>
-                      </div>
-                      <p className="mt-1 text-[12px] leading-[1.7] text-stone-500">{v.description}</p>
-                    </div>
-                  </CardContent>
-                </Card>
-              );
-            })}
           </div>
         </div>
 

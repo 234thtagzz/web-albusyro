@@ -24,7 +24,6 @@ export default async function Home() {
         <ProgramsBento />
         <Testimoni />
         <Admission ppdbInfo={ppdbInfo} />
-        <LatestNews />
       </main>
       <Footer ppdbInfo={ppdbInfo} />
     </>
