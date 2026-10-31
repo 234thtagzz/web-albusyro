@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { PageHero } from "@/components/ui/page-hero";
+import { unstable_rethrow } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { galleryItems as fallback } from "@/data/gallery";
 import { GaleriClient } from "@/components/galeri/galeri-client";
@@ -11,8 +12,20 @@ type GaleriRow = Database["public"]["Tables"]["galeri"]["Row"];
 export const revalidate = 60;
 
 export default async function GalleryPage() {
-  const supabase = await createClient();
-  const { data } = await supabase.from("galeri").select("*").order("created_at", { ascending: false });
+  let data: GaleriRow[] | null = null;
+
+  try {
+    const supabase = await createClient();
+    const result = await supabase
+      .from("galeri")
+      .select("*")
+      .order("created_at", { ascending: false });
+    data = result.data;
+  } catch (error) {
+    unstable_rethrow(error);
+    console.error("Error fetching gallery:", error);
+  }
+
   const rows: GaleriRow[] = data && data.length > 0 ? data : fallback.map((r) => ({
     id: r.id, title: r.title, category: r.category as GaleriRow["category"], description: r.description, image_url: (r as unknown as { imageUrl: string }).imageUrl ?? (r as unknown as { image_url: string }).image_url, alt: r.alt, created_at: new Date().toISOString(), updated_at: new Date().toISOString()
   }));

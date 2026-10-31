@@ -6,15 +6,31 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Trophy } from "lucide-react";
 import { EmptyState } from "@/components/ui/empty-state";
+import { unstable_rethrow } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { achievements as fallback } from "@/data/achievements";
 import Image from "next/image";
+import type { Database } from "@/types/database";
+
+type PrestasiRow = Database["public"]["Tables"]["prestasi"]["Row"];
 
 export const revalidate = 60;
 
 export default async function AchievementsPage() {
-  const supabase = await createClient();
-  const { data } = await supabase.from("prestasi").select("*").order("created_at", { ascending: false });
+  let data: PrestasiRow[] | null = null;
+
+  try {
+    const supabase = await createClient();
+    const result = await supabase
+      .from("prestasi")
+      .select("*")
+      .order("created_at", { ascending: false });
+    data = result.data;
+  } catch (error) {
+    unstable_rethrow(error);
+    console.error("Error fetching achievements:", error);
+  }
+
   const achievements = data && data.length > 0 ? data : fallback;
 
   return (

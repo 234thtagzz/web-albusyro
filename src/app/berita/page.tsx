@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { PageHero } from "@/components/ui/page-hero";
+import { unstable_rethrow } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { newsItems as fallback } from "@/data/news";
 import { BeritaClient } from "@/components/berita/berita-client";
@@ -11,8 +12,20 @@ type BeritaRow = Database["public"]["Tables"]["berita"]["Row"];
 export const revalidate = 60;
 
 export default async function NewsPage() {
-  const supabase = await createClient();
-  const { data } = await supabase.from("berita").select("*").order("published_at", { ascending: false });
+  let data: BeritaRow[] | null = null;
+
+  try {
+    const supabase = await createClient();
+    const result = await supabase
+      .from("berita")
+      .select("*")
+      .order("published_at", { ascending: false });
+    data = result.data;
+  } catch (error) {
+    unstable_rethrow(error);
+    console.error("Error fetching news list:", error);
+  }
+
   const rows: BeritaRow[] = data && data.length > 0 ? data : fallback.map((r) => ({
     id: r.id, slug: r.slug, title: r.title, excerpt: r.excerpt, content: r.content, category: r.category as BeritaRow["category"], author: r.author, image_url: r.imageUrl, image_alt: r.imageAlt, published_at: new Date().toISOString(), created_at: new Date().toISOString(), updated_at: new Date().toISOString()
   }));

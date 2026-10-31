@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, unstable_rethrow } from "next/navigation";
 import { Fragment } from "react";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
@@ -55,18 +55,38 @@ function BeritaContent({ content }: { content: string }) {
 }
 
 function getAnonClient() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-  const key = (process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY)!;
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key =
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
+
+  // Saat build di Vercel env bisa belum tersedia; jangan sampai build gagal.
+  if (!url || !key) return null;
+
   return createAnonClient<Database>(url, key);
 }
 
 export const revalidate = 60;
 
 export async function generateStaticParams() {
-  const supabase = getAnonClient();
-  const { data } = await supabase.from("berita").select("slug");
-  if (data && data.length > 0) return data.map((n) => ({ slug: n.slug }));
-  return fallback.map((news) => ({ slug: news.slug }));
+  const fallbackParams = fallback.map((news) => ({ slug: news.slug }));
+
+  try {
+    const supabase = getAnonClient();
+    if (!supabase) return fallbackParams;
+
+    const { data, error } = await supabase.from("berita").select("slug");
+    if (error) {
+      console.error("Error fetching news slugs:", error);
+      return fallbackParams;
+    }
+
+    if (data && data.length > 0) return data.map((n) => ({ slug: n.slug }));
+    return fallbackParams;
+  } catch (error) {
+    console.error("Error fetching news slugs:", error);
+    return fallbackParams;
+  }
 }
 
 export async function generateMetadata({
@@ -75,9 +95,23 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const supabase = getAnonClient();
-  const { data } = await supabase.from("berita").select("title,excerpt").eq("slug", slug).single();
-  if (data) return { title: data.title, description: data.excerpt ?? undefined };
+
+  try {
+    const supabase = getAnonClient();
+    if (supabase) {
+      const { data } = await supabase
+        .from("berita")
+        .select("title,excerpt")
+        .eq("slug", slug)
+        .single();
+
+      if (data) return { title: data.title, description: data.excerpt ?? undefined };
+    }
+  } catch (error) {
+    unstable_rethrow(error);
+    console.error("Error fetching news metadata:", error);
+  }
+
   const news = fallback.find((n) => n.slug === slug);
   if (!news) return { title: "Berita Tidak Ditemukan" };
   return { title: news.title, description: news.excerpt };
@@ -89,14 +123,37 @@ export default async function NewsDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const supabase = await createServerClient();
-  const { data: row } = await supabase.from("berita").select("*").eq("slug", slug).single();
   type FallbackNews = (typeof fallback)[number];
   type NewsRow = Database["public"]["Tables"]["berita"]["Row"];
+
+  let row: NewsRow | null = null;
+  let relatedRows: Array<{ id: string; slug: string; title: string; published_at: string | null }> | null =
+    null;
+
+  try {
+    const supabase = await createServerClient();
+    const { data } = await supabase
+      .from("berita")
+      .select("*")
+      .eq("slug", slug)
+      .single();
+    row = data;
+
+    const { data: related } = await supabase
+      .from("berita")
+      .select("id,slug,title,published_at")
+      .neq("id", row?.id ?? "")
+      .order("published_at", { ascending: false })
+      .limit(3);
+    relatedRows = related;
+  } catch (error) {
+    unstable_rethrow(error);
+    console.error("Error fetching news detail:", error);
+  }
+
   const news = (row ?? fallback.find((n) => n.slug === slug)) as (NewsRow | FallbackNews | null | undefined) & { id: string; slug: string; title: string; category: string; content: string; published_at?: string | null; date?: string; author?: string | null; image_url?: string | null; imageUrl?: string; image_alt?: string | null; imageAlt?: string; excerpt?: string | null };
   if (!news) notFound();
 
-  const { data: relatedRows } = await supabase.from("berita").select("id,slug,title,published_at").neq("id", news.id).order("published_at", { ascending: false }).limit(3);
   const relatedNews = (relatedRows && relatedRows.length > 0 ? relatedRows : fallback.filter((n) => n.id !== news.id).slice(0, 3)) as Array<{ id: string; slug: string; title: string; published_at?: string | null; date?: string }>
 
   return (
