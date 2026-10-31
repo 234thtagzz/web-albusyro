@@ -82,7 +82,7 @@ export function AdminGaleriTable({ initialData }: AdminGaleriTableProps) {
       {/* Grid */}
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {filteredData.map((row) => (
-          <Card key={row.id} className="overflow-hidden rounded-2xl border-stone-200 bg-white shadow-xs hover:shadow-md transition">
+          <Card key={row.id} className="overflow-hidden rounded-sm border-stone-200 bg-white shadow-xs hover:shadow-md transition">
             <div className="relative aspect-[4/3] bg-stone-100 overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -125,7 +125,7 @@ export function AdminGaleriTable({ initialData }: AdminGaleriTableProps) {
         ))}
 
         {filteredData.length === 0 && (
-          <Card className="col-span-full rounded-2xl border-dashed bg-white p-12 text-center text-stone-400">
+          <Card className="col-span-full rounded-sm border-dashed bg-white p-12 text-center text-stone-400">
             {search || category !== "Semua" ? (
               <div className="space-y-2">
                 <p>Tidak ada foto yang cocok dengan kriteria pencarian.</p>

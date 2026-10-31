@@ -71,7 +71,7 @@ export function Identity() {
 
             <div className="space-y-3">
               {pillars.map((p) => (
-                <Card key={p.no} className="group rounded-2xl border-stone-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md hover:border-primary-1/20">
+                <Card key={p.no} className="group rounded-sm border-stone-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md hover:border-primary-1/20">
                   <CardContent className="flex gap-4 p-5">
                     <span className={`flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-[11px] font-bold text-white shadow-sm ${UNIFIED_ICON}`}>
                       {p.no}
@@ -108,7 +108,7 @@ export function Identity() {
                 </div>
                 <div className="absolute left-0 right-0 top-0 h-1.5 bg-primary-1" />
               </div>
-              <div className="animate-float absolute -right-2 top-10 rounded-2xl border border-white bg-white px-3.5 py-2 shadow-xl">
+              <div className="animate-float absolute -right-2 top-10 rounded-sm border border-white bg-white px-3.5 py-2 shadow-xl">
                 <p className="text-[10px] font-bold uppercase tracking-wide text-primary-1">Metode</p>
                 <p className="font-display text-[12px] font-bold leading-none text-primary-1">Al-Qosimi</p>
               </div>

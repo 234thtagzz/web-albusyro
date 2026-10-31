@@ -183,7 +183,7 @@ export function PpdbRegistrationForm() {
                 {!kkFileInfo ? (
                   <label
                     htmlFor="foto_kk"
-                    className="flex flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-stone-200 bg-stone-50/70 p-5 text-center transition hover:border-primary-1/30 hover:bg-stone-50 cursor-pointer"
+                    className="flex flex-col items-center justify-center gap-2 rounded-sm border-2 border-dashed border-stone-200 bg-stone-50/70 p-5 text-center transition hover:border-primary-1/30 hover:bg-stone-50 cursor-pointer"
                   >
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-1/10 text-primary-1">
                       <Upload className="h-5 w-5" />
@@ -194,7 +194,7 @@ export function PpdbRegistrationForm() {
                     </div>
                   </label>
                 ) : (
-                  <div className="flex items-center justify-between rounded-2xl border border-emerald-200 bg-emerald-50/60 p-3.5">
+                  <div className="flex items-center justify-between rounded-sm border border-emerald-200 bg-emerald-50/60 p-3.5">
                     <div className="flex items-center gap-2.5 overflow-hidden">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-600 text-white">
                         <ImageIcon className="h-4 w-4" />
@@ -239,7 +239,7 @@ export function PpdbRegistrationForm() {
                 {!aktaFileInfo ? (
                   <label
                     htmlFor="foto_akta"
-                    className="flex flex-col items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-stone-200 bg-stone-50/70 p-5 text-center transition hover:border-primary-1/30 hover:bg-stone-50 cursor-pointer"
+                    className="flex flex-col items-center justify-center gap-2 rounded-sm border-2 border-dashed border-stone-200 bg-stone-50/70 p-5 text-center transition hover:border-primary-1/30 hover:bg-stone-50 cursor-pointer"
                   >
                     <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary-1/10 text-primary-1">
                       <FileText className="h-5 w-5" />
@@ -250,7 +250,7 @@ export function PpdbRegistrationForm() {
                     </div>
                   </label>
                 ) : (
-                  <div className="flex items-center justify-between rounded-2xl border border-emerald-200 bg-emerald-50/60 p-3.5">
+                  <div className="flex items-center justify-between rounded-sm border border-emerald-200 bg-emerald-50/60 p-3.5">
                     <div className="flex items-center gap-2.5 overflow-hidden">
                       <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-emerald-600 text-white">
                         <ImageIcon className="h-4 w-4" />

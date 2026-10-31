@@ -145,7 +145,7 @@ export function Navbar() {
                   href={item.href}
                   onClick={closeMobile}
                   className={cn(
-                    "rounded-2xl px-4 py-2.5 text-base font-medium transition-colors",
+                    "rounded-sm px-4 py-2.5 text-base font-medium transition-colors",
                     isActive(item.href)
                       ? "bg-primary-3 text-muted font-semibold"
                       : "text-slate-600 hover:bg-primary-4/10 hover:text-slate-900"

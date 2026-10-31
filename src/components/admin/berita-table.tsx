@@ -80,7 +80,7 @@ export function AdminBeritaTable({ initialData }: AdminBeritaTableProps) {
       </div>
 
       {/* Table */}
-      <div className="overflow-x-auto rounded-2xl border border-stone-200 bg-white shadow-xs">
+      <div className="overflow-x-auto rounded-sm border border-stone-200 bg-white shadow-xs">
         <table className="w-full text-sm">
           <thead className="bg-stone-50 text-left text-xs uppercase tracking-wider text-stone-500">
             <tr>

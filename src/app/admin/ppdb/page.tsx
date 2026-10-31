@@ -89,14 +89,14 @@ export default async function AdminPpdbPage({
 
       {/* Success / Error Alerts */}
       {params.success && (
-        <div className="flex items-center gap-2.5 rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800 shadow-xs">
+        <div className="flex items-center gap-2.5 rounded-sm border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-800 shadow-xs">
           <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-600" />
           <span>Pengaturan PPDB berhasil disimpan dan langsung diperbarui di halaman publik.</span>
         </div>
       )}
 
       {params.error && (
-        <div className="flex items-center gap-2.5 rounded-2xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 shadow-xs">
+        <div className="flex items-center gap-2.5 rounded-sm border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 shadow-xs">
           <AlertCircle className="h-5 w-5 shrink-0 text-red-600" />
           <span>{decodeURIComponent(params.error)}</span>
         </div>
@@ -105,7 +105,7 @@ export default async function AdminPpdbPage({
       {/* Main Single Form */}
       <form action={savePpdbAction} className="space-y-6">
         {/* 1. INFORMASI UTAMA & KONTAK */}
-        <Card className="rounded-2xl border-stone-200 bg-white shadow-xs">
+        <Card className="rounded-sm border-stone-200 bg-white shadow-xs">
           <CardContent className="p-6 space-y-4">
             <div className="border-b border-stone-100 pb-3 flex items-center justify-between">
               <div className="flex items-center gap-2">
@@ -197,7 +197,7 @@ export default async function AdminPpdbPage({
         </Card>
 
         {/* 2. BIAYA PENDAFTARAN */}
-        <Card className="rounded-2xl border-stone-200 bg-white shadow-xs">
+        <Card className="rounded-sm border-stone-200 bg-white shadow-xs">
           <CardContent className="p-6 space-y-4">
             <div className="border-b border-stone-100 pb-3 flex items-center gap-2">
               <Wallet className="h-5 w-5 text-primary-1" />
@@ -226,7 +226,7 @@ export default async function AdminPpdbPage({
         </Card>
 
         {/* 3. JADWAL & PERSYARATAN */}
-        <Card className="rounded-2xl border-stone-200 bg-white shadow-xs">
+        <Card className="rounded-sm border-stone-200 bg-white shadow-xs">
           <CardContent className="p-6 space-y-4">
             <div className="border-b border-stone-100 pb-3 flex items-center gap-2">
               <Calendar className="h-5 w-5 text-primary-1" />

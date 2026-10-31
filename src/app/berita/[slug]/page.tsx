@@ -141,7 +141,7 @@ export default async function NewsDetailPage({
                 const imgSrc = (news.image_url ?? news.imageUrl) as string | undefined;
                 const imgAlt = (news.image_alt ?? news.imageAlt ?? news.title) as string;
                 return imgSrc ? (
-                  <div className="relative mt-6 aspect-video overflow-hidden rounded-[24px] bg-white">
+                  <div className="relative mt-6 aspect-video overflow-hidden rounded-sm bg-white">
                     <Image
                       src={imgSrc}
                       alt={imgAlt}

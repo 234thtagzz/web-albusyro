@@ -28,8 +28,8 @@ export default async function NewsPage() {
           description="Informasi terkini dari STTD Al-Busyro — kegiatan, prestasi, dan pengumuman resmi madrasah."
         />
         <section className="section-spacing relative overflow-hidden border-t border-stone-200 bg-white">
-          <div className="pointer-events-none absolute -top-20 left-0 h-[400px] w-[500px] rounded-full bg-primary-4/10 blur-[80px]" aria-hidden />
-          <div className="pointer-events-none absolute -bottom-20 right-0 h-[360px] w-[360px] rounded-full bg-secondary-3/10 blur-[70px]" aria-hidden />
+          <div className="pointer-events-none absolute -top-20 left-0 h-[400px] w-[500px] rounded-sm bg-primary-4/10 blur-[80px]" aria-hidden />
+          <div className="pointer-events-none absolute -bottom-20 right-0 h-[360px] w-[360px] rounded-sm bg-secondary-3/10 blur-[70px]" aria-hidden />
           <div className="container-custom relative">
             <BeritaClient items={rows} fallback={isFallback} />
           </div>

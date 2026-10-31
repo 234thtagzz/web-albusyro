@@ -27,7 +27,7 @@ export function BeritaClient({ items }: { items: Row[]; fallback?: boolean }) {
         <Stagger className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((news) => (
             <Link key={news.id} href={`/berita/${news.slug}`}>
-              <Card className="group overflow-hidden rounded-[24px] border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-primary-1/15 hover:shadow-md">
+              <Card className="group overflow-hidden rounded-sm  border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:border-primary-1/15 hover:shadow-md">
                 <div className="relative aspect-video overflow-hidden bg-stone-100">
                   {news.image_url ? (
                     <Image

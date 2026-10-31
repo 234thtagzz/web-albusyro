@@ -106,7 +106,7 @@ export function Hero({ ppdbInfo }: HeroProps) {
         </div>
 
         {/* stats pill — sama seperti profil */}
-        <div className="animate-scale-in animation-delay-700 mt-10 hidden items-center gap-6 rounded-2xl border border-white/15 bg-white/10 px-6 py-3 backdrop-blur-md sm:flex">
+        <div className="animate-scale-in animation-delay-700 mt-10 hidden items-center gap-6 rounded-sm border border-white/15 bg-white/10 px-6 py-3 backdrop-blur-md sm:flex">
           {[
             { v: "Akademik", l: "Pendidikan MI" },
             { v: "10–15", l: "Juz Mutqin" },

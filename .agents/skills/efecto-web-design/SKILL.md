@@ -359,7 +359,7 @@ add_node
   type: "image"
   src: "<url-from-search>"
   alt: "Modern office workspace"
-  className: "w-full h-[400px] rounded-2xl object-cover"
+  className: "w-full h-[400px] rounded-sm object-cover"
 ```
 
 **Step 2b: Set as background fill**
@@ -378,7 +378,7 @@ add_section
       <h1 className="text-5xl font-bold text-gray-900">Our Story</h1>
       <p className="text-lg text-gray-500">Building the future of design.</p>
     </div>
-    <img src="<url-from-search>" alt="Team at work" className="w-[560px] h-[380px] rounded-2xl object-cover" />
+    <img src="<url-from-search>" alt="Team at work" className="w-[560px] h-[380px] rounded-sm object-cover" />
   </section>'
 ```
 
@@ -388,7 +388,7 @@ add_section
 - **Match orientation to layout.** Horizontal images for hero sections, vertical for sidebar/mobile, square for grid cards.
 - **Use luminance filter.** For dark-themed designs, search `luminance: "dark"` to get images that blend naturally with dark backgrounds.
 - **Set `object-cover`** on image nodes so they fill their container without distortion.
-- **Prefer real images over placeholders.** Instead of `<div className="w-full h-[400px] bg-gray-100 rounded-2xl" />`, search for a relevant image and use it.
+- **Prefer real images over placeholders.** Instead of `<div className="w-full h-[400px] bg-gray-100 rounded-sm" />`, search for a relevant image and use it.
 
 ---
 
@@ -405,7 +405,7 @@ add_node
   parentId: "<artboard-id>"
   type: "shader"
   shaderType: "meshGradient"
-  className: "w-full h-[400px] rounded-2xl"
+  className: "w-full h-[400px] rounded-sm"
 ```
 
 ### Input Sources
@@ -445,7 +445,7 @@ add_node
   mediaInput: { mediaUrl: "<image-url>", mediaType: "image", objectFit: "cover" }
   effectId: "ascii-standard"
   effectEnabled: true
-  className: "w-full h-[500px] rounded-2xl"
+  className: "w-full h-[500px] rounded-sm"
 ```
 
 | Category | Effect IDs | Description |
@@ -500,7 +500,7 @@ add_node
   mediaInput: { mediaUrl: "<url>", mediaType: "image", objectFit: "cover" }
   effectId: "halftone-mono"
   effectEnabled: true
-  className: "w-[400px] h-[400px] rounded-2xl"
+  className: "w-[400px] h-[400px] rounded-sm"
 ```
 
 ---
@@ -564,17 +564,17 @@ This is the primary way to build layouts. Write standard JSX with HTML tags and 
     <p className="text-lg text-gray-500 text-center">Built for modern teams that move fast and ship faster.</p>
   </div>
   <div className="flex gap-8 w-full max-w-5xl">
-    <div className="flex flex-col gap-3 p-8 bg-gray-50 rounded-2xl grow">
+    <div className="flex flex-col gap-3 p-8 bg-gray-50 rounded-sm grow">
       <svg icon="lightning" className="w-8 h-8 text-blue-600" />
       <h3 className="text-lg font-semibold text-gray-900">Lightning Fast</h3>
       <p className="text-sm text-gray-500">Deploy in seconds, not hours. Our edge network ensures sub-50ms latency worldwide.</p>
     </div>
-    <div className="flex flex-col gap-3 p-8 bg-gray-50 rounded-2xl grow">
+    <div className="flex flex-col gap-3 p-8 bg-gray-50 rounded-sm grow">
       <svg icon="shield-check" className="w-8 h-8 text-blue-600" />
       <h3 className="text-lg font-semibold text-gray-900">Enterprise Security</h3>
       <p className="text-sm text-gray-500">SOC 2 certified with end-to-end encryption. Your data stays yours.</p>
     </div>
-    <div className="flex flex-col gap-3 p-8 bg-gray-50 rounded-2xl grow">
+    <div className="flex flex-col gap-3 p-8 bg-gray-50 rounded-sm grow">
       <svg icon="headset" className="w-8 h-8 text-blue-600" />
       <h3 className="text-lg font-semibold text-gray-900">24/7 Support</h3>
       <p className="text-sm text-gray-500">Our team is always on. Get answers in minutes, not days.</p>
@@ -630,7 +630,7 @@ w-16 h-16   /* 64px — hero section centerpiece */
 
 **Feature card with icon:**
 ```jsx
-<div className="flex flex-col gap-3 p-8 bg-gray-50 rounded-2xl grow">
+<div className="flex flex-col gap-3 p-8 bg-gray-50 rounded-sm grow">
   <svg icon="lightning" className="w-8 h-8 text-blue-600" />
   <h3 className="text-lg font-semibold text-gray-900">Lightning Fast</h3>
   <p className="text-sm text-gray-500">Deploy in seconds, not hours.</p>
@@ -780,7 +780,7 @@ style: { "background-color": "#f9f9f9" }
 ```
 border border-2                      /* Border width */
 border-gray-200 border-gray-300      /* Border color */
-rounded rounded-lg rounded-sm rounded-2xl rounded-full  /* Border radius */
+rounded rounded-lg rounded-sm rounded-sm rounded-full  /* Border radius */
 ```
 
 ### Effects
@@ -923,7 +923,7 @@ create_artboard:
       <a className="text-base font-medium text-gray-600" href="#">Learn more</a>
     </div>
   </div>
-  <img src="https://placehold.co/600x400" alt="Product screenshot" className="w-[560px] h-[380px] rounded-2xl object-cover bg-gray-100" />
+  <img src="https://placehold.co/600x400" alt="Product screenshot" className="w-[560px] h-[380px] rounded-sm object-cover bg-gray-100" />
 </section>
 ```
 
@@ -936,21 +936,21 @@ create_artboard:
     <p className="text-lg text-gray-500 text-center">Everything you need to design, build, and ship — all in one place.</p>
   </div>
   <div className="flex gap-8 w-full max-w-6xl">
-    <div className="flex flex-col gap-4 p-8 bg-white rounded-2xl shadow-sm grow">
+    <div className="flex flex-col gap-4 p-8 bg-white rounded-sm shadow-sm grow">
       <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-sm">
         <span className="text-blue-600 text-lg font-bold">1</span>
       </div>
       <h3 className="text-xl font-semibold text-gray-900">Real-Time Collaboration</h3>
       <p className="text-sm text-gray-500 leading-relaxed">Work together with your team in real time. See cursors, selections, and changes as they happen.</p>
     </div>
-    <div className="flex flex-col gap-4 p-8 bg-white rounded-2xl shadow-sm grow">
+    <div className="flex flex-col gap-4 p-8 bg-white rounded-sm shadow-sm grow">
       <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-sm">
         <span className="text-green-600 text-lg font-bold">2</span>
       </div>
       <h3 className="text-xl font-semibold text-gray-900">One-Click Deploy</h3>
       <p className="text-sm text-gray-500 leading-relaxed">Push to production with a single click. Built-in CI/CD, preview deployments, and rollbacks.</p>
     </div>
-    <div className="flex flex-col gap-4 p-8 bg-white rounded-2xl shadow-sm grow">
+    <div className="flex flex-col gap-4 p-8 bg-white rounded-sm shadow-sm grow">
       <div className="flex items-center justify-center w-12 h-12 bg-purple-100 rounded-sm">
         <span className="text-purple-600 text-lg font-bold">3</span>
       </div>
@@ -995,7 +995,7 @@ create_artboard:
     <p className="text-lg text-gray-500">No surprise fees. Cancel anytime.</p>
   </div>
   <div className="flex gap-8 w-full max-w-4xl">
-    <div className="flex flex-col gap-6 p-8 bg-white rounded-2xl border border-gray-200 grow">
+    <div className="flex flex-col gap-6 p-8 bg-white rounded-sm border border-gray-200 grow">
       <div className="flex flex-col gap-2">
         <h3 className="text-lg font-semibold text-gray-900">Starter</h3>
         <div className="flex items-baseline gap-1">
@@ -1006,7 +1006,7 @@ create_artboard:
       </div>
       <button className="w-full py-3 text-sm font-semibold text-gray-700 bg-gray-100 rounded-lg">Get Started</button>
     </div>
-    <div className="flex flex-col gap-6 p-8 bg-gray-900 rounded-2xl grow">
+    <div className="flex flex-col gap-6 p-8 bg-gray-900 rounded-sm grow">
       <div className="flex flex-col gap-2">
         <h3 className="text-lg font-semibold text-white">Pro</h3>
         <div className="flex items-baseline gap-1">
@@ -1017,7 +1017,7 @@ create_artboard:
       </div>
       <button className="w-full py-3 text-sm font-semibold text-gray-900 bg-white rounded-lg">Get Started</button>
     </div>
-    <div className="flex flex-col gap-6 p-8 bg-white rounded-2xl border border-gray-200 grow">
+    <div className="flex flex-col gap-6 p-8 bg-white rounded-sm border border-gray-200 grow">
       <div className="flex flex-col gap-2">
         <h3 className="text-lg font-semibold text-gray-900">Enterprise</h3>
         <div className="flex items-baseline gap-1">
@@ -1246,21 +1246,21 @@ add_section:
         <p className="text-lg text-gray-500 text-center">Powerful tools that grow with your team. No compromises.</p>
       </div>
       <div className="flex gap-6 w-full max-w-5xl">
-        <div className="flex flex-col gap-4 p-8 bg-gray-50 rounded-2xl grow">
+        <div className="flex flex-col gap-4 p-8 bg-gray-50 rounded-sm grow">
           <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-sm">
             <span className="text-blue-600 font-bold">1</span>
           </div>
           <h3 className="text-lg font-semibold text-gray-900">Visual Editor</h3>
           <p className="text-sm text-gray-500 leading-relaxed">Drag-and-drop interface with pixel-perfect precision. Design at the speed of thought.</p>
         </div>
-        <div className="flex flex-col gap-4 p-8 bg-gray-50 rounded-2xl grow">
+        <div className="flex flex-col gap-4 p-8 bg-gray-50 rounded-sm grow">
           <div className="flex items-center justify-center w-12 h-12 bg-green-100 rounded-sm">
             <span className="text-green-600 font-bold">2</span>
           </div>
           <h3 className="text-lg font-semibold text-gray-900">Instant Deploy</h3>
           <p className="text-sm text-gray-500 leading-relaxed">One-click deployment to our global CDN. Preview environments for every branch.</p>
         </div>
-        <div className="flex flex-col gap-4 p-8 bg-gray-50 rounded-2xl grow">
+        <div className="flex flex-col gap-4 p-8 bg-gray-50 rounded-sm grow">
           <div className="flex items-center justify-center w-12 h-12 bg-purple-100 rounded-sm">
             <span className="text-purple-600 font-bold">3</span>
           </div>

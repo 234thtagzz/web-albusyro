@@ -46,7 +46,7 @@ export function ProgramsBento() {
                 {school.method.variants.map((variant) => (
                   <li
                     key={variant.name}
-                    className="flex flex-col gap-1 rounded-2xl border border-white/10 bg-white/10 p-4 backdrop-blur transition hover:bg-white/15 sm:flex-row sm:items-center sm:gap-5"
+                    className="flex flex-col gap-1 rounded-sm border border-white/10 bg-white/10 p-4 backdrop-blur transition hover:bg-white/15 sm:flex-row sm:items-center sm:gap-5"
                   >
                     <Badge variant="outline" className="w-fit shrink-0 rounded-full border-white/20 bg-white px-3 py-1 text-[11px] font-bold tracking-wide text-primary-1">
                       {variant.name}

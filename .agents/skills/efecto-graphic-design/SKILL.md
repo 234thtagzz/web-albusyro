@@ -164,9 +164,9 @@ search_images
 
 Then apply images to your designs:
 
-- **Image node**: `add_node` with `type: "image"`, `src: "<url>"`, `alt: "..."`, `className: "w-full h-[400px] object-cover rounded-2xl"`
+- **Image node**: `add_node` with `type: "image"`, `src: "<url>"`, `alt: "..."`, `className: "w-full h-[400px] object-cover rounded-sm"`
 - **Background fill**: `set_fill` with `fill: { type: "image", url: "<url>", size: "cover" }`
-- **In JSX**: `<img src="<url>" alt="..." className="w-full h-[400px] object-cover rounded-2xl" />`
+- **In JSX**: `<img src="<url>" alt="..." className="w-full h-[400px] object-cover rounded-sm" />`
 
 **Tips for graphic design**: Match `orientation` to your artboard (vertical for posters/stories, horizontal for banners/presentations, square for social cards). Use `luminance: "dark"` for dark-themed designs. Search before designing — build layouts around real images, not empty gray boxes.
 
@@ -418,7 +418,7 @@ Everything else (speakers, sponsors, descriptions) is secondary.
       <p className="text-3xl font-bold text-blue-400">March 15, 2026</p>
       <p className="text-2xl text-gray-400">San Francisco / Moscone Center</p>
     </div>
-    <button className="w-fit px-10 py-4 text-xl font-bold text-gray-900 bg-white rounded-2xl">Get Tickets</button>
+    <button className="w-fit px-10 py-4 text-xl font-bold text-gray-900 bg-white rounded-sm">Get Tickets</button>
   </div>
 </section>
 ```

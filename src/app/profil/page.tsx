@@ -114,18 +114,18 @@ function SejarahSection() {
               </div>
 
               {/* floating badges — with transform on hover */}
-              <div className="animate-float absolute -right-2 top-10 rounded-2xl border border-white bg-white px-3.5 py-2 shadow-xl">
+              <div className="animate-float absolute -right-2 top-10 rounded-sm border border-white bg-white px-3.5 py-2 shadow-xl">
                 <p className="text-[10px] font-bold uppercase tracking-wide text-secondary-1">Metode</p>
                 <p className="font-display text-[12px] font-bold leading-none text-primary-1">Al-Qosimi</p>
               </div>
-              <div className="animate-float animation-delay-1000 absolute -left-3 bottom-16 rounded-2xl border border-white bg-primary-1 px-3.5 py-2.5 shadow-xl">
+              <div className="animate-float animation-delay-1000 absolute -left-3 bottom-16 rounded-sm border border-white bg-primary-1 px-3.5 py-2.5 shadow-xl">
                 <p className="text-[11px] font-bold leading-none text-white">Sang Pendiri</p>
                 <p className="text-[10px] font-medium text-white/70">Ust. Abu Hurri Al-Qosimi Al-Hafidz</p>
               </div>
             </div>
 
             {/* method card below image */}
-            <Card className="group mx-auto mt-8 max-w-[360px] rounded-2xl border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md lg:mx-0">
+            <Card className="group mx-auto mt-8 max-w-[360px] rounded-sm border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md lg:mx-0">
               <CardContent className="p-5">
                 <div className="mb-3 flex items-center gap-2">
                   <span className={`flex h-8 w-8 items-center justify-center rounded-lg shadow-sm ${UNIFIED_ICON}`}>
@@ -141,7 +141,7 @@ function SejarahSection() {
           {/* right — teks + quote + story */}
           <div className="space-y-6 lg:col-span-7">
             {/* founder pill — satu palet */}
-            <Card className="group rounded-2xl border-primary-1/10 bg-primary-1/[0.06] shadow-sm transition hover:border-primary-1/20 hover:shadow-md">
+            <Card className="group rounded-sm border-primary-1/10 bg-primary-1/[0.06] shadow-sm transition hover:border-primary-1/20 hover:shadow-md">
               <CardContent className="flex items-center gap-4 p-5">
                 <div className={`flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-sm shadow-md transition group-hover:scale-105 ${UNIFIED_ICON}`}>
                   <BookOpen className="h-5 w-5" />
@@ -158,7 +158,7 @@ function SejarahSection() {
             </Card>
 
             {/* pull quote — satu palet */}
-            <Card className="relative overflow-hidden rounded-2xl border-primary-1/15 bg-primary-1/5">
+            <Card className="relative overflow-hidden rounded-sm border-primary-1/15 bg-primary-1/5">
               <CardContent className="relative p-6">
                 <Blob className="h-20 w-20 -top-6 -right-6 bg-primary-1/10 blur-xl opacity-60" />
                 <Quote className="absolute right-4 top-3 h-10 w-10 text-primary-1/10" />
@@ -173,7 +173,7 @@ function SejarahSection() {
             </Card>
 
             {/* story — satu card, paragraf menjorok, terasa padat */}
-            <Card className="rounded-2xl border-stone-200 bg-white shadow-sm">
+            <Card className="rounded-sm border-stone-200 bg-white shadow-sm">
               <CardContent className="p-6 sm:p-7">
                 {/* header kecil di dalam card */}
                 <div className="mb-4 flex items-center gap-2 border-b border-stone-100 pb-3">
@@ -216,7 +216,7 @@ function SejarahSection() {
           {milestones.map((m) => (
             <Card
               key={m.year}
-              className="group relative overflow-hidden rounded-2xl border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md"
+              className="group relative overflow-hidden rounded-sm border-stone-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-md"
             >
               <div className="absolute left-0 top-0 h-1 w-full bg-primary-1 transition group-hover:h-1.5" />
               <CardContent className="p-4">
@@ -250,7 +250,7 @@ function SejarahSection() {
           ].map((item) => (
             <Card
               key={item.title}
-              className="group rounded-2xl border-primary-1/15 bg-primary-1/5 shadow-sm transition hover:-translate-y-1 hover:shadow-md hover:border-primary-1/30"
+              className="group rounded-sm border-primary-1/15 bg-primary-1/5 shadow-sm transition hover:-translate-y-1 hover:shadow-md hover:border-primary-1/30"
             >
               <CardContent className="flex gap-4 p-5">
                 <div

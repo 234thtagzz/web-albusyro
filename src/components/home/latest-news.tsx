@@ -1,24 +1,22 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { Stagger } from "@/components/motion/reveal";
-import { Card, CardContent } from "@/components/ui/card";
+import { CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Newspaper } from "lucide-react";
 
-import type { News } from "@/data/news";
 import { newsItems } from "@/data/news";
+import { getLatestNews } from "@/lib/supabase/news";
 
 interface LatestNewsProps {
   limit?: number;
 }
 
-export function LatestNews({ limit = 3 }: LatestNewsProps) {
-  // Sort by date descending and take the latest
-  const sorted = [...newsItems]
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-    .slice(0, limit);
+export async function LatestNews({ limit = 3 }: LatestNewsProps) {
+  // Ambil berita terbaru dari database (published_at terbaru di urutan pertama)
+  const latest = await getLatestNews(limit);
+  // Fallback ke data statis hanya jika database belum berisi berita
+  const sorted = latest.length > 0 ? latest : newsItems.slice(0, limit);
 
   return (
     <section className="py-12">
@@ -38,7 +36,7 @@ export function LatestNews({ limit = 3 }: LatestNewsProps) {
                 className="flex flex-col h-100"
               >
                 <div
-                  className="relative aspect-square overflow-hidden rounded-[24px] bg-stone-100"
+                  className="relative aspect-square overflow-hidden rounded-sm bg-stone-100"
                 >
                   {news.imageUrl ? (
                     <Image
@@ -46,6 +44,8 @@ export function LatestNews({ limit = 3 }: LatestNewsProps) {
                       alt={news.imageAlt ?? news.title}
                       className="object-cover transition-transform group-hover:scale-105"
                       fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      unoptimized={news.imageUrl.includes("supabase.co")}
                     />
                   ) : (
                     <div

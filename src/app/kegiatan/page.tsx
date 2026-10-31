@@ -45,7 +45,7 @@ type ArchiveTab = (typeof archiveTabs)[number];
 const categoryBadgeClass = `rounded-full px-3 py-1 text-[10px] font-bold tracking-wide border-primary-1/15 bg-primary-1/10 text-primary-1`;
 
 function ArchiveSection() {
-  const [active, setActive] = useState<ArchiveTab>("Semua");
+  const [active] = useState<ArchiveTab>("Semua");
   const filtered =
     active === "Semua" ? galleryItems : galleryItems.filter((g) => g.category === active);
 
@@ -69,24 +69,7 @@ function ArchiveSection() {
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-2 rounded-full border border-stone-100 bg-stone-50 p-1.5">
-            {archiveTabs.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActive(tab)}
-                className={`rounded-full px-4 py-1.5 text-[12px] font-bold transition-all duration-200 ${
-                  active === tab
-                    ? "bg-primary-1 text-white shadow-md -translate-y-px"
-                    : "text-stone-600 hover:bg-white hover:text-primary-1"
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
         </div>
-
-
 
         <div id="galeri-grid" className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((item, i) => {

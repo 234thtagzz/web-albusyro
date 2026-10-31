@@ -68,7 +68,7 @@ export function ImageField({
   }
 
   return (
-    <div className="space-y-3.5 rounded-2xl border border-stone-200 bg-stone-50/70 p-4 sm:p-5">
+    <div className="space-y-3.5 rounded-sm border border-stone-200 bg-stone-50/70 p-4 sm:p-5">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <ImageIcon className="h-4 w-4 text-primary-1" />

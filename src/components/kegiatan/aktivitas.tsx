@@ -1,7 +1,6 @@
 import { activities } from "@/data/activities";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
 import {
   BookOpen,
   BookText,
@@ -16,23 +15,6 @@ import {
 } from "lucide-react";
 import { HeaderStrip } from "@/components/ui/header-strip";
 
-function Blob({
-  className,
-  delay = "",
-}: {
-  className: string;
-  delay?: string;
-}) {
-  return (
-    <div
-      aria-hidden
-      className={`pointer-events-none absolute rounded-full blur-3xl opacity-40 ${className} ${
-        delay ? delay : "animate-blob"
-      }`}
-    />
-  );
-}
-
 // palette clean: satu kombinasi emerald untuk badge + kotak icon
 const UNIFIED_ICON = "bg-primary-1 text-white";
 const UNIFIED_BADGE =
@@ -46,6 +28,105 @@ const activityIconMap: Record<string, typeof BookOpen> = {
   "Kegiatan Sekolah": GraduationCap,
   default: Sparkles,
 };
+
+type ScheduleKind = "Tahfizh" | "Diniyyah" | "Jeda" | "Ibadah";
+
+const scheduleKindStyle: Record<ScheduleKind, string> = {
+  Tahfizh: "border-primary-1/15 bg-primary-1/10 text-primary-1",
+  Diniyyah: "border-secondary-1/20 bg-secondary-1/10 text-secondary-1",
+  Jeda: "border-stone-200 bg-stone-100 text-stone-500",
+  Ibadah: "border-stone-200 bg-stone-100 text-stone-500",
+};
+
+const dailySchedule: {
+  start: string;
+  end: string;
+  title: string;
+  desc: string;
+  kind: ScheduleKind;
+}[] = [
+  {
+    start: "07.25",
+    end: "07.45",
+    title: "Halaqoh Tahfidz — Pertama",
+    desc: "Ziyadah & murojaah pagi bersama musyrif halaqah.",
+    kind: "Tahfizh",
+  },
+  {
+    start: "07.45",
+    end: "08.40",
+    title: "Halaqoh Tahfidz — Kedua",
+    desc: "Lanjutan setoran hafalan dengan Metode Al-Qosimi.",
+    kind: "Tahfizh",
+  },
+  {
+    start: "08.40",
+    end: "09.30",
+    title: "Pembelajaran Diniyyah I",
+    desc: "Pelajaran umum + diniyah terpadu — sesi pertama.",
+    kind: "Diniyyah",
+  },
+  {
+    start: "09.30",
+    end: "09.45",
+    title: "Istirahat",
+    desc: "Jeda sejenak — snack & persiapan kelas berikutnya.",
+    kind: "Jeda",
+  },
+  {
+    start: "09.45",
+    end: "10.45",
+    title: "Halaqoh Tahfidz — Ketiga",
+    desc: "Murojaah mutqin dan penguatan hafalan.",
+    kind: "Tahfizh",
+  },
+  {
+    start: "10.45",
+    end: "12.00",
+    title: "Pembelajaran Diniyyah II",
+    desc: "Pelajaran umum + diniyah terpadu — sesi kedua.",
+    kind: "Diniyyah",
+  },
+  {
+    start: "12.00",
+    end: "12.35",
+    title: "Dzuhur + Makan Siang",
+    desc: "Shalat berjamaah dan makan siang bersama.",
+    kind: "Ibadah",
+  },
+  {
+    start: "12.35",
+    end: "13.35",
+    title: "Halaqoh Tahfidz — Keempat",
+    desc: "Halaqah siang — setoran & tasmi’ berkala.",
+    kind: "Tahfizh",
+  },
+  {
+    start: "13.35",
+    end: "14.35",
+    title: "Tidur Siang",
+    desc: "Qailulah — istirahat untuk menjaga stamina.",
+    kind: "Jeda",
+  },
+  {
+    start: "14.35",
+    end: "15.00",
+    title: "Ashar + Persiapan Pulang",
+    desc: "Shalat Ashar berjamaah dan persiapan pulang.",
+    kind: "Ibadah",
+  },
+];
+
+const scheduleSummary = [
+  { label: "Sesi tahfizh", count: "4 sesi", icon: BookOpen },
+  { label: "Sesi diniyyah", count: "2 sesi", icon: BookText },
+  { label: "Jeda & ibadah", count: "4 sesi", icon: HeartHandshake },
+];
+
+const dayNotes = [
+  "Setiap hari Senin ada apel pagi dan halaqah tahsin.",
+  "Khusus hari Sabtu pengembangan softskill dan kepulangan jam 10.00 WIB.",
+];
 
 export function AktivitasSection() {
   return (
@@ -157,163 +238,125 @@ export function AktivitasSection() {
         title="Jadwal Harian"
         description="Dari berangkat hingga pulang kami pastikan setiap kegiatan yang santri lakukan bermanfaat dan berdampak pada masa depan mereka."
       />
-      
-      <div className="container-custom relative py-12 sm:py-16 lg:py-20 space-y-14">
-        {/* Jadwal Harian — Card shadcn + Badge/Badge-dot satu palet */}
-        <Card className="relative overflow-hidden rounded-[24px] border-stone-200 bg-white shadow-sm">
-          <CardContent className="p-6 sm:p-8">
-            <Blob className="h-40 w-40 -top-10 -right-10 bg-secondary-3/10 blur-2xl" />
-            <Blob className="h-32 w-32 -bottom-6 -left-6 bg-primary-4/15 blur-xl animate-blob-delay" />
-            <div className="relative">
-              <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
-                <div className="lg:w-[300px] flex-shrink-0">
-                  <Badge variant="outline" className={`rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-wide ${UNIFIED_BADGE}`}>
-                    <Clock3 className="h-3.5 w-3.5" />
-                    Jadwal Harian
-                  </Badge>
-                  <h3 className="font-display mt-3 text-[20px] font-bold tracking-tight text-primary-1 leading-tight">
-                    Jadwal Pembelajaran
-                    <br />
-                    Santri dalam Sehari
-                  </h3>
-                  <p className="mt-2 text-[12.5px] leading-[1.7] text-stone-500">
-                    Ritme harian yang seimbang — tahfizh, pelajaran madrasah, dan pembinaan karakter dari sebelum
-                    subuh hingga istirahat malam.
-                  </p>
-                  <div className="mt-4 hidden items-center gap-2 lg:flex">
-                    <span className="flex h-2 w-2 rounded-full bg-primary-1 animate-pulse" />
-                    <span className="text-[11px] font-semibold tracking-wide text-stone-400">
-                      07:25 — 15:00 WIB · Full Day
-                    </span>
-                  </div>
-                  <Separator className="mt-5 hidden lg:block bg-stone-100" />
-                  <div className="mt-5 hidden flex-wrap gap-2 lg:flex">
-                    <Badge variant="outline" className={`rounded-full ${UNIFIED_BADGE}`}>
-                      <span className={`h-2 w-2 rounded-full ${UNIFIED_DOT}`} /> Tahfizh
-                    </Badge>
-                    <Badge variant="outline" className={`rounded-full ${UNIFIED_BADGE}`}>
-                      <span className={`h-2 w-2 rounded-full ${UNIFIED_DOT}`} /> Madrasah
-                    </Badge>
-                    <Badge variant="outline" className={`rounded-full ${UNIFIED_BADGE}`}>
-                      <span className={`h-2 w-2 rounded-full ${UNIFIED_DOT}`} /> Pembinaan
-                    </Badge>
-                  </div>
-                </div>
 
-                {/* timeline */}
-                <div className="flex-1 lg:pl-8">
-                  <div className="relative">
-                    <div className="absolute left-[18px] top-2 bottom-2 hidden w-px bg-primary-1/15 sm:block" />
-                    <div className="space-y-3">
-                      {[
-                        {
-                          time: "07.25 – 07.45",
-                          title: "Halaqoh Tahfidz — Pertama",
-                          desc: "Ziyadah & murojaah pagi bersama musyrif halaqah.",
-                          icon: BookOpen,
-                        },
-                        {
-                          time: "07.45 – 08.40",
-                          title: "Halaqoh Tahfidz — Kedua",
-                          desc: "Lanjutan setoran hafalan dengan Metode Al-Qosimi.",
-                          icon: BookOpen,
-                        },
-                        {
-                          time: "08.40 – 09.30",
-                          title: "Pembelajaran Diniyyah I",
-                          desc: "Pelajaran umum + diniyah terpadu — sesi pertama.",
-                          icon: BookText,
-                        },
-                        {
-                          time: "09.30 – 09.45",
-                          title: "Istirahat",
-                          desc: "Jeda sejenak — snack & persiapan kelas berikutnya.",
-                          icon: Sparkles,
-                        },
-                        {
-                          time: "09.45 – 10.45",
-                          title: "Halaqoh Tahfidz — Ketiga",
-                          desc: "Murojaah mutqin dan penguatan hafalan.",
-                          icon: BookOpen,
-                        },
-                        {
-                          time: "10.45 – 12.00",
-                          title: "Pembelajaran Diniyyah II",
-                          desc: "Pelajaran umum + diniyah terpadu — sesi kedua.",
-                          icon: BookText,
-                        },
-                        {
-                          time: "12.00 – 12.35",
-                          title: "Dzuhur + Makan Siang",
-                          desc: "Shalat berjamaah dan makan siang bersama.",
-                          icon: HeartHandshake,
-                        },
-                        {
-                          time: "12.35 – 13.35",
-                          title: "Halaqoh Tahfidz — Keempat",
-                          desc: "Halaqah siang — setoran & tasmi’ berkala.",
-                          icon: BookOpen,
-                        },
-                        {
-                          time: "13.35 – 14.35",
-                          title: "Tidur Siang",
-                          desc: "Qailulah — istirahat untuk menjaga stamina.",
-                          icon: Sparkles,
-                        },
-                        {
-                          time: "14.35 – 15.00",
-                          title: "Ashar + Persiapan Pulang",
-                          desc: "Shalat Ashar berjamaah dan persiapan pulang.",
-                          icon: HeartHandshake,
-                        },
-                      ].map((item, idx) => (
-                        <Card
-                          key={`${item.title}-${idx}`}
-                          className="group relative rounded-2xl border-stone-100 bg-stone-50/60 shadow-none transition hover:border-stone-200 hover:bg-white hover:shadow-sm hover:-translate-y-[1px]"
-                        >
-                          <CardContent className="flex gap-3 p-3 sm:gap-4 sm:p-4">
-                            <div className="relative hidden flex-shrink-0 sm:flex sm:flex-col sm:items-center">
-                              <div className={`flex h-9 w-9 items-center justify-center rounded-sm shadow-sm transition group-hover:scale-105 ${UNIFIED_ICON}`}
-                              >
-                                <item.icon className="h-4 w-4" />
-                              </div>
-                              <span className={`mt-2 hidden h-2 w-2 rounded-full sm:block ${UNIFIED_DOT} ring-4 ring-white shadow-sm`} />
-                            </div>
-                            <div className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-sm shadow-sm sm:hidden ${UNIFIED_ICON}`}>
-                              <item.icon className="h-4 w-4" />
-                            </div>
-                            <div className="min-w-0 flex-1">
-                              <div className="flex flex-wrap items-center gap-2">
-                                <Badge variant="outline" className={`rounded-full px-2.5 py-1 text-[10px] font-bold tracking-wide ${UNIFIED_BADGE}`}>
-                                  <Clock3 className="h-3 w-3" />
-                                  {item.time} WIB
-                                </Badge>
-                                <span className="hidden text-[11px] font-bold text-stone-300 sm:inline">
-                                  #{String(idx + 1).padStart(2, "0")}
-                                </span>
-                              </div>
-                              <h4 className="mt-2 font-display text-[13px] font-bold leading-tight text-primary-1 sm:text-[14px]">
-                                {item.title}
-                              </h4>
-                              <p className="mt-1 text-[12px] leading-[1.6] text-stone-600">{item.desc}</p>
-                            </div>
-                          </CardContent>
-                        </Card>
-                      ))}
-                    </div>
-                    <p className="mt-4 flex items-center gap-2 text-[11px] font-medium text-stone-400">
-                      <span className="h-1.5 w-1.5 rounded-full bg-stone-300" />
-                      Setiap hari Senin ada apel pagi dan halaqah tahsin.
-                    </p>
-                    <p className="mt-4 flex items-center gap-2 text-[11px] font-medium text-stone-400">
-                      <span className="h-1.5 w-1.5 rounded-full bg-stone-300" />
-                      Khusus hari Sabtu pengembangan softskill dan kepulangan jam 10:00 WIB.
-                    </p>
-                  </div>
-                </div>
-              </div>
+      <div className="container-custom relative py-12 sm:py-16 lg:py-20">
+        {/* Jadwal Harian — panel institusional + timeline editorial */}
+        <Card className="overflow-hidden rounded-[24px] border-stone-200 bg-white shadow-sm [--card-spacing:0px]">
+          <div className="grid lg:grid-cols-[320px_minmax(0,1fr)]">
+            {/* Panel kiri — warna solid primary-1, tanpa gradien */}
+            <div className="relative flex flex-col bg-primary-1 p-6 text-white sm:p-8 lg:p-9">
+              <span aria-hidden className="absolute left-0 top-0 h-[3px] w-20 bg-secondary-1" />
+
+              <Badge className="w-fit rounded-lg bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-primary-1 shadow-sm">
+                <Clock3 className="mr-1 h-3.5 w-3.5" />
+                Full Day · 07.25 — 15.00 WIB
+              </Badge>
+
+              <h3 className="font-display mt-5 text-[22px] leading-[1.15] tracking-tight text-white sm:text-[24px]">
+                Ritme Sehari Santri
+              </h3>
+              <p className="mt-3 text-[12.5px] leading-[1.75] text-white/75">
+                Tahfizh, diniyyah, dan pembinaan karakter berjalan dalam satu alur yang seimbang — dari
+                halaqah pagi hingga persiapan pulang.
+              </p>
+
+              <ul className="mt-6 space-y-3 border-t border-white/15 pt-5">
+                {scheduleSummary.map((item) => (
+                  <li key={item.label} className="flex items-center gap-3">
+                    <span className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-sm bg-white/10 text-white/85">
+                      <item.icon className="h-4 w-4" />
+                    </span>
+                    <span className="flex-1 text-[12.5px] text-white/75">{item.label}</span>
+                    <span className="font-display text-[12px] tabular-nums text-white">{item.count}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <p className="mt-auto pt-6 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/40">
+                Senin — Sabtu · Full Day
+              </p>
             </div>
-          </CardContent>
+
+            {/* Panel kanan — timeline tanpa kartu bersarang */}
+            <div className="flex flex-col p-6 sm:p-8 lg:p-9">
+              <div className="flex flex-wrap items-end justify-between gap-3 border-b border-stone-100 pb-5">
+                <div>
+                  <p className="font-display text-[10px] font-bold uppercase tracking-[0.22em] text-secondary-1">
+                    Rangkaian Kegiatan
+                  </p>
+                  <h4 className="font-display mt-1 text-[18px] tracking-tight text-primary-1">
+                    Sepuluh agenda harian
+                  </h4>
+                </div>
+                <span className="flex items-center gap-1.5 text-[11px] font-medium text-stone-400">
+                  <Clock3 className="h-3.5 w-3.5" />
+                  ± 7 jam 35 menit
+                </span>
+              </div>
+
+              <ol className="mt-6">
+                {dailySchedule.map((item, idx) => {
+                  const isBreak = item.kind === "Jeda" || item.kind === "Ibadah";
+                  const isLast = idx === dailySchedule.length - 1;
+
+                  return (
+                    <li
+                      key={`${item.start}-${item.title}`}
+                      className="grid grid-cols-[56px_minmax(0,1fr)] gap-4 sm:grid-cols-[72px_minmax(0,1fr)]"
+                    >
+                      <div className="pt-0.5 text-right">
+                        <span className="font-display block text-[12.5px] font-bold tabular-nums text-primary-1 sm:text-[13px]">
+                          {item.start}
+                        </span>
+                        <span className="mt-0.5 block text-[10px] tabular-nums text-stone-400">
+                          {item.end}
+                        </span>
+                      </div>
+
+                      <div
+                        className={`relative pl-5 sm:pl-6 ${
+                          isLast ? "pb-0" : "border-l border-stone-200 pb-5"
+                        }`}
+                      >
+                        <span
+                          aria-hidden
+                          className={`absolute -left-[5px] top-[5px] h-2.5 w-2.5 rounded-full border-2 shadow-sm ${
+                            isBreak
+                              ? "border-stone-300 bg-white"
+                              : "border-white bg-primary-1"
+                          }`}
+                        />
+                        <div className="flex flex-wrap items-center gap-x-2.5 gap-y-1">
+                          <h5
+                            className={`font-display text-[13.5px] font-bold leading-snug tracking-tight sm:text-[14px] ${
+                              isBreak ? "text-stone-600" : "text-primary-1"
+                            }`}
+                          >
+                            {item.title}
+                          </h5>
+                          <span
+                            className={`rounded-full border px-2 py-0.5 text-[9.5px] font-bold uppercase tracking-[0.12em] ${scheduleKindStyle[item.kind]}`}
+                          >
+                            {item.kind}
+                          </span>
+                        </div>
+                        <p className="mt-1 text-[12px] leading-[1.65] text-stone-500">{item.desc}</p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ol>
+
+              <ul className="mt-6 grid gap-2.5 border-t border-stone-100 pt-5 sm:grid-cols-2">
+                {dayNotes.map((note) => (
+                  <li key={note} className="flex items-start gap-2 text-[11px] leading-[1.6] text-stone-500">
+                    <span className="mt-[6px] h-1.5 w-1.5 flex-shrink-0 rounded-full bg-secondary-1" />
+                    {note}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </Card>
       </div>
     </section>

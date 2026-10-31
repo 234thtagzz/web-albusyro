@@ -61,7 +61,7 @@ export function Admission({ ppdbInfo }: AdmissionProps) {
           {admissionSteps.map((step, index) => (
             <Card
               key={step.no}
-              className="group relative rounded-[20px] border-stone-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md hover:border-primary-1/15"
+              className="group relative rounded-sm border-stone-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md hover:border-primary-1/15"
             >
               <CardContent className="p-0">
                 {index < admissionSteps.length - 1 && (

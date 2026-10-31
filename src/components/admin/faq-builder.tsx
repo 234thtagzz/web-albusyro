@@ -66,7 +66,7 @@ export function FaqBuilder({ initialFaq }: FaqBuilderProps) {
   );
 
   return (
-    <div className="space-y-3 rounded-2xl border border-stone-200 bg-stone-50/70 p-4 sm:p-5">
+    <div className="space-y-3 rounded-sm border border-stone-200 bg-stone-50/70 p-4 sm:p-5">
       {/* Hidden input which passes serialized JSON to the server action */}
       <input type="hidden" name="faq" value={serialized} />
 

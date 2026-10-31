@@ -23,8 +23,8 @@ export default async function Home() {
         <Identity />
         <ProgramsBento />
         <Testimoni />
-        <Admission ppdbInfo={ppdbInfo} />
         <LatestNews />
+        <Admission ppdbInfo={ppdbInfo} />
       </main>
       <Footer ppdbInfo={ppdbInfo} />
     </>

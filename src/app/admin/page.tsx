@@ -30,7 +30,7 @@ export default async function AdminDashboard() {
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {stats.map((s) => (
           <Link key={s.label} href={s.href}>
-            <Card className="rounded-2xl border-stone-200 bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition">
+            <Card className="rounded-sm border-stone-200 bg-white shadow-sm hover:shadow-md hover:-translate-y-0.5 transition">
               <CardContent className="p-5">
                 <div className={`flex h-10 w-10 items-center justify-center rounded-sm text-white ${s.color}`}>
                   <s.icon className="h-5 w-5" />
@@ -42,7 +42,7 @@ export default async function AdminDashboard() {
           </Link>
         ))}
       </div>
-      <Card className="rounded-2xl border-stone-200 bg-white">
+      <Card className="rounded-sm border-stone-200 bg-white">
         <CardContent className="p-6">
           <h3 className="font-semibold text-stone-900">Panduan cepat</h3>
           <ul className="mt-2 list-disc pl-5 text-sm text-stone-600 space-y-1">
